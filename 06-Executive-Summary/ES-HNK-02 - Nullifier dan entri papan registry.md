@@ -30,10 +30,10 @@ updated: 2026-10-17
 
 ## Risiko tersisa
 - HNK-02.T1 nullifier selesai (`40d7656`, DEV-04 disetujui).
-- HNK-02.T3: commitment sudah (`6b5c343`, DEV-09); manajemen salt (Dex) belum.
+- HNK-02.T3 (Dex) belum: dikerjakan independen lalu dibandingkan dengan `6b5c343` (DEV-09); manajemen salt juga belum.
 - Unit test resmi belum (HNK-02.T4, Dex).
 
 ## Bukti
-- Commit: `c0d6981`, `40d7656` (nullifier, lokal)
+- Commit: `c0d6981`, `40d7656` (nullifier; push disetujui 2026-10-17)
 - ID tes: verifikasi sementara 21/21 lulus (scratchpad); unit test resmi belum
 - Persetujuan user untuk push/deploy: **disetujui 2026-10-17**, di-push ke `JitsuinFi/jitsuinfi-zcash` (private)

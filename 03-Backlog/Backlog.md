@@ -34,12 +34,12 @@ Target pembagian: **Hans 40% · Dex 30% · Dave 30%**. Hans wajib memegang selur
 | Dave #dave | 46 | 30% | 30% |
 | **Total** | **153** | 100% | 100% |
 
-**Revisi 2026-10-17 (D-22):** HNK-19 (13 jam) dan HNK-20 (5 jam) ke Hans; HNK-06.T1 (2 jam) dan commitment HNK-02.T3 (1 jam) pindah dari Dex ke Hans.
+**Revisi 2026-10-17 (D-22):** HNK-19 (13 jam) dan HNK-20 (5 jam) ke Hans; HNK-06.T1 (2 jam) pindah dari Dex ke Hans. HNK-02.T3 (1 jam) tetap Dex sampai perbandingan DEV-09 selesai; porsi diperbarui setelahnya.
 
 | Orang | Jam | Porsi | Target awal |
 |---|---|---|---|
-| Hans #hans | 80 | 48% | 40% |
-| Dex #dex | 42 | 25% | 30% |
+| Hans #hans | 79 | 47% | 40% |
+| Dex #dex | 43 | 26% | 30% |
 | Dave #dave | 46 | 27% | 30% |
 | **Total** | **168** | 100% | 100% |
 
@@ -116,7 +116,7 @@ Estimasi kasar; diperbarui di Exec Summary dengan jam aktual.
 |---|---|---|---|---|
 | HNK-02.T1 | Nullifier BLAKE2b-256 berpersonalisasi dari byte kanonik invoice (DEV-04) | Hans #hans | 1 | DONE (`40d7656`) |
 | HNK-02.T2 | Encode/decode entri papan + tanda tangan supplier (key sementara) | Hans #hans | 3 | DONE (`c0d6981`) |
-| HNK-02.T3 | Commitment financier + manajemen salt | Dex #dex | 1 | PARSIAL: commitment oleh Hans (`6b5c343`, DEV-09); manajemen salt TODO |
+| HNK-02.T3 | Commitment financier + manajemen salt | Dex #dex | 1 | TODO — dikerjakan Dex secara independen, lalu dibandingkan dengan `6b5c343` (DEV-09) |
 | HNK-02.T4 | Unit test: roundtrip, ukuran ≤ 512, entri invalid | Dex #dex | 2 | TODO |
 
 **HNK-16 — CI dan quality gate** · Lead Dex #dex · [[AC-HNK-16 - CI dan quality gate|AC]]
@@ -312,5 +312,5 @@ SORT id ASC
 | DEV-06 | 2026-10-17 | HNK-06.T1 | Owner Dex | Owner **Hans**, dikerjakan sebagai bagian HNK-19.T2 | Keputusan user D-22 | **Disetujui user 2026-10-17** |
 | DEV-07 | 2026-10-17 | HNK-05 (state machine financier) | Alur cek → daftar → konfirmasi → bayar (`6b5c343`) | State baru `AwaitAssignment` antara konfirmasi dan bayar: advance hanya cair setelah surat pengalihan tersegel Supplier dan Buyer; memo advance membawa kuitansi + seal Financier (HNK-19.T3) | Keputusan user D-21 (adopsi SignBaliola, Sign-to-Pay) | **Disetujui user 2026-10-17** |
 | DEV-08 | 2026-10-17 | HNK-06.T4, [[Format Data]] | Entri `settled` satu tanda tangan financier, commitment nol (`aff284d`) | Entri `settled` dua tanda tangan (buyer + financier) dan flag tepat waktu; AC-HNK-06.3 diuji ulang setelah HNK-19.T4 | Keputusan user D-19 | **Disetujui user 2026-10-17** |
-| DEV-09 | 2026-10-17 | HNK-02.T3 | Owner Dex | `financier_commitment` sudah diimplementasikan Hans di `6b5c343` sebagai bagian HNK-05 (dibutuhkan state machine). Manajemen salt tetap belum | Dibutuhkan lebih dulu oleh HNK-05; seharusnya dicatat saat itu | _Menunggu konfirmasi user_ |
+| DEV-09 | 2026-10-17 | HNK-02.T3 | Owner Dex | `financier_commitment` diimplementasikan Hans di `6b5c343` sebagai bagian HNK-05 dan **sudah ter-push** sebelum keputusan ini. Keputusan user: Dex tetap mengerjakan HNK-02.T3 secara independen; hasilnya dibandingkan dengan implementasi Hans dan test vector `c72255e7…2b3a`. Sama → dipakai; beda → diberi komentar; masih salah → diperbaiki. Porsi backlog diperbarui setelahnya | Dibutuhkan lebih dulu oleh HNK-05; seharusnya dicatat saat itu | **Keputusan user 2026-10-17**: tunggu Dex, bandingkan |
 | DEV-05 | 2026-10-16 | SPK-04 | [[Rencana Fase]]: SPK-04 spike kritis | SPK-04 tidak lagi kritis; gerbang F0 dihitung tanpa SPK-04 | D-15: Zodl opsional (keputusan user) | **Mengikuti keputusan user 2026-10-16** |
