@@ -36,4 +36,4 @@ updated: 2026-10-17
 ## Bukti
 - Commit: `7fd8202` (lokal)
 - ID tes: U-HNK-03.1–3, I-HNK-03.1–2; tx `8d8835f72129468ee06486458318355ebe98388594ae8f962ab814f99be887bc`
-- Persetujuan user untuk push/deploy: _belum_ (org GitHub `JitsuinFi` ada, repo belum)
+- Persetujuan user untuk push/deploy: **disetujui 2026-10-17**, di-push ke `JitsuinFi/jitsuinfi-zcash` (private)

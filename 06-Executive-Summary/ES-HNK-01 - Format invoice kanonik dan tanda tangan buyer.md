@@ -39,4 +39,4 @@ updated: 2026-10-16
 ## Bukti
 - Commit: `c0d6981` (lokal, belum ada remote)
 - ID tes: verifikasi sementara 21/21 lulus (scratchpad); unit test resmi belum
-- Persetujuan user untuk push/deploy: _belum_ (repo GitHub belum dibuat, D-14)
+- Persetujuan user untuk push/deploy: **disetujui 2026-10-17**, di-push ke `JitsuinFi/jitsuinfi-zcash` (private)
