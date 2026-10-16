@@ -38,10 +38,12 @@ Target pembagian: **Hans 40% · Dex 30% · Dave 30%**. Hans wajib memegang selur
 
 | Orang | Jam | Porsi | Target awal |
 |---|---|---|---|
-| Hans #hans | 79 | 47% | 40% |
-| Dex #dex | 43 | 26% | 30% |
+| Hans #hans | 81 | 48% | 40% |
+| Dex #dex | 43 | 25% | 30% |
 | Dave #dave | 46 | 27% | 30% |
-| **Total** | **168** | 100% | 100% |
+| **Total** | **170** | 100% | 100% |
+
+HNK-20 naik dari 5 ke 7 jam (DEV-10).
 
 Porsi Hans naik di atas 40% karena keputusan user D-22.
 
@@ -197,9 +199,9 @@ Estimasi kasar; diperbarui di Exec Summary dengan jam aktual.
 
 | Task | Deskripsi | Owner | Jam | Status |
 |---|---|---|---|---|
-| HNK-20.T1 | Key buyer per invoice + sertifikat delegasi (core) | Hans #hans | 2 | TODO |
-| HNK-20.T2 | Bukti riwayat + verifier + allowlist financier | Hans #hans | 2 | TODO |
-| HNK-20.T3 | Policy standar minimal di alur financier sebelum registrasi | Hans #hans | 1 | TODO |
+| HNK-20.T1 | Key buyer per invoice + sertifikat riwayat berantai + entri register bertag (core, DEV-10) | Hans #hans | 3 | DONE (`f03cfb1`) |
+| HNK-20.T2 | Verifier riwayat terhadap papan (jangkar, equivocation, penerus tersembunyi) + allowlist financier | Hans #hans | 3 | DONE (`687f2b4`) |
+| HNK-20.T3 | Policy standar minimal di alur financier sebelum registrasi | Hans #hans | 1 | DONE (`e53ce12`) |
 
 ### Fase F4
 
@@ -313,4 +315,5 @@ SORT id ASC
 | DEV-07 | 2026-10-17 | HNK-05 (state machine financier) | Alur cek → daftar → konfirmasi → bayar (`6b5c343`) | State baru `AwaitAssignment` antara konfirmasi dan bayar: advance hanya cair setelah surat pengalihan tersegel Supplier dan Buyer; memo advance membawa kuitansi + seal Financier (HNK-19.T3) | Keputusan user D-21 (adopsi SignBaliola, Sign-to-Pay) | **Disetujui user 2026-10-17** |
 | DEV-08 | 2026-10-17 | HNK-06.T4, [[Format Data]] | Entri `settled` satu tanda tangan financier, commitment nol (`aff284d`) | Entri `settled` dua tanda tangan (buyer + financier) dan flag tepat waktu; AC-HNK-06.3 diuji ulang setelah HNK-19.T4 | Keputusan user D-19 | **Disetujui user 2026-10-17** |
 | DEV-09 | 2026-10-17 | HNK-02.T3 | Owner Dex | `financier_commitment` diimplementasikan Hans di `6b5c343` sebagai bagian HNK-05 dan **sudah ter-push** sebelum keputusan ini. Keputusan user: Dex tetap mengerjakan HNK-02.T3 secara independen; hasilnya dibandingkan dengan implementasi Hans dan test vector `c72255e7…2b3a`. Sama → dipakai; beda → diberi komentar; masih salah → diperbaiki. Porsi backlog diperbarui setelahnya | Dibutuhkan lebih dulu oleh HNK-05; seharusnya dicatat saat itu | **Keputusan user 2026-10-17**: tunggu Dex, bandingkan |
+| DEV-10 | 2026-10-17 | HNK-20, HNK-02 ([[Format Data]]) | Riwayat berantai dengan sertifikat yang hanya ditandatangani buyer | Rantai **dijangkarkan ke papan**: entri register jenis baru `0x03` (168 byte) membawa tag penerus, dan sertifikat memuat key supplier. Tanpa jangkar, buyer bisa membuat rantai cabang yang dinomori ulang untuk menyembunyikan gagal bayar. Entri `0x01` tetap valid. Estimasi HNK-20 naik dari 5 ke 7 jam | Celah ditemukan saat implementasi; jangkar dibutuhkan agar janji "riwayat buruk tidak bisa disembunyikan" benar | Dilaporkan ke user 2026-10-17 sebelum implementasi ("Oke gas riwayat berantai") |
 | DEV-05 | 2026-10-16 | SPK-04 | [[Rencana Fase]]: SPK-04 spike kritis | SPK-04 tidak lagi kritis; gerbang F0 dihitung tanpa SPK-04 | D-15: Zodl opsional (keputusan user) | **Mengikuti keputusan user 2026-10-16** |

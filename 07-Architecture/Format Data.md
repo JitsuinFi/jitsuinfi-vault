@@ -137,6 +137,15 @@ Marker `0xFF`, lalu item berurutan, lalu padding nol: kuitansi `JTR1` (145 byte 
 ## Bundel verifikasi (HNK-19.T6) — **diimplementasikan** (`dd23864`)
 Magic `JTSB` (4), versi `0x01` (1), lalu item `tipe (1) ‖ panjang (2, LE) ‖ isi`: `1` invoice kanonik, `2` tanda tangan buyer (64), `3` surat pengalihan kanonik, `4` seal surat pengalihan (berurutan), `5` dokumen pelunasan. Bentuk teks: base64url tanpa padding. `Bundle::verify` memeriksa tanda tangan buyer, N, surat pengalihan dan rantai seal-nya, serta dokumen pelunasan. `bundle_on_board` menambahkan lookup register dan entri `settled` dua tanda tangan.
 
+## Entri register bertag riwayat (HNK-20, DEV-10) — **diimplementasikan** (`f03cfb1`)
+Tipe `0x03` = entri register dengan tag riwayat buyer. Layout sama dengan tipe `0x01` sampai `tenor_bucket` (offset 71), lalu `history_tag` (32 byte, offset 72), lalu tanda tangan supplier atas byte 1–103 (64 byte). Total **168 byte**. Tipe `0x01` tetap valid; keduanya dihitung sebagai registrasi untuk `lookup` dan deteksi pembiayaan ganda.
+
+## Sertifikat riwayat buyer (HNK-20) — **diimplementasikan** (`f03cfb1`, `687f2b4`)
+Magic `JTSH` (4), versi `0x01` (1), nomor urut (4, LE), key invoice (32), key supplier (32), N (32), `amount_zat` (8, LE), `due_date` (4, LE), key financier (32), hash sertifikat sebelumnya (32, nol untuk nomor 0), key identitas (32), tanda tangan key identitas atas byte sebelumnya (64). Total **277 byte**.
+- Hash sertifikat: `BLAKE2b-256("JitsuinHistory__", 277 byte)`.
+- Tag penerus: `BLAKE2b-256("JitsuinHistTag__", identity_pk ‖ hash sebelumnya)`.
+- Derivasi key: `seed = BLAKE2b-256(key = master, personal = "JitsuinBuyerKey_", input)`, dengan `input` = `"identity"` atau `"invoice" ‖ nomor (u32 LE)`. Vector: master 32×`0x42`, invoice 0 → seed `b467d39acc924edc21c631f77e1f1a6781dbd254efa0cc344ab1c7beaf34ac98` (dicek silang Python).
+
 ## Bucket indeks (HNK-08)
 `discount_bucket` dan `tenor_bucket` = kelas diskon dan tenor (tanpa nominal). Tabel kelas difinalkan di HNK-08; indeks hanya ditampilkan bila ada minimal k entri per kelas.
 

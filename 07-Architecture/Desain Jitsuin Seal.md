@@ -71,12 +71,24 @@ Dokumen kanonik berisi: N, nominal yang wajib dibayar buyer, tanggal jatuh tempo
 
 **AI agent (D-23, diputuskan 2026-10-17):** AI tidak menjadi hakim, karena kebenaran pelunasan sudah ditentukan tanda tangan dan chain. Kalau dipakai, AI hanya asisten lokal yang menjelaskan status dan menyusun draf surat sengketa dari data yang sudah dimiliki pengguna. AI tidak pernah menerima seed, spending key, atau viewing key, dan tidak mengirim data ke provider cloud (kebocoran mendiskualifikasi).
 
-## 7. Riwayat buyer sebagai standar minimal (HNK-20, usulan)
-- **Key buyer per invoice.** Buyer punya master key identitas. Untuk tiap invoice, buyer memakai key turunan yang deterministik dari master secret dan konteks invoice (`supplier_ephemeral_pk`, `invoice_id`). Invoice memakai key turunan ini sebagai `buyer_pk`, jadi papan publik tidak bisa menautkan invoice-invoice dari buyer yang sama. Di web app, master secret bisa berasal dari passkey (ekstensi WebAuthn PRF, salt sebagai namespace per invoice; konsep dari Mera), sehingga tidak ada seed yang disimpan.
-- **Sertifikat delegasi.** Master key menandatangani key turunan. Sertifikat ini privat dan hanya diberikan ke financier deal tersebut (KYC: financier tahu buyer adalah perusahaan X).
-- **Bukti riwayat.** Buyer menyerahkan ke financier baru daftar posisi entri `settled`, key turunan, sertifikat delegasi, dan `financier_pk`. Verifier mengecek bahwa entri ada di papan, dua tanda tangannya valid, delegasinya valid, financier terdaftar di allowlist, dan flag tepat waktu ditandatangani financier.
-- **Standar minimal.** Alur financier menolak registrasi kalau buyer tidak memenuhi policy minimal yang dikonfigurasi financier, misalnya minimal satu pelunasan tepat waktu dari financier terdaftar, atau plafon kecil untuk buyer baru.
-- **Batas yang jujur:** bukti ini hanya positif, karena buyer bisa menyembunyikan riwayat buruk. Status `Disputed` dan `Overdue` tetap tercatat di financier yang bersangkutan. Buyer yang membuat financier palsu (Sybil) dicegah oleh allowlist financier terdaftar (perusahaan pembiayaan berizin).
+## 7. Riwayat buyer berantai sebagai standar minimal (HNK-20, D-20, DEV-10)
+Keputusan user 2026-10-17: riwayat harus lengkap, termasuk yang buruk. Bukti yang hanya positif tidak cukup.
+
+- **Key.** Buyer punya satu master secret (di web app: output passkey WebAuthn PRF). Dari situ diturunkan key identitas dan satu key per invoice berdasarkan nomor urut. Invoice memakai key per invoice sebagai `buyer_pk`, jadi papan publik tidak bisa menautkan invoice-invoice satu buyer.
+- **Rantai.** Untuk setiap invoice yang dibiayai, key identitas menandatangani sertifikat riwayat: nomor urut, key invoice, key supplier, N, nominal, jatuh tempo, key financier, dan hash sertifikat sebelumnya.
+- **Jangkar di papan.** Entri register invoice itu membawa *tag penerus* `BLAKE2b-256("JitsuinHistTag__", identity_pk ‖ hash sertifikat sebelumnya)`, dan tag-nya ikut ditandatangani supplier (entri jenis `0x03`). Akibatnya:
+  - rantai yang dinomori ulang atau dicabangkan tidak cocok dengan tag di papan;
+  - dua entri asli dengan tag yang sama = buyer mencabangkan rantai (equivocation);
+  - invoice yang disembunyikan di ujung terdeteksi, karena tag penerus dari sertifikat terakhir sudah ada di papan;
+  - buyer yang mengaku baru terdeteksi, karena tag pertama identitasnya sudah ada di papan.
+- **Status per invoice dari papan.** Entri `settled` dua tanda tangan menunjukkan lunas, tepat waktu atau terlambat. Kalau tidak ada `settled` setelah jatuh tempo ditambah masa tenggang, statusnya gagal bayar. Selain itu, statusnya masih berjalan.
+- **Standar minimal (policy financier).** Contoh: tidak ada gagal bayar, minimal 80% tepat waktu, dan buyer yang belum punya 2 pelunasan dianggap baru dengan plafon kecil. Financier hanya menghitung pelunasan dari financier di allowlist.
+- **Privasi.** Rantai hanya dibuka buyer ke financier yang sedang diminta, mirip laporan kredit yang dipegang buyer sendiri. Orang luar tidak bisa menghitung tag. Pengecualiannya tag pertama: siapa pun yang tahu `identity_pk` bisa menemukan invoice pertama buyer itu.
+
+**Batas yang jujur:**
+- **Mulai bersih dengan identitas baru.** Diredam dengan mengikat key identitas ke KYC dan memberi plafon kecil untuk buyer baru.
+- **Financier lalai mem-posting `settled`.** Buyer akan tampak gagal bayar. Buyer membantah dengan kuitansi dan klaimnya, dan kewajiban posting menjadi syarat masuk allowlist.
+- **Griefing ekor rantai.** Pihak yang pernah melihat sertifikat terakhir buyer bisa mem-posting entri palsu dengan tag penerusnya untuk menghambat pembiayaan berikutnya. Entri palsu untuk posisi yang sudah diungkap tetap diabaikan, karena harus ditandatangani key supplier di sertifikat.
 
 ## 8. Yang tidak diambil
 - **Commitment fee buyer (D-20):** deposit tidak bisa dikunci di pool shielded tanpa smart contract, dan versi transparan membocorkan nominal. Komitmen buyer diganti seal surat pengalihan dan riwayat pembayaran.
