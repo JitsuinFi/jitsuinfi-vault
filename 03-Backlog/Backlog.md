@@ -168,7 +168,7 @@ Estimasi kasar; diperbarui di Exec Summary dengan jam aktual.
 | HNK-06.T1 | Format surat pengalihan + tanda tangan supplier dan buyer | Hans #hans | 2 | Dipindah ke HNK-19.T2 (DEV-06) |
 | HNK-06.T2 | Pembuatan URI/QR ZIP-321 untuk pembayaran buyer (Zcash) | Hans #hans | 2 | DONE (`aff284d`) |
 | HNK-06.T3 | Deteksi pelunasan dan pencocokan ke N (Zcash) | Hans #hans | 2 | DONE (`aff284d`) |
-| HNK-06.T4 | Entri `settled` opsional di papan (Zcash) | Hans #hans | 1 | DONE (`aff284d`) |
+| HNK-06.T4 | Entri `settled` opsional di papan (Zcash) | Hans #hans | 1 | DONE (`aff284d`); diganti dua tanda tangan di HNK-19.T4 (`f07787b`, DEV-08) |
 | HNK-06.T5 | Layar pembayaran buyer (menampilkan QR) | Dave #dave | 2 | TODO |
 | HNK-06.T6 | Dokumentasi mode confidential + risikonya | Dave #dave | 1 | TODO |
 
@@ -186,12 +186,12 @@ Estimasi kasar; diperbarui di Exec Summary dengan jam aktual.
 
 | Task | Deskripsi | Owner | Jam | Status |
 |---|---|---|---|---|
-| HNK-19.T1 | Format seal, rantai hash, policy per dokumen, verifier (core) | Hans #hans | 3 | TODO |
-| HNK-19.T2 | Surat pengalihan kanonik + seal Supplier dan Buyer (mengambil alih HNK-06.T1, DEV-06) | Hans #hans | 2 | TODO |
-| HNK-19.T3 | Gerbang `AwaitAssignment` di alur financier + memo advance dua item (kuitansi + seal Financier) (DEV-07) | Hans #hans | 2 | TODO |
-| HNK-19.T4 | Entri `settled` dua tanda tangan + memo pelunasan dua item + watchdog dan status sengketa (DEV-08) | Hans #hans | 3 | TODO |
-| HNK-19.T5 | Uji integrasi testnet siklus penuh `TES-INV-0003` | Hans #hans | 2 | TODO |
-| HNK-19.T6 | Bundel verifikasi seal (ekspor/impor) untuk `jitsuin verify` | Hans #hans | 1 | TODO |
+| HNK-19.T1 | Format seal, rantai hash, policy per dokumen, verifier (core) | Hans #hans | 3 | DONE (`b007a26`) |
+| HNK-19.T2 | Surat pengalihan kanonik + seal Supplier dan Buyer (mengambil alih HNK-06.T1, DEV-06) | Hans #hans | 2 | DONE (`fdc399e`) |
+| HNK-19.T3 | Gerbang `AwaitAssignment` di alur financier + memo advance dua item (kuitansi + seal Financier) (DEV-07) | Hans #hans | 2 | DONE (`f9fee3e`) |
+| HNK-19.T4 | Entri `settled` dua tanda tangan + memo pelunasan dua item + watchdog dan status sengketa (DEV-08) | Hans #hans | 3 | DONE (`f07787b`) |
+| HNK-19.T5 | Uji integrasi testnet siklus penuh `TES-INV-0003` | Hans #hans | 2 | DONE (`testnet`) |
+| HNK-19.T6 | Bundel verifikasi seal (ekspor/impor) untuk `jitsuin verify` | Hans #hans | 1 | DONE (`dd23864`) |
 
 **HNK-20 — Riwayat pembayaran buyer standar minimal** · Lead Hans #hans · [[AC-HNK-20 - Riwayat pembayaran buyer standar minimal|AC]] · Desain: [[Desain Jitsuin Seal]]
 

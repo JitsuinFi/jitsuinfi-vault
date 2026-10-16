@@ -85,22 +85,57 @@ Decoder ketat (marker, magic, tipe, nominal 0, input terpotong, dan padding buka
 2. Tanda tangan valid (`verify_strict`).
 3. `amount_zat` sama dengan nilai output yang membawa memo.
 
-Tipe `0x02` (pelunasan) dibuat oleh buyer di web app dan dimasukkan ke URI ZIP-321 (HNK-06, `aff284d`): `zcash:<alamat financier>?amount=<nominal>&memo=<base64url kuitansi 146 byte>`. Panjang memo di URI 195 karakter; QR level koreksi M. Financier mencocokkan pembayaran ke N: kuitansi tipe `0x02`, N sama, ditandatangani `buyer_pk` dari invoice, nominal = nilai output. Status: `Unpaid` / `Pending` (belum ditambang) / `Partial` / `Settled` (hanya dari pembayaran valid yang sudah ditambang).
+Tipe `0x02` (pelunasan) dibuat oleh buyer di web app dan dimasukkan ke URI ZIP-321 (HNK-06, `aff284d`; sejak HNK-19 memo-nya dua item, lihat bagian Memo dua item): `zcash:<alamat financier>?amount=<nominal>&memo=<base64url>`. Nominal, N, dan alamat diambil dari surat pengalihan. Financier mencocokkan pembayaran ke N: kuitansi tipe `0x02`, N sama, ditandatangani `buyer_pk` dari invoice, nominal = nilai output. Status watchdog: `Unpaid` / `Pending` / `Partial` / `Claimed` / `Settled` / `Disputed` / `Overdue`; `Settled` hanya dari pembayaran valid yang sudah ditambang.
 
-## Entri `settled` (HNK-06) — **diimplementasikan** (`aff284d`), diganti DEV-08 (dua tanda tangan, HNK-19.T4)
-Layout sama dengan entri register (136 byte), dengan isi berbeda:
+## Entri `settled` dua tanda tangan (HNK-19.T4, D-19, DEV-08) — **diimplementasikan** (`f07787b`)
+Menggantikan layout satu tanda tangan dari `aff284d`; layout lama tidak lagi di-decode.
 
-| Field | Isi untuk `settled` |
-|---|---|
-| tipe | `0x02` |
-| `N` | `settled_tag = BLAKE2b-256(N ‖ "settled")` (output 32 byte, tanpa personalisasi) |
-| `financier_commitment` | 32 byte nol (commitment register publik; menyalinnya akan menautkan kedua entri) |
-| bucket | disalin dari entri register |
-| tanda tangan | financier (key jangka panjang) atas byte 1–71 |
+**Dokumen pelunasan (privat):** magic `JTSS` (4), versi `0x01` (1), N (32), `amount_zat` (8, LE), `due_date` (4, LE). Disegel dengan policy Buyer lalu Financier. Seal buyer = klaim "sudah bayar" (flag 0). Seal financier = "sudah terima", flag `0x01` tepat waktu atau `0x02` terlambat (tanggal blok pembayaran yang menutup jumlah ≤ `due_date`).
 
-Orang luar melihat "ada invoice yang lunas" tanpa tahu yang mana. Pemegang N menghitung `settled_tag` dan memverifikasi dengan `financier_pk`. Entri `settled` tidak pernah dihitung sebagai registrasi atau konflik: `lookup` hanya memakai entri tipe register.
+**Entri publik di papan (167 byte):**
 
-**Test vector:** N 32×`0x07` → `settled_tag` = `745dd5c7a8c41316f9c712e9aef7e458ece60e0a3ef1914ad47bee144c13a494` (dicek silang dengan Python).
+| Offset | Field | Ukuran |
+|---|---|---|
+| 0 | prefix memo `0xFF` | 1 |
+| 1 | magic `JTS1` | 4 |
+| 5 | tipe `0x02` | 1 |
+| 6 | `settled_tag = BLAKE2b-256(N ‖ "settled")` | 32 |
+| 38 | flag financier (`0x01` / `0x02`) | 1 |
+| 39 | tanda tangan seal buyer | 64 |
+| 103 | tanda tangan seal financier | 64 |
+
+Tidak ada N, commitment, atau bucket, jadi orang luar tidak bisa menautkannya ke entri register. Pemegang N membangun ulang kedua seal dari dokumen pelunasan dan memverifikasinya dengan `buyer_pk` (invoice) dan `financier_pk` (surat pengalihan). `lookup` hanya memakai entri register, jadi entri `settled` tidak pernah dihitung sebagai registrasi atau konflik.
+
+**Test vector `settled_tag`:** N 32×`0x07` → `745dd5c7a8c41316f9c712e9aef7e458ece60e0a3ef1914ad47bee144c13a494`.
+
+## Seal (Jitsuin Seal, HNK-19.T1, D-21) — **diimplementasikan** (`b007a26`)
+Desain: [[Desain Jitsuin Seal]]. 200 byte, tanpa marker memo:
+
+| Offset | Field | Ukuran |
+|---|---|---|
+| 0 | magic `JTL1` | 4 |
+| 4 | jenis dokumen (`0x01` invoice, `0x02` surat pengalihan, `0x03` pelunasan) | 1 |
+| 5 | id dokumen = N | 32 |
+| 37 | hash dokumen = `BLAKE2b-256("JitsuinDocument_", byte kanonik)` | 32 |
+| 69 | langkah (indeks di policy) | 1 |
+| 70 | role (`0x01` supplier, `0x02` buyer, `0x03` financier) | 1 |
+| 71 | flag (atestasi khusus role, selain itu 0) | 1 |
+| 72 | hash seal sebelumnya (nol di langkah 0) | 32 |
+| 104 | `signer_pk` | 32 |
+| 136 | tanda tangan atas byte 0–135 | 64 |
+
+Hash seal = `BLAKE2b-256("JitsuinSealHash_", 200 byte)`. Policy: invoice = Buyer; surat pengalihan = Supplier, Buyer, Financier; pelunasan = Buyer, Financier. Ditolak: langkah dilewati atau ditukar, rantai putus, seal untuk dokumen lain, signer yang bukan key role-nya, satu key untuk dua role (`SelfApproval`), seal melebihi policy.
+
+## Surat pengalihan (HNK-19.T2, DEV-06) — **diimplementasikan** (`fdc399e`)
+Magic `JTSA` (4), versi `0x01` (1), N (32), `amount_zat` (8, LE), `due_date` (4, LE), `financier_pk` (32), `terms_hash` (32, SHA-256 PDF surat), panjang alamat (2, LE), alamat financier (1–512 byte ASCII alfanumerik). N, nominal, dan jatuh tempo harus sama dengan invoice. Key supplier dan buyer diambil dari invoice, key financier dari surat ini.
+
+## Memo dua item, Sign-to-Pay (HNK-19.T3, DEV-07) — **diimplementasikan** (`f9fee3e`)
+Marker `0xFF`, lalu item berurutan, lalu padding nol: kuitansi `JTR1` (145 byte tanpa marker) dan/atau seal `JTL1` (200 byte). Memo berisi satu kuitansi identik byte-per-byte dengan memo kuitansi lama.
+- **Advance:** kuitansi advance + seal Financier atas surat pengalihan (346 byte). Financier baru bisa membayar setelah seal Supplier dan Buyer valid (`AwaitAssignment`) dan setelah cek papan terakhir.
+- **Pelunasan:** kuitansi pelunasan + seal klaim buyer atas dokumen pelunasan (346 byte; di URI ZIP-321 menjadi 462 karakter base64url).
+
+## Bundel verifikasi (HNK-19.T6) — **diimplementasikan** (`dd23864`)
+Magic `JTSB` (4), versi `0x01` (1), lalu item `tipe (1) ‖ panjang (2, LE) ‖ isi`: `1` invoice kanonik, `2` tanda tangan buyer (64), `3` surat pengalihan kanonik, `4` seal surat pengalihan (berurutan), `5` dokumen pelunasan. Bentuk teks: base64url tanpa padding. `Bundle::verify` memeriksa tanda tangan buyer, N, surat pengalihan dan rantai seal-nya, serta dokumen pelunasan. `bundle_on_board` menambahkan lookup register dan entri `settled` dua tanda tangan.
 
 ## Bucket indeks (HNK-08)
 `discount_bucket` dan `tenor_bucket` = kelas diskon dan tenor (tanpa nominal). Tabel kelas difinalkan di HNK-08; indeks hanya ditampilkan bila ada minimal k entri per kelas.
