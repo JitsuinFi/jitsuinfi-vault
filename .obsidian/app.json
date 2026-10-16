@@ -1,0 +1,28 @@
+{
+  "alwaysUpdateLinks": true,
+  "newLinkFormat": "shortest",
+  "useMarkdownLinks": false,
+  "attachmentFolderPath": "assets",
+  "spellcheck": false,
+  "livePreview": true,
+  "defaultViewMode": "preview",
+  "enabledCorePlugins": [
+    "file-explorer",
+    "global-search",
+    "switcher",
+    "bookmarks",
+    "tag-pane",
+    "outline",
+    "backlink",
+    "canvas",
+    "graph",
+    "note-composer",
+    "command-palette",
+    "editor-status",
+    "page-preview",
+    "word-count",
+    "daily-notes",
+    "templates",
+    "random-note"
+  ]
+}

@@ -1,0 +1,28 @@
+---
+tags: [architecture, decisions]
+---
+
+# Decision Log
+
+**Bagian dari:** [[07 - Architecture]] · Kembali: [[START-HERE]] · Terkait: [[Backlog]] (Log Deviasi) · [[Rencana Fase]]
+
+Keputusan user bersifat final. Perubahan keputusan dicatat sebagai baris baru (bukan mengedit baris lama).
+
+| ID | Tanggal | Keputusan | Alasan |
+|---|---|---|---|
+| D-01 | 2026-10-16 | Fokus pada piutang/invoice dagang saja | Hanya piutang yang jaminan anti-gandanya utuh tanpa lembaga resmi |
+| D-02 | 2026-10-16 | Nama proyek **Hanko** (sebelumnya Faktur Tunggal); versi gabungan **Hanko Vault** | Arti "stempel tanda tangan" pas dengan desain; tagline nullifier |
+| D-03 | 2026-10-16 | Kode AVAL tidak dipakai; repo baru; AVAL diungkapkan di deskripsi; email ke organizer | Aturan "existing products are not" dan Originality |
+| D-04 | 2026-10-16 | Mainnet dengan crate stabil; bukan testnet NU7, bukan WebZjs | NU7 hanya testnet sampai deadline; WebZjs tidak mendukung Ironwood |
+| D-05 | 2026-10-16 | Tanpa TEE, cross-chain, ZSA, smart contract | Biaya, risiko kebocoran, dan ZSA belum di mainnet |
+| D-06 | 2026-10-16 | Track **Private Markets** (private credit) | Tesis organizer "price public, participants private" + indeks suku bunga publik |
+| D-07 | 2026-10-16 | Hanko Vault hanya stretch (HNK-15) | Scope; hukum lebih berat |
+| D-08 | 2026-10-16 | Script vault versi Python (`scripts/*.py`); `.ps1` disimpan di `scripts/windows/` | PowerShell tidak terpasang di Mac ini |
+| D-09 | 2026-10-16 | Ide affiliate diserahkan ke teman sebagai team terpisah | Satu submission per akun dan per team |
+| D-10 | 2026-10-16 | Versi di-pin untuk mainnet: Rust 1.99.1; `zcash_client_backend =0.24.0`, `zcash_client_sqlite =0.22.0`, `pczt =0.9.3`, `zcash_protocol =0.10.6`, `ed25519-dalek` 2.2.x (bukan 3.0.0), `blake2b_simd =1.0.5` | SPK-01: build hijau dan mengenal NU6.3/Ironwood; 3.0.0 bentrok `sha2` |
+| D-11 | _Usulan, menunggu user_ | Publikasikan **UFVK** akun papan registry (bukan UIVK) | SPK-05: `zcash-devtool init-fvk` hanya menerima UFVK; akun papan hanya menerima dana, jadi UFVK tidak membuka hal sensitif |
+| D-12 | 2026-10-16 | Endpoint lightwalletd utama `zec.rocks:443`; cadangan `na`/`eu`/`ap`/`sa.zec.rocks` | SPK-02: semua sehat dan tersinkron dengan Blockchair |
+| D-13 | 2026-10-16 | **Opsi B (hybrid):** development dan uji integrasi di **testnet** sampai menjelang submit; mainnet hanya untuk demo akhir kalau ZEC tersedia. Satu set crate **pre-release** yang di-pin (`=0.25.0-pre.2` / `=0.23.0-pre.2` / `=0.10.0-pre.2` / `=0.11.0-pre.1`) dipakai untuk kedua jaringan | Keputusan user; SPK-19: crate stabil tidak bisa bertransaksi di testnet NU7, crate pre-release bisa di keduanya |
+| D-14 | 2026-10-16 | Repo GitHub dibuat oleh user nanti; sementara **repo lokal** `zkSNARK/hanko/` dengan commit lokal, tanpa remote dan tanpa push | Keputusan user; sesuai workflow langkah 5 |
+| D-15 | 2026-10-16 | **Zodl opsional.** Semua peran memakai wallet CLI `zcash-devtool` selama development | Keputusan user; wallet web (WebZjs) tidak mendukung Ironwood |
+| D-16 | 2026-10-17 | Nama proyek diganti **JitsuinFi** (menggantikan D-02 Hanko); org GitHub `jitsuinfi`; repo lokal `zkSNARK/jitsuinfi-zcash/`; crate `jitsuin-core`; magic `JTSI`/`JTS1`; personalisasi nullifier `JitsuinNullifier`. ID backlog `HNK-xx` tetap. Catatan spike dan baris decision log lama tidak diubah (sejarah) | Org `hanko` di GitHub sudah dipakai; *jitsuin* = stempel terdaftar, cocok dengan registry + keunikan + pengakuan buyer |
