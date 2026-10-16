@@ -37,4 +37,4 @@ updated: 2026-10-17
 ## Bukti
 - Commit: `ef55987` (lokal)
 - ID tes: U-HNK-04.1–3, I-HNK-04.1; tx `b8a272a87ad9023f3a00a6ffb630e8a584ba0a279af624cda939426c75809970`
-- Persetujuan user untuk push/deploy: _belum_
+- Persetujuan user untuk push/deploy: **disetujui 2026-10-17** ("Gas push, lanjut HNK-06"); push ke `JitsuinFi/jitsuinfi-zcash` dan `JitsuinFi/jitsuinfi-vault`
