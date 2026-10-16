@@ -178,7 +178,7 @@ Estimasi kasar; diperbarui di Exec Summary dengan jam aktual.
 
 | Task | Deskripsi | Owner | Jam | Status |
 |---|---|---|---|---|
-| HNK-07.T1 | Deteksi pembiayaan ganda + build/verify bundel bukti (core) | Hans #hans | 3 | TODO |
+| HNK-07.T1 | Deteksi pembiayaan ganda + build/verify bundel bukti (core) | Hans #hans | 3 | DONE (`8e523f0`) |
 | HNK-07.T2 | Integrasi data bukti di FE (verifikasi di sisi klien) — FE krusial | Hans #hans | 1 | TODO |
 | HNK-07.T3 | Tampilan layar "tertangkap" + unduh bukti | Dave #dave | 1 | TODO |
 | HNK-07.T4 | Uji integrasi `TES-INV-0003` di mainnet | Dex #dex | 1 | TODO |

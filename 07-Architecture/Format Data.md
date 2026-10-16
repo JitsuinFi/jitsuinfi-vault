@@ -57,8 +57,10 @@ Isi memo (biner). Byte pertama memo `0xFF` menandai data arbitrer (ZIP-302, diko
 
 Entri tanpa `sig_supplier` yang valid diabaikan (anti-griefing). Yang bisa memverifikasi `sig_supplier` hanya pemegang invoice, karena `supplier_ephemeral_pk` ada di invoice.
 
-## Bundel bukti tanda tangan ganda (HNK-07)
-Dua entri dengan `N` sama dan `financier_commitment` berbeda, keduanya bertanda tangan valid oleh `supplier_ephemeral_pk` yang sama, plus invoice kanonik. Bisa diverifikasi offline.
+## Bundel bukti tanda tangan ganda (HNK-07) — **diimplementasikan** (`8e523f0`)
+Dua entri register dengan `N` sama dan `financier_commitment` berbeda, keduanya bertanda tangan valid oleh `supplier_ephemeral_pk` dari invoice, plus invoice kanonik bertanda tangan buyer. Bisa diverifikasi offline.
+
+Layout: magic `JTSP` (4), versi `0x01` (1), panjang invoice (2, LE), invoice kanonik, tanda tangan buyer (64), lalu dua entri masing-masing `panjang (1) ‖ byte entri dengan marker (136/168) ‖ flag (1)`. Flag `1` diikuti posisi papan `txid (32, urutan tampilan) ‖ tinggi (4) ‖ indeks tx (4) ‖ indeks output (4)`; flag `0` untuk entri yang hanya ditawarkan (tidak di papan). Commitment yang sama ditolak (`NotDoubleSigned`): itu re-post, bukan penipuan.
 
 ## Commitment financier (HNK-05) — **diimplementasikan** (`6b5c343`)
 `financier_commitment = BLAKE2b-256(financier_pk ‖ salt)` (output 32 byte, tanpa personalisasi, sesuai spesifikasi entri). `salt` 32 byte dipegang financier dan supplier (dibagikan off-chain bersama `financier_pk`), jadi papan tidak membuka siapa financier-nya.
