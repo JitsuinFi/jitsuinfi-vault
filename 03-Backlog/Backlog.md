@@ -141,8 +141,8 @@ Estimasi kasar; diperbarui di Exec Summary dengan jam aktual.
 
 | Task | Deskripsi | Owner | Jam | Status |
 |---|---|---|---|---|
-| HNK-05.T1 | State machine financier: cek → daftar → tunggu konfirmasi → bayar (Zcash) | Hans #hans | 4 | TODO |
-| HNK-05.T2 | Format dan verifikasi memo kuitansi | Hans #hans | 2 | TODO |
+| HNK-05.T1 | State machine financier: cek → daftar → tunggu konfirmasi → bayar (Zcash) | Hans #hans | 4 | DONE (`6b5c343`) |
+| HNK-05.T2 | Format dan verifikasi memo kuitansi | Hans #hans | 2 | DONE (`6b5c343`) |
 | HNK-05.T3 | Endpoint API alur financier | Dex #dex | 3 | TODO |
 | HNK-05.T4 | Integrasi layar financier ↔ backend/wallet (status txid, konfirmasi) — FE krusial | Hans #hans | 2 | TODO |
 | HNK-05.T5 | Layout dan komponen layar financier | Dave #dave | 1 | TODO |

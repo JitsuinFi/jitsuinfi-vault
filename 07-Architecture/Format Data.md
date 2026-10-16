@@ -58,8 +58,32 @@ Entri tanpa `sig_supplier` yang valid diabaikan (anti-griefing). Yang bisa memve
 ## Bundel bukti tanda tangan ganda (HNK-07)
 Dua entri dengan `N` sama dan `financier_commitment` berbeda, keduanya bertanda tangan valid oleh `supplier_ephemeral_pk` yang sama, plus invoice kanonik. Bisa diverifikasi offline.
 
-## Memo kuitansi (HNK-05, HNK-06)
-Kuitansi pembayaran di muka dan pelunasan: magic, tipe, `N`, nominal, tanggal, tanda tangan pengirim. Layout difinalkan di HNK-05.
+## Commitment financier (HNK-05) — **diimplementasikan** (`6b5c343`)
+`financier_commitment = BLAKE2b-256(financier_pk ‖ salt)` (output 32 byte, tanpa personalisasi, sesuai spesifikasi entri). `salt` 32 byte dipegang financier dan supplier (dibagikan off-chain bersama `financier_pk`), jadi papan tidak membuka siapa financier-nya.
+
+**Test vector:** `financier_pk` 32×`0x03`, `salt` 32×`0x04` → `c72255e7b3f5bd4f2e652cf71eceb37d0b35074f2bb11c4a788ce2282d982b3a` (dicek silang dengan Python `hashlib.blake2b(digest_size=32)`).
+
+## Memo kuitansi (HNK-05, HNK-06) — **diimplementasikan** (`6b5c343`)
+Kuitansi ada di memo output shielded yang membawa uangnya, jadi hanya penerima yang bisa membacanya. Byte pertama memo `0xFF` (ZIP-302).
+
+| Offset | Field | Ukuran |
+|---|---|---|
+| 0 | prefix memo `0xFF` | 1 |
+| 1 | magic `JTR1` | 4 |
+| 5 | tipe (`0x01` advance: financier → supplier; `0x02` pelunasan: buyer → financier) | 1 |
+| 6 | `N` | 32 |
+| 38 | `amount_zat` (u64 LE, > 0) | 8 |
+| 46 | tanggal (hari sejak epoch, u32 LE) | 4 |
+| 50 | `signer_pk` (Ed25519) | 32 |
+| 82 | tanda tangan signer atas byte 1–81 | 64 |
+| **Total** | | **146 byte** (batas memo 512) |
+
+Decoder ketat (marker, magic, tipe, nominal 0, input terpotong, dan padding bukan nol ditolak). Verifikasi supplier:
+1. `signer_pk` sama dengan `financier_pk` yang disepakati (pembukaan commitment). Kalau beda: `UnexpectedSigner`.
+2. Tanda tangan valid (`verify_strict`).
+3. `amount_zat` sama dengan nilai output yang membawa memo.
+
+Tipe `0x02` dipakai di HNK-06.
 
 ## Bucket indeks (HNK-08)
 `discount_bucket` dan `tenor_bucket` = kelas diskon dan tenor (tanpa nominal). Tabel kelas difinalkan di HNK-08; indeks hanya ditampilkan bila ada minimal k entri per kelas.
