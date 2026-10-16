@@ -38,12 +38,12 @@ Target pembagian: **Hans 40% · Dex 30% · Dave 30%**. Hans wajib memegang selur
 
 | Orang | Jam | Porsi | Target awal |
 |---|---|---|---|
-| Hans #hans | 81 | 48% | 40% |
-| Dex #dex | 43 | 25% | 30% |
-| Dave #dave | 46 | 27% | 30% |
-| **Total** | **170** | 100% | 100% |
+| Hans #hans | 84 | 48,6% | 40% |
+| Dex #dex | 43 | 24,9% | 30% |
+| Dave #dave | 46 | 26,6% | 30% |
+| **Total** | **173** | 100% | 100% |
 
-HNK-20 naik dari 5 ke 7 jam (DEV-10).
+HNK-20 naik dari 5 ke 7 jam (DEV-10). HNK-10.T7 (`jitsuin-wasm`, 3 jam) ditambahkan untuk Hans atas persetujuan user 2026-10-17 ("lanjut jitsuin-wasm").
 
 Porsi Hans naik di atas 40% karena keputusan user D-22.
 
@@ -179,7 +179,7 @@ Estimasi kasar; diperbarui di Exec Summary dengan jam aktual.
 | Task | Deskripsi | Owner | Jam | Status |
 |---|---|---|---|---|
 | HNK-07.T1 | Deteksi pembiayaan ganda + build/verify bundel bukti (core) | Hans #hans | 3 | DONE (`8e523f0`) |
-| HNK-07.T2 | Integrasi data bukti di FE (verifikasi di sisi klien) — FE krusial | Hans #hans | 1 | TODO |
+| HNK-07.T2 | Integrasi data bukti di FE (verifikasi di sisi klien) — FE krusial | Hans #hans | 1 | PARSIAL: `verifyProof`/`bundleOnBoard` di `jitsuin-wasm` (`2438a82`); layar menunggu scaffold HNK-10.T1 |
 | HNK-07.T3 | Tampilan layar "tertangkap" + unduh bukti | Dave #dave | 1 | TODO |
 | HNK-07.T4 | Uji integrasi `TES-INV-0003` di mainnet | Dex #dex | 1 | TODO |
 | HNK-07.T5 | Naskah skenario demo pembiayaan ganda | Dave #dave | 1 | TODO |
@@ -237,10 +237,11 @@ Estimasi kasar; diperbarui di Exec Summary dengan jam aktual.
 |---|---|---|---|---|
 | HNK-10.T1 | Scaffold FE, routing, design system (tanpa CDN, CSP-ready) | Dave #dave | 3 | TODO |
 | HNK-10.T2 | Layar supplier: buat invoice, minta tanda tangan buyer | Dave #dave | 3 | TODO |
-| HNK-10.T3 | Layar tanda tangan buyer di browser (key di sisi klien) — FE krusial | Hans #hans | 2 | TODO |
+| HNK-10.T3 | Layar tanda tangan buyer di browser (key di sisi klien) — FE krusial | Hans #hans | 2 | PARSIAL: logika di `jitsuin-wasm` (`2438a82`); layar menunggu scaffold HNK-10.T1 |
 | HNK-10.T4 | Skeleton backend API | Dex #dex | 3 | TODO |
 | HNK-10.T5 | Deploy Railway + header CSP (setelah persetujuan user) | Dex #dex | 2 | TODO |
 | HNK-10.T6 | Review keamanan penanganan key di FE | Hans #hans | 1 | TODO |
+| HNK-10.T7 | Paket browser `jitsuin-wasm`: key buyer dari passkey PRF, tanda tangan invoice dan surat pengalihan, QR pelunasan, sertifikat riwayat, verifikasi bundel/bukti/riwayat di sisi klien — FE krusial | Hans #hans | 3 | DONE (`2438a82`) |
 
 **HNK-11 — Threat model dan halaman orang luar** · Lead Dave #dave · [[AC-HNK-11 - Threat model dan halaman orang luar|AC]]
 
