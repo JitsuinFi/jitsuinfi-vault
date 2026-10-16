@@ -153,9 +153,9 @@ Estimasi kasar; diperbarui di Exec Summary dengan jam aktual.
 | Task | Deskripsi | Owner | Jam | Status |
 |---|---|---|---|---|
 | HNK-06.T1 | Format surat pengalihan + tanda tangan supplier dan buyer | Dex #dex | 2 | TODO |
-| HNK-06.T2 | Pembuatan URI/QR ZIP-321 untuk pembayaran buyer (Zcash) | Hans #hans | 2 | TODO |
-| HNK-06.T3 | Deteksi pelunasan dan pencocokan ke N (Zcash) | Hans #hans | 2 | TODO |
-| HNK-06.T4 | Entri `settled` opsional di papan (Zcash) | Hans #hans | 1 | TODO |
+| HNK-06.T2 | Pembuatan URI/QR ZIP-321 untuk pembayaran buyer (Zcash) | Hans #hans | 2 | DONE (`aff284d`) |
+| HNK-06.T3 | Deteksi pelunasan dan pencocokan ke N (Zcash) | Hans #hans | 2 | DONE (`aff284d`) |
+| HNK-06.T4 | Entri `settled` opsional di papan (Zcash) | Hans #hans | 1 | DONE (`aff284d`) |
 | HNK-06.T5 | Layar pembayaran buyer (menampilkan QR) | Dave #dave | 2 | TODO |
 | HNK-06.T6 | Dokumentasi mode confidential + risikonya | Dave #dave | 1 | TODO |
 

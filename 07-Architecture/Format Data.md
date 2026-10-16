@@ -45,7 +45,7 @@ Isi memo (biner). Byte pertama memo `0xFF` menandai data arbitrer (ZIP-302, diko
 |---|---|---|
 | 0 | prefix memo `0xFF` | 1 |
 | 1 | magic `JTS1` | 4 |
-| 5 | tipe (`0x01` register, `0x02` settled) | 1 |
+| 5 | tipe (`0x01` register, `0x02` settled — lihat bagian Entri `settled`) | 1 |
 | 6 | `N` | 32 |
 | 38 | `financier_commitment = BLAKE2b-256(financier_pk ‖ salt)` | 32 |
 | 70 | `discount_bucket` | 1 |
@@ -83,7 +83,22 @@ Decoder ketat (marker, magic, tipe, nominal 0, input terpotong, dan padding buka
 2. Tanda tangan valid (`verify_strict`).
 3. `amount_zat` sama dengan nilai output yang membawa memo.
 
-Tipe `0x02` dipakai di HNK-06.
+Tipe `0x02` (pelunasan) dibuat oleh buyer di web app dan dimasukkan ke URI ZIP-321 (HNK-06, `aff284d`): `zcash:<alamat financier>?amount=<nominal>&memo=<base64url kuitansi 146 byte>`. Panjang memo di URI 195 karakter; QR level koreksi M. Financier mencocokkan pembayaran ke N: kuitansi tipe `0x02`, N sama, ditandatangani `buyer_pk` dari invoice, nominal = nilai output. Status: `Unpaid` / `Pending` (belum ditambang) / `Partial` / `Settled` (hanya dari pembayaran valid yang sudah ditambang).
+
+## Entri `settled` (HNK-06) — **diimplementasikan** (`aff284d`), usulan D-18
+Layout sama dengan entri register (136 byte), dengan isi berbeda:
+
+| Field | Isi untuk `settled` |
+|---|---|
+| tipe | `0x02` |
+| `N` | `settled_tag = BLAKE2b-256(N ‖ "settled")` (output 32 byte, tanpa personalisasi) |
+| `financier_commitment` | 32 byte nol (commitment register publik; menyalinnya akan menautkan kedua entri) |
+| bucket | disalin dari entri register |
+| tanda tangan | financier (key jangka panjang) atas byte 1–71 |
+
+Orang luar melihat "ada invoice yang lunas" tanpa tahu yang mana. Pemegang N menghitung `settled_tag` dan memverifikasi dengan `financier_pk`. Entri `settled` tidak pernah dihitung sebagai registrasi atau konflik: `lookup` hanya memakai entri tipe register.
+
+**Test vector:** N 32×`0x07` → `settled_tag` = `745dd5c7a8c41316f9c712e9aef7e458ece60e0a3ef1914ad47bee144c13a494` (dicek silang dengan Python).
 
 ## Bucket indeks (HNK-08)
 `discount_bucket` dan `tenor_bucket` = kelas diskon dan tenor (tanpa nominal). Tabel kelas difinalkan di HNK-08; indeks hanya ditampilkan bila ada minimal k entri per kelas.
