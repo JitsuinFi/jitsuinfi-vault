@@ -27,6 +27,8 @@ Sumber kebenaran lulus/tidak setiap item. Status per kriteria `TODO` / `PASS` / 
 - [[AC-HNK-16 - CI dan quality gate]] — lead Dex #dex
 - [[AC-HNK-17 - QA E2E lintas item]] — lead Dave #dave
 - [[AC-HNK-18 - Materi pitch dan visual]] — lead Dave #dave
+- [[AC-HNK-19 - Jitsuin Seal tanda tangan berantai dan Sign-to-Pay]] — lead Hans #hans
+- [[AC-HNK-20 - Riwayat pembayaran buyer standar minimal]] — lead Hans #hans
 
 ## Status (auto)
 ```dataview

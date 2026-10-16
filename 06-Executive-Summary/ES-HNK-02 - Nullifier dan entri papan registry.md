@@ -6,7 +6,7 @@ phase: F1
 lead: Hans
 owners: [Hans, Dex]
 status: PARSIAL
-updated: 2026-10-16
+updated: 2026-10-17
 ---
 
 # ES-HNK-02 - Nullifier dan entri papan registry
@@ -29,11 +29,11 @@ updated: 2026-10-16
 **PARSIAL** (lihat alasan di Risiko tersisa).
 
 ## Risiko tersisa
-- HNK-02.T1 nullifier menunggu keputusan DEV-04.
-- HNK-02.T3 commitment financier (Dex) belum.
+- HNK-02.T1 nullifier selesai (`40d7656`, DEV-04 disetujui).
+- HNK-02.T3: commitment sudah (`6b5c343`, DEV-09); manajemen salt (Dex) belum.
 - Unit test resmi belum (HNK-02.T4, Dex).
 
 ## Bukti
-- Commit: `c0d6981` (lokal, belum ada remote)
+- Commit: `c0d6981`, `40d7656` (nullifier, lokal)
 - ID tes: verifikasi sementara 21/21 lulus (scratchpad); unit test resmi belum
 - Persetujuan user untuk push/deploy: **disetujui 2026-10-17**, di-push ke `JitsuinFi/jitsuinfi-zcash` (private)

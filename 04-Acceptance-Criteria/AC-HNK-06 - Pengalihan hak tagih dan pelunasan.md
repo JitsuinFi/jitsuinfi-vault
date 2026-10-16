@@ -31,6 +31,6 @@ Status per kriteria: `TODO` / `PASS` / `FAIL` / `BLOCKED`, wajib dengan tanggal 
 | AC-HNK-06.4 | Mode confidential (buyer tidak diberi tahu) didokumentasikan sebagai opsi beserta risikonya. | TODO | — | — |
 
 ## Deviasi
-Tidak ada deviasi. Detail yang belum ada di spesifikasi (penanda tangan dan isi commitment entri `settled`) diajukan sebagai **D-18** di [[Decision Log]], menunggu keputusan user.
+Tidak ada deviasi. Detail yang belum ada di spesifikasi (penanda tangan dan isi commitment entri `settled`) diajukan sebagai **D-18** di [[Decision Log]]. User memutuskan **D-19** (2026-10-17): entri `settled` ditandatangani buyer dan financier. Format diganti lewat **DEV-08** (HNK-19.T4); AC-HNK-06.3 diuji ulang setelahnya. Surat pengalihan (kriteria 1) pindah ke Hans lewat **DEV-06** (HNK-19.T2).
 
 _Catatan:_ Kalau implementasi menyimpang dari keputusan, tulis di sini **dan** di [[Backlog]] bagian Log Deviasi. Tidak ada perubahan diam-diam.

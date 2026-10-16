@@ -8,7 +8,7 @@ owners: [Hans, Dex]
 unit: TODO
 integrasi: TODO
 e2e: TODO
-updated: 2026-10-16
+updated: 2026-10-17
 ---
 
 # TEST-HNK-02 - Nullifier dan entri papan registry
@@ -24,8 +24,8 @@ Logika murni, cepat, tanpa DB dan tanpa chain.
 
 | ID | Kasus | Hasil | Tanggal | Bukti |
 |---|---|---|---|---|
-| U-HNK-02.1 | N sama untuk input sama | TODO | — | — |
-| U-HNK-02.2 | N berbeda bila satu bit input berbeda | TODO | — | — |
+| U-HNK-02.1 | N sama untuk input sama | PASS | 2026-10-17 | `nullifier_vector`, `nullifier_depends_on_every_invoice_field_only` (`40d7656`) |
+| U-HNK-02.2 | N berbeda bila satu bit input berbeda | PASS | 2026-10-17 | `nullifier_depends_on_every_invoice_field_only`: `invoice_id` dan `supplier_ephemeral_pk` diubah → N berbeda; invoice invalid ditolak |
 | U-HNK-02.3 | Encode/decode entri roundtrip | TODO | — | — |
 | U-HNK-02.4 | Panjang entri ≤ 512 byte | TODO | — | — |
 | U-HNK-02.5 | Tanda tangan supplier salah → ditolak | TODO | — | — |

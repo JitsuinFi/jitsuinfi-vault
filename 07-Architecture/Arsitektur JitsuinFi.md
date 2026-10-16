@@ -35,6 +35,9 @@ tags: [architecture]
 - **Wallet user:** Zodl via URI/QR ZIP-321 (SPK-04).
 - **Tanpa:** smart contract, ZSA, TEE, cross-chain, CDN pihak ketiga.
 
+## Desain lanjutan
+- [[Desain Jitsuin Seal]]: tanda tangan berantai (adopsi konsep SignBaliola), Sign-to-Pay, pelunasan dua pihak, riwayat buyer.
+
 ## Alur utama
 1. Supplier membuat invoice kanonik (dengan public key sementara supplier) → buyer menandatangani.
 2. Financier A menghitung N, memindai papan → N belum ada.

@@ -27,6 +27,8 @@ Satu ringkasan per item, ditulis oleh lead item (langkah 4 [[Workflow Developmen
 - [[ES-HNK-16 - CI dan quality gate]] — lead Dex #dex
 - [[ES-HNK-17 - QA E2E lintas item]] — lead Dave #dave
 - [[ES-HNK-18 - Materi pitch dan visual]] — lead Dave #dave
+- [[ES-HNK-19 - Jitsuin Seal tanda tangan berantai dan Sign-to-Pay]] — lead Hans #hans
+- [[ES-HNK-20 - Riwayat pembayaran buyer standar minimal]] — lead Hans #hans
 
 ## Status (auto)
 ```dataview

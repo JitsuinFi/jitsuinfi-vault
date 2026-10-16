@@ -27,6 +27,8 @@ Tiga lapis test per item (langkah 3 [[Workflow Development]]): **Unit** (logika 
 - [[TEST-HNK-16 - CI dan quality gate]] — lead Dex #dex
 - [[TEST-HNK-17 - QA E2E lintas item]] — lead Dave #dave
 - [[TEST-HNK-18 - Materi pitch dan visual]] — lead Dave #dave
+- [[TEST-HNK-19 - Jitsuin Seal tanda tangan berantai dan Sign-to-Pay]] — lead Hans #hans
+- [[TEST-HNK-20 - Riwayat pembayaran buyer standar minimal]] — lead Hans #hans
 
 ## Status (auto)
 ```dataview

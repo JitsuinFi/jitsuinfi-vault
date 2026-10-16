@@ -34,6 +34,17 @@ Target pembagian: **Hans 40% · Dex 30% · Dave 30%**. Hans wajib memegang selur
 | Dave #dave | 46 | 30% | 30% |
 | **Total** | **153** | 100% | 100% |
 
+**Revisi 2026-10-17 (D-22):** HNK-19 (13 jam) dan HNK-20 (5 jam) ke Hans; HNK-06.T1 (2 jam) dan commitment HNK-02.T3 (1 jam) pindah dari Dex ke Hans.
+
+| Orang | Jam | Porsi | Target awal |
+|---|---|---|---|
+| Hans #hans | 80 | 48% | 40% |
+| Dex #dex | 42 | 25% | 30% |
+| Dave #dave | 46 | 27% | 30% |
+| **Total** | **168** | 100% | 100% |
+
+Porsi Hans naik di atas 40% karena keputusan user D-22.
+
 Stretch HNK-15 (hanya kalau go): Hans 3 jam, Dex 3 jam, Dave 2 jam.
 Estimasi kasar; diperbarui di Exec Summary dengan jam aktual.
 
@@ -59,6 +70,8 @@ Estimasi kasar; diperbarui di Exec Summary dengan jam aktual.
 | HNK-16 | CI dan quality gate | F1 | Dex #dex | #dex | SPK-01, SPK-14 | [[AC-HNK-16 - CI dan quality gate\|AC]] | [[TEST-HNK-16 - CI dan quality gate\|Test]] | [[ES-HNK-16 - CI dan quality gate\|ES]] |
 | HNK-17 | QA E2E lintas item | F6 | Dave #dave | #dave | HNK-05 – HNK-11 | [[AC-HNK-17 - QA E2E lintas item\|AC]] | [[TEST-HNK-17 - QA E2E lintas item\|Test]] | [[ES-HNK-17 - QA E2E lintas item\|ES]] |
 | HNK-18 | Materi pitch dan visual | F5 | Dave #dave | #dave | HNK-07, HNK-11 | [[AC-HNK-18 - Materi pitch dan visual\|AC]] | [[TEST-HNK-18 - Materi pitch dan visual\|Test]] | [[ES-HNK-18 - Materi pitch dan visual\|ES]] |
+| HNK-19 | Jitsuin Seal tanda tangan berantai dan Sign-to-Pay | F3 | Hans #hans | #hans | HNK-05, HNK-06 | [[AC-HNK-19 - Jitsuin Seal tanda tangan berantai dan Sign-to-Pay\|AC]] | [[TEST-HNK-19 - Jitsuin Seal tanda tangan berantai dan Sign-to-Pay\|Test]] | [[ES-HNK-19 - Jitsuin Seal tanda tangan berantai dan Sign-to-Pay\|ES]] |
+| HNK-20 | Riwayat pembayaran buyer standar minimal | F3 | Hans #hans | #hans | HNK-19 | [[AC-HNK-20 - Riwayat pembayaran buyer standar minimal\|AC]] | [[TEST-HNK-20 - Riwayat pembayaran buyer standar minimal\|Test]] | [[ES-HNK-20 - Riwayat pembayaran buyer standar minimal\|ES]] |
 
 ## Spike (F0)
 
@@ -101,9 +114,9 @@ Estimasi kasar; diperbarui di Exec Summary dengan jam aktual.
 
 | Task | Deskripsi | Owner | Jam | Status |
 |---|---|---|---|---|
-| HNK-02.T1 | Nullifier BLAKE2b-256 berpersonalisasi | Hans #hans | 1 | BLOCKED (DEV-04) |
+| HNK-02.T1 | Nullifier BLAKE2b-256 berpersonalisasi dari byte kanonik invoice (DEV-04) | Hans #hans | 1 | DONE (`40d7656`) |
 | HNK-02.T2 | Encode/decode entri papan + tanda tangan supplier (key sementara) | Hans #hans | 3 | DONE (`c0d6981`) |
-| HNK-02.T3 | Commitment financier + manajemen salt | Dex #dex | 1 | TODO |
+| HNK-02.T3 | Commitment financier + manajemen salt | Dex #dex | 1 | PARSIAL: commitment oleh Hans (`6b5c343`, DEV-09); manajemen salt TODO |
 | HNK-02.T4 | Unit test: roundtrip, ukuran ≤ 512, entri invalid | Dex #dex | 2 | TODO |
 
 **HNK-16 — CI dan quality gate** · Lead Dex #dex · [[AC-HNK-16 - CI dan quality gate|AC]]
@@ -152,7 +165,7 @@ Estimasi kasar; diperbarui di Exec Summary dengan jam aktual.
 
 | Task | Deskripsi | Owner | Jam | Status |
 |---|---|---|---|---|
-| HNK-06.T1 | Format surat pengalihan + tanda tangan supplier dan buyer | Dex #dex | 2 | TODO |
+| HNK-06.T1 | Format surat pengalihan + tanda tangan supplier dan buyer | Hans #hans | 2 | Dipindah ke HNK-19.T2 (DEV-06) |
 | HNK-06.T2 | Pembuatan URI/QR ZIP-321 untuk pembayaran buyer (Zcash) | Hans #hans | 2 | DONE (`aff284d`) |
 | HNK-06.T3 | Deteksi pelunasan dan pencocokan ke N (Zcash) | Hans #hans | 2 | DONE (`aff284d`) |
 | HNK-06.T4 | Entri `settled` opsional di papan (Zcash) | Hans #hans | 1 | DONE (`aff284d`) |
@@ -168,6 +181,25 @@ Estimasi kasar; diperbarui di Exec Summary dengan jam aktual.
 | HNK-07.T3 | Tampilan layar "tertangkap" + unduh bukti | Dave #dave | 1 | TODO |
 | HNK-07.T4 | Uji integrasi `TES-INV-0003` di mainnet | Dex #dex | 1 | TODO |
 | HNK-07.T5 | Naskah skenario demo pembiayaan ganda | Dave #dave | 1 | TODO |
+
+**HNK-19 — Jitsuin Seal tanda tangan berantai dan Sign-to-Pay** · Lead Hans #hans · [[AC-HNK-19 - Jitsuin Seal tanda tangan berantai dan Sign-to-Pay|AC]] · Desain: [[Desain Jitsuin Seal]]
+
+| Task | Deskripsi | Owner | Jam | Status |
+|---|---|---|---|---|
+| HNK-19.T1 | Format seal, rantai hash, policy per dokumen, verifier (core) | Hans #hans | 3 | TODO |
+| HNK-19.T2 | Surat pengalihan kanonik + seal Supplier dan Buyer (mengambil alih HNK-06.T1, DEV-06) | Hans #hans | 2 | TODO |
+| HNK-19.T3 | Gerbang `AwaitAssignment` di alur financier + memo advance dua item (kuitansi + seal Financier) (DEV-07) | Hans #hans | 2 | TODO |
+| HNK-19.T4 | Entri `settled` dua tanda tangan + memo pelunasan dua item + watchdog dan status sengketa (DEV-08) | Hans #hans | 3 | TODO |
+| HNK-19.T5 | Uji integrasi testnet siklus penuh `TES-INV-0003` | Hans #hans | 2 | TODO |
+| HNK-19.T6 | Bundel verifikasi seal (ekspor/impor) untuk `jitsuin verify` | Hans #hans | 1 | TODO |
+
+**HNK-20 — Riwayat pembayaran buyer standar minimal** · Lead Hans #hans · [[AC-HNK-20 - Riwayat pembayaran buyer standar minimal|AC]] · Desain: [[Desain Jitsuin Seal]]
+
+| Task | Deskripsi | Owner | Jam | Status |
+|---|---|---|---|---|
+| HNK-20.T1 | Key buyer per invoice + sertifikat delegasi (core) | Hans #hans | 2 | TODO |
+| HNK-20.T2 | Bukti riwayat + verifier + allowlist financier | Hans #hans | 2 | TODO |
+| HNK-20.T3 | Policy standar minimal di alur financier sebelum registrasi | Hans #hans | 1 | TODO |
 
 ### Fase F4
 
@@ -276,5 +308,9 @@ SORT id ASC
 | DEV-01 | 2026-10-16 | Semua uji integrasi | Workflow langkah 3: artefak `TES-` wajib dibersihkan, bukti sisa = 0 | Pembersihan penuh hanya untuk artefak off-chain; transaksi mainnet tidak bisa dihapus, jadi dicatat txid-nya dan memakai akun/papan `TES-` dengan nominal sekecil mungkin | Sifat blockchain append-only | _Menunggu konfirmasi user_ |
 | DEV-02 | 2026-10-16 | F1 (HNK-01, HNK-02, HNK-16) | [[Rencana Fase]]: spike kritis wajib PASS sebelum F1/F2 | F1 (logika murni, tanpa chain) mulai begitu SPK-01 PASS, sementara spike Zcash lain berjalan paralel. F2 tetap menunggu spike kritis | Rust baru terpasang dan TAZ/ZEC belum tersedia; F1 tidak menyentuh chain | **Disetujui user 2026-10-16** ("yang bisa dimulai sekarang gas mulai") |
 | DEV-03 | 2026-10-16 | HNK-03 – HNK-07, SPK-03, SPK-07, SPK-08 | D-04/D-10: mainnet dengan crate stabil | Jaringan development = **testnet**; crate = set **pre-release** yang di-pin (D-13). Mainnet hanya demo akhir. Kriteria "di mainnet" pada AC dibaca sebagai "di testnet" selama development; uji ulang di mainnet bila ZEC tersedia | Keputusan user (opsi B); ZEC mainnet belum tersedia | **Disetujui user 2026-10-16** |
-| DEV-04 | 2026-10-16 | HNK-02 (AC-HNK-02.1), HNK-07, [[Format Data]] | N = BLAKE2b-256("JitsuinNullifier", **tanda tangan buyer**) | **Usulan:** N = BLAKE2b-256("JitsuinNullifier", **byte kanonik invoice**). Tanda tangan buyer tetap wajib sebagai bukti persetujuan | Ed25519 deterministik hanya konvensi RFC 8032. Signer buyer dengan nonce acak bisa menghasilkan dua tanda tangan valid untuk invoice yang **sama** → dua N → pembiayaan ganda lolos. Byte kanonik memuat `supplier_ephemeral_pk` acak 256 bit, jadi N tetap tidak bisa ditebak dan unik per invoice | _Menunggu keputusan user_ |
+| DEV-04 | 2026-10-16 | HNK-02 (AC-HNK-02.1), HNK-07, [[Format Data]] | N = BLAKE2b-256("JitsuinNullifier", **tanda tangan buyer**) | **Usulan:** N = BLAKE2b-256("JitsuinNullifier", **byte kanonik invoice**). Tanda tangan buyer tetap wajib sebagai bukti persetujuan | Ed25519 deterministik hanya konvensi RFC 8032. Signer buyer dengan nonce acak bisa menghasilkan dua tanda tangan valid untuk invoice yang **sama** → dua N → pembiayaan ganda lolos. Byte kanonik memuat `supplier_ephemeral_pk` acak 256 bit, jadi N tetap tidak bisa ditebak dan unik per invoice | **Disetujui user 2026-10-17** ("N nya gas sesuaikan"); diimplementasikan `40d7656` |
+| DEV-06 | 2026-10-17 | HNK-06.T1 | Owner Dex | Owner **Hans**, dikerjakan sebagai bagian HNK-19.T2 | Keputusan user D-22 | **Disetujui user 2026-10-17** |
+| DEV-07 | 2026-10-17 | HNK-05 (state machine financier) | Alur cek → daftar → konfirmasi → bayar (`6b5c343`) | State baru `AwaitAssignment` antara konfirmasi dan bayar: advance hanya cair setelah surat pengalihan tersegel Supplier dan Buyer; memo advance membawa kuitansi + seal Financier (HNK-19.T3) | Keputusan user D-21 (adopsi SignBaliola, Sign-to-Pay) | **Disetujui user 2026-10-17** |
+| DEV-08 | 2026-10-17 | HNK-06.T4, [[Format Data]] | Entri `settled` satu tanda tangan financier, commitment nol (`aff284d`) | Entri `settled` dua tanda tangan (buyer + financier) dan flag tepat waktu; AC-HNK-06.3 diuji ulang setelah HNK-19.T4 | Keputusan user D-19 | **Disetujui user 2026-10-17** |
+| DEV-09 | 2026-10-17 | HNK-02.T3 | Owner Dex | `financier_commitment` sudah diimplementasikan Hans di `6b5c343` sebagai bagian HNK-05 (dibutuhkan state machine). Manajemen salt tetap belum | Dibutuhkan lebih dulu oleh HNK-05; seharusnya dicatat saat itu | _Menunggu konfirmasi user_ |
 | DEV-05 | 2026-10-16 | SPK-04 | [[Rencana Fase]]: SPK-04 spike kritis | SPK-04 tidak lagi kritis; gerbang F0 dihitung tanpa SPK-04 | D-15: Zodl opsional (keputusan user) | **Mengikuti keputusan user 2026-10-16** |

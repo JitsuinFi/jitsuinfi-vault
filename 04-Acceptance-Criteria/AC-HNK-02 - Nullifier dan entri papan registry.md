@@ -5,8 +5,8 @@ id: HNK-02
 phase: F1
 lead: Hans
 owners: [Hans, Dex]
-status: BLOCKED
-updated: 2026-10-16
+status: PASS
+updated: 2026-10-17
 ---
 
 # AC-HNK-02 - Nullifier dan entri papan registry
@@ -25,10 +25,10 @@ Status per kriteria: `TODO` / `PASS` / `FAIL` / `BLOCKED`, wajib dengan tanggal 
 
 | ID | Kriteria | Status | Tanggal | Bukti |
 |---|---|---|---|---|
-| AC-HNK-02.1 | N deterministik dari tanda tangan buyer; test vector tercatat. | BLOCKED | 2026-10-16 | Menunggu keputusan **DEV-04** (nullifier dari tanda tangan vs dari invoice kanonik), lihat [[Backlog]] |
+| AC-HNK-02.1 | N deterministik dari ~~tanda tangan buyer~~ **byte kanonik invoice** (DEV-04); test vector tercatat. | PASS | 2026-10-17 | commit `40d7656`; unit `nullifier_vector` (N vector HNK-01 = `3513c284…4a6e`, dicek silang Python `hashlib.blake2b(person=b"JitsuinNullifier")`), `nullifier_depends_on_every_invoice_field_only` |
 | AC-HNK-02.2 | Entri ter-encode ≤ 512 byte dan decode roundtrip identik. | PASS | 2026-10-16 | commit `c0d6981` (repo lokal `jitsuinfi-zcash/`); verifikasi sementara Hans: program di scratchpad memakai `jitsuin-core` lewat path dependency, 21/21 pemeriksaan lulus (bukan unit test resmi): memo 512 byte, entri 136 byte, roundtrip identik (dengan dan tanpa padding) |
 | AC-HNK-02.3 | Tanda tangan supplier (key sementara) atas isi entri terverifikasi; entri tanpa tanda tangan valid ditolak (anti-griefing). | PASS | 2026-10-16 | commit `c0d6981` (repo lokal `jitsuinfi-zcash/`); verifikasi sementara Hans: program di scratchpad memakai `jitsuin-core` lewat path dependency, 21/21 pemeriksaan lulus (bukan unit test resmi): key salah dan signature diubah → gagal. Penolakan entri invalid saat scan = HNK-04 |
-| AC-HNK-02.4 | (HNK-02.T3, Dex) Commitment financier = H(pubkey financier ‖ salt), tidak membuka identitas financier. | TODO | — | — |
+| AC-HNK-02.4 | (HNK-02.T3, Dex) Commitment financier = H(pubkey financier ‖ salt), tidak membuka identitas financier. | PASS | 2026-10-17 | Dikerjakan Hans di `6b5c343` (DEV-09, menunggu konfirmasi user): `financier_commitment`, test vector `c72255e7…2b3a`; manajemen salt belum |
 | AC-HNK-02.5 | Format didokumentasikan di [[Format Data]]. | PASS | 2026-10-16 | [[Format Data]] sesuai implementasi (offset 0–136, padding nol wajib) |
 
 ## Deviasi

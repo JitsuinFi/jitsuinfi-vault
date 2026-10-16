@@ -30,13 +30,15 @@ Tanda tangan buyer: `sig_buyer = Ed25519.sign(buyer_sk, bytes_kanonik)`; verifik
 - bytes kanonik (130 byte): `4a545349010c5445532d494e562d303030318a88e3dd7409f195fd52db2d3cba5d72ca6709bf1d94121bf3748801b40f6f5c8139770ea87d175f56a35466c34c7ecccb8d8a91b4ee37a25df60f5b8fc9b39400ca9a3b00000000994f0000d54f00000909090909090909090909090909090909090909090909090909090909090909`
 - `sig_buyer`: `11b59c4dbce361601b4ba66f246b4ca17469722f506e23fa8d63de28b6acc142b091392510709c67fedd800bc93b8e7a7321c362363c8d04ca164d2a1e76cb0b`
 
-## Nullifier (HNK-02)
-> **Belum diimplementasikan — menunggu DEV-04.** Usulan: `N = BLAKE2b-256(personalization = "JitsuinNullifier", input = bytes_kanonik_invoice)` supaya N unik per invoice walaupun signer buyer tidak deterministik.
+## Nullifier (HNK-02) — **diimplementasikan** (`40d7656`, DEV-04)
+```
+N = BLAKE2b-256(personalization = "JitsuinNullifier", input = bytes_kanonik_invoice)
+```
+N unik per invoice walaupun signer buyer tidak deterministik, dan tidak bisa ditebak tanpa invoice karena byte kanonik memuat `supplier_ephemeral_pk` acak 256 bit. N adalah id dokumen invoice: semua entri, kuitansi, dan seal merujuk N ([[Desain Jitsuin Seal]]). Tanda tangan buyer tetap wajib sebagai bukti persetujuan, tapi bukan input N.
 
-```
-N = BLAKE2b-256(personalization = "JitsuinNullifier", input = sig_buyer)
-```
-N tidak bisa ditebak tanpa memegang invoice bertanda tangan.
+**Test vector:** invoice HNK-01 di atas → N = `3513c284b075c8efbd27da2de1ad9eb673bcbb8c45ae087a9a594c35c8064a6e` (dicek silang Python `hashlib.blake2b(digest_size=32, person=b"JitsuinNullifier")`).
+
+**Hash dokumen off-chain:** `terms_hash = SHA-256(file)` dihitung di klien (`document_hash`), jadi file tidak pernah dikirim dan bisa dicek dengan `shasum -a 256`. Vector: `SHA-256("TES-terms")` = `00082d1119307d17036738bf382daab1bfe963280b44b7dc050f5ad30542b229`.
 
 ## Entri papan registry (HNK-02) — **diimplementasikan** (`c0d6981`, rename `f4913a4`)
 Isi memo (biner). Byte pertama memo `0xFF` menandai data arbitrer (ZIP-302, dikonfirmasi di SPK-06).
@@ -85,7 +87,7 @@ Decoder ketat (marker, magic, tipe, nominal 0, input terpotong, dan padding buka
 
 Tipe `0x02` (pelunasan) dibuat oleh buyer di web app dan dimasukkan ke URI ZIP-321 (HNK-06, `aff284d`): `zcash:<alamat financier>?amount=<nominal>&memo=<base64url kuitansi 146 byte>`. Panjang memo di URI 195 karakter; QR level koreksi M. Financier mencocokkan pembayaran ke N: kuitansi tipe `0x02`, N sama, ditandatangani `buyer_pk` dari invoice, nominal = nilai output. Status: `Unpaid` / `Pending` (belum ditambang) / `Partial` / `Settled` (hanya dari pembayaran valid yang sudah ditambang).
 
-## Entri `settled` (HNK-06) — **diimplementasikan** (`aff284d`), usulan D-18
+## Entri `settled` (HNK-06) — **diimplementasikan** (`aff284d`), diganti DEV-08 (dua tanda tangan, HNK-19.T4)
 Layout sama dengan entri register (136 byte), dengan isi berbeda:
 
 | Field | Isi untuk `settled` |
