@@ -64,5 +64,5 @@ Kuitansi pembayaran di muka dan pelunasan: magic, tipe, `N`, nominal, tanggal, t
 ## Bucket indeks (HNK-08)
 `discount_bucket` dan `tenor_bucket` = kelas diskon dan tenor (tanpa nominal). Tabel kelas difinalkan di HNK-08; indeks hanya ditampilkan bila ada minimal k entri per kelas.
 
-## Urutan entri (HNK-04)
-Urutan total: (tinggi blok, indeks transaksi, indeks output). Tie-break tambahan ditentukan di SPK-08.
+## Urutan entri (HNK-04) — **diimplementasikan** (`ef55987`)
+Urutan total: (tinggi blok, indeks transaksi, indeks output). Indeks transaksi diambil dari `GetBlock` lightwalletd (SPK-08); tidak perlu tie-break tambahan. Memo hanya terbaca setelah transaksi penuh diambil (`enhance`, SPK-05). Entri ulang dengan commitment financier yang sama bukan konflik.

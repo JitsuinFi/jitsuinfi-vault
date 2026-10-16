@@ -130,8 +130,8 @@ Estimasi kasar; diperbarui di Exec Summary dengan jam aktual.
 
 | Task | Deskripsi | Owner | Jam | Status |
 |---|---|---|---|---|
-| HNK-04.T1 | Impor viewing key watch-only dan scan papan (Zcash) | Hans #hans | 3 | TODO |
-| HNK-04.T2 | Urutan entri, deteksi N ganda, filter entri invalid | Hans #hans | 2 | TODO |
+| HNK-04.T1 | Impor viewing key watch-only dan scan papan (Zcash) | Hans #hans | 3 | DONE (`ef55987`) |
+| HNK-04.T2 | Urutan entri, deteksi N ganda, filter entri invalid | Hans #hans | 2 | DONE (`ef55987`) |
 | HNK-04.T3 | Perintah CLI `jitsuin board scan` + format tabel | Dex #dex | 2 | TODO |
 | HNK-04.T4 | Uji integrasi 3 entri (1 invalid) | Dex #dex | 1 | TODO |
 
