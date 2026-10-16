@@ -41,4 +41,4 @@ updated: 2026-10-17
 ## Bukti
 - Commit: `f03cfb1`, `687f2b4`, `e53ce12` (lokal)
 - ID tes: U-HNK-20.1–3, I-HNK-20.1; entri `89af294e09372d137cb9eae95b7b1ba8c7710bb9d14fe2584b4b8951f8cba4bf`, advance `2c33b0b0104014ff75d0a1e9d644c953724534feba16f96daa98895fc922cd08`, pelunasan `1d9f54ca37c4dcf74e65f79d00102c209d912d0889086376f4078b67190a875e`, `settled` `c60c777ec90cde166324df723ff7695149301f24db0f4d421f68c78dd62845fa`, entri deal 1 `fe7136876222e31921b7dd14ecf8b7a5efdeaf8a0c12179badc15389dd1db608`
-- Persetujuan user untuk push/deploy: _belum_
+- Persetujuan user untuk push/deploy: **disetujui 2026-10-17** ("Gas push"); push ke `JitsuinFi/jitsuinfi-zcash` dan `JitsuinFi/jitsuinfi-vault`
