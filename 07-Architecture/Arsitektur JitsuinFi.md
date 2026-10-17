@@ -23,7 +23,7 @@ tags: [architecture]
 | `jitsuin-core` (Rust lib) | Format invoice kanonik, tanda tangan, nullifier, encode/decode entri, commitment financier, kuitansi, bundel bukti, bucket indeks | HNK-01, HNK-02, HNK-07, HNK-08 |
 | `jitsuin-wallet` | Sync, kirim shielded + memo, dekode memo; crate stabil atau wrapper `zcash-devtool`/Zally | HNK-03 |
 | `jitsuin-board` | Scanner watch-only papan, urutan entri, deteksi N ganda, entri `settled`, cek riwayat buyer; kode jaringan di feature `net` | HNK-04, HNK-19, HNK-20 |
-| `jitsuin-flow` | Alur per peran: state machine financier (cek → tunggu tanda tangan supplier → daftar → tunggu konfirmasi → bayar), verifikasi kuitansi di sisi supplier, permintaan pelunasan buyer (URI + QR ZIP-321), deteksi pelunasan dan entri `settled` | HNK-05, HNK-06 |
+| `jitsuin-flow` | Alur per peran: state machine financier (cek → tunggu tanda tangan supplier → daftar → tunggu konfirmasi → bayar), verifikasi kuitansi di sisi supplier, permintaan pelunasan buyer (URI + QR ZIP-321), deteksi pelunasan dan entri `settled`, standar minimal riwayat buyer, uji solvabilitas dana (JitsuinFi Vault) | HNK-05, HNK-06 |
 | `jitsuin-wasm` | Paket browser: key buyer dari passkey PRF, tanda tangan invoice/surat, QR pelunasan, sertifikat riwayat, verifikasi bundel, bukti, dan riwayat di sisi klien (tanpa I/O jaringan) | HNK-10.T7, HNK-10.T3, HNK-07.T2 |
 | `jitsuin` CLI | Perintah per peran + `jitsuin verify` untuk juri | HNK-05 – HNK-07, HNK-09 |
 | Web app | UI supplier, buyer, financier; halaman indeks dan halaman orang luar | HNK-08, HNK-10, HNK-11 |

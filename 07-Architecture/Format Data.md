@@ -148,6 +148,12 @@ Magic `JTSH` (4), versi `0x01` (1), nomor urut (4, LE), key invoice (32), key su
 - Tag penerus: `BLAKE2b-256("JitsuinHistTag__", identity_pk ‖ hash sebelumnya)`.
 - Derivasi key: `seed = BLAKE2b-256(key = master, personal = "JitsuinBuyerKey_", input)`, dengan `input` = `"identity"` atau `"invoice" ‖ nomor (u32 LE)`. Vector: master 32×`0x42`, invoice 0 → seed `b467d39acc924edc21c631f77e1f1a6781dbd254efa0cc344ab1c7beaf34ac98` (dicek silang Python).
 
+## Item memo dana: catatan piutang dan root kewajiban (HNK-15.T2) — **diimplementasikan** (`e54ea36`)
+Untuk anggota dana yang memegang viewing key akun operasional:
+- **Catatan piutang `JTN1`** (48 byte tanpa marker): magic (4), N (32), nilai nominal (8, LE), jatuh tempo (4, LE). Ikut di setiap memo advance setelah kuitansi dan seal (total 394 byte).
+- **Root kewajiban `JTLR`** (144 byte): magic (4), periode (4, LE), root Merkle sum tree (32), total kewajiban (8, LE), key manajer (32), tanda tangan manajer atas byte sebelumnya (64). Dikirim ke akun sendiri per periode. Root dari pihak lain diabaikan.
+- **Solvabilitas:** kas (saldo watch-only) + piutang berjalan (nominal − pelunasan yang masuk untuk N itu) + piutang lewat jatuh tempo setelah potongan ≥ total di root terbaru.
+
 ## Bucket indeks (HNK-08)
 `discount_bucket` dan `tenor_bucket` = kelas diskon dan tenor (tanpa nominal). Tabel kelas difinalkan di HNK-08; indeks hanya ditampilkan bila ada minimal k entri per kelas.
 

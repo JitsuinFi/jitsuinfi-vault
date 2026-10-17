@@ -293,7 +293,7 @@ Estimasi kasar; diperbarui di Exec Summary dengan jam aktual.
 | Task | Deskripsi | Owner | Jam | Status |
 |---|---|---|---|---|
 | HNK-15.T1 | Merkle sum tree kewajiban | Dex #dex | 3 | TODO |
-| HNK-15.T2 | Uji solvabilitas lewat FVK akun operasional (Zcash) | Hans #hans | 3 | TODO |
+| HNK-15.T2 | Uji solvabilitas lewat FVK akun operasional (Zcash) | Hans #hans | 3 | DONE (`e54ea36`) |
 | HNK-15.T3 | Halaman verifikasi anggota | Dave #dave | 2 | TODO |
 
 ## Status (auto)
