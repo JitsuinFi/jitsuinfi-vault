@@ -43,7 +43,7 @@ Target pembagian: **Hans 40% · Dex 30% · Dave 30%**. Hans wajib memegang selur
 | Dave #dave | 46 | 26,6% | 30% |
 | **Total** | **173** | 100% | 100% |
 
-HNK-20 naik dari 5 ke 7 jam (DEV-10). HNK-10.T7 (`jitsuin-wasm`, 3 jam) ditambahkan untuk Hans atas persetujuan user 2026-10-17 ("lanjut jitsuin-wasm").
+HNK-20 naik dari 5 ke 7 jam (DEV-10). HNK-10.T7 (`jitsuin-wasm`, 3 jam) ditambahkan untuk Hans atas persetujuan user 2026-10-17 ("lanjut jitsuin-wasm"); push disetujui 2026-10-17 ("Gas push").
 
 Porsi Hans naik di atas 40% karena keputusan user D-22.
 
