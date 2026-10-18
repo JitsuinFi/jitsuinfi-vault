@@ -38,12 +38,12 @@ Target pembagian: **Hans 40% · Dex 30% · Dave 30%**. Hans wajib memegang selur
 
 | Orang | Jam | Porsi | Target awal |
 |---|---|---|---|
-| Hans #hans | 106 | 61,3% | 40% |
+| Hans #hans | 107 | 61,8% | 40% |
 | Dex #dex | 43 | 24,9% | 30% |
-| Dave #dave | 24 | 13,9% | 30% |
+| Dave #dave | 23 | 13,3% | 30% |
 | **Total** | **173** | 100% | 100% |
 
-**Revisi 2026-10-18 (D-25, DEV-11):** 22 jam task Dave dikerjakan Hans (agent), lokal.
+**Revisi 2026-10-18 (D-25, DEV-11):** 23 jam task Dave dikerjakan Hans (agent), lokal.
 
 HNK-20 naik dari 5 ke 7 jam (DEV-10). HNK-10.T7 (`jitsuin-wasm`, 3 jam) ditambahkan untuk Hans atas persetujuan user 2026-10-17 ("lanjut jitsuin-wasm"); push disetujui 2026-10-17 ("Gas push").
 
