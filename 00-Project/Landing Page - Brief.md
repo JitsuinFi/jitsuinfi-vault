@@ -33,3 +33,12 @@ Konfirmasi user atas pemahaman awal (2026-10-19): "Gasssss, itu oke, dan pastika
 - [ ] Visual relevan, inklusif, mewakili pesan, dan **mendukung** caption (bukan tempelan).
 - [ ] Memakai MCP yang ada dan tools: genjutsu, React Bits (shadcn MCP), anime.js, hairline, motionmaxxing, Motion.
 - [ ] Batas teknis proyek: CSP same-origin, tanpa CDN (semua aset dibundel), lokal dulu (D-25).
+
+## Progres per bab
+
+| Bab | Isi | Status | Tanggal | Bukti |
+|---|---|---|---|---|
+| 1. Hero | Kertas dokumen WebGL2 dengan sobekan ke kolam terlindung (simulasi riak height field, sentuhan pointer, napas ambient 30fps, berhenti di luar layar). Invoice uji `TES-INV-0007` dengan tepi sobek; jitsuin 実印 turun (snapSettle 367ms, squash 67ms, angkat accelExit 433ms), tinta meresap 1,2 dtk; sidik jari N asli (`8ee58d12…dc8354`, dari jitsuin-wasm via `scripts/hero-n.mjs`) muncul digit demi digit; 16 digit tenggelam ke kolam dan memicu riak. Tombol segel dengan gestur Motion; Lenis untuk scroll. | Selesai lokal, menunggu validasi user | 2026-10-19 | `npm run build` lulus (tsc strict); preview 870×992 desktop dan 375×812 ponsel: tanpa scroll horizontal, judul muat; konsol bersih. Mode reduced motion belum dicek visual. |
+| 2–7 | Satu sidik jari, ke dalam kolam, rantai segel, ditekan dua kali, lunas dan diingat, penutup | Belum | | |
+
+Catatan: `--t-hero` diturunkan ke `clamp(36px, 5.6vw, 104px)` (MASTER.md) karena "double-financing." melewati kolom kertas. Tautan "Read the spec" mengarah ke repo privat; baru bisa dibuka publik saat repo dibuka mendekati submit.
