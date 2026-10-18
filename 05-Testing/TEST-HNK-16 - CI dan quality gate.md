@@ -6,9 +6,9 @@ phase: F1
 lead: Dex
 owners: [Dex]
 unit: TODO
-integrasi: TODO
+integrasi: PASS
 e2e: TODO
-updated: 2026-10-16
+updated: 2026-10-19
 ---
 
 # TEST-HNK-16 - CI dan quality gate
@@ -22,14 +22,14 @@ Logika murni, cepat, tanpa DB dan tanpa chain.
 
 | ID | Kasus | Hasil | Tanggal | Bukti |
 |---|---|---|---|---|
-| U-HNK-16.1 | Script cek lokal gagal dengan exit code ≠ 0 saat satu cek merah | TODO | — | — |
+| U-HNK-16.1 | Script cek lokal gagal dengan exit code ≠ 0 saat satu cek merah | TODO | 2026-10-19 | Script memakai `set -euo pipefail`; belum diuji lokal (Rust belum terpasang di laptop Dex). |
 
 ## 2. Integrasi
 Skrip vs DB/chain sungguhan. Semua artefak memakai prefix `TES-` (invoice, akun, label, order).
 
 | ID | Skenario | Hasil | Tanggal | Bukti (txid/log) |
 |---|---|---|---|---|
-| I-HNK-16.1 | Jalankan pipeline penuh di repo bersih (clone baru) | TODO | — | — |
+| I-HNK-16.1 | Jalankan pipeline penuh di repo bersih (clone baru) | PASS | 2026-10-19 | Runner GitHub = clone baru: fmt, check, clippy -D warnings, test (82 lulus: 14+34+24+6+4), wasm build, gitleaks 0 temuan — https://github.com/JitsuinFi/jitsuinfi-zcash/actions/runs/39152530625 |
 
 **Bukti pembersihan:** sisa artefak off-chain `TES-` = _TODO_ (target **0**). Artefak on-chain tidak bisa dihapus; catat txid-nya di tabel di atas. Data produksi tidak boleh tersentuh.
 
