@@ -8,7 +8,7 @@ owners: [Dave, Dex, Hans]
 unit: TODO
 integrasi: TODO
 e2e: TODO
-updated: 2026-10-16
+updated: 2026-10-18
 ---
 
 # TEST-HNK-12 - Spesifikasi gaya ZIP Shielded Receivable Registry
@@ -22,7 +22,7 @@ Logika murni, cepat, tanpa DB dan tanpa chain.
 
 | ID | Kasus | Hasil | Tanggal | Bukti |
 |---|---|---|---|---|
-| U-HNK-12.1 | Test vector dari dokumen dijalankan sebagai test | TODO | — | — |
+| U-HNK-12.1 | Test vector dari dokumen dijalankan sebagai test | PARSIAL | 2026-10-18 | Nilai yang sama di-assert di unit test core (lihat AC-HNK-12.2); parser yang membaca dokumen = HNK-12.T2 (Dex) |
 
 ## 2. Integrasi
 Skrip vs DB/chain sungguhan. Semua artefak memakai prefix `TES-` (invoice, akun, label, order).

@@ -20,6 +20,7 @@ Ruang kerja produksi **video demo wajib 2 menit** untuk submission ZECATHON. Vid
 - [[VID-03 - Checklist Rekaman]] — persiapan sebelum rekam.
 - [[VID-04 - Checklist Export dan Upload]] — export, cek durasi, upload.
 - [[VID-05 - Aset dan Lisensi]] — musik, font, logo, izin.
+- [[VID-06 - Skenario Demo Pembiayaan Ganda]] — naskah adegan momen kunci (HNK-07.T5).
 
 ## Folder aset
 Rekaman mentah, audio, dan gambar disimpan di `Video-Workspace/assets/` (bukan `.md`, jadi dirujuk sebagai path, bukan wikilink). Penamaan: `YYYYMMDD-shotNN-deskripsi.ext`, misalnya `20261026-shot04-financier-register.mov`.

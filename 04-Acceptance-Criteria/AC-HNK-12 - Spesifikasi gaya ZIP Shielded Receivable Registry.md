@@ -25,9 +25,9 @@ Status per kriteria: `TODO` / `PASS` / `FAIL` / `BLOCKED`, wajib dengan tanggal 
 
 | ID | Kriteria | Status | Tanggal | Bukti |
 |---|---|---|---|---|
-| AC-HNK-12.1 | Struktur ZIP: Abstract, Motivation, Specification, Security Considerations, Test Vectors. | TODO | — | — |
-| AC-HNK-12.2 | Test vector cocok dengan implementasi (dijalankan otomatis). | TODO | — | — |
-| AC-HNK-12.3 | Ditautkan dari README dan deskripsi submission. | TODO | — | — |
+| AC-HNK-12.1 | Struktur ZIP: Abstract, Motivation, Specification, Security Considerations, Test Vectors. | PASS | 2026-10-18 | `jitsuinfi-zcash/docs/zip-shielded-receivable-registry.md` (`c42af3e`): Abstract, Motivation, Conventions, Specification (10 bagian), Security Considerations, Privacy Considerations, Test Vectors, Reference Implementation |
+| AC-HNK-12.2 | Test vector cocok dengan implementasi (dijalankan otomatis). | PASS | 2026-10-18 | Semua vector di dokumen diuji `cargo test --workspace` (core: `canonical_and_signature_vectors`, `nullifier_vector`, `document_hash_is_sha256`, `financier_commitment_vector`, `settled_tag_vector`, `key_derivation_vector_and_unlinkable_invoice_keys`). HNK-12.T2 (Dex: membaca vector langsung dari dokumen) tetap terbuka |
+| AC-HNK-12.3 | Ditautkan dari README dan deskripsi submission. | TODO | 2026-10-18 | Ditautkan dari README `jitsuinfi-zcash`; deskripsi submission (HNK-14.T2) belum |
 
 ## Deviasi
 _Kosong._ Kalau implementasi menyimpang dari keputusan, tulis di sini **dan** di [[Backlog]] bagian Log Deviasi. Tidak ada perubahan diam-diam.

@@ -35,10 +35,16 @@ Skrip vs DB/chain sungguhan. Semua artefak memakai prefix `TES-` (invoice, akun,
 **Bukti pembersihan:** sisa artefak off-chain `TES-` = **0** (bundel hanya di memori dan log scratchpad). Artefak on-chain: entri B di atas; `TES-INV-0003` kini berstatus `DoubleFinanced` di papan testnet (disengaja). Artefak on-chain tidak bisa dihapus; catat txid-nya di tabel di atas. Data produksi tidak boleh tersentuh.
 
 ## 3. E2E
-Panduan langkah demi langkah untuk user.
+Panduan langkah demi langkah untuk user (naskah adegan: [[VID-06 - Skenario Demo Pembiayaan Ganda]]).
 
-- [ ] Jalankan skenario demo "supplier mencoba menjual dua kali".
+- [ ] Financier B memeriksa papan untuk invoice yang ditawarkan → berhenti di `AlreadyFinanced` tanpa transaksi.
+- [ ] Financier B membentuk bukti dari tawaran supplier (backend `proof_from_offer`).
+- [ ] Buka tab **Verify**, tempel bukti, klik *Verify*.
+- [ ] Unduh bukti dengan *Download proof*.
 
 | Langkah | Hasil diharapkan | Hasil aktual | Status |
 |---|---|---|---|
-| 1 | _TODO_ | — | TODO |
+| 1 | `AlreadyFinanced`, tanpa tx | Testnet `proof-it` (2026-10-17) | PASS |
+| 2 | Bukti `JTSP…` valid offline | 710 karakter, valid | PASS |
+| 3 | Banner "Caught: the supplier signed this invoice twice" + dua commitment | Halaman Verify dibangun; jalur yang sama teruji di unit `jitsuin-wasm` (`verify_proof`) | PASS |
+| 4 | File `double-signature.proof.txt` terunduh | Tombol tersedia | PASS |

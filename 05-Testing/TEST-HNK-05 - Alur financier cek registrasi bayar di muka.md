@@ -36,10 +36,28 @@ Skrip vs DB/chain sungguhan. Semua artefak memakai prefix `TES-` (invoice, akun,
 **Bukti pembersihan:** sisa artefak off-chain `TES-` = **0** (tidak ada DB atau file uji). Artefak on-chain tidak bisa dihapus; catat txid-nya di tabel di atas. Data produksi tidak boleh tersentuh.
 
 ## 3. E2E
-Panduan langkah demi langkah untuk user.
+Panduan langkah demi langkah untuk user (HNK-05.T6, 2026-10-18). Layar web di `jitsuinfi-frontend`; registrasi dan pembayaran advance berjalan di wallet backend financier (`jitsuin-flow`).
 
-- [ ] Ikuti panduan financier di web atau CLI dari awal sampai pembayaran di muka.
+- [ ] **Buyer** (tab Buyer): buka key dengan passkey (atau test secret), salin *key for invoice #0*.
+- [ ] **Supplier** (tab Supplier): buat key per invoice, isi invoice dengan key buyer, pilih PDF, klik *Create invoice*; kirim kode invoice ke buyer.
+- [ ] **Buyer**: tempel kode invoice → *Show invoice* (cek isi) → *Sign invoice*; kirim tanda tangan ke supplier.
+- [ ] **Financier** (backend): cek papan untuk N → `AwaitSupplierSignature`; terima entri bertanda tangan supplier → post → tunggu konfirmasi → `AwaitAssignment`.
+- [ ] **Financier** (tab Financier): *Create letter* dengan key dan alamat bayar; kirim ke supplier dan buyer.
+- [ ] **Supplier**: tempel invoice + surat → *Seal as supplier*; kirim seal ke buyer.
+- [ ] **Buyer**: tempel invoice + surat + seal supplier → *Seal as buyer*; kirim seal ke financier.
+- [ ] **Financier** (backend): masukkan dua seal → `Pay` → advance terkirim bersama seal financier.
+- [ ] **Supplier**: cek advance diterima dan surat `Sealed`.
 
 | Langkah | Hasil diharapkan | Hasil aktual | Status |
 |---|---|---|---|
-| 1 | _TODO_ | — | TODO |
+| 1 | Key buyer tampil (identitas + invoice #0) | Tampil (uji browser 2026-10-18, test secret) | PASS |
+| 2 | Kode invoice `JTSI…` + N | Tampil | PASS |
+| 3 | Tabel invoice + tanda tangan 128 hex | Tampil | PASS |
+| 4 | Entri terkonfirmasi, alur berhenti di `AwaitAssignment` | Testnet `TES-INV-0003` (HNK-19) | PASS |
+| 5 | Kode surat `JTSA…` | Tampil | PASS |
+| 6 | Seal supplier `JTL1…` | Tampil | PASS |
+| 7 | Seal buyer; menolak bila seal supplier kosong | Tampil; penolakan teruji di unit `jitsuin-wasm` | PASS |
+| 8 | Advance + seal financier dalam satu tx | Testnet `501e40da…` (HNK-19) | PASS |
+| 9 | Supplier: kuitansi `Valid`, surat `Sealed` | Testnet (HNK-19) | PASS |
+
+Langkah 4, 8, dan 9 dijalankan lewat backend/CLI (scratchpad `cycle-it`), belum lewat layar web; endpoint API financier = HNK-05.T3 (Dex).

@@ -5,8 +5,8 @@ id: HNK-10
 phase: F5
 lead: Dave
 owners: [Dave, Hans, Dex]
-status: BELUM
-updated: 2026-10-16
+status: PARSIAL
+updated: 2026-10-18
 ---
 
 # ES-HNK-10 - Web app per peran
@@ -16,7 +16,11 @@ updated: 2026-10-16
 **Lead:** Dave #dave · **Tim:** Dave #dave, Hans #hans, Dex #dex
 
 ## Apa diubah
-_TODO setelah langkah 1 selesai._
+- Repo lokal `jitsuinfi-frontend` (`cdcba0d`, `98466b2`, tanpa remote, D-25): Vite + TypeScript tanpa framework dan tanpa CDN, CSP ketat, token desain terang/gelap.
+- Layar supplier, buyer (passkey PRF), financier, Verify (termasuk tampilan "Caught"), dan halaman orang luar; semua kriptografi lewat `jitsuin-wasm` di browser.
+- Uji klik alur penuh di build produksi: lulus; 0 request ke domain lain.
+
+_Dikerjakan Hans (agent) atas keputusan user D-25 / DEV-11; Dave me-review._
 
 ## Hasil vs KPI (angka riil)
 | KPI | Target | Aktual |
@@ -25,12 +29,14 @@ _TODO setelah langkah 1 selesai._
 | Waktu muat halaman | dicatat | — |
 
 ## Status
-`BELUM` → isi `SELESAI` / `PARSIAL` / `BLOCKED` (juga di frontmatter).
+**PARSIAL**.
 
 ## Risiko tersisa
-_TODO_
+- Aksi backend (registrasi, advance, watchdog) belum terhubung ke layar: menunggu API HNK-05.T3/HNK-10.T4 (Dex).
+- Header CSP di server dan deploy (HNK-10.T5, Dex) belum; repo belum di-push (D-25).
+- Halaman indeks (HNK-08.T3) dan halaman anggota dana (HNK-15.T3) belum.
 
 ## Bukti
-- Commit: _TODO_
+- Commit: lihat Apa diubah (lokal)
 - ID tes: _TODO_
 - Persetujuan user untuk push/deploy: _belum_

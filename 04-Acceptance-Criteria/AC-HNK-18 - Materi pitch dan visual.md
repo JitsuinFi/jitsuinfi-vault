@@ -26,7 +26,7 @@ Status per kriteria: `TODO` / `PASS` / `FAIL` / `BLOCKED`, wajib dengan tanggal 
 | ID | Kriteria | Status | Tanggal | Bukti |
 |---|---|---|---|---|
 | AC-HNK-18.1 | Logo JitsuinFi dan tiga slide (masalah, threat model, penutup) siap sebelum rekaman. | TODO | — | — |
-| AC-HNK-18.2 | Diagram arsitektur ada di README. | TODO | — | — |
+| AC-HNK-18.2 | Diagram arsitektur ada di README. | PASS | 2026-10-18 | README `jitsuinfi-zcash` (`d99680b`): diagram alur deal (sequence) dan diagram komponen (mermaid) |
 | AC-HNK-18.3 | Semua aset tercatat lisensinya di [[VID-05 - Aset dan Lisensi]]. | TODO | — | — |
 
 ## Deviasi

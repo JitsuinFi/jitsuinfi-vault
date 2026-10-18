@@ -5,10 +5,10 @@ id: HNK-10
 phase: F5
 lead: Dave
 owners: [Dave, Hans, Dex]
-unit: TODO
+unit: PASS
 integrasi: TODO
 e2e: TODO
-updated: 2026-10-17
+updated: 2026-10-18
 ---
 
 # TEST-HNK-10 - Web app per peran
@@ -22,8 +22,9 @@ Logika murni, cepat, tanpa DB dan tanpa chain.
 
 | ID | Kasus | Hasil | Tanggal | Bukti |
 |---|---|---|---|---|
-| U-HNK-10.1 | Validasi input dan komponen (TypeScript) | TODO | — | — |
+| U-HNK-10.1 | Validasi input dan komponen (TypeScript) | PASS | 2026-10-18 | `npm run build` (tsc strict `--noEmit` + vite) hijau; uji klik alur penuh di browser bawaan (build produksi, CSP aktif) |
 | U-HNK-10.2 | Logika kripto browser `jitsuin-wasm` (Hans, HNK-10.T7) | PASS | 2026-10-17 | `cargo test -p jitsuin-wasm` (4): vector N/hash/derivasi key sama dengan core, URI QR identik dengan `jitsuin-flow`, bundel + papan, riwayat + bukti. Uji asap Node.js atas paket `wasm-bindgen` (`--target nodejs`): N vector, hash dokumen, key buyer, tanda tangan invoice, index salah ditolak, sertifikat tanpa jangkar ditolak. Ukuran `.wasm` 484 KB. Commit `2438a82` |
+| U-HNK-10.3 | Review keamanan penanganan key di FE (HNK-10.T6) | PASS | 2026-10-18 | Secret supplier dan master buyer hanya di memori modul (tidak ke storage, tidak ke jaringan); key buyer dari passkey PRF (salt `jitsuin/buyer/master/v1`, user verification wajib); secret supplier dari `crypto.getRandomValues`; CSP same-origin; QR SVG dari WASM sendiri dimasukkan lewat `DOMParser`, data pengguna tidak pernah lewat `innerHTML`. Catatan: backup secret supplier diunduh sebagai file teks biasa (ditandai TES only) |
 
 ## 2. Integrasi
 Skrip vs DB/chain sungguhan. Semua artefak memakai prefix `TES-` (invoice, akun, label, order).

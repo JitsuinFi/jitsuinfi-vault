@@ -5,8 +5,8 @@ id: HNK-12
 phase: F4
 lead: Dave
 owners: [Dave, Dex, Hans]
-status: BELUM
-updated: 2026-10-16
+status: PARSIAL
+updated: 2026-10-18
 ---
 
 # ES-HNK-12 - Spesifikasi gaya ZIP Shielded Receivable Registry
@@ -16,7 +16,10 @@ updated: 2026-10-16
 **Lead:** Dave #dave · **Tim:** Dave #dave, Dex #dex, Hans #hans
 
 ## Apa diubah
-_TODO setelah langkah 1 selesai._
+- `docs/zip-shielded-receivable-registry.md` (`c42af3e`): spesifikasi gaya ZIP lengkap dengan test vector.
+- Unit test baru untuk vector invoice kanonik dan tanda tangan buyer, sehingga semua vector di dokumen di-assert.
+
+_Dikerjakan Hans (agent) atas keputusan user D-25 / DEV-11; Dave me-review._
 
 ## Hasil vs KPI (angka riil)
 | KPI | Target | Aktual |
@@ -24,12 +27,13 @@ _TODO setelah langkah 1 selesai._
 | Test vector yang cocok | 100% | — |
 
 ## Status
-`BELUM` → isi `SELESAI` / `PARSIAL` / `BLOCKED` (juga di frontmatter).
+**PARSIAL**.
 
 ## Risiko tersisa
-_TODO_
+- Parser vector dari dokumen (HNK-12.T2, Dex) dan review teknis Hans (HNK-12.T3) belum.
+- Tautan dari deskripsi submission (HNK-14.T2) belum.
 
 ## Bukti
-- Commit: _TODO_
+- Commit: lihat Apa diubah (lokal)
 - ID tes: _TODO_
 - Persetujuan user untuk push/deploy: _belum_

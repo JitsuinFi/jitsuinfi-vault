@@ -25,9 +25,9 @@ Status per kriteria: `TODO` / `PASS` / `FAIL` / `BLOCKED`, wajib dengan tanggal 
 
 | ID | Kriteria | Status | Tanggal | Bukti |
 |---|---|---|---|---|
-| AC-HNK-10.1 | Alur supplier, buyer, dan financier bisa dijalankan dari browser. | TODO | — | — |
-| AC-HNK-10.2 | 0 request ke domain pihak ketiga (bukti DevTools). | TODO | — | — |
-| AC-HNK-10.3 | Header CSP aktif; tanpa cookie pelacak. | TODO | — | — |
+| AC-HNK-10.1 | Alur supplier, buyer, dan financier bisa dijalankan dari browser. | TODO | 2026-10-18 | Bagian browser berjalan (uji klik 2026-10-18, build produksi): supplier buat invoice → buyer tanda tangan → surat → seal supplier → seal buyer → QR pelunasan → bundel → Verify "genuine"; bundel diubah ditolak. Registrasi, advance, dan watchdog lewat backend (API HNK-05.T3/HNK-10.T4, Dex) belum terhubung ke layar |
+| AC-HNK-10.2 | 0 request ke domain pihak ketiga (bukti DevTools). | PASS | 2026-10-18 | DevTools (network) saat uji klik: semua request ke `localhost:4173` (HTML, JS, CSS, WASM, ikon); 0 ke domain lain. Tanpa CDN; font sistem |
+| AC-HNK-10.3 | Header CSP aktif; tanpa cookie pelacak. | TODO | 2026-10-18 | CSP aktif lewat `<meta>` di `index.html` (`default-src 'self'`, `connect-src 'self'`, `'wasm-unsafe-eval'`); terbukti memblokir `fetch` ke `data:`. Tanpa cookie. Header CSP di server menunggu deploy (HNK-10.T5, Dex) |
 | AC-HNK-10.4 | Diuji dalam keadaan logout dari jaringan lain. | TODO | — | — |
 
 ## Deviasi

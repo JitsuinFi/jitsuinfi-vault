@@ -5,8 +5,8 @@ id: HNK-11
 phase: F5
 lead: Dave
 owners: [Dave, Hans]
-status: BELUM
-updated: 2026-10-16
+status: SELESAI
+updated: 2026-10-18
 ---
 
 # ES-HNK-11 - Threat model dan halaman orang luar
@@ -16,7 +16,11 @@ updated: 2026-10-16
 **Lead:** Dave #dave · **Tim:** Dave #dave, Hans #hans
 
 ## Apa diubah
-_TODO setelah langkah 1 selesai._
+- [[Threat Model]] final: tabel siapa melihat apa, kebocoran, serangan, dan di luar cakupan, mencakup semua fitur yang sudah diuji testnet.
+- [[Mode Confidential]] (HNK-06.T6).
+- Halaman "What outsiders see" dengan kartu explorer dan pembaca entri papan.
+
+_Dikerjakan Hans (agent) atas keputusan user D-25 / DEV-11; Dave me-review._
 
 ## Hasil vs KPI (angka riil)
 | KPI | Target | Aktual |
@@ -24,12 +28,13 @@ _TODO setelah langkah 1 selesai._
 | Kebocoran tanpa mitigasi atau pernyataan | 0 | — |
 
 ## Status
-`BELUM` → isi `SELESAI` / `PARSIAL` / `BLOCKED` (juga di frontmatter).
+**SELESAI**.
 
 ## Risiko tersisa
-_TODO_
+- Review independen oleh Hans (HNK-11.T3) belum: dokumen ditulis agent (DEV-11).
+- Payment disclosure (ZIP-311) masih draft: sisa risiko sengketa pelunasan tetap tercatat.
 
 ## Bukti
-- Commit: _TODO_
+- Commit: lihat Apa diubah (lokal)
 - ID tes: _TODO_
 - Persetujuan user untuk push/deploy: _belum_
