@@ -38,12 +38,12 @@ Target pembagian: **Hans 40% · Dex 30% · Dave 30%**. Hans wajib memegang selur
 
 | Orang | Jam | Porsi | Target awal |
 |---|---|---|---|
-| Hans #hans | 107 | 61,8% | 40% |
+| Hans #hans | 84 | 48,6% | 40% |
 | Dex #dex | 43 | 24,9% | 30% |
-| Dave #dave | 23 | 13,3% | 30% |
+| Dave #dave | 46 | 26,6% | 30% |
 | **Total** | **173** | 100% | 100% |
 
-**Revisi 2026-10-18 (D-25, DEV-11):** 23 jam task Dave dikerjakan Hans (agent), lokal.
+**Revisi 2026-10-18 (D-25, DEV-11):** task Dave tetap milik Dave (label `#dave`). 23 jam di antaranya dikerjakan sementara oleh Hans sebagai backup (label "backup sementara: Hans"); porsi di atas tetap dihitung per owner. Dave me-review hasil backup.
 
 HNK-20 naik dari 5 ke 7 jam (DEV-10). HNK-10.T7 (`jitsuin-wasm`, 3 jam) ditambahkan untuk Hans atas persetujuan user 2026-10-17 ("lanjut jitsuin-wasm"); push disetujui 2026-10-17 ("Gas push").
 
@@ -112,7 +112,7 @@ Estimasi kasar; diperbarui di Exec Summary dengan jam aktual.
 | HNK-01.T1 | Desain struct invoice dan encoding kanonik deterministik | Hans #hans | 3 | DONE (`c0d6981`) |
 | HNK-01.T2 | Implementasi sign/verify Ed25519 (core) | Hans #hans | 2 | DONE (`c0d6981`) |
 | HNK-01.T3 | Unit test + file test vector | Dex #dex | 2 | TODO |
-| HNK-01.T4 | Sinkronkan [[Format Data]] dengan implementasi | Hans #hans (DEV-11, dari Dave) | 1 | DONE: [[Format Data]] disinkronkan per item (HNK-01 – HNK-20) |
+| HNK-01.T4 | Sinkronkan [[Format Data]] dengan implementasi | Dave #dave (backup sementara: Hans #hans, DEV-11) | 1 | DONE: [[Format Data]] disinkronkan per item (HNK-01 – HNK-20) |
 
 **HNK-02 — Nullifier dan entri papan registry** · Lead Hans #hans · [[AC-HNK-02 - Nullifier dan entri papan registry|AC]]
 
@@ -162,8 +162,8 @@ Estimasi kasar; diperbarui di Exec Summary dengan jam aktual.
 | HNK-05.T2 | Format dan verifikasi memo kuitansi | Hans #hans | 2 | DONE (`6b5c343`) |
 | HNK-05.T3 | Endpoint API alur financier | Dex #dex | 3 | TODO |
 | HNK-05.T4 | Integrasi layar financier ↔ backend/wallet (status txid, konfirmasi) — FE krusial | Hans #hans | 2 | PARSIAL: layar financier siap; status txid/konfirmasi butuh API backend (HNK-05.T3, Dex) |
-| HNK-05.T5 | Layout dan komponen layar financier | Hans #hans (DEV-11, dari Dave) | 1 | DONE (`cdcba0d`, `98466b2` (`jitsuinfi-frontend`, lokal)) |
-| HNK-05.T6 | Panduan E2E financier | Hans #hans (DEV-11, dari Dave) | 1 | DONE: panduan E2E di TEST-HNK-05 |
+| HNK-05.T5 | Layout dan komponen layar financier | Dave #dave (backup sementara: Hans #hans, DEV-11) | 1 | DONE (`cdcba0d`, `98466b2` (`jitsuinfi-frontend`, lokal)) |
+| HNK-05.T6 | Panduan E2E financier | Dave #dave (backup sementara: Hans #hans, DEV-11) | 1 | DONE: panduan E2E di TEST-HNK-05 |
 
 **HNK-06 — Pengalihan hak tagih dan pelunasan** · Lead Hans #hans · [[AC-HNK-06 - Pengalihan hak tagih dan pelunasan|AC]]
 
@@ -173,8 +173,8 @@ Estimasi kasar; diperbarui di Exec Summary dengan jam aktual.
 | HNK-06.T2 | Pembuatan URI/QR ZIP-321 untuk pembayaran buyer (Zcash) | Hans #hans | 2 | DONE (`aff284d`) |
 | HNK-06.T3 | Deteksi pelunasan dan pencocokan ke N (Zcash) | Hans #hans | 2 | DONE (`aff284d`) |
 | HNK-06.T4 | Entri `settled` opsional di papan (Zcash) | Hans #hans | 1 | DONE (`aff284d`); diganti dua tanda tangan di HNK-19.T4 (`f07787b`, DEV-08) |
-| HNK-06.T5 | Layar pembayaran buyer (menampilkan QR) | Hans #hans (DEV-11, dari Dave) | 2 | DONE (`cdcba0d`, `98466b2` (`jitsuinfi-frontend`, lokal)): QR di layar buyer |
-| HNK-06.T6 | Dokumentasi mode confidential + risikonya | Hans #hans (DEV-11, dari Dave) | 1 | DONE: [[Mode Confidential]] |
+| HNK-06.T5 | Layar pembayaran buyer (menampilkan QR) | Dave #dave (backup sementara: Hans #hans, DEV-11) | 2 | DONE (`cdcba0d`, `98466b2` (`jitsuinfi-frontend`, lokal)): QR di layar buyer |
+| HNK-06.T6 | Dokumentasi mode confidential + risikonya | Dave #dave (backup sementara: Hans #hans, DEV-11) | 1 | DONE: [[Mode Confidential]] |
 
 **HNK-07 — Deteksi pembiayaan ganda dan bukti tanda tangan ganda** · Lead Hans #hans · [[AC-HNK-07 - Deteksi pembiayaan ganda dan bukti tanda tangan ganda|AC]]
 
@@ -182,9 +182,9 @@ Estimasi kasar; diperbarui di Exec Summary dengan jam aktual.
 |---|---|---|---|---|
 | HNK-07.T1 | Deteksi pembiayaan ganda + build/verify bundel bukti (core) | Hans #hans | 3 | DONE (`8e523f0`) |
 | HNK-07.T2 | Integrasi data bukti di FE (verifikasi di sisi klien) — FE krusial | Hans #hans | 1 | DONE: layar Verify (`cdcba0d`, `98466b2` (`jitsuinfi-frontend`, lokal)) + `jitsuin-wasm` |
-| HNK-07.T3 | Tampilan layar "tertangkap" + unduh bukti | Hans #hans (DEV-11, dari Dave) | 1 | DONE (`cdcba0d`, `98466b2` (`jitsuinfi-frontend`, lokal)): tampilan "Caught" + unduh bukti |
+| HNK-07.T3 | Tampilan layar "tertangkap" + unduh bukti | Dave #dave (backup sementara: Hans #hans, DEV-11) | 1 | DONE (`cdcba0d`, `98466b2` (`jitsuinfi-frontend`, lokal)): tampilan "Caught" + unduh bukti |
 | HNK-07.T4 | Uji integrasi `TES-INV-0003` di mainnet | Dex #dex | 1 | TODO |
-| HNK-07.T5 | Naskah skenario demo pembiayaan ganda | Hans #hans (DEV-11, dari Dave) | 1 | DONE: [[VID-06 - Skenario Demo Pembiayaan Ganda]] |
+| HNK-07.T5 | Naskah skenario demo pembiayaan ganda | Dave #dave (backup sementara: Hans #hans, DEV-11) | 1 | DONE: [[VID-06 - Skenario Demo Pembiayaan Ganda]] |
 
 **HNK-19 — Jitsuin Seal tanda tangan berantai dan Sign-to-Pay** · Lead Hans #hans · [[AC-HNK-19 - Jitsuin Seal tanda tangan berantai dan Sign-to-Pay|AC]] · Desain: [[Desain Jitsuin Seal]]
 
@@ -227,7 +227,7 @@ Estimasi kasar; diperbarui di Exec Summary dengan jam aktual.
 
 | Task | Deskripsi | Owner | Jam | Status |
 |---|---|---|---|---|
-| HNK-12.T1 | Tulis spesifikasi gaya ZIP | Hans #hans (DEV-11, dari Dave) | 3 | DONE (`c42af3e`): `docs/zip-shielded-receivable-registry.md` |
+| HNK-12.T1 | Tulis spesifikasi gaya ZIP | Dave #dave (backup sementara: Hans #hans, DEV-11) | 3 | DONE (`c42af3e`): `docs/zip-shielded-receivable-registry.md` |
 | HNK-12.T2 | Test vector dari spesifikasi dijalankan sebagai test | Dex #dex | 1 | TODO |
 | HNK-12.T3 | Review teknis spesifikasi | Hans #hans | 1 | TODO — review oleh Hans sendiri: spesifikasi ditulis agent (DEV-11) |
 
@@ -237,8 +237,8 @@ Estimasi kasar; diperbarui di Exec Summary dengan jam aktual.
 
 | Task | Deskripsi | Owner | Jam | Status |
 |---|---|---|---|---|
-| HNK-10.T1 | Scaffold FE, routing, design system (tanpa CDN, CSP-ready) | Hans #hans (DEV-11, dari Dave) | 3 | DONE (`cdcba0d`, `98466b2` (`jitsuinfi-frontend`, lokal)) |
-| HNK-10.T2 | Layar supplier: buat invoice, minta tanda tangan buyer | Hans #hans (DEV-11, dari Dave) | 3 | DONE (`cdcba0d`, `98466b2` (`jitsuinfi-frontend`, lokal)) |
+| HNK-10.T1 | Scaffold FE, routing, design system (tanpa CDN, CSP-ready) | Dave #dave (backup sementara: Hans #hans, DEV-11) | 3 | DONE (`cdcba0d`, `98466b2` (`jitsuinfi-frontend`, lokal)) |
+| HNK-10.T2 | Layar supplier: buat invoice, minta tanda tangan buyer | Dave #dave (backup sementara: Hans #hans, DEV-11) | 3 | DONE (`cdcba0d`, `98466b2` (`jitsuinfi-frontend`, lokal)) |
 | HNK-10.T3 | Layar tanda tangan buyer di browser (key di sisi klien) — FE krusial | Hans #hans | 2 | DONE: layar buyer (`cdcba0d`, `98466b2` (`jitsuinfi-frontend`, lokal)) + `jitsuin-wasm` |
 | HNK-10.T4 | Skeleton backend API | Dex #dex | 3 | TODO |
 | HNK-10.T5 | Deploy Railway + header CSP (setelah persetujuan user) | Dex #dex | 2 | TODO |
@@ -249,8 +249,8 @@ Estimasi kasar; diperbarui di Exec Summary dengan jam aktual.
 
 | Task | Deskripsi | Owner | Jam | Status |
 |---|---|---|---|---|
-| HNK-11.T1 | Finalisasi [[Threat Model]] | Hans #hans (DEV-11, dari Dave) | 2 | DONE: [[Threat Model]] final |
-| HNK-11.T2 | Halaman "apa yang bisa dilihat orang luar" | Hans #hans (DEV-11, dari Dave) | 2 | DONE (`cdcba0d`, `98466b2` (`jitsuinfi-frontend`, lokal)): halaman orang luar + kartu explorer |
+| HNK-11.T1 | Finalisasi [[Threat Model]] | Dave #dave (backup sementara: Hans #hans, DEV-11) | 2 | DONE: [[Threat Model]] final |
+| HNK-11.T2 | Halaman "apa yang bisa dilihat orang luar" | Dave #dave (backup sementara: Hans #hans, DEV-11) | 2 | DONE (`cdcba0d`, `98466b2` (`jitsuinfi-frontend`, lokal)): halaman orang luar + kartu explorer |
 | HNK-11.T3 | Review kebenaran kebocoran Zcash | Hans #hans | 1 | TODO — review oleh Hans sendiri: threat model ditulis agent (DEV-11) |
 
 **HNK-18 — Materi pitch dan visual** · Lead Dave #dave · [[AC-HNK-18 - Materi pitch dan visual|AC]]
@@ -259,7 +259,7 @@ Estimasi kasar; diperbarui di Exec Summary dengan jam aktual.
 |---|---|---|---|---|
 | HNK-18.T1 | Logo dan identitas visual JitsuinFi | Dave #dave | 1 | TODO |
 | HNK-18.T2 | Tiga slide video (masalah, threat model, penutup) | Dave #dave | 1 | TODO |
-| HNK-18.T3 | Diagram arsitektur untuk README | Hans #hans (DEV-11, dari Dave) | 1 | DONE (`d99680b`): diagram mermaid di README |
+| HNK-18.T3 | Diagram arsitektur untuk README | Dave #dave (backup sementara: Hans #hans, DEV-11) | 1 | DONE (`d99680b`): diagram mermaid di README |
 
 ### Fase F6
 
@@ -276,7 +276,7 @@ Estimasi kasar; diperbarui di Exec Summary dengan jam aktual.
 | Task | Deskripsi | Owner | Jam | Status |
 |---|---|---|---|---|
 | HNK-14.T1 | Rekam dan edit video 2 menit | Dave #dave | 4 | TODO |
-| HNK-14.T2 | Deskripsi ≤ 2.000 karakter + pengungkapan AVAL | Hans #hans (DEV-11, dari Dave) | 1 | PARSIAL: draf di [[Submission - Deskripsi]] (1.801 karakter), menunggu review Dave dan Hans |
+| HNK-14.T2 | Deskripsi ≤ 2.000 karakter + pengungkapan AVAL | Dave #dave (backup sementara: Hans #hans, DEV-11) | 1 | PARSIAL: draf di [[Submission - Deskripsi]] (1.801 karakter), menunggu review Dave dan Hans |
 | HNK-14.T3 | Checklist publikasi repo (lisensi, README, txid) | Dex #dex | 1 | TODO |
 | HNK-14.T4 | Submit final dari akun pendaftar | Hans #hans | 1 | TODO |
 
@@ -319,5 +319,5 @@ SORT id ASC
 | DEV-08 | 2026-10-17 | HNK-06.T4, [[Format Data]] | Entri `settled` satu tanda tangan financier, commitment nol (`aff284d`) | Entri `settled` dua tanda tangan (buyer + financier) dan flag tepat waktu; AC-HNK-06.3 diuji ulang setelah HNK-19.T4 | Keputusan user D-19 | **Disetujui user 2026-10-17** |
 | DEV-09 | 2026-10-17 | HNK-02.T3 | Owner Dex | `financier_commitment` diimplementasikan Hans di `6b5c343` sebagai bagian HNK-05 dan **sudah ter-push** sebelum keputusan ini. Keputusan user: Dex tetap mengerjakan HNK-02.T3 secara independen; hasilnya dibandingkan dengan implementasi Hans dan test vector `c72255e7…2b3a`. Sama → dipakai; beda → diberi komentar; masih salah → diperbaiki. Porsi backlog diperbarui setelahnya | Dibutuhkan lebih dulu oleh HNK-05; seharusnya dicatat saat itu | **Keputusan user 2026-10-17**: tunggu Dex, bandingkan |
 | DEV-10 | 2026-10-17 | HNK-20, HNK-02 ([[Format Data]]) | Riwayat berantai dengan sertifikat yang hanya ditandatangani buyer | Rantai **dijangkarkan ke papan**: entri register jenis baru `0x03` (168 byte) membawa tag penerus, dan sertifikat memuat key supplier. Tanpa jangkar, buyer bisa membuat rantai cabang yang dinomori ulang untuk menyembunyikan gagal bayar. Entri `0x01` tetap valid. Estimasi HNK-20 naik dari 5 ke 7 jam | Celah ditemukan saat implementasi; jangkar dibutuhkan agar janji "riwayat buruk tidak bisa disembunyikan" benar | Dilaporkan ke user 2026-10-17 sebelum implementasi ("Oke gas riwayat berantai") |
-| DEV-11 | 2026-10-18 | HNK-01.T4, HNK-05.T5–T6, HNK-06.T5–T6, HNK-07.T3, HNK-07.T5, HNK-10.T1–T2, HNK-11.T1–T2, HNK-12.T1, HNK-15.T3, HNK-18.T3 | Owner Dave | Dikerjakan Hans (agent), lokal; Dave tetap me-review. Status tiap task diperbarui saat selesai; porsi beban kerja dihitung ulang setelahnya | Keputusan user D-25, supaya alur bisa jalan | **Disetujui user 2026-10-18** |
+| DEV-11 | 2026-10-18 | HNK-01.T4, HNK-05.T5–T6, HNK-06.T5–T6, HNK-07.T3, HNK-07.T5, HNK-10.T1–T2, HNK-11.T1–T2, HNK-12.T1, HNK-15.T3, HNK-18.T3 | Owner Dave | Owner tetap Dave; dikerjakan sementara oleh Hans (agent) sebagai backup, lokal; Dave me-review. Status tiap task diperbarui saat selesai; porsi beban kerja dihitung ulang setelahnya | Keputusan user D-25, supaya alur bisa jalan | **Disetujui user 2026-10-18** |
 | DEV-05 | 2026-10-16 | SPK-04 | [[Rencana Fase]]: SPK-04 spike kritis | SPK-04 tidak lagi kritis; gerbang F0 dihitung tanpa SPK-04 | D-15: Zodl opsional (keputusan user) | **Mengikuti keputusan user 2026-10-16** |
