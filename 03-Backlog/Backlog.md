@@ -260,6 +260,7 @@ Estimasi kasar; diperbarui di Exec Summary dengan jam aktual.
 | HNK-18.T1 | Logo dan identitas visual JitsuinFi | Dave #dave | 1 | TODO |
 | HNK-18.T2 | Tiga slide video (masalah, threat model, penutup) | Dave #dave | 1 | TODO |
 | HNK-18.T3 | Diagram arsitektur untuk README | Dave #dave (backup sementara: Hans #hans, DEV-11) | 1 | DONE (`d99680b`): diagram mermaid di README |
+| HNK-18.T4 | Landing page immersive (visual 65% / caption 35%, tanpa UI kartu kotak), setara PortoWeb | Dave #dave (backup sementara: Hans #hans, DEV-11) | 4 | TODO (pipeline genjutsu `paint`) |
 
 ### Fase F6
 
