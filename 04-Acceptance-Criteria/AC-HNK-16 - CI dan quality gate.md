@@ -25,7 +25,7 @@ Status per kriteria: `TODO` / `PASS` / `FAIL` / `BLOCKED`, wajib dengan tanggal 
 
 | ID | Kriteria | Status | Tanggal | Bukti |
 |---|---|---|---|---|
-| AC-HNK-16.1 | Satu perintah lokal (misalnya `just check` atau `make check`) menjalankan semua cek dan gagal kalau ada yang merah. | TODO | 2026-10-19 | `bash scripts/check.sh` ada di jitsuinfi-zcash PR #1 (`317d59b`) (fmt, check, clippy -D warnings, test, wasm build, gitleaks; `set -euo pipefail`). Belum dijalankan lokal: Rust belum terpasang di laptop Dex. |
+| AC-HNK-16.1 | Satu perintah lokal (misalnya `just check` atau `make check`) menjalankan semua cek dan gagal kalau ada yang merah. | PASS | 2026-10-19 | `bash scripts/check.sh` di laptop Dex (Windows, Rust 1.99.1): hijau exit 0 dalam 38 dtk; sengaja diberi format salah → berhenti di `cargo fmt --check`, exit 1 (U-HNK-16.1). gitleaks lokal belum terpasang (script memberi tahu; CI menjalankannya). |
 | AC-HNK-16.2 | Workflow GitHub Actions menjalankan cek yang sama dan hijau di branch utama. | TODO | 2026-10-19 | Hijau di PR (https://github.com/JitsuinFi/jitsuinfi-zcash/actions/runs/39152530625): rust 3m10s, gitleaks 6s. Hijau di `main` setelah PR di-merge. |
 | AC-HNK-16.3 | Secret scanning: 0 temuan; `.gitignore` mencakup seed, key, `.env`, dan DB wallet. | PASS | 2026-10-19 | gitleaks 8.21.2 seluruh riwayat: 0 temuan (https://github.com/JitsuinFi/jitsuinfi-zcash/actions/runs/39152530625). `.gitignore`: seed, mnemonic, age, `.env*`, sqlite/db, `wallet-*/` + ditambah `*.key`, `*.pem`, `keys/`. |
 | AC-HNK-16.4 | Test yang gagal memblokir merge. | BLOCKED | 2026-10-19 | Butuh branch protection `main` dengan dua job sebagai required check; pengaturan admin repo (Hans). |

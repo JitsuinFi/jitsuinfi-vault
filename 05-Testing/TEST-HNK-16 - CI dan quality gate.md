@@ -5,7 +5,7 @@ id: HNK-16
 phase: F1
 lead: Dex
 owners: [Dex]
-unit: TODO
+unit: PASS
 integrasi: PASS
 e2e: TODO
 updated: 2026-10-19
@@ -22,7 +22,7 @@ Logika murni, cepat, tanpa DB dan tanpa chain.
 
 | ID | Kasus | Hasil | Tanggal | Bukti |
 |---|---|---|---|---|
-| U-HNK-16.1 | Script cek lokal gagal dengan exit code ≠ 0 saat satu cek merah | TODO | 2026-10-19 | Script memakai `set -euo pipefail`; belum diuji lokal (Rust belum terpasang di laptop Dex). |
+| U-HNK-16.1 | Script cek lokal gagal dengan exit code ≠ 0 saat satu cek merah | PASS | 2026-10-19 | Format salah disisipkan sementara di `jitsuin-core/src/lib.rs` → `check.sh` berhenti di langkah fmt, exit 1; dikembalikan (git status bersih). Run hijau: exit 0, 38 dtk. |
 
 ## 2. Integrasi
 Skrip vs DB/chain sungguhan. Semua artefak memakai prefix `TES-` (invoice, akun, label, order).

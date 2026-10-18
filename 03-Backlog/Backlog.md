@@ -112,7 +112,7 @@ Estimasi kasar; diperbarui di Exec Summary dengan jam aktual.
 |---|---|---|---|---|
 | HNK-01.T1 | Desain struct invoice dan encoding kanonik deterministik | Hans #hans | 3 | DONE (`c0d6981`) |
 | HNK-01.T2 | Implementasi sign/verify Ed25519 (core) | Hans #hans | 2 | DONE (`c0d6981`) |
-| HNK-01.T3 | Unit test + file test vector | Dex #dex | 2 | TODO |
+| HNK-01.T3 | Unit test + file test vector | Dex #dex | 2 | REVIEW — jitsuinfi-zcash PR #2: 9 tes + vector independen (96/96 lulus lokal setelah rebase ke main) |
 | HNK-01.T4 | Sinkronkan [[Format Data]] dengan implementasi | Dave #dave (backup sementara: Hans #hans, DEV-11) | 1 | DONE: [[Format Data]] disinkronkan per item (HNK-01 – HNK-20) |
 
 **HNK-02 — Nullifier dan entri papan registry** · Lead Hans #hans · [[AC-HNK-02 - Nullifier dan entri papan registry|AC]]
@@ -128,7 +128,7 @@ Estimasi kasar; diperbarui di Exec Summary dengan jam aktual.
 
 | Task | Deskripsi | Owner | Jam | Status |
 |---|---|---|---|---|
-| HNK-16.T1 | Script cek lokal satu perintah | Dex #dex | 1 | REVIEW — `scripts/check.sh` di PR #1; belum diuji lokal |
+| HNK-16.T1 | Script cek lokal satu perintah | Dex #dex | 1 | REVIEW — `scripts/check.sh` di PR #1; lulus lokal 38 dtk, gagal benar saat merah |
 | HNK-16.T2 | Workflow GitHub Actions | Dex #dex | 2 | REVIEW — hijau di PR #1 (19 Okt) |
 | HNK-16.T3 | Secret scanning (gitleaks) + `.gitignore` seed/key/.env/DB wallet | Dex #dex | 1 | REVIEW — 0 temuan seluruh riwayat (PR #1) |
 

@@ -28,11 +28,11 @@ updated: 2026-10-19
 | Temuan secret | 0 | 0 (seluruh riwayat) |
 
 ## Status
-**PARSIAL** — CI hijau di PR. Belum: merge ke `main`, branch protection (AC-HNK-16.4, admin), uji script lokal (AC-HNK-16.1).
+**PARSIAL** — CI hijau di PR. Belum: merge ke `main`, branch protection (AC-HNK-16.4, admin), (16.1 sudah PASS lokal 19 Okt).
 
 ## Risiko tersisa
 - Tanpa branch protection, PR merah masih bisa di-merge.
-- Script lokal belum diuji di mesin Dex (Windows, Rust belum terpasang).
+- gitleaks belum terpasang lokal di mesin Dex (CI tetap menjalankannya).
 
 ## Bukti
 - Commit: `317d59b` (branch `dex/hnk-16-ci`, jitsuinfi-zcash PR #1 (`317d59b`))
