@@ -276,7 +276,7 @@ Estimasi kasar; diperbarui di Exec Summary dengan jam aktual.
 | Task | Deskripsi | Owner | Jam | Status |
 |---|---|---|---|---|
 | HNK-14.T1 | Rekam dan edit video 2 menit | Dave #dave | 4 | TODO |
-| HNK-14.T2 | Deskripsi ≤ 2.000 karakter + pengungkapan AVAL | Dave #dave | 1 | TODO |
+| HNK-14.T2 | Deskripsi ≤ 2.000 karakter + pengungkapan AVAL | Hans #hans (DEV-11, dari Dave) | 1 | PARSIAL: draf di [[Submission - Deskripsi]] (1.801 karakter), menunggu review Dave dan Hans |
 | HNK-14.T3 | Checklist publikasi repo (lisensi, README, txid) | Dex #dex | 1 | TODO |
 | HNK-14.T4 | Submit final dari akun pendaftar | Hans #hans | 1 | TODO |
 
