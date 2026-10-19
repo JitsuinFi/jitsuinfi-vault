@@ -212,16 +212,16 @@ Estimasi kasar; diperbarui di Exec Summary dengan jam aktual.
 
 | Task | Deskripsi | Owner | Jam | Status |
 |---|---|---|---|---|
-| HNK-08.T1 | Definisi dan validasi bucket diskon/tenor | Dex #dex | 2 | TODO |
-| HNK-08.T2 | Agregasi indeks + ambang k | Dex #dex | 2 | TODO |
+| HNK-08.T1 | Definisi dan validasi bucket diskon/tenor | Dex #dex | 2 | REVIEW — jitsuinfi-zcash PR #5 (`90a64c7`, ditumpuk di atas PR #4): tabel kelas, `classes_for`, `validate_classes`; tabel di [[Format Data]] |
+| HNK-08.T2 | Agregasi indeks + ambang k | Dex #dex | 2 | REVIEW — PR #5: `RateIndex`, `rate_index`, `jitsuin index`, k = 5 (D-27) |
 | HNK-08.T3 | Halaman indeks suku bunga di web | Dave #dave | 3 | TODO |
 
 **HNK-09 — Verifier CLI hanko verify** · Lead Dex #dex · [[AC-HNK-09 - Verifier CLI hanko verify|AC]]
 
 | Task | Deskripsi | Owner | Jam | Status |
 |---|---|---|---|---|
-| HNK-09.T1 | Perintah `jitsuin verify` (memakai ulang scanner) | Dex #dex | 3 | TODO |
-| HNK-09.T2 | Image Docker + instruksi `cargo install` | Dex #dex | 2 | TODO |
+| HNK-09.T1 | Perintah `jitsuin verify` (memakai ulang scanner) | Dex #dex | 3 | REVIEW — jitsuinfi-zcash PR #4 (`0bdd311`): crate `jitsuin-cli`, scan live via UFVK atau snapshot, cek bukti + bundel; 13 tes |
+| HNK-09.T2 | Image Docker + instruksi `cargo install` | Dex #dex | 2 | REVIEW — PR #4: `Dockerfile`, workflow `verifier-image.yml` (build dingin 9–15 mnt + `diff` contoh lulus), README. SPK-11 FAIL untuk build dari sumber → fallback image jadi menunggu izin Hans (D-28) |
 | HNK-09.T3 | README: perintah persis + output yang diharapkan | Dave #dave | 1 | TODO |
 
 **HNK-12 — Spesifikasi gaya ZIP Shielded Receivable Registry** · Lead Dave #dave · [[AC-HNK-12 - Spesifikasi gaya ZIP Shielded Receivable Registry|AC]]
