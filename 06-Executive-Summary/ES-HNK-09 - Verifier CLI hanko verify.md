@@ -26,11 +26,11 @@ updated: 2026-10-19
 ## Hasil vs KPI (angka riil)
 | KPI | Target | Aktual |
 |---|---|---|
-| Waktu instal sampai hasil | ≤ 10 menit | 9 mnt 10 dtk (`docker build` dingin 550 dtk di runner GitHub 4 vCPU + verifikasi contoh < 1 dtk); image 197 MB |
+| Waktu instal sampai hasil | ≤ 10 menit | **gagal untuk build dari sumber**: 9 mnt 10 dtk dan 14 mnt 28 dtk pada dua build dingin di runner GitHub 4 vCPU (550 dan 868 dtk, hampir semuanya kompilasi zcash-devtool) + verifikasi contoh < 1 dtk; image 197 MB. Jalur ≤ 10 mnt = image jadi (pull), menunggu izin Hans |
 | Langkah README yang gagal | 0 | 0 untuk contoh (CI menjalankan perintah README dan `diff`); papan sungguhan belum |
 
 ## Status
-**PARSIAL** — T1 dan T2 di PR #4 (menunggu review Hans). AC-HNK-09.1 dan AC-HNK-09.3 PASS, SPK-11 PASS. Sisa: scan papan sungguhan (UFVK papan, AC-HNK-09.2 dan I-HNK-09.1), README papan sungguhan (T3, Dave).
+**PARSIAL** — T1 dan T2 di PR #4 (menunggu review Hans). AC-HNK-09.3 PASS. AC-HNK-09.1 dan SPK-11 FAIL untuk build dari sumber (9–15 menit); fallback image jadi menunggu izin Hans (usulan D-28). Sisa: scan papan sungguhan (UFVK papan, AC-HNK-09.2 dan I-HNK-09.1), README papan sungguhan (T3, Dave).
 
 ## Risiko tersisa
 - Scan live butuh `zcash-devtool`, yang berat untuk di-build dari sumber. Jalur cepat untuk juri = image jadi (registry) atau binary prebuilt (fallback SPK-11); menerbitkannya butuh izin Hans.
