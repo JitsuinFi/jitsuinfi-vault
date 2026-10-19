@@ -1,16 +1,16 @@
 ---
 tags: [flow, dfd]
 status: DRAF
-updated: 2026-10-19
+updated: 2026-10-20
 ---
 
 # DFD-2.7 - Deteksi Pembiayaan Ganda
 
-**Bagian dari:** [[08 - FlowDiagrams]] · Legenda: [[FD-00 - Arsitektur Target dan Legenda]] · Induk: [[DFD-1 - Proses Utama]] · Sequence: [[SEQ-03 - Financier]] · [[SEQ-01 - Supplier]]
+**Bagian dari:** [[08 - FlowDiagrams]] · Legenda: [[FD-00 - Arsitektur Target dan Legenda]] · Induk: [[DFD-1 - Proses Utama]] · Sequence: [[SEQ-03 - Financier]] · [[SEQ-01 - Supplier]] · [[SEQ-04 - Verifier dan Orang Luar]]
 
-Proses 7.0 dirinci: mulai dari state `Stopped` yang ditulis 3.5 atau 3.9, financier menyusun dan memverifikasi bukti bahwa supplier menandatangani N yang sama untuk dua financier. Bukti hanya bisa dibuat kalau financier sudah memegang entri yang ditawarkan supplier untuknya (lihat [[SEQ-03 - Financier]]). Dasar: `jitsuin-board` (`lookup`, `proof_from_offer`, `verify_proof_on_board`), wasm `doubleSignProof`, `verifyProof`, `jitsuin-core::proof`.
+Proses 7.0 dirinci: mulai dari state `Stopped` (ditulis 3.5, 3.9, atau 4.5), financier menyusun dan memverifikasi bukti bahwa supplier menandatangani N yang sama untuk dua financier. Dua kasus: `DoubleFinanced` (kedua entri sudah di papan, bukti lengkap) dan `AlreadyFinanced` (hanya entri lawan di papan; bukti hanya bila financier sudah memegang entri yang ditawarkan untuknya, P-14). Dasar: `jitsuin-board` (`lookup`, `proof_from_lookup`, `proof_from_offer`, `verify_proof_on_board`), wasm `doubleSignProof`, `verifyProof`, `jitsuin-core::proof`.
 
-Satu jalur = satu proses. Kotak bertanda `*` adalah entitas atau penyimpanan yang sama, digambar ulang supaya garis tidak bersilang. Kotak bergaris putus-putus kuning = usulan.
+Satu jalur = satu proses. Kotak bertanda `*` adalah entitas atau penyimpanan yang sama, digambar ulang supaya garis tidak bersilang. Proses bergaris penuh = ADA atau PARSIAL (rinciannya di kolom Status), kuning putus-putus = USULAN.
 
 ![DFD-2.7](assets/dfd-2-7.svg)
 
@@ -20,13 +20,13 @@ Satu jalur = satu proses. Kotak bertanda `*` adalah entitas atau penyimpanan yan
 left to right direction
 skinparam nodesep 12
 skinparam ranksep 35
-rectangle "Verifier\n(juri, auditor)" <<entity>> as V_5
-rectangle "D4 | Dokumen deal\n(lokal) *" <<store>> as D4_5
+rectangle "Verifier\n(juri, auditor,\norang luar)" <<entity>> as V_5
+rectangle "D4 | Dokumen deal\n(salinan tiap pihak) *" <<store>> as D4_5
 rectangle "Financier *" <<entity>> as F_4
 rectangle "D10 | Hasil pindai papan\n(node, memori) *" <<store>> as D10_4
-rectangle "D4 | Dokumen deal\n(lokal) *" <<store>> as D4_4
-rectangle "D4 | Dokumen deal\n(lokal) *" <<store>> as D4_3
-rectangle "D4 | Dokumen deal\n(lokal)" <<store>> as D4_2
+rectangle "D4 | Dokumen deal\n(salinan tiap pihak) *" <<store>> as D4_4
+rectangle "D4 | Dokumen deal\n(salinan tiap pihak) *" <<store>> as D4_3
+rectangle "D4 | Dokumen deal\n(salinan tiap pihak)" <<store>> as D4_2
 rectangle "D10 | Hasil pindai papan\n(node, memori)" <<store>> as D10_2
 rectangle "Financier" <<entity>> as F_1
 rectangle "D11 | Status deal\n(node, memori)" <<store>> as D11_1
@@ -37,14 +37,14 @@ rectangle "**7.2**\nKumpulkan\ndua entri" <<process>> as P2
 rectangle "**7.1**\nBaca status\nberhenti" <<process>> as P1
 rectangle "F7.01 Stopped: AlreadyFinanced\n/ DoubleFinanced" <<flow>> as f_F7_01
 rectangle "F7.02 berhenti,\ntanpa transaksi" <<flow>> as f_F7_02
-rectangle "F7.03 entri pertama\n+ posisi" <<flow>> as f_F7_03
-rectangle "F7.04 entri yang ditawarkan\n(bila ada)" <<flow>> as f_F7_04
+rectangle "F7.03 entri pertama dan entri\nkonflik + posisi" <<flow>> as f_F7_03
+rectangle "F7.04 entri yang ditawarkan\n(AlreadyFinanced, P-14)" <<flow>> as f_F7_04
 rectangle "F7.05 pasangan entri" <<flow>> as f_F7_05
 rectangle "F7.06 invoice, sig_buyer,\npasangan entri + posisi" <<flow>> as f_F7_06
 rectangle "F7.07 bukti JTSP" <<flow>> as f_F7_07
 rectangle "F7.08 bukti" <<flow>> as f_F7_08
-rectangle "F7.09 posisi di papan" <<flow>> as f_F7_09
-rectangle "F7.10 Caught" <<flow>> as f_F7_10
+rectangle "F7.09 posisi di papan\n(CLI)" <<flow>> as f_F7_09
+rectangle "F7.10 Caught (web: posisi\nhanya diklaim)" <<flow>> as f_F7_10
 rectangle "F7.11 bukti" <<flow>> as f_F7_11
 rectangle "F7.12 bukti (unduh)" <<flow>> as f_F7_12
 P1 <-- f_F7_01
@@ -86,11 +86,11 @@ sp_P3_b -[hidden]- P3
 
 | Proses | Isi | Status | Kode / item |
 |---|---|---|---|
-| 7.1 Baca status berhenti | `Stopped` ditulis 3.5 atau 3.9; tidak ada uang yang bergerak | ADA | `Flow::on_board`, `Stop` |
-| 7.2 Kumpulkan dua entri | Entri pertama dari papan (dengan posisi) + entri yang ditawarkan supplier ke financier ini (dari 3.7). Tanpa entri tawaran, hanya `AlreadyFinanced`, tanpa bukti | ADA | `proof_from_offer` |
-| 7.3 Susun bukti JTSP | Invoice + tanda tangan buyer + dua entri berbeda komitmen + posisi papan | PARSIAL: wasm `doubleSignProof` tidak mengisi posisi, jadi `jitsuin verify` menolaknya; `proof_from_offer` di `jitsuin-board` mengisinya; layar Financier belum punya kartu bukti | wasm `doubleSignProof`, `proof_from_offer` |
-| 7.4 Verifikasi bukti | Offline + posisi di papan | ADA | wasm `verifyProof`, `verify_proof_on_board` |
-| 7.5 Serahkan bukti | Unduh di layar Verify; hanya ke pihak berwenang | ADA | `src/pages/verify.ts` |
+| 7.1 Baca status berhenti | `Stopped` ditulis 3.5, 3.9, atau cek terakhir 4.5; tidak ada uang yang bergerak | ADA | `Flow::on_board`, `Stop` |
+| 7.2 Kumpulkan dua entri | `DoubleFinanced`: entri pertama dan entri konflik, keduanya dengan posisi (`proof_from_lookup`). `AlreadyFinanced`: entri pertama dari papan + entri yang ditawarkan supplier ke financier ini (`proof_from_offer`); di urutan sekarang entri tawaran tidak pernah ada karena entri diminta hanya setelah `NotFound` | PARSIAL: fungsi ADA tanpa pemanggil di node; entri tawaran USULAN P-14 | `proof_from_lookup`, `proof_from_offer` |
+| 7.3 Susun bukti JTSP | Invoice + tanda tangan buyer + dua entri berbeda komitmen + posisi papan. JTSP membuktikan dua tanda tangan, bukan niat menipu (lihat P-14) | PARSIAL: wasm `doubleSignProof` tidak mengisi posisi (ditolak `jitsuin verify`); layar Financier belum punya kartu bukti | wasm `doubleSignProof`, `jitsuin-board` |
+| 7.4 Verifikasi bukti | CLI: `DoubleSignProof::verify` + `verify_proof_on_board` (ADA). Web: `verifyProof` offline saja; posisi papan hanya diklaim dan file papan yang diunggah tidak dipakai, jadi hasil web bisa berbeda dari CLI | ADA (CLI) / PARSIAL (web) | `jitsuin-cli::verify::check_proof`, wasm `verifyProof` |
+| 7.5 Serahkan bukti | Unduh di layar Verify; hanya ke pihak berwenang (juri, auditor, pengadilan), bukan ke supplier | ADA | `src/pages/verify.ts` |
 
 ## Aliran data
 
@@ -98,13 +98,13 @@ sp_P3_b -[hidden]- P3
 |---|---|---|---|
 | F7.01 | D11 Status deal (node, memori) | 7.1 Baca status berhenti | Stopped: AlreadyFinanced / DoubleFinanced |
 | F7.02 | 7.1 Baca status berhenti | Financier | berhenti, tanpa transaksi |
-| F7.03 | D10 Hasil pindai papan (node, memori) | 7.2 Kumpulkan dua entri | entri pertama + posisi |
-| F7.04 | D4 Dokumen deal (lokal) | 7.2 Kumpulkan dua entri | entri yang ditawarkan (bila ada) |
-| F7.05 | 7.2 Kumpulkan dua entri | D4 Dokumen deal (lokal) | pasangan entri |
-| F7.06 | D4 Dokumen deal (lokal) | 7.3 Susun bukti JTSP | invoice, sig_buyer, pasangan entri + posisi |
-| F7.07 | 7.3 Susun bukti JTSP | D4 Dokumen deal (lokal) | bukti JTSP |
-| F7.08 | D4 Dokumen deal (lokal) | 7.4 Verifikasi bukti | bukti |
-| F7.09 | D10 Hasil pindai papan (node, memori) | 7.4 Verifikasi bukti | posisi di papan |
-| F7.10 | 7.4 Verifikasi bukti | Financier | Caught |
-| F7.11 | D4 Dokumen deal (lokal) | 7.5 Serahkan bukti | bukti |
-| F7.12 | 7.5 Serahkan bukti | Verifier (juri, auditor) | bukti (unduh) |
+| F7.03 | D10 Hasil pindai papan (node, memori) | 7.2 Kumpulkan dua entri | entri pertama dan entri konflik + posisi |
+| F7.04 | D4 Dokumen deal (salinan tiap pihak) | 7.2 Kumpulkan dua entri | entri yang ditawarkan (AlreadyFinanced, P-14) |
+| F7.05 | 7.2 Kumpulkan dua entri | D4 Dokumen deal (salinan tiap pihak) | pasangan entri |
+| F7.06 | D4 Dokumen deal (salinan tiap pihak) | 7.3 Susun bukti JTSP | invoice, sig_buyer, pasangan entri + posisi |
+| F7.07 | 7.3 Susun bukti JTSP | D4 Dokumen deal (salinan tiap pihak) | bukti JTSP |
+| F7.08 | D4 Dokumen deal (salinan tiap pihak) | 7.4 Verifikasi bukti | bukti |
+| F7.09 | D10 Hasil pindai papan (node, memori) | 7.4 Verifikasi bukti | posisi di papan (CLI) |
+| F7.10 | 7.4 Verifikasi bukti | Financier | Caught (web: posisi hanya diklaim) |
+| F7.11 | D4 Dokumen deal (salinan tiap pihak) | 7.5 Serahkan bukti | bukti |
+| F7.12 | 7.5 Serahkan bukti | Verifier (juri, auditor, orang luar) | bukti (unduh) |
