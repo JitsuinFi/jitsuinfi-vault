@@ -77,4 +77,4 @@ Dasar D-29: total 176 jam, Hans 91 (termasuk HNK-21 14 jam dan HNK-05.T4 2 jam y
 | Dave | 48 | 17 (P-01, P-02, P-07, P-09, P-11, K-2, K-9, K-11) | 65 | 28,1% | 30% |
 | **Total** | 176 | 55 | 231 | | |
 
-Selisih Dave −1,9% dan Hans +0,7% bisa ditutup dengan memindahkan K-6 dan K-10 (2 jam) ke Dave: Hans 92 (39,8%), Dex 72 (31,2%), Dave 67 (29,0%). Angka dihitung ulang saat item dibuat di [[Backlog]].
+Selisih Dave −1,9% dan Hans +0,7% bisa ditutup dengan memindahkan K-6 dan K-10 (2 jam) ke Dave: Hans 92 (39,8%), Dex 72 (31,2%), Dave 67 (29,0%). Angka dihitung ulang saat item dibuat di [[Backlog]]. Celah tambahan dari penelusuran business flow dan porsi gabungannya ada di [[FD-02 - Penelusuran Business Flow ke Backlog]].
