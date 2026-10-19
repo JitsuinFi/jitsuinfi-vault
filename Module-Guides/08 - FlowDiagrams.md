@@ -9,7 +9,7 @@ tags: [module, "08"]
 Kembali: [[START-HERE]]
 
 ## Mulai di sini
-- [[08-FlowDiagrams/FD-00 - Arsitektur Target dan Legenda]]: legenda status, notasi, komponen target, dan 10 usulan (P-01 – P-10) yang perlu keputusan Hans.
+- [[08-FlowDiagrams/FD-00 - Arsitektur Target dan Legenda]]: legenda status, notasi, komponen target, dan 14 usulan (P-01 – P-14) yang perlu keputusan Hans.
 - [[08-FlowDiagrams/PG-01 - Peta Halaman per Peran]]: halaman target per peran.
 
 ## Sequence diagram (satu peran satu sequence)

@@ -50,6 +50,17 @@ W -> X : invoiceDecode + bundleBuild/verifyBundle(invoice, sig_buyer)
 X --> W : N, nominal, jatuh tempo, tanda tangan buyer valid
 O -> W : tentukan advance, min_confirmations (>= 1), bucket diskon/tenor
 
+== 1b. Siapkan komitmen dan surat (sebelum Flow::new) ==
+API -> API : salt 32 byte CSPRNG (USULAN P-08), commitment = BLAKE2b(financier_pk || salt);\nkelas diskon/tenor dari classes_for (belum dipanggil: entri selalu 0/0)
+O -> W : unggah PDF surat, isi alamat bayar shielded financier
+W -> X : documentHash(PDF) lalu assignmentEncode(invoice, financier_pk, alamat, terms_hash)
+X --> W : surat JTSA
+W -> R : pembuka komitmen {financier_pk, salt}, kelas + surat ke supplier;\nsurat ke buyer
+note right of W #E7F3EA
+Flow::new butuh surat dan komitmen (assignment.verify di awal).
+Seal boleh dikumpulkan lebih awal, tetapi baru diterapkan di AwaitAssignment
+end note
+
 == 2. Cek riwayat buyer (HNK-20, bila policy mewajibkan) ==
 W -> R : minta riwayat ke buyer
 B -> R : sertifikat 0..k-1, sertifikat k baru, identity_pk
@@ -61,12 +72,15 @@ API -> API : check_buyer: verify_history (rantai dari 0, jangkar papan,\nallowli
 alt di bawah standar / rantai tidak valid
   API --> W : BelowStandard / History error
   W --> O : tolak deal, tanpa transaksi
+else entri palsu bertag penerus (griefing, Spec #1)
+  API --> W : UndisclosedSuccessor
+  W --> O : riwayat ditolak walau buyer jujur;\nbelum ada jalur bantahan
 else lulus
   API --> W : laporan (on_time, late, defaults, open) + history_tag
 end
 
 == 3. Cek papan untuk N (state Check) ==
-W -> API : POST /deals {invoice, sig, surat?, alamat supplier, advance, history_tag}
+W -> API : POST /node/deals {invoice, sig, surat, komitmen, alamat supplier,\nadvance, min_confirmations, history_tag}
 API -> FL : Flow::new(Deal) (cek min_confirmations, advance, alamat, surat milik invoice)
 FL --> API : state Check
 API -> WB : sync (lightwalletd)
@@ -87,19 +101,25 @@ alt NotFound
 else Registered oleh komitmen lain
   FL --> API : Stopped(AlreadyFinanced)
   API --> W : "Invoice sudah dibiayai financier lain"
+else Registered oleh komitmen sendiri (lanjut setelah crash)
+  FL --> API : AwaitConfirmation / AwaitAssignment
 else DoubleFinanced
-  FL --> API : Stopped(DoubleFinanced) (bukti, lihat bagian 8)
+  FL --> API : Stopped(DoubleFinanced) (bukti, lihat jalur financier B)
 end
 
 == 4. Minta tanda tangan supplier atas entri ==
-API -> API : salt 32 byte CSPRNG (USULAN P-08),\ncommitment = BLAKE2b(financier_pk || salt)
-API -> R : pembuka komitmen {financier_pk, salt}, bucket, history_tag
-R -> S : pembuka komitmen
+API -> R : minta entri untuk komitmen ini (+ history_tag)
+R -> S : permintaan (pembuka komitmen sudah dikirim di 1b)
 S -> R : entri register bertanda tangan
 R -> API : entri
 API -> FL : Event SupplierSigned(entri)
 FL -> FL : check_entry: jenis register, N, commitment,\ntag riwayat, tanda tangan supplier
 FL --> API : Register
+note right of FL #FDECEC
+Tidak ada cek papan ulang antara SupplierSigned dan posting, dan
+register() tidak punya pemulihan seperti sent_advance: crash sebelum
+tertambang bisa membuat posting ganda (entri bertag ganda = Equivocation)
+end note
 
 == 5. Posting entri dan tunggu konfirmasi ==
 API -> WF : sync
@@ -119,15 +139,11 @@ ADA: wait_for_confirmation. Reorg (entri hilang) kembali ke
 AwaitConfirmation; konflik baru menjadi Stopped
 end note
 
-== 6. Surat pengalihan dan seal ==
-O -> W : unggah PDF surat, isi alamat bayar shielded financier
-W -> X : documentHash(PDF) lalu assignmentEncode(invoice, financier_pk, alamat, terms_hash)
-X --> W : surat JTSA
-W -> R : surat ke supplier dan buyer
+== 6. Kumpulkan seal (surat dikirim di 1b) ==
 S -> R : seal s0
 B -> R : seal s1
 R --> W : s0, s1
-W -> API : POST /deals/N/seals [s0, s1]
+W -> API : POST /node/deals/N/seals [s0, s1]
 API -> FL : Event AssignmentSealed([s0, s1])
 FL -> FL : assignment.verify: rantai Supplier lalu Buyer,\nlangkah berikut = Financier
 FL --> API : Pay
@@ -149,6 +165,10 @@ FL --> API : Done
 API -> R : txid + memo advance ke supplier (USULAN)
 
 == 8. Watchdog pelunasan (sampai jatuh tempo + tenggang) ==
+note right of API #DDEBFA
+PARSIAL: fungsi ADA; penjadwal berkala belum ada. Posting settled memakai
+spending key, padahal D-23 menulis watchdog akses baca saja (P-12)
+end note
 loop berkala
   API -> WF : sync + enhance + list_tx
   API -> API : repayment(txs, dokumen pelunasan, buyer_pk):\nkuitansi pelunasan untuk N, ditandatangani buyer_pk,\nnominal = nilai output; klaim buyer dikumpulkan
@@ -178,8 +198,12 @@ W --> O : unduh / kirim ke pihak berwenang
 group financier B menerima invoice yang sama
   API -> API : lookup = Registered (entri financier A lebih dulu)
   FL --> API : Stopped(AlreadyFinanced), tanpa transaksi
-  W -> X : doubleSignProof(invoice, sig_buyer, memo entri A dari papan,\nmemo entri B yang ditawarkan supplier)
-  X --> W : bukti JTSP
+  API -> API : proof_from_offer(entri A di papan + posisi, entri B yang ditawarkan)\n(hanya bila supplier sudah memberi entri B, P-14)
+  API --> W : bukti JTSP dengan posisi papan
+  note right of W #FDECEC
+  wasm doubleSignProof tidak mengisi posisi papan;
+  bukti seperti itu ditolak jitsuin verify
+  end note
   W --> O : "Caught: supplier menandatangani invoice ini dua kali"
 end
 
@@ -195,12 +219,12 @@ end
 
 | State | Masuk dari | Keluar ke | Uang bergerak? |
 |---|---|---|---|
-| `Check` | `Flow::new` | `AwaitSupplierSignature`, `Stopped` | Tidak |
+| `Check` | `Flow::new` | `AwaitSupplierSignature`; `AwaitConfirmation` / `AwaitAssignment` (entri sendiri sudah ada, lanjut setelah crash); `Stopped` | Tidak |
 | `AwaitSupplierSignature` | papan `NotFound` | `Register` (entri lolos `check_entry`) | Tidak |
 | `Register` | `SupplierSigned` | `AwaitConfirmation` | Hanya 10 000 zat ke papan |
 | `AwaitConfirmation` | `EntryPosted`, reorg | `AwaitAssignment`, `Stopped` | Tidak |
-| `AwaitAssignment` | konfirmasi ≥ `min_confirmations` | `Pay` (seal Supplier + Buyer valid) | Tidak |
-| `Pay` | `AssignmentSealed` | `Done`, atau mundur bila cek terakhir gagal | Advance + seal financier dalam satu transaksi |
+| `AwaitAssignment` | konfirmasi ≥ `min_confirmations` | `Pay` (seal Supplier + Buyer valid); `AwaitConfirmation` (reorg); `Stopped` (konflik baru) | Tidak |
+| `Pay` | `AssignmentSealed` | `Done`; `AwaitConfirmation` (reorg); `Stopped` (konflik baru) | Advance + seal financier dalam satu transaksi |
 | `Done` | `AdvanceSent` | — | — |
 | `Stopped` | `AlreadyFinanced` / `DoubleFinanced` | — | Tidak pernah |
 
@@ -209,8 +233,10 @@ end
 | Bagian | Status | Catatan |
 |---|---|---|
 | 1, 6, 9 (konsol) | PARSIAL | Layar Financier punya kartu surat, riwayat, bundel; penawaran lewat relay belum |
-| 2 riwayat | ADA (flow, wasm) | `check_buyer`, `verifyHistory` |
+| 2 riwayat | PARSIAL | `check_buyer` ADA di flow; layar Financier hanya `verifyHistory` tanpa standar minimal |
 | 3–5, 7 state machine dan wallet | ADA, diuji testnet (TEST-HNK-19 I-HNK-19.1) | Dijalankan lewat scratchpad CLI, belum lewat API |
 | API node | USULAN | HNK-05.T3 (Dex), HNK-05.T4 (integrasi layar) |
-| 8 watchdog | ADA | `settlement::Repayment::status`, `post_settled` |
+| 8 watchdog | PARSIAL | Fungsi ADA (`Repayment::status`, `post_settled`); penjadwal belum ada; konflik dengan D-23 (P-12) |
+| Jalur B (bukti) | PARSIAL | Butuh entri B sebelum cek papan (P-14); wasm `doubleSignProof` tanpa posisi papan |
+| Jaringan | — | Development di testnet (D-13, `testnet.zec.rocks`); mainnet hanya demo akhir |
 | Salt CSPRNG di library | USULAN P-08 | |
