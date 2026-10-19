@@ -37,6 +37,7 @@ database "Chain Zcash\n(papan registry)" as C
 
 == A. CLI: jitsuin verify (paling kuat) ==
 J -> CLI : jitsuin verify --ufvk <UFVK papan> --birthday <tinggi>\n--proof bukti.txt --bundle bundel.txt
+note right of J #FFF6D6 : UFVK + birthday papan belum dipublikasikan (D-11 masih usulan)
 CLI -> CLI : parse argumen, jaringan dari awalan UFVK (uview1 / uviewtest1)
 alt wallet watch-only belum ada
   CLI -> WB : init-fvk(UFVK, birthday)
@@ -52,7 +53,7 @@ LW --> CLI : urutan
 CLI -> CLI : collect: register, settled, rejected; urut total
 loop setiap --proof
   CLI -> CLI : DoubleSignProof::verify (tanda tangan buyer, N, dua entri\nbertanda tangan supplier, komitmen berbeda)
-  CLI -> CLI : verify_proof_on_board (posisi yang diklaim ada di papan,\nentri pertama sebelum kedua)
+  CLI -> CLI : verify_proof_on_board (posisi yang diklaim ada di papan,\nentri pertama sebelum kedua); bukti tanpa posisi entri pertama = FAIL
 end
 loop setiap --bundle
   CLI -> CLI : Bundle::verify (tanda tangan buyer, surat + rantai seal,\ndokumen pelunasan)
@@ -78,12 +79,16 @@ R --> W : memo papan
 W --> OL : halaman indeks (HNK-08.T3, belum ada)
 
 == D. Web: layar Verify ==
-J -> W : tempel bundel (JTSB) atau bukti (JTSP)
+J -> W : buka /app.html#/verify, tempel bundel (JTSB) atau bukti (JTSP)
 alt bundel
   W -> X : verifyBundle(bundel)
   X --> W : N, invoice_id, nominal, jatuh tempo, status surat
-  W -> R : GET snapshot papan
-  R --> W : memo papan
+  alt saat ini (ADA)
+    J -> W : unggah file snapshot papan (JSON)
+  else target (USULAN P-06, P-11)
+    W -> R : GET /api/board (same-origin)
+    R --> W : snapshot papan
+  end
   W -> X : bundleOnBoard(bundel, snapshot)
   X --> W : register: Registered / NotFound / DoubleFinanced;\nsettled: {txid, on_time}
 else bukti tanda tangan ganda
@@ -92,7 +97,7 @@ else bukti tanda tangan ganda
   W --> J : banner "Caught", unduh bukti
 end
 note right of W #DDEBFA
-PARSIAL: layar Verify ADA; snapshot papan sekarang ditempel manual
+PARSIAL: layar Verify ADA; snapshot papan sekarang diunggah sebagai file
 (P-06 belum). Snapshot dari relay = kepercayaan pada kelengkapan;
 keputusan akhir tetap lewat jitsuin verify
 end note
@@ -100,7 +105,7 @@ end note
 == E. Orang luar ==
 OL -> C : buka block explorer
 C --> OL : transaksi shielded: waktu blok, jumlah action, fee;\nisi memo, nominal, alamat tersembunyi
-OL -> W : halaman "What outsiders see"
+OL -> W : halaman "What outsiders see" (/app.html#/outsider)
 W --> OL : tabel publik vs tersembunyi + kartu explorer
 OL -> W : tempel satu memo papan
 W -> X : boardMemoDescribe(memo)

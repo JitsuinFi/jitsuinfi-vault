@@ -34,7 +34,7 @@ end box
 U -> W : buka /app.html, klik **Daftar**
 W -> W : cek PublicKeyCredential + isSecureContext
 alt browser tanpa WebAuthn atau bukan HTTPS
-  W --> U : "Perangkat tidak mendukung passkey"\n(mode demo: test secret TES-)
+  W --> U : "Perangkat tidak mendukung passkey"\n(mode demo: test secret 64 hex, hanya data uji)
 end
 U -> W : pilih peran: Supplier / Buyer / Financier / Anggota dana
 W -> A : navigator.credentials.create()\nrp = jitsuinfi.vercel.app, user.id acak 16 byte,\nresidentKey required, userVerification required,\nextensions.prf = {}
@@ -62,7 +62,7 @@ else peran = Financier (USULAN P-05)
 end
 W -> X : key kotak surat X25519 dari PRF second
 X --> W : mailbox_pk
-W -> R : POST /mailbox {mailbox_pk, bukti kepemilikan}
+W -> R : POST /api/mailbox {mailbox_pk, bukti kepemilikan}\n(same-origin, P-11)
 note over R #FFF6D6
 USULAN P-04: server hanya menyimpan
 mailbox_pk, id kotak surat, dan
@@ -70,7 +70,11 @@ ciphertext; tanpa nama, email, IP log
 end note
 R --> W : mailbox_id
 W -> L : simpan profil non-rahasia:\nperan, credential id, label\n(try/catch; boleh hilang)
-W --> U : kartu kontak (QR): peran, key publik,\nmailbox_id; dibagikan ke rekan deal
+W --> U : kartu kontak: peran, mailbox_id, key publik peran\n(buyer: tanpa identity_pk; invoice_pk diberikan per invoice)
+note right of W #FFF6D6
+QR dipindai di luar browser atau ditempel:
+Permissions-Policy camera=() memblokir kamera
+end note
 
 == Masuk (uji stateless) ==
 U -> W : klik **Masuk** (perangkat apa pun)
@@ -85,7 +89,7 @@ Tidak ada yang dibaca dari server atau localStorage
 untuk membangun identitas: localStorage boleh kosong
 (perangkat baru, mode private). Profil hanya memudahkan.
 end note
-W -> R : GET /mailbox/<id> (ciphertext baru)
+W -> R : GET /api/mailbox/<id> (ciphertext baru)
 R --> W : daftar ciphertext
 W -> X : dekripsi dengan key kotak surat
 X --> W : dokumen deal masuk\n(invoice, tanda tangan, surat, seal, ...)
@@ -96,8 +100,9 @@ W -> A : credentials.get() dengan salt peran lain
 A --> W : PRF peran itu
 note over W #FFF6D6
 USULAN P-02: key tiap peran terisolasi.
-Satu key tidak bisa memegang dua role
-dalam satu surat (SelfApproval di jitsuin-core)
+SelfApproval di jitsuin-core hanya membandingkan key,
+jadi satu orang yang memegang dua peran dengan key
+berbeda tidak tertangkap; larangan itu kebijakan
 end note
 
 == Sesi dan stempel (P-07) ==
@@ -114,15 +119,28 @@ loop setiap tindakan menandatangani (stempel)
 end
 W -> W : kunci otomatis setelah 15 menit idle\natau tab ditutup: key dihapus dari memori
 
+== Pairing node financier (P-05, sekali saat setup) ==
+U -> NF : siapkan node: zcash-devtool init (seed dibuat dan disimpan di node),\nkey financier, init-fvk UFVK papan (watch-only)
+note right of NF #FFF6D6 : USULAN; sekarang dijalankan manual lewat CLI (scratchpad cycle-it)
+U -> W : buka konsol node, "Pasangkan passkey"
+W -> NF : GET /node/pairing/challenge (kode pairing sekali pakai dari layar node)
+NF --> W : challenge + kode
+W -> A : credentials.create() untuk rp konsol, userVerification required
+A -> U : verifikasi
+U -> A : verifikasi
+A --> W : attestation (public key credential)
+W -> NF : POST /node/pairing {attestation, kode}
+NF -> NF : simpan public key credential (D9)
+
 == Masuk ke konsol node financier (P-05) ==
 U -> W : buka konsol financier
-W -> NF : GET /session/challenge
+W -> NF : GET /node/session/challenge\n(same-origin, P-11)
 NF --> W : challenge acak
 W -> A : credentials.get({challenge, allowCredentials = credential financier})
 A -> U : verifikasi
 U -> A : verifikasi
 A --> W : assertion (authenticatorData, clientDataJSON, signature)
-W -> NF : POST /session {assertion}
+W -> NF : POST /node/session {assertion}
 NF -> NF : verifikasi signature dengan public key\ncredential yang didaftarkan saat pairing
 NF --> W : cookie sesi httpOnly, SameSite=Strict
 note over NF #DDEBFA
@@ -142,13 +160,16 @@ end note
 | Daftar | Turunan key buyer `identity_pk`, `invoice_pk(k)` | ADA | `jitsuin-core::history::BuyerIdentity`, wasm `buyerKeys` |
 | Daftar | Key per invoice supplier dari master | USULAN P-03 | menggantikan `downloadSecret` di `src/pages/supplier.ts` |
 | Daftar | Kotak surat dan kartu kontak | USULAN P-04 | — |
-| Masuk | Key identik di perangkat baru | ADA (buyer, sifat PRF) | uji manual di TEST-HNK-10 |
+| Masuk | Key identik di perangkat baru (credential tersinkron yang sama) | Belum diuji | sifat PRF; belum ada kasus di TEST-HNK-10 |
 | Sesi | Key hanya di memori modul | ADA (buyer) | U-HNK-10.3 di TEST-HNK-10 |
 | Sesi | Satu sentuhan per stempel, kunci 15 menit | USULAN P-07 | — |
-| Konsol financier | Assertion passkey ke node | USULAN P-05 | API HNK-05.T3 |
+| Pairing node | Seed dan key dibuat di node, UFVK papan diimpor, public key credential disimpan | USULAN P-05 | sekarang manual lewat CLI |
+| Konsol financier | Assertion passkey ke node, same-origin | USULAN P-05, P-11 | API HNK-05.T3 |
 
 ## Catatan keamanan
 
 - Output PRF tidak pernah keluar dari browser dan tidak pernah disimpan. Yang disimpan lokal hanya profil non-rahasia (peran, id credential).
 - WebAuthn mengikat passkey ke domain (`rp.id`). Ganti domain = passkey baru = key baru. Domain final harus dipilih sebelum ada pengguna sungguhan.
-- Perangkat tanpa PRF (sebagian authenticator lama) tidak bisa memakai alur ini; mode demo memakai test secret berawalan `TES-`, tidak untuk dana sungguhan.
+- Perangkat tanpa PRF (sebagian authenticator lama) tidak bisa memakai alur ini; mode demo memakai test secret 64 karakter hex, hanya untuk data uji berawalan `TES-`, tidak untuk dana sungguhan.
+- CSP `connect-src 'self'` memblokir panggilan ke origin lain. Relay dan node harus dijangkau lewat path same-origin (misalnya rewrite Vercel `/api/*` ke relay) atau konsol disajikan oleh node itu sendiri (P-11). Cookie `SameSite=Strict` hanya bekerja di origin yang sama.
+- Kartu kontak buyer tidak memuat `identity_pk`: siapa pun yang memegangnya bisa menghitung tag riwayat pertama buyer ([[Threat Model]]).

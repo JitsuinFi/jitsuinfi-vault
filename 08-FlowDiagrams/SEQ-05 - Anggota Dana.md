@@ -34,6 +34,7 @@ ZM -> C : transaksi shielded
 MG -> MG : catat setoran sebagai daun Merkle sum tree\n(id anggota acak, nominal)
 note right of MG #FFF6D6 : USULAN: HNK-15.T1 (Dex) belum ada
 MG -> M : kuitansi setoran + bukti inklusi daun (lewat relay, terenkripsi)
+MG -> C : pindahkan dana dari akun setoran ke akun operasional\n(akun setoran: viewing key hanya untuk auditor)
 
 == 2. Dana membiayai invoice ==
 MG -> C : advance per invoice (SEQ-03): memo = kuitansi advance\n+ seal + catatan piutang JTN1 (N, nilai, jatuh tempo)
@@ -41,15 +42,15 @@ C -> MG : pelunasan buyer masuk ke akun operasional (memo kuitansi pelunasan)
 
 == 3. Laporan periode ==
 MG -> C : self-send ke akun operasional: root kewajiban JTLR\n(periode, root, total kewajiban, key manajer, tanda tangan)
-note right of MG #E7F3EA : ADA: format JTLR dan verifikasinya (HNK-15.T2)
+note right of MG #E7F3EA : ADA: post_liability_root + verifikasi JTLR (HNK-15.T2)
 
 == 4. Uji solvabilitas oleh anggota (P-10: UFVK tidak ke server) ==
-MG -> M : UFVK akun operasional (sekali, saluran privat)
+MG -> M : UFVK akun operasional + manager_pk (sekali, saluran privat)
 M -> LOC : init-fvk(UFVK, birthday)
 LOC -> LW : sync + enhance
 LW --> LOC : transaksi akun operasional (masuk dan keluar)
 LOC -> LOC : balance_zat = kas
-LOC -> LOC : fund_view: advance dengan kuitansi bertanda tangan manajer\n+ catatan JTN1 menjadi piutang; pelunasan per N;\nroot JTLR bertanda tangan manajer (root lain diabaikan)
+LOC -> LOC : member_view (sync + list_tx + saldo) lalu fund_view:\nadvance dengan kuitansi bertanda tangan manajer\n+ catatan JTN1 menjadi piutang; pelunasan per N;\nroot JTLR bertanda tangan manajer (root lain diabaikan)
 LOC -> LOC : solvabilitas: kas + piutang berjalan +\npiutang lewat tempo setelah potongan >= total root terbaru
 LOC -> LOC : bukti inklusi: setoranku ada di root (HNK-15.T1)
 LOC --> M : solvent / tidak, rincian per N (tanpa pihak)

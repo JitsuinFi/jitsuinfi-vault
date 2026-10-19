@@ -41,7 +41,7 @@ note over W #E7F3EA : ADA: layar Supplier; belum ada login (simulasi)
 == 1. Siapkan invoice ==
 S -> W : "Invoice baru"
 alt saat ini (ADA)
-  W -> X : 32 byte acak (crypto.getRandomValues) = secret per invoice
+  W -> W : 32 byte acak (crypto.getRandomValues di JS) = secret per invoice
   W --> S : tombol "Download secret backup" (JSON plaintext)
   note right of W #FDECEC : temuan pra-review TM #10
 else target (USULAN P-03)
@@ -52,7 +52,7 @@ end
 X --> W : supplier_ephemeral_pk = publicKey(secret)
 B -> R : invoice_pk(k) buyer (kartu kontak / pesan)
 R --> W : invoice_pk(k)
-S -> W : invoice_id (TES-INV-...), nominal (zat), tanggal terbit, jatuh tempo, file syarat (PDF)
+S -> W : invoice_id (TES-INV-...), nominal (ZEC, dikonversi ke zat),\ntanggal terbit, jatuh tempo, file syarat (PDF)
 W -> X : documentHash(file)
 X --> W : terms_hash = SHA-256(file)
 note right of W #E7F3EA : file tidak pernah diunggah
@@ -79,7 +79,7 @@ W -> R : penawaran {invoice, sig_buyer, alamat supplier, advance}
 R -> FA : penawaran
 FA -> P : cek papan untuk N (SEQ-03 langkah 3)
 P --> FA : N belum ada
-FA -> R : pembuka komitmen {financier_pk, salt 32 byte},\nbucket diskon dan tenor, history_tag (bila buyer memakai riwayat)
+FA -> R : pembuka komitmen {financier_pk, salt 32 byte},\nkelas diskon dan tenor, history_tag (bila buyer memakai riwayat),\nsurat pengalihan JTSA (Flow::new sudah membutuhkannya)
 note right of FA #FFF6D6 : USULAN P-08: salt dibuat library (CSPRNG)
 R --> W : pembuka komitmen + syarat deal
 
@@ -96,7 +96,8 @@ end
 X --> W : {memo entri JTS1 136/168 byte, commitment}
 note right of W #DDEBFA
 PARSIAL: fungsi wasm ADA; kartu di layar supplier belum.
-Bucket di wasm saat ini selalu 0/0
+Kelas di wasm saat ini selalu 0/0
+(classes_for belum dipanggil)
 end note
 W -> R : entri bertanda tangan
 R -> FA : entri
@@ -105,11 +106,14 @@ Z -> P : entri tertambang
 FA -> FA : tunggu >= 1 konfirmasi
 
 == 5. Segel surat pengalihan ==
-FA -> R : surat pengalihan JTSA (N, nominal, jatuh tempo,\nfinancier_pk, alamat bayar financier, terms_hash surat)
-R --> W : surat
+note over W : surat JTSA diterima di bagian 3 (N, nominal, jatuh tempo,\nfinancier_pk, alamat bayar financier, terms_hash surat)
 W -> X : assignmentStatus(invoice, surat, [])
 X --> W : surat cocok dengan invoice; langkah berikut = Supplier
-S -> W : baca surat (PDF dicek dengan SHA-256), "Segel sebagai supplier"
+S -> W : buka PDF surat (SHA-256 dicocokkan dengan terms_hash),\n"Segel sebagai supplier"
+note right of W #DDEBFA
+PARSIAL: wasm belum punya assignmentDecode, jadi alamat bayar
+dan nominal di surat tidak bisa ditampilkan sebelum disegel
+end note
 W -> A : verifikasi pengguna (satu sentuhan = satu stempel)
 A --> W : izin
 W -> X : supplierSealAssignment(secret, invoice, surat)
@@ -119,20 +123,25 @@ R -> B : s0
 R -> FA : s0
 B -> R : s1 (seal buyer, SEQ-02 langkah 4)
 R -> FA : s1
+R -> W : s1 (salinan untuk supplier)
 
 == 6. Terima advance (Sign-to-Pay) ==
 FA -> Z : advance shielded ke alamat supplier;\nmemo = kuitansi advance + seal s2 financier + catatan piutang
 Z -> ZW : note shielded masuk
-FA -> R : txid advance + memo
-note right of FA #FFF6D6 : USULAN: supplier menerima memo lewat relay
-R --> W : txid + memo
-W -> X : decode memo: kuitansi JTR1 (advance, N, nominal, signer)
-W -> X : assignmentStatus(invoice, surat, [s0, s1, s2])
-X --> W : Sealed
-note right of X #E7F3EA
-ADA di jitsuin-flow: received_advances + verify_sign_to_pay
-(signer = financier_pk, nominal = nilai output, rantai Sealed)
-end note
+FA -> R : txid advance (petunjuk)
+R --> W : txid
+alt verifikasi kuat (ADA di jitsuin-flow, butuh tx wallet supplier)
+  W -> W : baca output + memo dari wallet supplier sendiri\n(watch-only supplier di node / CLI, bukan Zodl)
+  W -> W : received_advances: kuitansi JTR1 advance, signer = financier_pk,\nnominal = nilai output; verify_sign_to_pay: [s0, s1] + s2 dari memo = Sealed
+else hanya lewat relay (USULAN, lemah)
+  W -> X : assignmentStatus(invoice, surat, [s0, s1, s2 dari memo relay])
+  X --> W : Sealed
+  note right of X #FDECEC
+  Memo lewat relay tidak membuktikan uang dan seal
+  ada di satu transaksi, atau nominal = nilai output.
+  wasm juga belum punya dekoder kuitansi/memo
+  end note
+end
 ZW --> S : saldo masuk; supplier mencocokkan nominal
 W --> S : "Advance diterima, surat tersegel lengkap"
 
@@ -146,15 +155,28 @@ X --> W : register = Registered, settled = {on_time}
 group menawarkan invoice yang sama ke financier B
   S -> R : penawaran yang sama ke financier B
   R -> FB : invoice + sig_buyer
-  FB -> R : pembuka komitmen B
+  FB -> R : pembuka komitmen B + minta entri bertanda tangan\nsebelum cek papan (kebijakan B, USULAN P-14)
   S -> R : entri bertanda tangan untuk komitmen B
   R -> FB : entri B
   FB -> P : cek papan dengan key supplier dari invoice
   P --> FB : entri A sudah lebih dulu, tanda tangan valid
   FB -> FB : berhenti sebelum membayar (AlreadyFinanced)
-  FB -> FB : doubleSignProof(invoice, sig_buyer, entri A, entri B)
-  FB --> S : bukti tanda tangan ganda (JTSP), bisa diverifikasi siapa pun yang diberi
+  FB -> FB : susun bukti dengan posisi entri A di papan\n(proof_from_offer di jitsuin-board)
+  FB --> S : bukti tanda tangan ganda (JTSP)
+  note right of FB #FDECEC
+  Tanpa entri B (Flow sekarang meminta entri hanya setelah NotFound),
+  B hanya tahu invoice sudah dibiayai, tanpa bukti. wasm doubleSignProof
+  tidak mengisi posisi papan, sehingga jitsuin verify menolak buktinya
+  end note
 end
+
+== Mode confidential (USULAN, roadmap) ==
+note over S, FA #FFF6D6
+Surat disegel Supplier lalu Financier saja (buyer tidak diberi tahu);
+buyer membayar ke supplier, supplier meneruskan ke financier dengan
+kuitansi bertanda tangan supplier; settled ditandatangani supplier + financier.
+Belum diimplementasikan (Mode Confidential)
+end note
 @enduml
 ```
 
@@ -170,7 +192,7 @@ end
 | 2 | Cek tanda tangan buyer | PARSIAL | wasm `bundleBuild` + `verifyBundle` |
 | 3 | Penawaran ke financier dan pembuka komitmen | USULAN P-04, P-08 | — |
 | 4 | Tanda tangani entri register (dengan atau tanpa tag riwayat) | PARSIAL | wasm `supplierRegisterEntry`, `supplierRegisterHistoryEntry` |
-| 5 | Segel surat pengalihan | ADA | wasm `supplierSealAssignment`, `assignmentStatus` |
-| 6 | Verifikasi Sign-to-Pay | ADA di flow, USULAN di web | `jitsuin-flow::supplier::verify_sign_to_pay` |
+| 5 | Segel surat pengalihan | PARSIAL: seal ADA; isi surat belum bisa ditampilkan (tanpa `assignmentDecode`) | wasm `supplierSealAssignment`, `assignmentStatus` |
+| 6 | Verifikasi Sign-to-Pay | ADA di flow (butuh tx wallet supplier); lewat relay saja lemah | `jitsuin-flow::supplier::verify_sign_to_pay` |
 | 7 | Status pelunasan dari papan | PARSIAL | wasm `bundleOnBoard` (butuh snapshot papan, P-06) |
-| Nakal | Bukti tanda tangan ganda | ADA | wasm `doubleSignProof`, `jitsuin-core::proof` |
+| Nakal | Bukti tanda tangan ganda | PARSIAL: butuh entri B sebelum cek papan (P-14); wasm tanpa posisi papan | `jitsuin_board::proof_from_offer`, wasm `doubleSignProof` |

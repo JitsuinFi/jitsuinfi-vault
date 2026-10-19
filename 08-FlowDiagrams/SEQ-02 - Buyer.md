@@ -46,6 +46,11 @@ else target (USULAN P-09)
   W -> R : ambil rantai sertifikat sendiri (terenkripsi)
   R --> W : ciphertext
   W -> X : dekripsi, k = jumlah sertifikat
+  note right of W #FDECEC
+  Belum diputuskan: invoice yang tidak jadi dibiayai membuat k
+  dipakai ulang (invoice_pk sama di dua invoice). Butuh aturan
+  alokasi k (P-09)
+  end note
 end
 W -> X : buyerKeys(master, k)
 X --> W : identity_pk, invoice_pk(k)
@@ -64,6 +69,7 @@ W -> W : cek buyer_pk = invoice_pk(k)
 B -> W : buka file syarat dari supplier
 W -> X : documentHash(file)
 X --> W : SHA-256 = terms_hash ? cocok : tolak
+note right of W #DDEBFA : PARSIAL: layar Buyer belum punya input file dan cek otomatis
 B -> W : "Tanda tangani invoice"
 W -> A : verifikasi pengguna (P-07)
 A --> W : izin
@@ -96,6 +102,11 @@ R --> W : surat + s0
 W -> X : assignmentStatus(invoice, surat, [s0])
 X --> W : rantai valid, langkah berikut = Buyer
 W --> B : tampilkan: bayar ke alamat financier, nominal, jatuh tempo
+note right of W #DDEBFA
+PARSIAL: wasm belum punya assignmentDecode; layar Buyer sekarang
+menyegel surat tanpa menampilkan isinya. Seal ini adalah pengakuan
+tertulis (Pasal 613 KUHPerdata), jadi isi wajib terbaca (P-13)
+end note
 B -> W : "Segel sebagai buyer"
 W -> A : verifikasi pengguna (satu sentuhan = satu stempel)
 A --> W : izin
@@ -144,9 +155,9 @@ end
 | Masuk | Master dari passkey PRF | ADA | `src/lib/passkey.ts` |
 | Masuk | Nomor invoice `k` otomatis dari rantai sertifikat | USULAN P-09 | sekarang diketik di layar Buyer |
 | 1 | Bagikan `invoice_pk(k)` | ADA (salin) / USULAN (relay) | wasm `buyerKeys` |
-| 2 | Cek isi dan hash file syarat, tanda tangani | ADA | wasm `invoiceDecode`, `documentHash`, `buyerSignInvoice` |
+| 2 | Cek isi dan hash file syarat, tanda tangani | PARSIAL: decode + tanda tangan ADA; input file dan cek hash belum ada di layar | wasm `invoiceDecode`, `documentHash`, `buyerSignInvoice` |
 | 3 | Terbitkan sertifikat riwayat dengan persetujuan | ADA (fungsi) / USULAN (alur persetujuan) | wasm `buyerHistoryCert` |
-| 4 | Segel surat pengalihan | ADA | wasm `buyerSealAssignment`, `assignmentStatus` |
+| 4 | Segel surat pengalihan | PARSIAL: seal ADA; isi surat belum ditampilkan (P-13) | wasm `buyerSealAssignment` |
 | 5 | QR ZIP-321 dengan kuitansi + klaim | ADA | wasm `buyerRepayment`, `jitsuin-flow::buyer` |
 | 5 | Bayar dari Zodl | Belum diuji (SPK-04 TODO); fallback: wallet `zcash-devtool` | `jitsuin-wallet::Devtool::pay_uri` |
 | 6 | Cek riwayat sendiri terhadap papan | PARSIAL | wasm `verifyHistory` (butuh snapshot papan, P-06) |

@@ -21,21 +21,21 @@ rectangle "Authenticator\npasskey" <<entity>> as A
 rectangle "Supplier" <<entity>> as S
 rectangle "Buyer" <<entity>> as B
 rectangle "Financier" <<entity>> as F
-rectangle "K1 output PRF,\nassertion" <<flow>> as k1
-rectangle "K2 salt per peran,\nchallenge" <<flow>> as k2
-rectangle "K3 invoice, entri,\nseal supplier" <<flow>> as k3
-rectangle "K4 tanda tangan buyer,\nadvance + seal" <<flow>> as k4
-rectangle "K5 tanda tangan,\nseal, sertifikat" <<flow>> as k5
-rectangle "K6 invoice, surat,\nQR pelunasan" <<flow>> as k6
-rectangle "K7 surat, syarat,\nroot kewajiban" <<flow>> as k7
-rectangle "K8 cek papan, bukti,\nstatus pelunasan" <<flow>> as k8
+rectangle "K1 credential, PRF,\nassertion" <<flow>> as k1
+rectangle "K2 create(), get(),\nchallenge" <<flow>> as k2
+rectangle "K3 daftar/masuk, invoice,\npenawaran, keputusan" <<flow>> as k3
+rectangle "K4 kartu kontak, rincian\nentri, isi surat, status" <<flow>> as k4
+rectangle "K5 daftar/masuk, keputusan,\npersetujuan riwayat" <<flow>> as k5
+rectangle "K6 invoice, isi surat,\nQR, status" <<flow>> as k6
+rectangle "K7 pairing, syarat, surat,\npolicy, perintah root" <<flow>> as k7
+rectangle "K8 status papan, pelunasan,\nriwayat, Caught" <<flow>> as k8
 rectangle "**0**\nSistem JitsuinFi\n\nweb app + jitsuin-wasm, relay dokumen,\nnode financier, papan registry" <<process>> as P
-rectangle "K9 verdict,\nindeks bunga" <<flow>> as k9
-rectangle "K10 bundel, bukti,\nUFVK papan" <<flow>> as k10
-rectangle "K11 laporan\nsolvabilitas" <<flow>> as k11
-rectangle "K12 UFVK akun\noperasional" <<flow>> as k12
-rectangle "K13 tx shielded\n+ memo" <<flow>> as k13
-rectangle "K14 blok, tx,\nmemo papan" <<flow>> as k14
+rectangle "K9 verdict, indeks,\nbukti, bundel" <<flow>> as k9
+rectangle "K10 UFVK papan, bukti,\nbundel, snapshot" <<flow>> as k10
+rectangle "K11 kuitansi,\nlaporan" <<flow>> as k11
+rectangle "K12 daftar/masuk, UFVK,\npolicy, id setoran" <<flow>> as k12
+rectangle "K13 tx advance\nshielded" <<flow>> as k13
+rectangle "K14 blok, tip, urutan tx,\npembayaran, setoran" <<flow>> as k14
 rectangle "Verifier\n(juri, auditor,\norang luar)" <<entity>> as V
 rectangle "Anggota dana" <<entity>> as M
 rectangle "Jaringan Zcash\n(lightwalletd, chain)" <<entity>> as Z
@@ -74,19 +74,19 @@ k14 -up-> P
 
 | Aliran | Dari | Ke | Data | Di level 1 |
 |---|---|---|---|---|
-| K1 | Authenticator | Sistem | Output PRF (32 byte per salt), assertion WebAuthn | F1 |
-| K2 | Sistem | Authenticator | Salt per peran, challenge | F2 |
-| K3 | Supplier | Sistem | Daftar/masuk, data invoice + file syarat, penawaran, entri bertanda tangan, seal supplier | F3, F8, F12, F23 |
-| K4 | Sistem | Supplier | Pembuka komitmen, surat pengalihan, advance + seal financier | F13, F22 |
-| K5 | Buyer | Sistem | Daftar/masuk, tanda tangan invoice, seal buyer, sertifikat riwayat | F4, F10, F25, F40 |
-| K6 | Sistem | Buyer | Invoice, surat pengalihan, QR ZIP-321 | F9, F24, F35 |
-| K7 | Financier | Sistem | Daftar/masuk, syarat deal, surat pengalihan, root kewajiban (manajer dana) | F5, F14, F21, F55 |
-| K8 | Sistem | Financier | Status cek papan, status pelunasan, laporan riwayat, bukti JTSP | F15, F39, F45, F48 |
-| K9 | Sistem | Verifier | Verdict bukti dan bundel, indeks bunga | F50 |
-| K10 | Verifier | Sistem | Bundel JTSB, bukti JTSP, UFVK papan | F49 |
-| K11 | Sistem | Anggota dana | Laporan solvabilitas | F53 |
-| K12 | Anggota dana | Sistem | UFVK akun operasional | F52 |
-| K13 | Sistem | Jaringan Zcash | Transaksi shielded: entri papan, advance, entri settled, root kewajiban | F30 (+ posting di 3.0, 5.0, 9.0) |
-| K14 | Jaringan Zcash | Sistem | Blok, transaksi penuh dan memo, urutan tx, tinggi tip, pembayaran pelunasan | F36 (+ pindai di 3.0, 8.0) |
+| K1 | Authenticator | Sistem | Credential, output PRF, assertion | F1 |
+| K2 | Sistem | Authenticator | `create()`, `get()` dengan salt per peran, challenge | F2 |
+| K3 | Supplier | Sistem | Daftar/masuk dan stempel, data invoice + file syarat, penawaran, keputusan setuju, nominal di Zodl | F8, F17, F27, F45 |
+| K4 | Sistem | Supplier | Kartu kontak, backup key (saat ini), rincian entri, isi surat, status advance, status pelunasan | F9, F18, F28, F46, F61 |
+| K5 | Buyer | Sistem | Daftar/masuk dan stempel, file syarat, keputusan, minta QR, persetujuan riwayat | F3, F15, F42, F58, F71 |
+| K6 | Sistem | Buyer | Kartu kontak, isi invoice, isi surat, QR ZIP-321, status, permintaan riwayat | F4, F16, F43, F59, F72 |
+| K7 | Financier | Sistem | Daftar/masuk, pairing node, syarat deal, PDF surat + alamat bayar, permintaan riwayat + policy, buat bundel, perintah root | F5, F25, F44, F73, F88, F96 |
+| K8 | Sistem | Financier | Kartu kontak, sesi konsol, status cek papan, status pelunasan + bukti sengketa, laporan riwayat, berhenti / Caught | F6, F26, F60, F74, F82 |
+| K9 | Sistem | Verifier | Bukti JTSP, verdict, indeks bunga, bundel, snapshot | F83, F90 |
+| K10 | Verifier | Sistem | UFVK papan, bukti, bundel, k, memo, snapshot | F89 |
+| K11 | Sistem | Anggota dana | Kuitansi setoran, laporan solvabilitas | F98 |
+| K12 | Anggota dana | Sistem | Daftar/masuk, UFVK + `manager_pk`, policy, id setoran | F7, F97 |
+| K13 | Sistem | Jaringan Zcash | Transaksi advance shielded | F47 |
+| K14 | Jaringan Zcash | Sistem | Blok, tinggi tip, urutan tx, waktu blok, pembayaran pelunasan, setoran | F29, F62, F91, F99 |
 
-Nomor F di kolom terakhir merujuk tabel aliran [[DFD-1 - Proses Utama]]. Di level 1, posting ke papan digambar sebagai tulisan ke penyimpanan D1 (Papan registry), yang secara fisik adalah transaksi di jaringan Zcash.
+Nomor F merujuk tabel aliran [[DFD-1 - Proses Utama]]. Posting ke papan (entri register, entri `settled`) dan root kewajiban digambar sebagai tulisan ke penyimpanan D1 dan D6 di dalam sistem; secara fisik keduanya adalah transaksi shielded ke jaringan Zcash (10 000 zat + fee ZIP-317 per posting).
