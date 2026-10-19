@@ -1,0 +1,45 @@
+---
+tags: [flow, backlog]
+status: DRAF
+updated: 2026-10-20
+---
+
+# SEQ-03 - Financier-backlogs
+
+**Diagram:** [[SEQ-03 - Financier]] · Rencana: [[FD-01 - Keputusan Usulan dan Gelombang Kerja]] · [[FD-02 - Penelusuran Business Flow ke Backlog]] · Backlog: [[Backlog]]
+
+Aturan sama dengan [[SEQ-00 - Autentikasi dan Onboarding-backlogs]]: merujuk task backlog DFD, menambah task khusus sequence `BL-S03-xx`.
+
+## Pemetaan per bagian
+
+| Bagian | Langkah di sequence | Task |
+|---|---|---|
+| Masuk | Passkey konsol, sesi dari assertion | BL-D21-15, BL-D21-16, BL-D21-17 |
+| 1. Terima penawaran | Penawaran lewat `/node/mail`, cek tanda tangan buyer, syarat | BL-D21-10, BL-D23-02 |
+| 1. Terima penawaran | Tolak atau kedaluwarsa | BL-D23-03 |
+| 1b. Komitmen dan surat | Salt library, kelas, alamat diversified | BL-D23-04, BL-D23-05, BL-D24-01 |
+| 1b. Komitmen dan surat | Surat + PDF, kirim ke supplier dan buyer | BL-D24-02, BL-D24-03, BL-D23-06 |
+| 2. Cek riwayat | Permintaan bertanda tangan, `check_buyer` di node, alasan tolak | BL-D26-01, BL-D26-05, BL-D26-06, BL-D26-07 |
+| 2. Cek riwayat | Policy (allowlist, standar, tenggang) | BL-D26-08 |
+| 3. Cek papan | `POST /node/deals`, lookup, status | BL-D23-07, BL-D23-08 |
+| 3. Cek papan (`DoubleFinanced`) | `proof_from_lookup`, kartu bukti ganda | BL-D27-01, BL-D27-02, BL-D27-04 |
+| 4. Tanda tangan supplier | Permintaan entri, `check_entry`, `EntryMismatch` | BL-D23-11 |
+| 5. Posting dan konfirmasi | Pemulihan `register()`, persistensi, progres | BL-D23-12, BL-D23-13, BL-D23-14 |
+| 6. Kumpulkan seal | `POST /node/deals/N/seals`, seal salah | BL-D24-07 |
+| 7. Bayar advance | Persetujuan operator, konfirmasi ulang, `Done` setelah konfirmasi, s2 dan txid diteruskan | BL-D24-08, BL-D24-09, BL-D24-10, BL-D24-11 |
+| 8. Penjadwal pelunasan | Penjadwal, status, sengketa, txid settled, P-12, bundel ke pihak | BL-D25-03 – BL-D25-08 |
+| 9. Bundel | Kartu bundel di konsol | BL-D28-03 |
+| Jalur financier B | Bukti `AlreadyFinanced` | Roadmap (P-14) |
+| Varian manajer dana | Root dari Merkle sum tree | BL-D29-03 |
+
+## Task khusus sequence
+
+| ID | Bagian | Task | Selesai bila | Ref | Calon item | Kandidat |
+|---|---|---|---|---|---|---|
+| BL-S03-01 | Semua | Pipeline deal di konsol (daftar deal per state `Flow`) dan detail deal (papan, entri, surat, advance, pelunasan) dengan tombol aksi per state | Operator menjalankan satu deal dari penawaran sampai settled hanya dari konsol | C-33, HNK-05.T4 | HNK-26 | Dex |
+| BL-S03-02 | Semua | Daftar endpoint API node (`/node/mail`, `/node/deals`, `/node/deals/N/commitment`, `/node/history/check`, `/node/deals/N/seals`, `/node/pairing`, `/node/session`) dengan format request dan response | Daftar ada di repo dan cocok dengan implementasi HNK-05.T3 | HNK-05.T3 | HNK-26 | Dex |
+| BL-S03-03 | Semua | E2E peran financier di testnet lewat konsol: penawaran sampai settled, satu kasus `AlreadyFinanced`, satu `DoubleFinanced` | Tiga kasus lulus di HNK-17 | HNK-17 | HNK-17 | Dave |
+
+## Roadmap
+
+- Jeda acak sebelum `Pay` (menunggu TM #12 / #15).

@@ -14,7 +14,7 @@ FD-01 menyusun rencana per usulan (P-xx) dan per temuan kode (K-x). Dokumen ini 
 - langkah yang tertutup baris FD-01 (ditulis `P-xx` atau `K-x`);
 - **celah baru** yang belum ada di mana pun (ditulis `C-xx`, daftar lengkap di bagian akhir).
 
-Bagian terakhir mengelompokkan semuanya menjadi calon item HNK-22 – HNK-29. Calon item baru masuk [[Backlog]] setelah keputusan FD-01 diisi.
+Bagian terakhir mengelompokkan semuanya menjadi calon item HNK-22 – HNK-29. Rincian task per diagram (ID `BL-…`, dengan kriteria selesai) ada di file `-backlogs` di samping tiap diagram, misalnya [[DFD-2.1 - Identitas dan Sesi-backlogs]]. Calon item baru masuk [[Backlog]] setelah keputusan FD-01 diisi.
 
 Lapisan yang dipakai di kolom "Kurang": **W** = wasm/core, **N** = node financier (`jitsuin-flow` + API), **R** = relay, **L** = layar web, **U** = uji.
 
@@ -205,17 +205,22 @@ Sumber: [[SEQ-05 - Anggota Dana]], [[DFD-2.9 - Solvabilitas Dana]].
 | C-26 | Keputusan D-11: publikasi UFVK + birthday papan untuk juri | — | 0 | Hans (keputusan) |
 | C-27 | Pencatatan setoran dan pengiriman kuitansi + jalur Merkle per periode lewat relay | N, R | 2 | Dex |
 | C-28 | Perintah CLI solvabilitas untuk anggota (`member_view` + `solvency`) | W | 1 | Hans |
+| C-29 | Financier mengirim bundel JTSB ke buyer dan supplier setelah settled (DFD-2.5 5.6) | N, R | 1 | Dex |
+| C-30 | API `jitsuin-wasm` menerima key sebagai byte supaya bisa dinolkan (DFD-2.1 1.5) | W | 1 | Hans |
+| C-31 | Kotak masuk per peran: ambil pesan setelah masuk dan berkala, tampilkan sebagai tindakan (SEQ-00, SEQ-02) | L | 1 | Dave |
+| C-32 | Halaman "Daftar deal" supplier: timeline per N (PG-01 s1) | L | 2 | Dave |
+| C-33 | Pipeline deal per state dan detail deal di konsol (PG-01 f1, f4) | L, N | 2 | Dex |
 
-Total celah baru 38 jam: Hans 14, Dex 8, Dave 16.
+Total celah baru 45 jam: Hans 15, Dex 11, Dave 19. C-29 – C-33 ditemukan saat menyusun backlog per diagram (file `-backlogs`).
 
 Porsi gabungan FD-01 + FD-02 (dasar D-29 setelah HNK-21 dan HNK-05.T4 pindah ke Dex: Hans 75, Dex 53, Dave 48):
 
 | Orang | Sebelum | FD-01 | FD-02 | Total | Porsi |
 |---|---|---|---|---|---|
-| Hans | 75 | 19 | 14 | 108 | 40,1% |
-| Dex | 53 | 19 | 8 | 80 | 29,7% |
-| Dave | 48 | 17 | 16 | 81 | 30,1% |
-| **Total** | 176 | 55 | 38 | 269 | |
+| Hans | 75 | 19 | 15 | 109 | 39,5% |
+| Dex | 53 | 19 | 11 | 83 | 30,1% |
+| Dave | 48 | 17 | 19 | 84 | 30,4% |
+| **Total** | 176 | 55 | 45 | 276 | |
 
 Celah yang dekat dengan kode Hans (skema pesan, penyimpanan terenkripsi, `check_buyer`, persistensi `Flow`, sengketa, bukti ganda) diberikan ke Hans supaya porsinya tetap 40%.
 
@@ -225,12 +230,12 @@ Pengelompokan per business flow. Task lama yang sudah ada tetap di itemnya; kolo
 
 | Calon | Judul | Isi | Pemilik utama |
 |---|---|---|---|
-| HNK-22 | Akun passkey, peran, dan kontak | P-01, P-02, P-07, C-01, C-03 | Dave |
+| HNK-22 | Akun passkey, peran, dan kontak | P-01, P-02, P-07, C-01, C-03, C-31 | Dave |
 | HNK-23 | Relay kotak surat end to end | P-04, P-11, C-04; menyerap HNK-10.T4 (skeleton backend) dan HNK-10.T5 (deploy Railway) | Dex (C-04 Hans, P-11 Dave) |
-| HNK-24 | Alur deal di layar supplier | P-03, C-06, C-07, C-08, C-15, C-17, K-11 (sisi supplier) | Dave (P-03, C-07 Hans) |
+| HNK-24 | Alur deal di layar supplier | P-03, C-06, C-07, C-08, C-15, C-17, C-32, K-11 (sisi supplier) | Dave (P-03, C-07 Hans) |
 | HNK-25 | Alur deal di layar buyer | C-05, C-14, C-18, K-2, P-09 | Dave |
-| HNK-26 | Konsol dan API node financier | P-05, C-02, C-09, C-10, C-11, C-12, C-16, C-20, C-21, C-22, C-23, K-5, K-11 (sisi node); bergantung HNK-05.T3/T4 | Dex (C-11, C-16, C-22, C-23 Hans; C-12, C-21 Dave) |
-| HNK-27 | Perbaikan protokol dan flow | P-08, P-13, K-1, K-3, K-4, K-6, K-7, K-10, C-28 | Hans |
+| HNK-26 | Konsol dan API node financier | P-05, C-02, C-09, C-10, C-11, C-12, C-16, C-20, C-21, C-22, C-23, C-29, C-33, K-5, K-11 (sisi node); bergantung HNK-05.T3/T4 | Dex (C-11, C-16, C-22, C-23 Hans; C-12, C-21 Dave) |
+| HNK-27 | Perbaikan protokol dan flow | P-08, P-13, K-1, K-3, K-4, K-6, K-7, K-10, C-28, C-30 | Hans |
 | HNK-28 | Verifikasi publik lengkap | P-06, K-8, K-9, C-24, C-25, C-26; bersama HNK-08.T3 | Dex (layar Dave) |
 | HNK-29 | Alur dana anggota | C-27; bersama HNK-15.T1 dan HNK-15.T3 | Dex |
 | — | Pesan error terbaca (C-13) dan regresi E2E per business flow | Masuk HNK-21 (C-13) dan HNK-17 (E2E BF-01 – BF-12) | Dave |

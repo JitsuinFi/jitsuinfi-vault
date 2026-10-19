@@ -1,0 +1,24 @@
+---
+tags: [flow, backlog]
+status: DRAF
+updated: 2026-10-20
+---
+
+# DFD-0 - Diagram Konteks-backlogs
+
+**Diagram:** [[DFD-0 - Diagram Konteks]] · Turunan: [[DFD-1 - Proses Utama-backlogs]] · Rencana: [[FD-01 - Keputusan Usulan dan Gelombang Kerja]] · Backlog: [[Backlog]]
+
+Level 0 memperlihatkan sistem sebagai satu proses dengan tujuh entitas luar. Task per proses ada di [[DFD-1 - Proses Utama-backlogs]]. Halaman ini memuat task di batas sistem: integrasi dengan entitas luar dan komponen sistem yang belum ada.
+
+## Task di batas sistem
+
+| ID | Elemen | Task | Selesai bila | Ref | Calon item | Kandidat |
+|---|---|---|---|---|---|---|
+| BL-D0-01 | Komponen relay dokumen | Repo `jitsuinfi-backend`: skeleton API, deploy Railway, header CSP, rewrite Vercel `/api/*` (setelah persetujuan deploy) | Relay hidup di URL same-origin web app | HNK-10.T4, HNK-10.T5, P-11 | HNK-23 | Dex |
+| BL-D0-02 | Komponen node financier | Node testnet yang bisa dijalankan juri atau penguji: setup, API, konsol di origin node dengan HTTPS (atau tunnel SSH) | Satu panduan menjalankan node dari nol sampai konsol terbuka | P-05, HNK-05.T3 | HNK-26 | Dex |
+| BL-D0-03 | Entitas Authenticator, K1 – K2 | Daftar authenticator yang diuji (platform macOS/iOS, Android, security key) dan dukungan PRF-nya | Tabel dukungan di TEST-HNK-10 | C-03 | HNK-22 | Dave |
+| BL-D0-04 | Entitas Jaringan Zcash, K13 – K14 | Konfigurasi jaringan satu tempat (testnet `testnet.zec.rocks:443`, mainnet `zec.rocks:443`) di web app, node, dan CLI | Ganti jaringan cukup di satu konfigurasi | FD-00 §5 | HNK-26 | Dex |
+| BL-D0-05 | Entitas Verifier, K9 – K10 | UFVK papan dipublikasikan (D-11) dan README juri | Juri bisa memverifikasi tanpa bertanya ke tim | C-26, HNK-09.T3 | HNK-28 | Hans |
+| BL-D0-06 | Entitas Anggota dana, K11 – K12 | UFVK operasional diserahkan lewat saluran privat, tidak pernah ke server | Panduan anggota menyebut saluran dan larangan unggah UFVK | P-10 | HNK-29 | Dave |
+| BL-D0-07 | Semua entitas | Uji end to end lintas semua entitas di testnet dengan relay dan node (siklus `TES-` lengkap: daftar sampai settled) | Satu siklus lulus dan tercatat di HNK-17 | HNK-17 | HNK-17 | Dave |
+| BL-D0-08 | Batas sistem | Baris Threat Model untuk relay, proxy, dan CSP setelah relay ada ditinjau ulang setelah relay dibangun | Bagian "Tambahan untuk arsitektur target" di [[Threat Model]] sesuai implementasi | P-04, P-11 | HNK-23 | Hans |
