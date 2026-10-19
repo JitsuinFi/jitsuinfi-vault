@@ -260,7 +260,7 @@ Estimasi kasar; diperbarui di Exec Summary dengan jam aktual.
 | HNK-18.T1 | Logo dan identitas visual JitsuinFi | Dave #dave | 1 | TODO |
 | HNK-18.T2 | Tiga slide video (masalah, threat model, penutup) | Dave #dave | 1 | TODO |
 | HNK-18.T3 | Diagram arsitektur untuk README | Dave #dave (backup sementara: Hans #hans, DEV-11) | 1 | DONE (`d99680b`): diagram mermaid di README |
-| HNK-18.T4 | Landing page immersive (visual 65% / caption 35%, tanpa UI kartu kotak), setara PortoWeb | Dave #dave (backup sementara: Hans #hans, DEV-11) | 4 | IN PROGRESS (pipeline genjutsu `paint`; bab 1 hero selesai lokal 2026-10-19, menunggu validasi) |
+| HNK-18.T4 | Landing page immersive (visual 65% / caption 35%, tanpa UI kartu kotak), setara PortoWeb | Dave #dave (backup sementara: Hans #hans, DEV-11) | 4 | IN PROGRESS: 6 bab + toggle EN/中文 selesai dan di-push (frontend `389b9d3`, 2026-10-19); bab 1–4 divalidasi user, bab 5–6 disetujui ("Mantap lanjut"); bab 5 butuh zcash PR#3 (wasm riwayat). Sisa: deploy dengan header CSP `frame-ancestors`. Lihat [[Landing Page - Brief]] |
 
 ### Fase F6
 
