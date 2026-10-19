@@ -34,6 +34,14 @@ Konfirmasi user atas pemahaman awal (2026-10-19): "Gasssss, itu oke, dan pastika
 - [ ] Memakai MCP yang ada dan tools: genjutsu, React Bits (shadcn MCP), anime.js, hairline, motionmaxxing, Motion.
 - [ ] Batas teknis proyek: CSP same-origin, tanpa CDN (semua aset dibundel), lokal dulu (D-25).
 
+## Deploy
+
+- Live: https://jitsuinfi.vercel.app (landing) dan https://jitsuinfi.vercel.app/app.html (web app), project Vercel `jitsuinfi` di akun shenhan01-sys (Hobby), 2026-10-19.
+- Cara deploy: build lokal (`npm run wasm` lalu `vercel build --prod`), kirim dengan `vercel deploy --prebuilt --prod`. Project tidak terhubung ke Git, jadi push tidak memicu deploy (build di Vercel tidak punya cargo untuk jitsuin-wasm).
+- Header dari `vercel.json`: CSP sama dengan meta plus `frame-ancestors 'none'`, `X-Content-Type-Options: nosniff`, `Referrer-Policy: no-referrer`, `Permissions-Policy`.
+- Wasm saat ini dibangun dari branch zcash `feat/landing-history-wasm` (PR#3); setelah PR#3 merge, build ulang dari `main`.
+- Cek live (Chrome headless): tanpa error; bab 4 "Done: double financing caught, proof verified."; bab 5 setelah bayar 7/1/0/0, verifikasi lulus.
+
 ## Progres per bab
 
 | Bab | Isi | Status | Tanggal | Bukti |
