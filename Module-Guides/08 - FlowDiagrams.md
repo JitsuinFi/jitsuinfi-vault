@@ -11,6 +11,7 @@ Kembali: [[START-HERE]]
 ## Mulai di sini
 - [[08-FlowDiagrams/FD-00 - Arsitektur Target dan Legenda]]: legenda status, notasi, komponen target, dan 14 usulan (P-01 – P-14) yang perlu keputusan Hans.
 - [[08-FlowDiagrams/PG-01 - Peta Halaman per Peran]]: halaman target per peran.
+- [[08-FlowDiagrams/FD-01 - Keputusan Usulan dan Gelombang Kerja]]: usulan P-01 – P-14 dan temuan kode sebagai rencana kerja tiga gelombang, menunggu keputusan Hans.
 
 ## Sequence diagram (satu peran satu sequence)
 - [[08-FlowDiagrams/SEQ-00 - Autentikasi dan Onboarding]] (bersama: daftar, masuk, pilih peran, sesi, konsol node)
