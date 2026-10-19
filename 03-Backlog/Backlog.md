@@ -76,6 +76,7 @@ Estimasi kasar; diperbarui di Exec Summary dengan jam aktual.
 | HNK-18 | Materi pitch dan visual | F5 | Dave #dave | #dave | HNK-07, HNK-11 | [[AC-HNK-18 - Materi pitch dan visual\|AC]] | [[TEST-HNK-18 - Materi pitch dan visual\|Test]] | [[ES-HNK-18 - Materi pitch dan visual\|ES]] |
 | HNK-19 | Jitsuin Seal tanda tangan berantai dan Sign-to-Pay | F3 | Hans #hans | #hans | HNK-05, HNK-06 | [[AC-HNK-19 - Jitsuin Seal tanda tangan berantai dan Sign-to-Pay\|AC]] | [[TEST-HNK-19 - Jitsuin Seal tanda tangan berantai dan Sign-to-Pay\|Test]] | [[ES-HNK-19 - Jitsuin Seal tanda tangan berantai dan Sign-to-Pay\|ES]] |
 | HNK-20 | Riwayat pembayaran buyer standar minimal | F3 | Hans #hans | #hans | HNK-19 | [[AC-HNK-20 - Riwayat pembayaran buyer standar minimal\|AC]] | [[TEST-HNK-20 - Riwayat pembayaran buyer standar minimal\|Test]] | [[ES-HNK-20 - Riwayat pembayaran buyer standar minimal\|ES]] |
+| HNK-21 | Polish halaman internal web app | F5 | Hans #hans | #hans (kandidat #dex, D-26) | HNK-10, HNK-18.T4 | [[AC-HNK-21 - Polish halaman internal web app\|AC]] | [[TEST-HNK-21 - Polish halaman internal web app\|Test]] | [[ES-HNK-21 - Polish halaman internal web app\|ES]] |
 
 ## Spike (F0)
 
@@ -261,6 +262,19 @@ Estimasi kasar; diperbarui di Exec Summary dengan jam aktual.
 | HNK-18.T2 | Tiga slide video (masalah, threat model, penutup) | Dave #dave | 1 | TODO |
 | HNK-18.T3 | Diagram arsitektur untuk README | Dave #dave (backup sementara: Hans #hans, DEV-11) | 1 | DONE (`d99680b`): diagram mermaid di README |
 | HNK-18.T4 | Landing page immersive (visual 65% / caption 35%, tanpa UI kartu kotak), setara PortoWeb | Dave #dave (backup sementara: Hans #hans, DEV-11) | 4 | IN PROGRESS: 6 bab + toggle EN/中文 selesai dan di-push (frontend `389b9d3`, 2026-10-19); bab 1–4 divalidasi user, bab 5–6 disetujui ("Mantap lanjut"); bab 5 butuh zcash PR#3 (wasm riwayat). Live di https://jitsuinfi.vercel.app (Vercel, deploy prebuilt 2026-10-19, header CSP + `frame-ancestors 'none'`). Lihat [[Landing Page - Brief]] |
+
+**HNK-21 — Polish halaman internal web app** · Lead Hans #hans · [[AC-HNK-21 - Polish halaman internal web app|AC]] · Dicatat 2026-10-19 (D-26), dikerjakan setelah backlog terbuka yang ada
+
+| Task | Deskripsi | Owner | Jam | Status |
+|---|---|---|---|---|
+| HNK-21.T1 | Shell dan beranda `app.html`: nav, toggle EN/中文, pilihan peran sebagai adegan (bukan kartu) | Hans #hans | 2 | TODO |
+| HNK-21.T2 | Layar supplier: buat invoice sebagai lembar kertas, minta tanda tangan buyer | Hans #hans | 2 | TODO |
+| HNK-21.T3 | Layar buyer: tanda tangan, segel, QR pelunasan ZIP-321 | Hans #hans | 2 | TODO |
+| HNK-21.T4 | Layar financier: cek papan, rantai segel Sign-to-Pay, status advance | Hans #hans | 2 | TODO |
+| HNK-21.T5 | Layar verify: bukti dan bundel, verdict sebagai stempel | Hans #hans | 2 | TODO |
+| HNK-21.T6 | Layar orang luar: publik vs tersembunyi sebagai ilustrasi | Hans #hans | 1 | TODO |
+| HNK-21.T7 | i18n semua teks app, responsif 390 px, a11y, reduced motion | Hans #hans | 2 | TODO |
+| HNK-21.T8 | Regresi alur fungsional (siklus TES- sebelum vs sesudah) + deploy ulang Vercel | Hans #hans | 1 | TODO |
 
 ### Fase F6
 
