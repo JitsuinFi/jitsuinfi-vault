@@ -28,7 +28,7 @@ updated: 2026-10-19
 | Ambang k | dicatat | k = 5 (`index::K`), bisa dinaikkan, tidak bisa diturunkan |
 
 ## Status
-**PARSIAL** — T1 dan T2 di PR #5 (ditumpuk di atas PR #4, menunggu review Hans). AC 08.1–08.3 PASS. Sisa: halaman web (T3, Dave), uji papan sungguhan (I-HNK-08.1), web/wasm harus menandatangani kelas sungguhan.
+**PARSIAL** — T1 dan T2 sudah di `main` (`61ca636`). PR #5 sempat ditumpuk di branch PR #4, jadi saat di-merge isinya masuk ke branch itu, bukan ke `main`; Hans memindahkannya ke `main` lewat PR #6 (19 Okt). AC 08.1–08.3 PASS. Sisa: halaman web (T3, Dave), uji papan sungguhan (I-HNK-08.1), web/wasm harus menandatangani kelas sungguhan.
 
 ## Risiko tersisa
 - Orang luar tidak bisa mengecek tanda tangan supplier: entri griefing yang lebih dulu menentukan kelas N itu, dan N palsu ikut terhitung. Setiap posting butuh fee; pemegang bundel bisa mengecek dealnya sendiri.
@@ -39,4 +39,4 @@ updated: 2026-10-19
 ## Bukti
 - Commit: `90a64c7` (jitsuinfi-zcash PR #5, branch `dex/hnk-08-index`)
 - ID tes: U-HNK-08.1 PASS, U-HNK-08.2 PASS, I-HNK-08.1 BLOCKED
-- Persetujuan user untuk push/deploy: push branch + PR atas izin Dex; merge menunggu review Hans
+- Persetujuan user untuk push/deploy: push branch + PR atas izin Dex; di-review dan di-merge Hans 2026-10-19 (PR #5, lalu PR #6 ke `main`, `61ca636`)

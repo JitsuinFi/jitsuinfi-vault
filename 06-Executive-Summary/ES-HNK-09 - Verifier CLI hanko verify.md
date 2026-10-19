@@ -30,7 +30,7 @@ updated: 2026-10-19
 | Langkah README yang gagal | 0 | 0 untuk contoh (CI menjalankan perintah README dan `diff`); papan sungguhan belum |
 
 ## Status
-**PARSIAL** — T1 dan T2 di PR #4 (menunggu review Hans). AC-HNK-09.3 PASS. AC-HNK-09.1 dan SPK-11 FAIL untuk build dari sumber (9–15 menit); fallback image jadi menunggu izin Hans (usulan D-28). Sisa: scan papan sungguhan (UFVK papan, AC-HNK-09.2 dan I-HNK-09.1), README papan sungguhan (T3, Dave).
+**PARSIAL** — T1 dan T2 sudah di `main` (PR #4 di-merge Hans 19 Okt, `8859598`). AC-HNK-09.3 PASS. AC-HNK-09.1 dan SPK-11 FAIL untuk build dari sumber (9–15 menit); fallback image jadi menunggu izin Hans (usulan D-28). Sisa: scan papan sungguhan (UFVK papan, AC-HNK-09.2 dan I-HNK-09.1), README papan sungguhan (T3, Dave).
 
 ## Risiko tersisa
 - Scan live butuh `zcash-devtool`, yang berat untuk di-build dari sumber. Jalur cepat untuk juri = image jadi (registry) atau binary prebuilt (fallback SPK-11); menerbitkannya butuh izin Hans.
@@ -41,4 +41,4 @@ updated: 2026-10-19
 ## Bukti
 - Commit: `0bdd311` (jitsuinfi-zcash PR #4, branch `dex/hnk-09-verify`)
 - ID tes: U-HNK-09.1 PASS, U-HNK-09.2 PASS, I-HNK-09.1 BLOCKED (UFVK papan)
-- Persetujuan user untuk push/deploy: push branch + PR atas izin Dex; merge menunggu review Hans
+- Persetujuan user untuk push/deploy: push branch + PR atas izin Dex; di-review dan di-merge Hans 2026-10-19 (`8859598`)
