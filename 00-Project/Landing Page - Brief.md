@@ -37,7 +37,7 @@ Konfirmasi user atas pemahaman awal (2026-10-19): "Gasssss, itu oke, dan pastika
 ## Deploy
 
 - Live: https://jitsuinfi.vercel.app (landing) dan https://jitsuinfi.vercel.app/app.html (web app), project Vercel `jitsuinfi` di akun shenhan01-sys (Hobby), 2026-10-19.
-- Cara deploy: build lokal (`npm run wasm` lalu `vercel build --prod`), kirim dengan `vercel deploy --prebuilt --prod`. Project tidak terhubung ke Git, jadi push tidak memicu deploy (build di Vercel tidak punya cargo untuk jitsuin-wasm).
+- Cara deploy: build lokal (`npm run wasm` lalu `vercel build --prod`), salin `.vercel/output` dan `.vercel/project.json` ke folder tanpa `.git`, lalu `vercel deploy --prebuilt --prod` dari folder itu. Dari dalam repo, deploy kedua (2026-10-19) **Blocked**: "the commit author doesn't have permission to create deployments" (Vercel Hobby mencocokkan author commit `shenhan603@gmail.com` dengan akun; kemungkinan email itu belum terdaftar di akun Vercel). Perbaikan permanen: tambahkan email itu di akun Vercel. Project tidak terhubung ke Git, jadi push tidak memicu deploy (build di Vercel tidak punya cargo untuk jitsuin-wasm).
 - Header dari `vercel.json`: CSP sama dengan meta plus `frame-ancestors 'none'`, `X-Content-Type-Options: nosniff`, `Referrer-Policy: no-referrer`, `Permissions-Policy`.
 - Wasm saat ini dibangun dari branch zcash `feat/landing-history-wasm` (PR#3); setelah PR#3 merge, build ulang dari `main`.
 - Cek live (Chrome headless): tanpa error; bab 4 "Done: double financing caught, proof verified."; bab 5 setelah bayar 7/1/0/0, verifikasi lulus.
