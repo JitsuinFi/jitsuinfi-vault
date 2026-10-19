@@ -5,10 +5,10 @@ id: HNK-01
 phase: F1
 lead: Hans
 owners: [Hans, Dex, Dave]
-unit: TODO
+unit: PASS
 integrasi: TODO
 e2e: TODO
-updated: 2026-10-16
+updated: 2026-10-19
 ---
 
 # TEST-HNK-01 - Format invoice kanonik dan tanda tangan buyer
@@ -24,11 +24,11 @@ Logika murni, cepat, tanpa DB dan tanpa chain.
 
 | ID | Kasus | Hasil | Tanggal | Bukti |
 |---|---|---|---|---|
-| U-HNK-01.1 | Encode lalu decode menghasilkan invoice yang sama | TODO | — | — |
-| U-HNK-01.2 | Dua kali encode menghasilkan byte identik | TODO | — | — |
-| U-HNK-01.3 | Dua kali sign menghasilkan tanda tangan identik | TODO | — | — |
-| U-HNK-01.4 | Ubah satu field → verifikasi gagal | TODO | — | — |
-| U-HNK-01.5 | Field kosong atau tidak valid ditolak | TODO | — | — |
+| U-HNK-01.1 | Encode lalu decode menghasilkan invoice yang sama | PASS | 2026-10-19 | `crates/jitsuin-core/tests/invoice_vectors.rs::roundtrip` (jitsuinfi-zcash PR #2) |
+| U-HNK-01.2 | Dua kali encode menghasilkan byte identik | PASS | 2026-10-19 | `canonical_bytes_are_deterministic_and_match_vector` — sama byte demi byte dengan `tests/vectors/invoice_v1.txt` (generator Python independen) |
+| U-HNK-01.3 | Dua kali sign menghasilkan tanda tangan identik | PASS | 2026-10-19 | `signature_is_deterministic_and_matches_vector` + `vector_signature_verifies` (RFC 8032) |
+| U-HNK-01.4 | Ubah satu field → verifikasi gagal | PASS | 2026-10-19 | `any_field_change_breaks_the_signature`: 6 field + buyer key lain → `BadSignature` |
+| U-HNK-01.5 | Field kosong atau tidak valid ditolak | PASS | 2026-10-19 | `invalid_fields_are_rejected` (8 kasus) + `decoder_is_strict` (magic, versi, terpotong, trailing, amount 0) |
 
 ## 2. Integrasi
 Skrip vs DB/chain sungguhan. Semua artefak memakai prefix `TES-` (invoice, akun, label, order).
