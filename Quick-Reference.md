@@ -15,6 +15,7 @@ python3 scripts/sync-vault.py                       # regenerate _Auto-Index + s
 python3 scripts/new-note.py --title "Nama Konsep"   # catatan konsep ke Concepts/
 python3 scripts/new-item.py --kind item --id HNK-16 --title "Judul" --phase F3   # AC + TEST + ES
 python3 scripts/new-item.py --kind spike --id SPK-16 --title "Judul" --area "Tooling"
+python3 scripts/render-diagrams.py                  # render blok plantuml di 08-FlowDiagrams ke assets/*.svg
 ```
 Versi Windows (PowerShell, belum diuji di mesin ini): `scripts/windows/check-links.ps1`, `scripts/windows/new-note.ps1`.
 

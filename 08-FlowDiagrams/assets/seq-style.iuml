@@ -1,0 +1,31 @@
+skinparam shadowing false
+skinparam defaultFontName Helvetica
+skinparam defaultFontSize 12
+skinparam sequenceMessageAlign left
+skinparam responseMessageBelowArrow true
+skinparam maxMessageSize 260
+skinparam BoxPadding 10
+skinparam ArrowColor #1F2A44
+skinparam SequenceLifeLineBorderColor #8A93A8
+skinparam SequenceGroupBorderColor #7A1F2B
+skinparam SequenceGroupHeaderFontColor #7A1F2B
+skinparam SequenceDividerBackgroundColor #EEF1F7
+skinparam SequenceDividerBorderColor #1F2A44
+skinparam NoteBorderColor #8A93A8
+skinparam participant {
+  BackgroundColor #E8ECF6
+  BorderColor #1F2A44
+}
+skinparam actor {
+  BackgroundColor #FFF4F4
+  BorderColor #7A1F2B
+}
+skinparam database {
+  BackgroundColor #F7F7F2
+  BorderColor #5A5A5A
+}
+skinparam collections {
+  BackgroundColor #F7F7F2
+  BorderColor #5A5A5A
+}
+autonumber "<b>00"
