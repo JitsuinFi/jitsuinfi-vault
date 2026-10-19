@@ -220,8 +220,8 @@ Estimasi kasar; diperbarui di Exec Summary dengan jam aktual.
 
 | Task | Deskripsi | Owner | Jam | Status |
 |---|---|---|---|---|
-| HNK-09.T1 | Perintah `jitsuin verify` (memakai ulang scanner) | Dex #dex | 3 | TODO |
-| HNK-09.T2 | Image Docker + instruksi `cargo install` | Dex #dex | 2 | TODO |
+| HNK-09.T1 | Perintah `jitsuin verify` (memakai ulang scanner) | Dex #dex | 3 | REVIEW — jitsuinfi-zcash PR #4 (`0bdd311`): crate `jitsuin-cli`, scan live via UFVK atau snapshot, cek bukti + bundel; 13 tes |
+| HNK-09.T2 | Image Docker + instruksi `cargo install` | Dex #dex | 2 | REVIEW — PR #4: `Dockerfile`, workflow `verifier-image.yml` (build dingin 9–15 mnt + `diff` contoh lulus), README. SPK-11 FAIL untuk build dari sumber → fallback image jadi menunggu izin Hans (D-28) |
 | HNK-09.T3 | README: perintah persis + output yang diharapkan | Dave #dave | 1 | TODO |
 
 **HNK-12 — Spesifikasi gaya ZIP Shielded Receivable Registry** · Lead Dave #dave · [[AC-HNK-12 - Spesifikasi gaya ZIP Shielded Receivable Registry|AC]]
