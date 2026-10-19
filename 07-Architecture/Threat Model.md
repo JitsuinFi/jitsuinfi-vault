@@ -64,6 +64,18 @@ tags: [architecture, security]
 | Operator web menyisipkan skrip pencuri key | CSP same-origin; tanpa CDN; key tidak pernah disimpan atau dikirim | Operator yang mengganti file app tetap bisa menyerang; pengguna yang hati-hati bisa membangun app sendiri dari repo |
 | Transport lightwalletd putus | Retry untuk `sync`/`enhance`; `pay` tidak pernah di-retry (bisa terkirim dua kali) | — |
 
+## Tambahan untuk arsitektur target (usulan, 2026-10-20)
+
+Baris berikut berlaku begitu usulan di [[FD-00 - Arsitektur Target dan Legenda]] dibangun (relay P-04, snapshot P-06, konsol node P-05/P-11). Tabel di atas tetap menggambarkan kode yang ada sekarang.
+
+| Pihak atau kebocoran | Melihat / risiko | Mitigasi usulan | Sisa risiko |
+|---|---|---|---|
+| Relay dokumen dan proxy (rewrite Vercel, Railway) | `mailbox_pk`, `mailbox_id`, ciphertext, masa simpan; IP pengirim (`X-Forwarded-For`), kotak surat tujuan, ukuran, waktu. Karena relay juga memindai papan (P-06), pesan supplier ke financier bisa dikorelasikan dengan entri papan berikutnya | Padding, batching, atau jeda; pisahkan layanan snapshot dari kotak surat; baca kotak surat wajib bukti kepemilikan | Isi tidak terbaca, metadata terlihat. Baris "Operator web" di atas (hanya file statis) tidak berlaku lagi untuk relay |
+| Skrip yang disuntikkan di web app | Begitu `POST /api/mailbox` same-origin ada, CSP `connect-src 'self'` tidak lagi mencegah pencurian: skrip bisa meminta PRF dengan setiap salt peran dan mengirim hasilnya ke kotak surat penyerang | Trusted Types atau render ketat dokumen yang ditempel; penulisan kotak surat hanya sealed box dengan rate limit; SRI atau build yang bisa direproduksi | Baris "Operator web menyisipkan skrip pencuri key" di atas menjadi lebih kuat: pengiriman keluar kini mungkin di dalam CSP |
+| Satu kotak surat per peran | `mailbox_pk` buyer sama di semua kartu kontak, jadi rekan yang bersekongkol atau relay bisa menghubungkan semua invoice seorang buyer meskipun `invoice_pk(k)` berbeda | Kotak surat per deal untuk surat ke buyer | Keterhubungan di antara rekan buyer |
+| Pemegang sertifikat k | Supplier (untuk entri bertag) dan setiap financier yang diminta riwayat (termasuk yang menolak) bisa menghitung tag invoice berikutnya buyer, memantau, atau mengganggu (`UndisclosedSuccessor`) | Varian wasm yang hanya menerima `history_tag` 32 byte, supaya sertifikat k tetap di financier | Financier yang diminta tetap memegang rantai |
+| Pesan relay tanpa autentikasi pengirim | Siapa pun yang tahu `mailbox_id` bisa menyisipkan penawaran, surat palsu (surat JTSA tidak bertanda tangan sampai s2), atau permintaan riwayat palsu | Node menandatangani pesannya dengan `financier_pk`; layar memeriksa terhadap kontak yang diverifikasi di luar sistem; QR hanya untuk surat `Sealed` | Kontak pertama tetap harus diverifikasi di luar sistem |
+
 ## Di luar cakupan
 - Kekuatan hukum tanda tangan elektronik tidak tersertifikasi (UU ITE, PP 71/2019) dan pengalihan piutang: perlu review ahli hukum.
 - Regulasi menghimpun dana anggota (JitsuinFi Vault): diposisikan sebagai demo.
