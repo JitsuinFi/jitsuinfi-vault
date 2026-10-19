@@ -230,7 +230,7 @@ Estimasi kasar; diperbarui di Exec Summary dengan jam aktual.
 |---|---|---|---|---|
 | HNK-12.T1 | Tulis spesifikasi gaya ZIP | Dave #dave (backup sementara: Hans #hans, DEV-11) | 3 | DONE (`c42af3e`): `docs/zip-shielded-receivable-registry.md` |
 | HNK-12.T2 | Test vector dari spesifikasi dijalankan sebagai test | Dex #dex | 1 | TODO |
-| HNK-12.T3 | Review teknis spesifikasi | Hans #hans | 1 | TODO — review oleh Hans sendiri: spesifikasi ditulis agent (DEV-11) |
+| HNK-12.T3 | Review teknis spesifikasi | Hans #hans | 1 | TODO — review oleh Hans sendiri: spesifikasi ditulis agent (DEV-11). Pra-review siap: [[Pra-review Spesifikasi dan Threat Model]] (24 temuan, 1 salah: griefing riwayat) |
 
 ### Fase F5
 
@@ -252,7 +252,7 @@ Estimasi kasar; diperbarui di Exec Summary dengan jam aktual.
 |---|---|---|---|---|
 | HNK-11.T1 | Finalisasi [[Threat Model]] | Dave #dave (backup sementara: Hans #hans, DEV-11) | 2 | DONE: [[Threat Model]] final |
 | HNK-11.T2 | Halaman "apa yang bisa dilihat orang luar" | Dave #dave (backup sementara: Hans #hans, DEV-11) | 2 | DONE (`cdcba0d`, `98466b2` (`jitsuinfi-frontend`, lokal)): halaman orang luar + kartu explorer |
-| HNK-11.T3 | Review kebenaran kebocoran Zcash | Hans #hans | 1 | TODO — review oleh Hans sendiri: threat model ditulis agent (DEV-11) |
+| HNK-11.T3 | Review kebenaran kebocoran Zcash | Hans #hans | 1 | TODO — review oleh Hans sendiri: threat model ditulis agent (DEV-11). Pra-review siap: [[Pra-review Spesifikasi dan Threat Model]] (16 temuan) |
 
 **HNK-18 — Materi pitch dan visual** · Lead Dave #dave · [[AC-HNK-18 - Materi pitch dan visual|AC]]
 
