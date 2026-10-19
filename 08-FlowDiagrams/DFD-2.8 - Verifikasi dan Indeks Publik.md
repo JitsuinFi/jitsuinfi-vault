@@ -138,7 +138,7 @@ f_F8_26 -- P8
 | 8.2 Pindai papan | Sama dengan 3.4; snapshot bisa ditulis (`--save-board`) dan dibaca offline (`--board`) | ADA | `scan`, `to_snapshot`, `from_snapshot` |
 | 8.3 Verifikasi bukti | `DoubleSignProof::verify` + posisi di papan; bukti tanpa posisi entri pertama = FAIL | ADA | `verify::check_proof` |
 | 8.4 Susun bundel | Financier menyusun JTSB dari dokumen deal | ADA (kartu di layar Financier) | wasm `bundleBuild` |
-| 8.5 Verifikasi bundel | `Bundle::verify` + `bundle_on_board`. PASS = tanda tangan buyer + satu registrasi; surat belum lengkap atau tanpa settled hanya muncul sebagai INFO. Di web papan diunggah sebagai file | ADA | `verify::check_bundle`, wasm `bundleOnBoard` |
+| 8.5 Verifikasi bundel | `Bundle::verify` + `bundle_on_board`. PASS = tanda tangan buyer + satu registrasi. Surat belum lengkap dan bundel tanpa dokumen pelunasan hanya INFO; dokumen pelunasan tanpa entri settled di papan = FAIL. Di web papan diunggah sebagai file | ADA | `verify::check_bundle`, wasm `bundleOnBoard` |
 | 8.6 Hitung indeks bunga | Tiap N sekali (entri register pertama); kelas diskon per kelas tenor dengan ≥ k invoice. k hanya melindungi agregat: kelas tiap entri terbaca pemegang UFVK papan, dan entri tanpa tanda tangan yang sah ikut terhitung (indeks bisa digeser). Selama kelas selalu 0/0 (3.2), indeks kosong. Halaman web butuh export wasm `rateIndex` (USULAN) | ADA (CLI); halaman web HNK-08.T3 belum | `rate_index`, `jitsuin index` |
 | 8.7 Sajikan snapshot papan | Relay memindai sendiri dengan UFVK papan dan menyajikan JSON same-origin; kelengkapan snapshot = kepercayaan pada relay | USULAN P-06, P-11 | — |
 | 8.8 Jelaskan memo | Halaman orang luar menguraikan memo tanpa bisa mengecek tanda tangan | ADA | wasm `boardMemoDescribe` |

@@ -74,7 +74,7 @@ rectangle "F6.16 identity_pk terdaftar\n(KYC, di luar protokol)" <<flow>> as f_F
 rectangle "F6.17 rantai valid" <<flow>> as f_F6_17
 rectangle "F6.18 sertifikat 0..k-1" <<flow>> as f_F6_18
 rectangle "F6.19 entri bertag,\nsettled" <<flow>> as f_F6_19
-rectangle "F6.20 allowlist, tenggang,\ntanggal" <<flow>> as f_F6_20
+rectangle "F6.20 allowlist, tenggang\n(tanggal dari jam node)" <<flow>> as f_F6_20
 rectangle "F6.21 laporan: on_time, late,\ndefaults, open" <<flow>> as f_F6_21
 rectangle "F6.22 tolak: NotAnchored / Equivocation /\nFinancierNotAllowed /\nUndisclosedSuccessor (bisa griefing)" <<flow>> as f_F6_22
 rectangle "F6.23 laporan, invoice,\nsertifikat k" <<flow>> as f_F6_23
@@ -198,7 +198,7 @@ sp_P4_b -[hidden]- P4
 | F6.17 | 6.4 Verifikasi rantai | D4 Dokumen deal (salinan tiap pihak) | rantai valid |
 | F6.18 | D4 Dokumen deal (salinan tiap pihak) | 6.5 Cocokkan dengan papan | sertifikat 0..k-1 |
 | F6.19 | D10 Hasil pindai papan (node, memori) | 6.5 Cocokkan dengan papan | entri bertag, settled |
-| F6.20 | D5 Allowlist dan policy | 6.5 Cocokkan dengan papan | allowlist, tenggang, tanggal |
+| F6.20 | D5 Allowlist dan policy | 6.5 Cocokkan dengan papan | allowlist, tenggang (tanggal dari jam node) |
 | F6.21 | 6.5 Cocokkan dengan papan | D4 Dokumen deal (salinan tiap pihak) | laporan: on_time, late, defaults, open |
 | F6.22 | 6.5 Cocokkan dengan papan | Financier | tolak: NotAnchored / Equivocation / FinancierNotAllowed / UndisclosedSuccessor (bisa griefing) |
 | F6.23 | D4 Dokumen deal (salinan tiap pihak) | 6.6 Terapkan standar minimal | laporan, invoice, sertifikat k |

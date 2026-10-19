@@ -61,9 +61,9 @@ rectangle "**4.4**\nVerifikasi rantai\nseal" <<process>> as P4
 rectangle "**4.3**\nSegel buyer" <<process>> as P3
 rectangle "**4.2**\nSegel supplier" <<process>> as P2
 rectangle "**4.1**\nBuat surat\npengalihan" <<process>> as P1
-rectangle "F4.01 PDF surat,\nalamat bayar" <<flow>> as f_F4_01
+rectangle "F4.01 PDF surat" <<flow>> as f_F4_01
 rectangle "F4.02 invoice" <<flow>> as f_F4_02
-rectangle "F4.03 financier_pk" <<flow>> as f_F4_03
+rectangle "F4.03 financier_pk, alamat bayar\ndiversified baru (USULAN)" <<flow>> as f_F4_03
 rectangle "F4.04 mailbox_pk supplier\ndan buyer" <<flow>> as f_F4_04
 rectangle "F4.05 surat JTSA" <<flow>> as f_F4_05
 rectangle "F4.06 surat + PDF surat ke\nsupplier dan buyer" <<flow>> as f_F4_06
@@ -207,7 +207,7 @@ sp_P4_b -[hidden]- P4
 
 | Proses | Isi | Status | Kode / item |
 |---|---|---|---|
-| 4.1 Buat surat pengalihan | JTSA: N, nominal, jatuh tempo, `financier_pk`, alamat bayar, `terms_hash` PDF surat; dibuat sebelum 3.3. Surat tidak bertanda tangan sampai s2, jadi pesan relay perlu autentikasi pengirim (P-04) | ADA | wasm `assignmentEncode` |
+| 4.1 Buat surat pengalihan | JTSA: N, nominal, jatuh tempo, `financier_pk`, alamat bayar (target: alamat diversified baru per deal dari wallet node), `terms_hash` PDF surat; dibuat sebelum 3.3. Surat tidak bertanda tangan sampai s2, jadi pesan relay perlu autentikasi pengirim (P-04) | ADA | wasm `assignmentEncode` |
 | 4.2 Segel supplier | Seal langkah 0. Nominal dan jatuh tempo dipaksa sama dengan invoice; yang belum bisa ditampilkan: alamat bayar, `financier_pk`, `terms_hash` (tidak ada `assignmentDecode`) | PARSIAL (P-13) | wasm `supplierSealAssignment` |
 | 4.3 Segel buyer | Seal langkah 1, pengakuan tertulis (Pasal 613 KUHPerdata); buyer membuka PDF surat dan mencocokkan hash dengan `terms_hash`; wasm memeriksa surat terhadap invoice dan key k | PARSIAL (P-13) | wasm `buyerSealAssignment` |
 | 4.4 Verifikasi rantai seal | Urutan, rantai hash, signer = key role, tanpa `SelfApproval`; event diterima hanya di `AwaitAssignment`; seal tidak lengkap = error, state tetap | ADA | `Assignment::verify`, `AssignmentSealed` |
@@ -220,9 +220,9 @@ sp_P4_b -[hidden]- P4
 
 | Aliran | Dari | Ke | Data |
 |---|---|---|---|
-| F4.01 | Financier | 4.1 Buat surat pengalihan | PDF surat, alamat bayar |
+| F4.01 | Financier | 4.1 Buat surat pengalihan | PDF surat |
 | F4.02 | D4 Dokumen deal (salinan tiap pihak) | 4.1 Buat surat pengalihan | invoice |
-| F4.03 | D2 Node financier (wallet, key, watch-only papan) | 4.1 Buat surat pengalihan | financier_pk |
+| F4.03 | D2 Node financier (wallet, key, watch-only papan) | 4.1 Buat surat pengalihan | financier_pk, alamat bayar diversified baru (USULAN) |
 | F4.04 | D19 Kontak rekan (mailbox_pk) | 4.1 Buat surat pengalihan | mailbox_pk supplier dan buyer |
 | F4.05 | 4.1 Buat surat pengalihan | D4 Dokumen deal (salinan tiap pihak) | surat JTSA |
 | F4.06 | 4.1 Buat surat pengalihan | D7 Kotak surat terenkripsi | surat + PDF surat ke supplier dan buyer |

@@ -119,7 +119,7 @@ rectangle "F10 kartu kontak" <<flow>> as f_F10
 rectangle "F11 key kotak surat financier" <<flow>> as f_F11
 rectangle "F12 wallet, key, watch-only\npapan" <<flow>> as f_F12
 rectangle "F13 PRF, key" <<flow>> as f_F13
-rectangle "F14 PRF, key, kontak" <<flow>> as f_F14
+rectangle "F14 PRF, key" <<flow>> as f_F14
 rectangle "F15 mailbox_pk, mailbox_id" <<flow>> as f_F15
 rectangle "F16 mailbox_pk, mailbox_id" <<flow>> as f_F16
 rectangle "F17 kontak rekan" <<flow>> as f_F17
@@ -506,7 +506,7 @@ f_F114 --> D7_9
 | F11 | D2 Node financier (wallet, key, watch-only papan) | 1.0 Identitas, sesi, kotak surat | key kotak surat financier | F1.17 |
 | F12 | 1.0 Identitas, sesi, kotak surat | D2 Node financier (wallet, key, watch-only papan) | wallet, key, watch-only papan | F1.38 |
 | F13 | D3 Key sesi (memori tab) | 1.0 Identitas, sesi, kotak surat | PRF, key | F1.14, F1.16 |
-| F14 | 1.0 Identitas, sesi, kotak surat | D3 Key sesi (memori tab) | PRF, key, kontak | F1.13, F1.15, F1.32 |
+| F14 | 1.0 Identitas, sesi, kotak surat | D3 Key sesi (memori tab) | PRF, key | F1.13, F1.15, F1.32 |
 | F15 | D7 Kotak surat terenkripsi | 1.0 Identitas, sesi, kotak surat | mailbox_pk, mailbox_id | F1.19 |
 | F16 | 1.0 Identitas, sesi, kotak surat | D7 Kotak surat terenkripsi | mailbox_pk, mailbox_id | F1.18 |
 | F17 | 1.0 Identitas, sesi, kotak surat | D19 Kontak rekan (mailbox_pk) | kontak rekan | F1.23 |

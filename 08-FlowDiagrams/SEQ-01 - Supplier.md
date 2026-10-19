@@ -45,7 +45,7 @@ note over W #E7F3EA : ADA: layar Supplier; belum ada login (simulasi)
 == 1. Siapkan invoice ==
 S -> W : "Invoice baru", invoice_id (TES-INV-...)
 alt saat ini (ADA)
-  W -> W : 32 byte acak (crypto.getRandomValues di JS)\n= secret per invoice
+  W -> W : secret per invoice: 32 byte acak\n(crypto.getRandomValues di JS)
   W --> S : tombol "Download secret backup" (JSON plaintext)
   note right of W #FDECEC : temuan pra-review TM #10
 else target (USULAN P-01, P-03)

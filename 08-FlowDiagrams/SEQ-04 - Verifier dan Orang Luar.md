@@ -61,7 +61,7 @@ loop setiap ~--bundle
   CLI -> CLI : Bundle::verify (tanda tangan buyer, surat + rantai\nseal, dokumen pelunasan)
   CLI -> CLI : bundle_on_board: lookup register + settled\ndua tanda tangan
 end
-CLI --> J : tabel entri + PASS/FAIL per cek, INFO untuk surat\ndan settled; exit 0 semua lulus, 1 ada yang gagal,\n2 error input/jaringan
+CLI --> J : tabel entri + PASS/FAIL/INFO per cek;\nexit 0 semua lulus, 1 ada yang gagal,\n2 error input/jaringan
 note right of CLI #E7F3EA
 ADA (PR #4, #6). Instal dari sumber 550-868 detik
 (AC-HNK-09.1 FAIL); usulan D-28: image
@@ -100,7 +100,7 @@ alt bundel
   end
   W -> X : bundleOnBoard(bundel, snapshot)
   X --> W : register: Registered / NotFound / DoubleFinanced;\nsettled: {txid, on_time}
-  W --> J : "every seal checks out" muncul juga bila surat\nbelum lengkap atau tanpa settled (lihat INFO)
+  W --> J : "every seal checks out" muncul juga bila surat\nbelum lengkap atau tanpa settled (lihat baris surat\ndan status settled)
 else bukti tanda tangan ganda
   W -> X : verifyProof(bukti) (offline saja)
   X --> W : valid: supplier menandatangani N yang sama\nuntuk dua financier
@@ -115,8 +115,9 @@ end
 note right of W #DDEBFA
 PARSIAL: layar Verify ADA; snapshot papan sekarang
 diunggah sebagai file (P-06 belum). Snapshot dari relay
-= kepercayaan pada kelengkapan; hasil web bisa berbeda
-dari PASS/FAIL CLI, keputusan akhir lewat jitsuin verify
+berarti percaya pada kelengkapannya; hasil web bisa
+berbeda dari PASS/FAIL CLI, keputusan akhir lewat
+jitsuin verify
 end note
 
 == E. Orang luar ==
@@ -135,7 +136,7 @@ X --> OL : jenis entri (0x03 = buyer memakai riwayat), N,\ncommitment, kelas dis
 | Pengguna | Bisa memastikan | Tidak bisa |
 |---|---|---|
 | Juri dengan UFVK papan + bukti | Supplier menandatangani satu invoice untuk dua financier; urutan entri di chain (CLI); isi invoice di bukti (nominal, tanggal, `invoice_id`, key per invoice) | Siapa supplier, buyer, financier; apakah itu niat menipu |
-| Auditor dengan bundel | PASS = tanda tangan buyer + satu registrasi. "Surat disegel lengkap" dan "pelunasan dua tanda tangan di papan, tepat waktu atau terlambat" hanya bila baris INFO menyebut `sealed` dan `settled` | Deal lain |
+| Auditor dengan bundel | Tanda tangan buyer dan satu registrasi (PASS). "Surat disegel lengkap" hanya bila baris `signatures` menyebut "sealed by supplier, buyer, financier" (surat belum lengkap = INFO `letter`). Pelunasan dua tanda tangan di papan, tepat waktu atau terlambat, hanya bila ada baris PASS `settlement`; bundel tanpa dokumen pelunasan = INFO, dokumen pelunasan tanpa entri settled = FAIL. "DEAL VERIFIED" di CLI dan "every seal checks out" di web juga muncul saat surat belum lengkap | Deal lain |
 | Pengamat indeks | Agregat per kelas tenor dan diskon dengan ambang k = 5 (selama kelas 0/0, indeks kosong) | Nominal dan pihak. k hanya melindungi agregat: kelas tiap entri terbaca pemegang UFVK papan, dan entri tanpa tanda tangan yang sah ikut terhitung, jadi indeks bisa digeser |
 | Pengamat explorer | Ada transaksi shielded pada waktu tertentu (jumlah action, fee, txid) | Isi memo, apakah tx itu posting papan |
 | Pemegang UFVK papan tanpa bundel | Jenis entri, N, commitment, kelas, tag, flag tepat waktu tiap entri; N yang muncul dua kali | Isi invoice, pihak, keabsahan tanda tangan, apakah konflik itu penipuan atau griefing |

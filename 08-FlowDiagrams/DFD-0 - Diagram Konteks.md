@@ -80,7 +80,7 @@ k14 -up-> P
 | K4 | Sistem | Supplier | Kartu kontak, backup key (saat ini), status tanda tangan, rincian entri, isi surat, status advance, status pelunasan | F10, F21, F32, F51, F69 |
 | K5 | Buyer | Sistem | Daftar/masuk dan stempel, kartu kontak rekan, key invoice k, keputusan, minta QR, persetujuan riwayat, cek riwayat sendiri | F3, F18, F47, F66, F80 |
 | K6 | Sistem | Buyer | Kartu kontak, isi invoice + hasil cek hash, isi surat, QR ZIP-321, status pelunasan, permintaan riwayat, status riwayat | F4, F19, F48, F67, F81 |
-| K7 | Financier | Sistem | Pairing node (pendaftaran financier), buka konsol, kartu kontak rekan, syarat deal, PDF surat + alamat bayar, tanggal kuitansi, permintaan riwayat + policy, buat bundel, id anggota, perintah root | F5, F29, F49, F82, F98, F106 |
+| K7 | Financier | Sistem | Pairing node (pendaftaran financier), buka konsol, kartu kontak rekan, syarat deal, PDF surat, tanggal kuitansi, permintaan riwayat + policy, buat bundel, id anggota, perintah root | F5, F29, F49, F82, F98, F106 |
 | K8 | Sistem | Financier | Kartu kontak, kode pairing, sesi konsol, status cek papan, entri ditolak, status pelunasan + bukti sengketa, penolakan riwayat, lulus/tolak, berhenti / Caught | F6, F30, F68, F83, F92 |
 | K9 | Sistem | Verifier | Bukti JTSP, verdict, indeks bunga, bundel, snapshot, uraian memo | F93, F100 |
 | K10 | Verifier | Sistem | UFVK papan, bukti, bundel, k, memo, snapshot | F99 |

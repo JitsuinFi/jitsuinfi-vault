@@ -190,13 +190,15 @@ end
 opt jeda acak sebelum Pay (USULAN, menunggu keputusan TM #12/#15)
   API -> API : tunda
 end
+O -> W : setujui pembayaran advance deal ini
+W -> API : assertion passkey operator per deal\n(USULAN P-07)
+API -> API : key node = financier_pk surat?\n(bukan: InvalidDeal, tanpa transaksi)
 API -> WB : cek papan terakhir (scan + lookup)
 alt entri hilang
   FL --> API : AwaitConfirmation, tanpa transaksi
 else konflik baru
   FL --> API : Stopped, tanpa transaksi
 end
-API -> API : key node = financier_pk surat? (bukan: InvalidDeal)
 API -> WF : sync + list_tx
 API -> API : sent_advance(N)? (pemulihan setelah crash:\ncatat txid lama, tidak membayar dua kali)
 API -> API : Receipt::sign(Advance, N, advance_zat, tanggal)\n+ seal_next (seal financier s2)\n+ ReceivableNote (N, nilai, jatuh tempo)
