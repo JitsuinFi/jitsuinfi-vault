@@ -29,6 +29,7 @@ Rincian task per orang: [[Backlog]].
 6. [[Backlog]] — daftar item dengan ID stabil (HNK-xx) dan log deviasi.
 7. [[AC Hub]] · [[Testing Hub]] · [[Exec Summary Hub]] — bukti per item.
 8. [[Arsitektur JitsuinFi]] · [[Format Data]] · [[Threat Model]] · [[Decision Log]].
+8b. [[08 - FlowDiagrams]] — alur end to end target: auth passkey, sequence per peran, DFD level 0–2, peta halaman.
 9. [[Video-Workspace]] — produksi video demo 2 menit.
 10. [[Dashboard]] — status semua item (Dataview).
 
@@ -43,6 +44,7 @@ Rincian task per orang: [[Backlog]].
 | `05-Testing/` | Hub + satu file tes per item (unit, integrasi, E2E) |
 | `06-Executive-Summary/` | Hub + satu exec summary per item |
 | `07-Architecture/` | Arsitektur, format data, threat model, decision log |
+| `08-FlowDiagrams/` | Sequence per peran, DFD level 0–2, peta halaman (PlantUML, dirender ke `assets/*.svg`) |
 | `Video-Workspace/` | Naskah, storyboard, checklist rekaman dan export |
 | `Concepts/` | Catatan konsep atomik (`#concept`) |
 | `Module-Guides/` | Ringkasan tiap modul `NN-` |

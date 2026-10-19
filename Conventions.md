@@ -22,6 +22,10 @@ Aturan vault ini. Diadaptasi dari panduan `ObsidianGuides/Conventions.md`, ditam
 | `AC-HNK-xx.k` | Kriteria ke-k dari item | baris tabel di file AC |
 | `U-`, `I-` | Kasus unit dan integrasi | baris tabel di file TEST |
 | `TES-` | Prefix artefak uji integrasi | `TES-INV-0001`, label akun `TES-financier-a` |
+| `FD-xx`, `PG-xx` | Dokumen alur: arsitektur target, peta halaman | `FD-00 - <Judul>.md`, `PG-01 - <Judul>.md` |
+| `SEQ-xx` | Sequence diagram per peran | `SEQ-01 - Supplier.md` |
+| `DFD-n` / `DFD-2.k` | DFD level 0, 1, dan level 2 per proses k | `DFD-2.3 - Registrasi Papan.md` |
+| `P-xx` | Usulan desain di [[FD-00 - Arsitektur Target dan Legenda]] (belum keputusan) | `P-04` |
 
 ID tidak pernah dipakai ulang. Item yang dibatalkan tetap ada dengan status `BLOCKED` dan alasan.
 

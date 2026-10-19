@@ -1,0 +1,50 @@
+skinparam linetype ortho
+skinparam shadowing false
+skinparam defaultFontName Helvetica
+skinparam defaultFontSize 12
+skinparam ArrowColor #1F2A44
+skinparam ArrowThickness 1.2
+skinparam nodesep 60
+skinparam ranksep 70
+skinparam padding 4
+skinparam rectangle {
+  BorderColor #1F2A44
+  BackgroundColor #FFFFFF
+}
+skinparam rectangle<<entity>> {
+  BackgroundColor #E8ECF6
+  BorderThickness 2
+  FontStyle bold
+}
+skinparam rectangle<<process>> {
+  BackgroundColor #FFF4F4
+  BorderColor #7A1F2B
+  RoundCorner 28
+}
+skinparam rectangle<<store>> {
+  BackgroundColor #F7F7F2
+  BorderColor #5A5A5A
+}
+skinparam rectangle<<proposal>> {
+  BackgroundColor #FFFBEA
+  BorderColor #B8860B
+  BorderStyle dashed
+  RoundCorner 28
+}
+hide stereotype
+skinparam rectangle<<flow>> {
+  BackgroundColor #FFFFFF
+  BorderColor #FFFFFF
+  FontSize 11
+  FontColor #333333
+}
+skinparam rectangle<<storeproposal>> {
+  BackgroundColor #FFFBEA
+  BorderColor #B8860B
+  BorderStyle dashed
+}
+skinparam rectangle<<spacer>> {
+  BackgroundColor transparent
+  BorderColor transparent
+  FontColor transparent
+}

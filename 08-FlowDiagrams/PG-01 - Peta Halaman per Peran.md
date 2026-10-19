@@ -1,0 +1,132 @@
+---
+tags: [flow, pages]
+status: DRAF
+updated: 2026-10-19
+---
+
+# PG-01 - Peta Halaman per Peran
+
+**Bagian dari:** [[08 - FlowDiagrams]] · Legenda: [[FD-00 - Arsitektur Target dan Legenda]] · Item: [[AC-HNK-21 - Polish halaman internal web app|HNK-21]] · [[AC-HNK-10 - Web app per peran|HNK-10]]
+
+Halaman target web app, diturunkan dari sequence per peran. Sekarang `app.html` hanya punya lima tab simulasi (Supplier, Buyer, Financier, Verify, What outsiders see) tanpa login. Setiap tab adalah kumpulan kartu salin-tempel. Kotak hijau = sudah ada sebagai simulasi, kuning putus-putus = baru.
+
+![PG-01](assets/pg-01-pages.svg)
+
+```plantuml
+@startuml pg-01-pages
+!include dfd-style.iuml
+skinparam nodesep 14
+skinparam ranksep 34
+skinparam rectangle<<have>> {
+  BackgroundColor #E7F3EA
+  BorderColor #2E7D32
+}
+skinparam rectangle<<new>> {
+  BackgroundColor #FFFBEA
+  BorderColor #B8860B
+  BorderStyle dashed
+}
+skinparam rectangle<<group>> {
+  BackgroundColor #E8ECF6
+  BorderColor #1F2A44
+  BorderThickness 2
+  FontStyle bold
+}
+rectangle "jitsuinfi.vercel.app" <<group>> as ROOT
+rectangle "Publik\n(tanpa akun)" <<group>> as PUB
+rectangle "Akun\n(passkey)" <<group>> as AUTH
+rectangle "Supplier" <<group>> as SUP
+rectangle "Buyer" <<group>> as BUY
+rectangle "Financier\n(konsol node)" <<group>> as FIN
+rectangle "Anggota dana" <<group>> as MEM
+ROOT -down- PUB
+ROOT -down- AUTH
+ROOT -down- SUP
+ROOT -down- BUY
+ROOT -down- FIN
+ROOT -down- MEM
+rectangle "Landing /" <<have>> as p1
+rectangle "Verify\n/verify" <<have>> as p2
+rectangle "Orang luar\n/outsider" <<have>> as p3
+rectangle "Indeks bunga\n/index" <<new>> as p4
+PUB -down- p1
+p1 -down- p2
+p2 -down- p3
+p3 -down- p4
+rectangle "Daftar\n(pilih peran)" <<new>> as a1
+rectangle "Masuk" <<new>> as a2
+rectangle "Pilih / ganti\nperan" <<new>> as a3
+rectangle "Kunci sesi\n(overlay)" <<new>> as a4
+rectangle "Kartu kontak\n(QR)" <<new>> as a5
+AUTH -down- a1
+a1 -down- a2
+a2 -down- a3
+a3 -down- a4
+a4 -down- a5
+rectangle "Daftar deal\n(timeline per N)" <<new>> as s1
+rectangle "Invoice baru" <<have>> as s2
+rectangle "Tawarkan ke\nfinancier" <<new>> as s3
+rectangle "Tanda tangani\nentri papan" <<new>> as s4
+rectangle "Segel surat" <<have>> as s5
+rectangle "Advance diterima\n(Sign-to-Pay)" <<new>> as s6
+SUP -down- s1
+s1 -down- s2
+s2 -down- s3
+s3 -down- s4
+s4 -down- s5
+s5 -down- s6
+rectangle "Kotak masuk\n(perlu tindakan)" <<new>> as b1
+rectangle "Tanda tangani\ninvoice" <<have>> as b2
+rectangle "Permintaan riwayat\n(persetujuan)" <<new>> as b3
+rectangle "Segel surat" <<have>> as b4
+rectangle "Bayar (QR\nZIP-321)" <<have>> as b5
+rectangle "Riwayat saya" <<new>> as b6
+BUY -down- b1
+b1 -down- b2
+b2 -down- b3
+b3 -down- b4
+b4 -down- b5
+b5 -down- b6
+rectangle "Pipeline deal\n(per state)" <<new>> as f1
+rectangle "Penawaran masuk" <<new>> as f2
+rectangle "Cek riwayat\nbuyer" <<have>> as f3
+rectangle "Detail deal: papan,\nentri, surat, advance" <<new>> as f4
+rectangle "Buat surat" <<have>> as f5
+rectangle "Watchdog\npelunasan" <<new>> as f6
+rectangle "Bukti dan bundel" <<have>> as f7
+rectangle "Pengaturan node:\npairing, policy,\nallowlist" <<new>> as f8
+FIN -down- f1
+f1 -down- f2
+f2 -down- f3
+f3 -down- f4
+f4 -down- f5
+f5 -down- f6
+f6 -down- f7
+f7 -down- f8
+rectangle "Laporan\nsolvabilitas" <<new>> as m1
+rectangle "Setoran saya\n(bukti inklusi)" <<new>> as m2
+MEM -down- m1
+m1 -down- m2
+@enduml
+```
+
+## Halaman dan isinya
+
+| Peran | Halaman | Isi | Sequence | Status |
+|---|---|---|---|---|
+| Publik | Landing | 6 bab, EN/中文 | — | ADA (jitsuinfi.vercel.app) |
+| Publik | Verify | Tempel bundel/bukti, verdict, unduh bukti; snapshot papan otomatis (P-06) | [[SEQ-04 - Verifier dan Orang Luar]] | ADA (snapshot ditempel manual) |
+| Publik | Orang luar | Tabel publik vs tersembunyi, uraian memo | SEQ-04 | ADA |
+| Publik | Indeks bunga | Kelas tenor × kelas diskon, k = 5 | SEQ-04 | BARU (HNK-08.T3) |
+| Akun | Daftar, Masuk, Pilih peran, Kunci sesi, Kartu kontak | Passkey PRF, salt per peran, kotak surat | [[SEQ-00 - Autentikasi dan Onboarding]] | BARU (P-01 – P-07) |
+| Supplier | Daftar deal | Satu timeline per N: tanda tangan buyer, penawaran, entri, surat, advance, pelunasan | [[SEQ-01 - Supplier]] | BARU |
+| Supplier | Invoice baru | Key per invoice (P-03), file syarat, kirim ke buyer | SEQ-01 | ADA (simulasi) |
+| Supplier | Tawarkan, Tanda tangani entri | Pilih financier dari kontak, tanda tangani entri untuk komitmennya | SEQ-01 | BARU (wasm ADA) |
+| Supplier | Segel surat, Advance diterima | Seal supplier; verifikasi Sign-to-Pay | SEQ-01 | ADA (segel) / BARU (advance) |
+| Buyer | Kotak masuk | Invoice untuk ditandatangani, surat untuk disegel, tagihan jatuh tempo, permintaan riwayat | [[SEQ-02 - Buyer]] | BARU |
+| Buyer | Tanda tangani invoice, Segel surat, Bayar | Cek hash file, tanda tangan, seal, QR | SEQ-02 | ADA (simulasi) |
+| Buyer | Permintaan riwayat, Riwayat saya | Persetujuan, sertifikat otomatis (P-09), status per invoice | SEQ-02 | BARU (wasm ADA) |
+| Financier | Pipeline deal, Penawaran, Detail deal, Watchdog | State `Flow` per N, tombol aksi per state, status pelunasan | [[SEQ-03 - Financier]] | BARU (butuh API HNK-05.T3) |
+| Financier | Cek riwayat, Buat surat, Bukti dan bundel | Kartu yang sudah ada, dipindah ke detail deal | SEQ-03 | ADA (simulasi) |
+| Financier | Pengaturan node | Pairing passkey, policy standar minimal, allowlist | SEQ-03 | BARU |
+| Anggota dana | Laporan solvabilitas, Setoran saya | Membaca hasil pindaian lokal (P-10) | [[SEQ-05 - Anggota Dana]] | BARU (HNK-15.T3) |
