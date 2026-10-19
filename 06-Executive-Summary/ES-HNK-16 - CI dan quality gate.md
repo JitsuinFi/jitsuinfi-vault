@@ -28,13 +28,13 @@ updated: 2026-10-19
 | Temuan secret | 0 | 0 (seluruh riwayat) |
 
 ## Status
-**PARSIAL** — CI hijau di PR. Belum: merge ke `main`, branch protection (AC-HNK-16.4, admin), (16.1 sudah PASS lokal 19 Okt).
+**PARSIAL** — AC 16.1–16.3 PASS: cek lokal (19 Okt), CI hijau di PR dan di `main` setelah merge (`317d59b`), gitleaks 0 temuan. Sisa AC-HNK-16.4 (branch protection): tidak tersedia untuk repo private di paket Free, jadi dinyalakan saat repo publik 28 Okt.
 
 ## Risiko tersisa
-- Tanpa branch protection, PR merah masih bisa di-merge.
+- Tanpa branch protection, PR merah masih bisa di-merge. Mitigasi sampai 28 Okt: Hans hanya me-merge PR dengan CI hijau.
 - gitleaks belum terpasang lokal di mesin Dex (CI tetap menjalankannya).
 
 ## Bukti
-- Commit: `317d59b` (branch `dex/hnk-16-ci`, jitsuinfi-zcash PR #1 (`317d59b`))
-- ID tes: I-HNK-16.1 PASS (https://github.com/JitsuinFi/jitsuinfi-zcash/actions/runs/39152530625)
-- Persetujuan user untuk push/deploy: _belum_
+- Commit: `317d59b` (jitsuinfi-zcash PR #1, di-merge ke `main` oleh Hans 2026-10-19)
+- ID tes: U-HNK-16.1 PASS, I-HNK-16.1 PASS (https://github.com/JitsuinFi/jitsuinfi-zcash/actions/runs/39152530625), CI `main` https://github.com/JitsuinFi/jitsuinfi-zcash/actions/runs/39215984762
+- Persetujuan user untuk push/deploy: push branch + PR atas izin Dex; merge oleh Hans (review) 2026-10-19

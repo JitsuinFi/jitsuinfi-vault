@@ -7,7 +7,7 @@ lead: Dex
 owners: [Dex]
 unit: PASS
 integrasi: PASS
-e2e: TODO
+e2e: PASS
 updated: 2026-10-19
 ---
 
@@ -31,13 +31,13 @@ Skrip vs DB/chain sungguhan. Semua artefak memakai prefix `TES-` (invoice, akun,
 |---|---|---|---|---|
 | I-HNK-16.1 | Jalankan pipeline penuh di repo bersih (clone baru) | PASS | 2026-10-19 | Runner GitHub = clone baru: fmt, check, clippy -D warnings, test (82 lulus: 14+34+24+6+4), wasm build, gitleaks 0 temuan — https://github.com/JitsuinFi/jitsuinfi-zcash/actions/runs/39152530625 |
 
-**Bukti pembersihan:** sisa artefak off-chain `TES-` = _TODO_ (target **0**). Artefak on-chain tidak bisa dihapus; catat txid-nya di tabel di atas. Data produksi tidak boleh tersentuh.
+**Bukti pembersihan:** sisa artefak off-chain `TES-` = **0** (item ini tidak membuat artefak `TES-`). Artefak on-chain tidak bisa dihapus; catat txid-nya di tabel di atas. Data produksi tidak boleh tersentuh.
 
 ## 3. E2E
 Panduan langkah demi langkah untuk user.
 
-- [ ] Developer menjalankan satu perintah cek dan membaca hasilnya.
+- [x] Developer menjalankan satu perintah cek dan membaca hasilnya.
 
 | Langkah | Hasil diharapkan | Hasil aktual | Status |
 |---|---|---|---|
-| 1 | _TODO_ | — | TODO |
+| 1 | Di root `jitsuinfi-zcash`: `bash scripts/check.sh` → tiap langkah dicetak `== …`, akhir `All checks passed.`, exit 0 | Laptop Dex 2026-10-19 (setelah rebase PR #2 ke `main`): `SKIP_WASM=1 bash scripts/check.sh` 14 dtk (cache hangat), 96 tes lulus, `All checks passed.` | PASS |

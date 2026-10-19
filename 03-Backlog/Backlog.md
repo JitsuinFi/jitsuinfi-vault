@@ -128,9 +128,9 @@ Estimasi kasar; diperbarui di Exec Summary dengan jam aktual.
 
 | Task | Deskripsi | Owner | Jam | Status |
 |---|---|---|---|---|
-| HNK-16.T1 | Script cek lokal satu perintah | Dex #dex | 1 | REVIEW — `scripts/check.sh` di PR #1; lulus lokal 38 dtk, gagal benar saat merah |
-| HNK-16.T2 | Workflow GitHub Actions | Dex #dex | 2 | REVIEW — hijau di PR #1 (19 Okt) |
-| HNK-16.T3 | Secret scanning (gitleaks) + `.gitignore` seed/key/.env/DB wallet | Dex #dex | 1 | REVIEW — 0 temuan seluruh riwayat (PR #1) |
+| HNK-16.T1 | Script cek lokal satu perintah | Dex #dex | 1 | DONE (`317d59b`, PR #1 di-merge): `scripts/check.sh`; lulus lokal 38 dtk, gagal benar saat merah |
+| HNK-16.T2 | Workflow GitHub Actions | Dex #dex | 2 | DONE (`317d59b`): hijau di PR #1 dan di `main` (run 39215984762); branch protection menunggu repo publik (AC-HNK-16.4) |
+| HNK-16.T3 | Secret scanning (gitleaks) + `.gitignore` seed/key/.env/DB wallet | Dex #dex | 1 | DONE (`317d59b`): 0 temuan seluruh riwayat |
 
 ### Fase F2
 

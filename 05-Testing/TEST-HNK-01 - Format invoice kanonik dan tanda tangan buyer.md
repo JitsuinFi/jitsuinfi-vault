@@ -5,10 +5,10 @@ id: HNK-01
 phase: F1
 lead: Hans
 owners: [Hans, Dex, Dave]
-unit: TODO
+unit: PASS
 integrasi: TODO
 e2e: TODO
-updated: 2026-10-16
+updated: 2026-10-19
 ---
 
 # TEST-HNK-01 - Format invoice kanonik dan tanda tangan buyer
