@@ -30,7 +30,8 @@ tags: [architecture, security]
 |---|---|---|
 | Metadata waktu dan jumlah entri di papan | Entri hanya berisi hash tanpa identitas; dinyatakan di deskripsi | Pola aktivitas papan terlihat |
 | N yang sama muncul dua kali (pembiayaan ganda atau griefing) | Orang luar tidak bisa memverifikasi tanda tangan tanpa invoice, jadi tidak bisa membedakan penipuan dari griefing | Orang luar tahu "ada konflik", tanpa tahu invoice atau pihaknya |
-| Bucket indeks bisa mempersempit identitas | Indeks hanya ditampilkan bila minimal k entri per kelas (HNK-08); entri `settled` tidak membawa bucket | Pasar kecil = anonymity set kecil |
+| Bucket indeks bisa mempersempit identitas | Indeks hanya menampilkan kelas tenor, dan kelas diskon di dalamnya, yang punya minimal k = 5 invoice (`jitsuin_core::index::K`, HNK-08); kelas di bawah k tidak diberi angka; entri `settled` tidak membawa bucket | Kelas tiap entri tetap terbaca pemegang viewing key papan; ambang k hanya untuk agregat. Pasar kecil = anonymity set kecil |
+| Entri palsu menggeser indeks | Tiap N dihitung sekali (entri pertama di urutan papan); setiap posting butuh fee | Orang luar tidak bisa mengecek tanda tangan supplier, jadi entri griefing yang lebih dulu menentukan kelas N itu dan N palsu ikut terhitung. Pemegang bundel bisa mengecek dealnya sendiri (`jitsuin verify --bundle`) |
 | Tag riwayat pertama bisa dihitung siapa pun yang tahu `identity_pk` buyer | Hanya pihak yang pernah ber-KYC dengan buyer mengetahui `identity_pk`; tag berikutnya butuh sertifikat bertanda tangan | Pemegang `identity_pk` bisa menemukan invoice pertama buyer |
 | QR ZIP-321 di tempat umum membuka alamat financier, nominal, dan memo pelunasan | QR hanya ditampilkan di layar buyer untuk dipindai langsung | Kalau QR bocor, alamat dan nominal terlihat |
 | IP terlihat oleh lightwalletd | `zcash-devtool` mendukung `--connection tor`; dinyatakan di sini | Default tanpa Tor |
