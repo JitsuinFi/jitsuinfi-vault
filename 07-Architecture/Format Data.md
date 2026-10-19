@@ -154,8 +154,23 @@ Untuk anggota dana yang memegang viewing key akun operasional:
 - **Root kewajiban `JTLR`** (144 byte): magic (4), periode (4, LE), root Merkle sum tree (32), total kewajiban (8, LE), key manajer (32), tanda tangan manajer atas byte sebelumnya (64). Dikirim ke akun sendiri per periode. Root dari pihak lain diabaikan.
 - **Solvabilitas:** kas (saldo watch-only) + piutang berjalan (nominal − pelunasan yang masuk untuk N itu) + piutang lewat jatuh tempo setelah potongan ≥ total di root terbaru.
 
-## Bucket indeks (HNK-08)
-`discount_bucket` dan `tenor_bucket` = kelas diskon dan tenor (tanpa nominal). Tabel kelas difinalkan di HNK-08; indeks hanya ditampilkan bila ada minimal k entri per kelas.
+## Bucket indeks (HNK-08) — **diimplementasikan** (`90a64c7`, PR #5, usulan D-27)
+`discount_bucket` dan `tenor_bucket` = kelas diskon dan tenor (tanpa nominal). Diskon = (nominal − advance) / nominal dalam basis poin; tenor = hari dari advance sampai jatuh tempo.
+
+| Kode | Diskon | Tenor |
+|---|---|---|
+| 0 | tidak diungkap | tidak diungkap |
+| 1 | < 1% (0–99 bp) | ≤ 30 hari |
+| 2 | 1–2% | 31–60 hari |
+| 3 | 2–3% | 61–90 hari |
+| 4 | 3–5% | 91–180 hari |
+| 5 | 5–8% | 181–365 hari |
+| 6 | 8–12% | — |
+| 7 | ≥ 12% | — |
+
+- Dua-duanya diisi atau `0/0` (nilai entri sebelum HNK-08). Kombinasi lain = kelas salah: entri tetap registrasi yang sah untuk `lookup`, tetapi tidak masuk indeks.
+- Indeks: tiap N dihitung sekali dengan entri register pertamanya di urutan papan; entri `settled` tidak membawa kelas. Per kelas tenor: jumlah invoice, median bawah kelas diskon, kelas diskon yang punya ≥ k invoice, sisanya satu total "other".
+- **k = 5** (`jitsuin_core::index::K`): kelas di bawah k tidak diberi angka. k boleh dinaikkan, tidak boleh diturunkan.
 
 ## Urutan entri (HNK-04) — **diimplementasikan** (`ef55987`)
 Urutan total: (tinggi blok, indeks transaksi, indeks output). Indeks transaksi diambil dari `GetBlock` lightwalletd (SPK-08); tidak perlu tie-break tambahan. Memo hanya terbaca setelah transaksi penuh diambil (`enhance`, SPK-05). Entri ulang dengan commitment financier yang sama bukan konflik.

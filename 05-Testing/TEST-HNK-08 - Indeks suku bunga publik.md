@@ -5,10 +5,10 @@ id: HNK-08
 phase: F4
 lead: Dex
 owners: [Dex, Dave]
-unit: TODO
-integrasi: TODO
+unit: PASS
+integrasi: BLOCKED
 e2e: TODO
-updated: 2026-10-16
+updated: 2026-10-19
 ---
 
 # TEST-HNK-08 - Indeks suku bunga publik
@@ -22,17 +22,17 @@ Logika murni, cepat, tanpa DB dan tanpa chain.
 
 | ID | Kasus | Hasil | Tanggal | Bukti |
 |---|---|---|---|---|
-| U-HNK-08.1 | Agregasi bucket | TODO | — | — |
-| U-HNK-08.2 | Ambang k | TODO | — | — |
+| U-HNK-08.1 | Agregasi bucket | PASS | 2026-10-19 | `jitsuin-core` `aggregation_counts_each_invoice_once_with_its_first_entry` (12 entri → 11 invoice, entri kedua N 0 diabaikan, median bawah, "other"), `settled_entries_do_not_count`; `jitsuin-board` `rate_index_is_the_same_in_any_collection_order`; CLI `index_sample_matches_the_expected_output` (`examples/index/`: 18 entri, 17 invoice, 1 tidak diungkap, 1 kelas salah) — PR #5 (`90a64c7`) |
+| U-HNK-08.2 | Ambang k | PASS | 2026-10-19 | `classes_below_k_are_not_shown_and_k_cannot_be_lowered` (4 invoice → tidak tampil; 5 → tampil; k=1 dinaikkan ke 5; k=6 menyembunyikan lagi), `index_json_and_higher_k` (kelas di bawah k tanpa angka di JSON; `--k 6` → 1 kelas; `--k 2` ditolak exit 2) |
 
 ## 2. Integrasi
 Skrip vs DB/chain sungguhan. Semua artefak memakai prefix `TES-` (invoice, akun, label, order).
 
 | ID | Skenario | Hasil | Tanggal | Bukti (txid/log) |
 |---|---|---|---|---|
-| I-HNK-08.1 | Indeks dari entri `TES-` di papan uji | TODO | — | — |
+| I-HNK-08.1 | Indeks dari entri `TES-` di papan uji | BLOCKED | 2026-10-19 | Butuh ≥ 5 entri `TES-` berkelas di papan uji testnet (`registerEntry` web masih `0/0`) dan UFVK papan untuk `jitsuin index --ufvk`. Dex belum punya wallet testnet. |
 
-**Bukti pembersihan:** sisa artefak off-chain `TES-` = _TODO_ (target **0**). Artefak on-chain tidak bisa dihapus; catat txid-nya di tabel di atas. Data produksi tidak boleh tersentuh.
+**Bukti pembersihan:** sisa artefak off-chain `TES-` = **0** (uji unit dan contoh sintetis saja). Artefak on-chain tidak bisa dihapus; catat txid-nya di tabel di atas. Data produksi tidak boleh tersentuh.
 
 ## 3. E2E
 Panduan langkah demi langkah untuk user.

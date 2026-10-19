@@ -212,8 +212,8 @@ Estimasi kasar; diperbarui di Exec Summary dengan jam aktual.
 
 | Task | Deskripsi | Owner | Jam | Status |
 |---|---|---|---|---|
-| HNK-08.T1 | Definisi dan validasi bucket diskon/tenor | Dex #dex | 2 | TODO |
-| HNK-08.T2 | Agregasi indeks + ambang k | Dex #dex | 2 | TODO |
+| HNK-08.T1 | Definisi dan validasi bucket diskon/tenor | Dex #dex | 2 | REVIEW — jitsuinfi-zcash PR #5 (`90a64c7`, ditumpuk di atas PR #4): tabel kelas, `classes_for`, `validate_classes`; tabel di [[Format Data]] |
+| HNK-08.T2 | Agregasi indeks + ambang k | Dex #dex | 2 | REVIEW — PR #5: `RateIndex`, `rate_index`, `jitsuin index`, k = 5 (D-27) |
 | HNK-08.T3 | Halaman indeks suku bunga di web | Dave #dave | 3 | TODO |
 
 **HNK-09 — Verifier CLI hanko verify** · Lead Dex #dex · [[AC-HNK-09 - Verifier CLI hanko verify|AC]]
