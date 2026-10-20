@@ -21,6 +21,7 @@ Logika murni, cepat, tanpa DB dan tanpa chain.
 | U-HNK-26.1 | Verifikasi assertion: challenge kedaluwarsa dan origin salah ditolak | TODO | — | — |
 | U-HNK-26.2 | Serialisasi `Flow` roundtrip | TODO | — | — |
 | U-HNK-26.3 | Penjadwal tidak memposting ulang txid tersimpan | TODO | — | — |
+| U-HNK-26.4 | `Flow::double_sign_proof` | PASS | 2026-10-20 | `jitsuin-flow` tes `a_double_financed_deal_gives_a_proof_that_holds_on_the_board` (bukti di `Stopped(DoubleFinanced)`: entri pertama dan konflik dengan posisi, lolos `verify_proof_on_board`, roundtrip byte, tanda tangan buyer rusak ditolak, tanpa bukti sebelum berhenti) dan `already_financed_gives_no_proof` (`822109d`) |
 
 ## 2. Integrasi
 Skrip vs DB/chain sungguhan. Semua artefak memakai prefix `TES-` (invoice, akun, label, order).

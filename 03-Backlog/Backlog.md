@@ -385,13 +385,13 @@ Urutan kerja mengikuti gelombang FD-01: fondasi (HNK-27, HNK-22, HNK-24.T1, HNK-
 | HNK-26.T5 | Penawaran masuk: cek tanda tangan buyer sebelum `Deal`, tetapkan advance dan konfirmasi. Rincian: `BL-D23-02` | Dex #dex | 2 | TODO |
 | HNK-26.T6 | Tolak atau kedaluwarsa penawaran. Rincian: `BL-D23-03` | Dex #dex | 1 | TODO |
 | HNK-26.T7 | Registri `identity_pk` buyer hasil KYC. Rincian: `BL-D26-05` | Dex #dex | 1 | TODO |
-| HNK-26.T8 | API `check_buyer` dengan `MinimumStandard`, simpan laporan dan `history_tag`. Rincian: `BL-D26-06` | Hans #hans | 1 | TODO |
+| HNK-26.T8 | API `check_buyer` dengan `MinimumStandard`, simpan laporan dan `history_tag`. Rincian: `BL-D26-06` | Hans #hans | 1 | TODO: fungsi `check_buyer` (laporan + tag) sudah ada di `jitsuin-flow` sejak HNK-20.T3; sisa endpoint `POST /node/history/check` dan penyimpanan tag menunggu node (HNK-26.T1, Dex) |
 | HNK-26.T9 | Pengaturan policy di konsol: allowlist, standar minimal, tenggang. Rincian: `BL-D26-08` | Dave #dave | 2 | TODO |
 | HNK-26.T10 | Persistensi state deal dan dokumen deal di node (lanjut setelah restart). Rincian: `BL-D23-13`, `BL-D1-03` | Hans #hans | 3 | TODO |
 | HNK-26.T11 | Penjadwal pelunasan berkala (tenggang dan tanggal dari konfigurasi). Rincian: `BL-D25-03` | Dex #dex | 2 | TODO |
 | HNK-26.T12 | Penjadwal mengingat txid `settled` yang sudah dikirim. Rincian: `BL-D25-06` | Dex #dex | 1 | TODO |
 | HNK-26.T13 | Status pelunasan dan sengketa di konsol, ekspor bukti (klaim buyer + txid). Rincian: `BL-D25-04` | Hans #hans | 2 | TODO |
-| HNK-26.T14 | Bukti `DoubleFinanced`: `proof_from_lookup` di node + kartu bukti ganda. Rincian: `BL-D27-02`, `BL-D27-04` | Hans #hans | 2 | TODO |
+| HNK-26.T14 | Bukti `DoubleFinanced`: `proof_from_lookup` di node + kartu bukti ganda. Rincian: `BL-D27-02`, `BL-D27-04` | Hans #hans | 2 | PARSIAL (jitsuinfi-zcash `822109d`, lokal, branch `hans/hnk-26-double-sign-proof`): `Flow::double_sign_proof(buyer_signature)` membangun bukti dari `Stopped(DoubleFinanced)` lewat `proof_from_lookup`, tanda tangan buyer dicek dulu; bukti lolos aturan `jitsuin verify` terhadap papan. Sisa: simpan bukti di deal (node, HNK-26.T1/T10) dan kartu unduh di konsol (HNK-26.T2 – T3, Dex) |
 | HNK-26.T15 | Persetujuan operator per deal (assertion passkey) sebelum `Pay`. Rincian: `BL-D24-09` | Dex #dex | 1 | TODO |
 | HNK-26.T16 | Pipeline deal per state dan detail deal di konsol. Rincian: `BL-S03-01`, `BL-D23-08`, `BL-D23-14`, `BL-D27-01` | Dex #dex | 2 | TODO |
 | HNK-26.T17 | Alamat shielded diversified baru per deal dari wallet node. Rincian: `BL-D24-01` | Dex #dex | 1 | TODO |
