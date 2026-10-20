@@ -221,7 +221,7 @@ Satu pesan = satu dokumen yang berpindah antar pihak lewat relay. Kode: `jitsuin
 
 Pendaftaran kotak surat (DFD-2.1, 1.4 ↔ D7: `mailbox_pk` + bukti kepemilikan) adalah panggilan API relay, bukan pesan (HNK-23.T4).
 
-## API kotak surat relay (HNK-23.T3, T4) — **diimplementasikan** (jitsuinfi-backend `2d987dd`, lokal)
+## API kotak surat relay (HNK-23.T3, T4) — **diimplementasikan** (jitsuinfi-backend `2d987dd`, PR #1)
 - `mailbox_id` = BLAKE2b-512(`"JitsuinMailboxId_v1\n"` ‖ `mailbox_pk`)[0..32], hex. Relay menghitungnya sendiri dari key.
 - **Bukti kepemilikan** (daftar, baca): relay membuat key X25519 ephemeral `e` sekali pakai dan nonce 32 byte (berlaku 120 detik). Pemilik menjawab BLAKE2b-512(`"JitsuinMailboxProof_v1\n"` ‖ tujuan (`register` / `read`) ‖ `0x00` ‖ X25519(`mailbox_secret`, `e_pk`) ‖ nonce ‖ `mailbox_pk`)[0..32]. Key low-order (rahasia bersama nol) ditolak.
 - Endpoint: `POST /api/mailbox/challenge`, `POST /api/mailbox`, `POST /api/mailbox/:id/read` (token baca 10 menit), `POST|GET /api/mailbox/:id/messages`, `GET|DELETE /api/mailbox/:id/messages/:mid`. Detail: README `jitsuinfi-backend`.
