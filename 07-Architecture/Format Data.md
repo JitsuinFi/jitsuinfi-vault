@@ -232,7 +232,7 @@ Pendaftaran kotak surat (DFD-2.1, 1.4 ↔ D7: `mailbox_pk` + bukti kepemilikan) 
 
 **Pengganti kode salin-tempel:** `jitsuin-offer-v1:` → `deal.offer`; `jitsuin-entry-request-v1:` → `deal.commitment_opening` + `deal.entry_request` (pembuka dikirim lebih dulu, bersama surat, sesuai SEQ-03 1b).
 
-**Yang belum (task lain):** enkripsi sealed box (HNK-23.T2), API kotak surat (HNK-23.T4), pengiriman dokumen di app (HNK-23.T7), tanda tangan pesan di node Rust (HNK-23.T8). Pemeriksaan bahwa `signer` sama dengan `supplier_pk` invoice dilakukan di layar penerima setelah invoice di-decode (wasm).
+**Yang belum (task lain):** enkripsi sealed box (HNK-23.T2), API kotak surat (HNK-23.T4), pengiriman dokumen di app (HNK-23.T7), tanda tangan pesan di node Rust (HNK-23.T8; codec dan tanda tangan sudah ada di jitsuinfi-node `src/message.rs`, PR #3, cocok dengan vektor dari app). Pemeriksaan bahwa `signer` sama dengan `supplier_pk` invoice dilakukan di layar penerima setelah invoice di-decode (wasm).
 
 ## Urutan entri (HNK-04) — **diimplementasikan** (`ef55987`)
 Urutan total: (tinggi blok, indeks transaksi, indeks output). Indeks transaksi diambil dari `GetBlock` lightwalletd (SPK-08); tidak perlu tie-break tambahan. Memo hanya terbaca setelah transaksi penuh diambil (`enhance`, SPK-05). Entri ulang dengan commitment financier yang sama bukan konflik.
