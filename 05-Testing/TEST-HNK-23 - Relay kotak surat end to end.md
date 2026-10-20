@@ -3,7 +3,7 @@ tags: [test, "HNK-23"]
 type: test
 id: HNK-23
 phase: F5
-unit: TODO
+unit: PARSIAL
 integrasi: TODO
 e2e: TODO
 updated: 2026-10-20
@@ -20,7 +20,8 @@ Logika murni, cepat, tanpa DB dan tanpa chain.
 |---|---|---|---|---|
 | U-HNK-23.1 | Enkripsi dan dekripsi pesan roundtrip | TODO | — | — |
 | U-HNK-23.2 | Bukti kepemilikan salah ditolak | TODO | — | — |
-| U-HNK-23.3 | Pesan di atas batas ukuran ditolak | TODO | — | — |
+| U-HNK-23.3 | Pesan di atas batas ukuran ditolak | PASS | 2026-10-20 | `tests/relay-message.test.ts`: PDF > 2 MiB ditolak dengan pesan, saat encode dan saat header dibaca (`d015312`) |
+| U-HNK-23.4 | Skema pesan: framing, jenis, peran, field wajib dan asing, versi, `to`, hash lampiran, tanda tangan Ed25519 (termasuk header atau lampiran yang diubah), cakupan semua aliran D7 | PASS | 2026-10-20 | `tests/relay-message.test.ts` 9 kasus, `npm test` 25/25 (`d015312`) |
 
 ## 2. Integrasi
 Skrip vs DB/chain sungguhan. Semua artefak memakai prefix `TES-` (invoice, akun, label, order).

@@ -187,5 +187,43 @@ Untuk anggota dana yang memegang viewing key akun operasional:
 - Indeks: tiap N dihitung sekali dengan entri register pertamanya di urutan papan; entri `settled` tidak membawa kelas. Per kelas tenor: jumlah invoice, median bawah kelas diskon, kelas diskon yang punya ≥ k invoice, sisanya satu total "other".
 - **k = 5** (`jitsuin_core::index::K`): kelas di bawah k tidak diberi angka. k boleh dinaikkan, tidak boleh diturunkan.
 
+## Pesan relay (HNK-23.T1, C-04) — **diimplementasikan** (jitsuinfi-frontend `d015312` (branch `hans/hnk-23-message-schema`, lokal))
+Satu pesan = satu dokumen yang berpindah antar pihak lewat relay. Kode: `jitsuinfi-frontend/src/lib/relay-message.ts`, tes `tests/relay-message.test.ts`.
+
+**Plaintext** (lalu disegel ke `mailbox_pk` penerima dengan sealed box X25519, HNK-23.T2; relay hanya menyimpan ciphertext):
+`"JTSM"` ‖ versi u8 (= 1) ‖ panjang header u32 big-endian ‖ header JSON UTF-8 ‖ byte lampiran berurutan.
+
+**Header:** `v`, `id` (16 byte acak, hex, untuk de-duplikasi), `type`, `to` (`mailbox_id` penerima; pesan bertanda tangan tidak bisa disegel ulang ke kotak surat lain), `from` (`role`, `mailbox_pk` untuk balasan), `sent_at` (detik), `n` (N deal, bila jenisnya tentang satu deal), `body` (bertipe per jenis), `attachments` (`name`, `mime`, `size`, `sha256`), `signer` + `sig` bila jenisnya wajib bertanda tangan.
+
+**Tanda tangan:** Ed25519 atas `"JitsuinMsgSig_v1\n"` ‖ JSON kanonik header tanpa `sig` (kunci diurutkan, tanpa spasi). Lampiran ikut terikat lewat `sha256`-nya. Dokumen yang sudah membawa tanda tangan sendiri (tanda tangan buyer, seal, entri papan, sertifikat riwayat) dikirim tanpa `sig`.
+
+**Batas:** lampiran hanya `application/pdf`, ≤ 2 MiB per lampiran, ≤ 2 lampiran per pesan; header ≤ 64 KiB; plaintext ≤ `9 + 64 KiB + 2 × 2 MiB`. Relay menolak ciphertext di atas batas ini ditambah overhead sealed box. Pesan yang melanggar ditolak dengan pesan yang bisa dibaca (misalnya `attachment "x.pdf" is larger than 2 MiB`).
+
+**Aturan ketat:** jenis, versi, field header, field `body`, peran pengirim, jumlah lampiran, dan hash lampiran yang tidak sesuai menolak pesan.
+
+| Jenis | Dari → ke | Aliran DFD | `body` | Lampiran | Ditandatangani |
+|---|---|---|---|---|---|
+| `key.invoice_pk` | buyer → supplier | 2.1 → 2.2, 2.4 | `invoice_pk` | — | key invoice itu sendiri (bukti kepemilikan) |
+| `invoice.sign_request` | supplier → buyer | 2.5 → 2.6 | `invoice` (JTSI) | PDF syarat (1) | key per invoice supplier |
+| `invoice.signature` | buyer → supplier | 2.7 → 2.8 | `buyer_signature` | — | tidak (tanda tangan buyer itu sendiri) |
+| `deal.offer` | supplier → financier | SEQ-03 bagian 1 → 3.1 | `invoice`, `buyer_signature`, `advance_zat`, `supplier_address` | PDF syarat (0 – 1) | key per invoice supplier |
+| `deal.commitment_opening` | financier → supplier | 3.2 → 3.6 | `financier_pk`, `salt`, `discount`?, `tenor`? | — | `financier_pk` |
+| `deal.entry_request` | financier → supplier | 3.5 → 3.6 | `financier_pk`, `history_tag`? | — | `financier_pk` |
+| `deal.entry` | supplier → financier | 3.6 → 3.7 | `memo` (entri papan) | — | tidak (entri bertanda tangan) |
+| `deal.letter` | financier → supplier, buyer | 4.1 → 4.2, 4.3 | `letter` (JTSA) | PDF surat (1) | `financier_pk` |
+| `deal.seal` | supplier, buyer, financier → pihak lain | 4.2 → 4.3, 4.4; 4.3 → 4.4, 4.8; 4.7 → 4.8; 5.1 | `seal`, `index` (0, 1, 2) | — | tidak (seal bertanda tangan) |
+| `deal.advance` | financier → supplier | 4.7 → 4.8 | `txid`, `advance_zat` | — | `financier_pk` |
+| `deal.bundle` | financier → supplier, buyer | 5.5 → 5.6 (HNK-26.T18) | `bundle` (JTSB) | — | `financier_pk` |
+| `history.request` | financier → buyer | 6.1 → 6.2 | `financier_pk`, `nonce` | — | `financier_pk` |
+| `history.chain` | buyer → financier, supplier | 6.3 → 6.4; sertifikat k ke supplier | `certs` (1 – 64), `identity_pk`? | — | tidak (sertifikat bertanda tangan) |
+| `fund.receipt` | dana → anggota | 9.1 → 9.7 | `receipt` | — | key dana |
+| `fund.merkle_path` | dana → anggota | 9.6 → 9.7 | `period`, `root`, `path` | — | key dana |
+
+Pendaftaran kotak surat (DFD-2.1, 1.4 ↔ D7: `mailbox_pk` + bukti kepemilikan) adalah panggilan API relay, bukan pesan (HNK-23.T4).
+
+**Pengganti kode salin-tempel:** `jitsuin-offer-v1:` → `deal.offer`; `jitsuin-entry-request-v1:` → `deal.commitment_opening` + `deal.entry_request` (pembuka dikirim lebih dulu, bersama surat, sesuai SEQ-03 1b).
+
+**Yang belum (task lain):** enkripsi sealed box (HNK-23.T2), API kotak surat (HNK-23.T4), pengiriman dokumen di app (HNK-23.T7), tanda tangan pesan di node Rust (HNK-23.T8). Pemeriksaan bahwa `signer` sama dengan `supplier_pk` invoice dilakukan di layar penerima setelah invoice di-decode (wasm).
+
 ## Urutan entri (HNK-04) — **diimplementasikan** (`ef55987`)
 Urutan total: (tinggi blok, indeks transaksi, indeks output). Indeks transaksi diambil dari `GetBlock` lightwalletd (SPK-08); tidak perlu tie-break tambahan. Memo hanya terbaca setelah transaksi penuh diambil (`enhance`, SPK-05). Entri ulang dengan commitment financier yang sama bukan konflik.
