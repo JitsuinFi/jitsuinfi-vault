@@ -27,6 +27,8 @@ Aturan vault ini. Diadaptasi dari panduan `ObsidianGuides/Conventions.md`, ditam
 | `DFD-n` / `DFD-2.k` | DFD level 0, 1, dan level 2 per proses k | `DFD-2.3 - Registrasi Papan.md` |
 | `DS-xx`, `DS-PAL` | Satu referensi visual di `09-Design/` (DS-00 hub, DS-PAL palet utama) | `DS-04 - Invoices Dashboard Dark.md` |
 | `FE-xx` | Satu tool frontend (library, skill, MCP, referensi) di `10-FE-vault/` | `FE-07 - three.js.md` |
+| `JDG-0x`, `JDG-1x`, `JDG-Bxx` | Penilaian di `11-Judging/`: tema, putaran, benchmark (JDG-00 hub) | `JDG-05 - Register Titik Lemah.md` |
+| `W-xx`, `N-xx` | Titik lemah dan usulan narasi | baris tabel di JDG-05 dan JDG-06 |
 | `P-xx` | Usulan desain di [[FD-00 - Arsitektur Target dan Legenda]] (belum keputusan) | `P-04` |
 
 ID tidak pernah dipakai ulang. Item yang dibatalkan tetap ada dengan status `BLOCKED` dan alasan.
@@ -37,6 +39,8 @@ ID tidak pernah dipakai ulang. Item yang dibatalkan tetap ada dengan status `BLO
 | Spike | `TODO` / `PASS` / `FAIL` / `BLOCKED` |
 | Kriteria AC | `TODO` / `PASS` / `FAIL` / `BLOCKED` + tanggal + bukti |
 | Test (unit/integrasi/e2e) | `TODO` / `PASS` / `FAIL` / `BLOCKED` |
+| Temuan judging `W-xx` | `OPEN` / `DIMITIGASI` / `DITERIMA` / `DITUTUP` |
+| Usulan judging `N-xx` | `USULAN` / `DISETUJUI` / `DITOLAK` |
 | Exec summary | `BELUM` / `SELESAI` / `PARSIAL` / `BLOCKED` |
 
 Status ditulis di frontmatter (dibaca [[Dashboard]]) **dan** di isi note.
