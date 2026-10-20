@@ -15,7 +15,7 @@ Status per 2026-10-20 dan rencana untuk akun di server (sign up, log in, email).
 |---|---|
 | Repo backend `jitsuinfi-backend` | **Ada** sejak 2026-10-20: private di GitHub (`JitsuinFi/jitsuinfi-backend`), TypeScript Node + Hono + `postgres` (pilihan user), dikerjakan Hans (D-38). Relay kotak surat dulu (HNK-23.T3, T4); API akun menyusul |
 | Basis data | Belum tersambung. Email, username, peran terakhir ada di `localStorage` perangkat (`jitsuinfi-profile`, D-34); dokumen deal di IndexedDB terenkripsi (`jitsuinfi-deals`) |
-| Project Supabase dan Railway | Dibuat oleh **user** (jawaban user 2026-10-20: "Aku"); user mengisi `DATABASE_URL` sendiri di `jitsuinfi-backend/.env` |
+| Project Supabase dan Railway | Dibuat oleh **user** (jawaban user 2026-10-20: "Aku"); user mengisi `DATABASE_URL` (Session pooler) sendiri di `jitsuinfi-backend/.env`; migrasi relay diterapkan 2026-10-20. API key Supabase tidak dipakai relay. Insiden 2026-10-20: perintah pengecekan agent mencetak `SUPABASE_SECRET_KEY` dan anon key ke transkrip sesi; user diminta merotasi dan menghapusnya dari `.env` |
 | Repo `jitsuinfi-frontend` | **Public** di GitHub, padahal D-17 menetapkan privat sampai menjelang submit. Lihat DEV-19 di [[Backlog]] |
 
 ## Di mana credential Supabase disimpan
