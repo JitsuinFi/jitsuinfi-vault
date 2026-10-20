@@ -29,7 +29,7 @@ Kolom Status mengikuti langkah 6 "Audit flow diagram" di [[Workflow Development]
 | BL-D23-10 | 3.6, F3.22 | Varian entri bertag yang hanya menerima `history_tag` 32 byte | Supplier tidak lagi membutuhkan sertifikat k penuh | K-10 | HNK-27.T8 | Hans | SELESAI (2026-10-20, `8897517`, U-HNK-27.9) |
 | BL-D23-11 | 3.7, F3.31 | Penolakan `EntryMismatch` tampil terbaca di konsol dan dikirim ke supplier | Supplier melihat alasan penolakan entri | C-13 | HNK-21.T9 | Dave | TODO |
 | BL-D23-12 | 3.8, F3.33 – F3.36 | `Register`: terima `BoardChecked` sebelum posting, cari entri yang sudah terkirim sebelum posting ulang | Restart setelah posting tidak membuat posting kedua; konflik yang muncul sebelum posting menjadi `Stopped` | K-4 | HNK-27.T5 | Hans | SELESAI (2026-10-20, `fef1d15`, U-HNK-27.4 – .5; uji crash testnet I-HNK-27.2 menyusul) |
-| BL-D23-13 | 3.3 – 3.9, D11 | Persistensi state deal di node (serialisasi `Flow` dan dokumen deal) | Node yang di-restart melanjutkan deal dari state terakhir | C-16 | HNK-26.T10 | Hans | TODO |
+| BL-D23-13 | 3.3 – 3.9, D11 | Persistensi state deal di node (serialisasi `Flow` dan dokumen deal) | Node yang di-restart melanjutkan deal dari state terakhir | C-16 | HNK-26.T10 | Hans | DIKERJAKAN |
 | BL-D23-14 | 3.9, F3.37 – F3.42 | Progres konfirmasi di konsol (n dari `min_confirmations`) | Konsol menampilkan hitungan konfirmasi sampai `AwaitAssignment` | HNK-05.T4 | HNK-26.T16 | Dex | TODO |
 | BL-D23-15 | Uji | Integrasi testnet: entri dengan kelas tertambang, `jitsuin index` menampilkan kelas (k = 5 butuh minimal 5 deal), crash dan restart sesudah posting | Kasus tercatat di TEST item terkait | HNK-04.T4, HNK-17 | HNK-17.T4 | Dave | TODO |
 

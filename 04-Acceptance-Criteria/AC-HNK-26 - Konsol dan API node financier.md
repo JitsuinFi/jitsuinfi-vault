@@ -26,7 +26,7 @@ Status per kriteria: `TODO` / `PASS` / `FAIL` / `BLOCKED`, wajib dengan tanggal 
 | ID | Kriteria | Status | Tanggal | Bukti |
 |---|---|---|---|---|
 | AC-HNK-26.1 | Operator menjalankan satu deal `TES-` dari penawaran sampai settled hanya dari konsol di origin node. | TODO | — | — |
-| AC-HNK-26.2 | Node yang di-restart di tengah deal melanjutkan dari state terakhir tanpa posting ganda. | TODO | — | — |
+| AC-HNK-26.2 | Node yang di-restart di tengah deal melanjutkan dari state terakhir tanpa posting ganda. | TODO | 2026-10-20 | Library: snapshot `JTSF` (`23be34a`, U-HNK-26.2). Restart node sungguhan (I-HNK-26.2) menunggu node |
 | AC-HNK-26.3 | Assertion ulang (replay) ditolak; advance tidak terkirim tanpa persetujuan operator untuk deal itu. | TODO | — | — |
 | AC-HNK-26.4 | Status pelunasan diperbarui otomatis; dua poll sebelum tertambang tidak memposting dua entri settled. | TODO | — | — |
 | AC-HNK-26.5 | `Stopped(DoubleFinanced)` menghasilkan bukti yang lolos `jitsuin verify`. | TODO | 2026-10-20 | Library: `0ee55c6`, U-HNK-26.4 (bukti lolos `verify_proof_on_board`, aturan yang sama dengan `jitsuin verify`). Belum di node: bukti belum disimpan di deal |
