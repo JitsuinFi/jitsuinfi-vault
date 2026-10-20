@@ -4,7 +4,7 @@ type: ac
 id: HNK-07
 phase: F3
 lead: Hans
-owners: [Hans, Dave, Dex]
+owners: [Hans, Dex]
 status: PASS
 updated: 2026-10-17
 ---
@@ -15,7 +15,7 @@ updated: 2026-10-17
 
 **Item:** HNK-07 · **Fase:** F3 · **Dependency:** HNK-05
 
-**Lead:** Hans #hans · **Tim:** Hans #hans, Dave #dave, Dex #dex
+**Lead:** Hans #hans · **Tim:** Hans #hans, Dex #dex 
 
 ## Deskripsi
 Financier kedua yang menerima invoice yang sama menemukan N di papan dan mendapat bundel bukti bahwa supplier menandatangani dua kali.

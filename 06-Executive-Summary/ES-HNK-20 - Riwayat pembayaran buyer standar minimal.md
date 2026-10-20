@@ -13,7 +13,7 @@ updated: 2026-10-17
 
 > **Peta link:** [[Exec Summary Hub]] · [[Backlog]] · [[AC-HNK-20 - Riwayat pembayaran buyer standar minimal|AC]] · [[TEST-HNK-20 - Riwayat pembayaran buyer standar minimal|Test]] · **Exec Summary**
 
-**Lead:** Hans #hans · **Tim:** Hans #hans
+**Lead:** Hans #hans · **Tim:** Hans #hans 
 
 ## Apa diubah
 - **Key dan rantai** (`f03cfb1`): `BuyerIdentity` (key identitas + key per invoice dari master secret/passkey PRF), `HistoryCert` 277 byte berantai, tag penerus, entri register jenis `0x03` bertag (DEV-10).

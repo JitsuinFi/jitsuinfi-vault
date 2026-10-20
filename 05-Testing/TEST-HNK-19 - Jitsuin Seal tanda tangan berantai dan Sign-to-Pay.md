@@ -15,7 +15,7 @@ updated: 2026-10-17
 
 > **Peta link:** [[Testing Hub]] · [[Backlog]] · [[AC-HNK-19 - Jitsuin Seal tanda tangan berantai dan Sign-to-Pay|AC]] · **Test** · [[ES-HNK-19 - Jitsuin Seal tanda tangan berantai dan Sign-to-Pay|Exec Summary]]
 
-**Lead:** Hans #hans · **Tim:** Hans #hans
+**Lead:** Hans #hans · **Tim:** Hans #hans 
 
 ## 1. Unit
 Logika murni, cepat, tanpa DB dan tanpa chain.

@@ -3,8 +3,8 @@ tags: [es, "HNK-11"]
 type: es
 id: HNK-11
 phase: F5
-lead: Dave
-owners: [Dave, Hans]
+lead: Hans
+owners: [Hans]
 status: SELESAI
 updated: 2026-10-18
 ---
@@ -13,14 +13,14 @@ updated: 2026-10-18
 
 > **Peta link:** [[Exec Summary Hub]] · [[Backlog]] · [[AC-HNK-11 - Threat model dan halaman orang luar|AC]] · [[TEST-HNK-11 - Threat model dan halaman orang luar|Test]] · **Exec Summary**
 
-**Lead:** Dave #dave · **Tim:** Dave #dave, Hans #hans
+**Lead:** Hans #hans · **Tim:** Hans #hans 
 
 ## Apa diubah
 - [[Threat Model]] final: tabel siapa melihat apa, kebocoran, serangan, dan di luar cakupan, mencakup semua fitur yang sudah diuji testnet.
 - [[Mode Confidential]] (HNK-06.T6).
 - Halaman "What outsiders see" dengan kartu explorer dan pembaca entri papan.
 
-_Dikerjakan Hans (agent) atas keputusan user D-25 / DEV-11; Dave me-review._
+_Dikerjakan Hans (agent) atas keputusan user D-25 / DEV-11; review oleh Hans (Dave tidak lagi memegang task, D-35)._
 
 ## Hasil vs KPI (angka riil)
 | KPI | Target | Aktual |

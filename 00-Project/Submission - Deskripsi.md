@@ -6,7 +6,7 @@ tags: [project, submission]
 
 **Bagian dari:** [[00 - Project]] · Kembali: [[START-HERE]] · Item: HNK-14.T2 di [[Backlog]] · Terkait: [[AC-HNK-14 - Submission video deskripsi dan demo URL|AC-HNK-14]] · [[ZECATHON - Aturan dan Deadline]] · [[Threat Model]]
 
-> Draf 2026-10-18 (D-25, ditulis agent; Dave dan Hans me-review). Batas **2.000 karakter**; panjang saat ini **1801** karakter. Bahasa Inggris (juri internasional). Perbarui bagian "Real vs mock" kalau mainnet jadi dijalankan.
+> Draf 2026-10-18 (D-25, ditulis agent; Hans me-review, D-35). Batas **2.000 karakter**; panjang saat ini **1801** karakter. Bahasa Inggris (juri internasional). Perbarui bagian "Real vs mock" kalau mainnet jadi dijalankan.
 
 ```text
 JitsuinFi is private invoice financing on Zcash. Zcash stops double-spending; JitsuinFi stops double-financing.

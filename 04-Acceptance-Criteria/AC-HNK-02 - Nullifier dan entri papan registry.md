@@ -15,7 +15,7 @@ updated: 2026-10-17
 
 **Item:** HNK-02 · **Fase:** F1 · **Dependency:** HNK-01
 
-**Lead:** Hans #hans · **Tim:** Hans #hans, Dex #dex
+**Lead:** Hans #hans · **Tim:** Hans #hans, Dex #dex 
 
 ## Deskripsi
 Hitung N = BLAKE2b-256 (personalisasi `JitsuinNullifier`) atas tanda tangan buyer, lalu encode entri papan (magic, tipe, N, commitment financier, bucket diskon dan tenor, tanda tangan supplier) dengan prefix memo `0xFF`.

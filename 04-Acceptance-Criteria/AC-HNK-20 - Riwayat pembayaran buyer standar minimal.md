@@ -13,7 +13,7 @@ updated: 2026-10-17
 
 > **Peta link:** [[AC Hub]] · [[Backlog]] · **AC** · [[TEST-HNK-20 - Riwayat pembayaran buyer standar minimal|Test]] · [[ES-HNK-20 - Riwayat pembayaran buyer standar minimal|Exec Summary]]
 
-**Lead:** Hans #hans · **Tim:** Hans #hans
+**Lead:** Hans #hans · **Tim:** Hans #hans 
 
 **Item:** HNK-20 · **Fase:** F3 · **Dependency:** HNK-19
 

@@ -28,5 +28,5 @@ Kolom Status mengikuti langkah 6 "Audit flow diagram" di [[Workflow Development]
 
 | ID | Bagian | Task | Selesai bila | Ref | Task backlog | Owner | Status |
 |---|---|---|---|---|---|---|---|
-| BL-S05-01 | Pendahuluan | Catat batas uji solvabilitas (sisi aset dinyatakan manajer) dan kebocoran nominal setoran + alamat supplier di halaman anggota dan submission | Halaman anggota menampilkan batas ini | SEQ-05 | HNK-29.T3 | Dave | TODO |
-| BL-S05-02 | Semua | E2E anggota: setor, terima kuitansi, root, jalur Merkle, verdict solvent dan inklusi | Kasus lulus di TEST-HNK-15 | BL-D29-08 | HNK-17.T4 | Dave | TODO |
+| BL-S05-01 | Pendahuluan | Catat batas uji solvabilitas (sisi aset dinyatakan manajer) dan kebocoran nominal setoran + alamat supplier di halaman anggota dan submission | Halaman anggota menampilkan batas ini | SEQ-05 | HNK-29.T3 | Hans | TODO |
+| BL-S05-02 | Semua | E2E anggota: setor, terima kuitansi, root, jalur Merkle, verdict solvent dan inklusi | Kasus lulus di TEST-HNK-15 | BL-D29-08 | HNK-17.T4 | Hans | TODO |

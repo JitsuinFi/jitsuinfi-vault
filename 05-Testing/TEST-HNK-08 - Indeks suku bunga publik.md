@@ -4,7 +4,7 @@ type: test
 id: HNK-08
 phase: F4
 lead: Dex
-owners: [Dex, Dave]
+owners: [Dex, Hans]
 unit: PASS
 integrasi: BLOCKED
 e2e: TODO
@@ -15,7 +15,7 @@ updated: 2026-10-19
 
 > **Peta link:** [[Testing Hub]] · [[Backlog]] · [[AC-HNK-08 - Indeks suku bunga publik|AC]] · **Test** · [[ES-HNK-08 - Indeks suku bunga publik|Exec Summary]]
 
-**Lead:** Dex #dex · **Tim:** Dex #dex, Dave #dave
+**Lead:** Dex #dex · **Tim:** Dex #dex, Hans #hans 
 
 ## 1. Unit
 Logika murni, cepat, tanpa DB dan tanpa chain.

@@ -3,8 +3,8 @@ tags: [test, "HNK-11"]
 type: test
 id: HNK-11
 phase: F5
-lead: Dave
-owners: [Dave, Hans]
+lead: Hans
+owners: [Hans]
 unit: TODO
 integrasi: TODO
 e2e: TODO
@@ -15,7 +15,7 @@ updated: 2026-10-18
 
 > **Peta link:** [[Testing Hub]] · [[Backlog]] · [[AC-HNK-11 - Threat model dan halaman orang luar|AC]] · **Test** · [[ES-HNK-11 - Threat model dan halaman orang luar|Exec Summary]]
 
-**Lead:** Dave #dave · **Tim:** Dave #dave, Hans #hans
+**Lead:** Hans #hans · **Tim:** Hans #hans 
 
 ## 1. Unit
 Logika murni, cepat, tanpa DB dan tanpa chain.

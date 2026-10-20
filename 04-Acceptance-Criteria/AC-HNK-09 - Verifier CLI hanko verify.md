@@ -4,7 +4,7 @@ type: ac
 id: HNK-09
 phase: F4
 lead: Dex
-owners: [Dex, Dave]
+owners: [Dex, Hans]
 status: PARSIAL
 updated: 2026-10-19
 ---
@@ -15,7 +15,7 @@ updated: 2026-10-19
 
 **Item:** HNK-09 · **Fase:** F4 · **Dependency:** HNK-04, HNK-07, SPK-11
 
-**Lead:** Dex #dex · **Tim:** Dex #dex, Dave #dave
+**Lead:** Dex #dex · **Tim:** Dex #dex, Hans #hans 
 
 ## Deskripsi
 CLI untuk juri: memindai papan dari data mainnet nyata dan memverifikasi entri serta bukti tanda tangan ganda, tanpa butuh ZEC.

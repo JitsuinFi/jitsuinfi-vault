@@ -3,8 +3,8 @@ tags: [ac, "HNK-18"]
 type: ac
 id: HNK-18
 phase: F5
-lead: Dave
-owners: [Dave]
+lead: Hans
+owners: [Hans]
 status: TODO
 updated: 2026-10-16
 ---
@@ -15,7 +15,7 @@ updated: 2026-10-16
 
 **Item:** HNK-18 · **Fase:** F5 · **Dependency:** HNK-07, HNK-11
 
-**Lead:** Dave #dave · **Tim:** Dave #dave
+**Lead:** Hans #hans · **Tim:** Hans #hans 
 
 ## Deskripsi
 Identitas visual dan materi untuk video dan README: logo JitsuinFi, slide (masalah, threat model, penutup), dan diagram arsitektur.

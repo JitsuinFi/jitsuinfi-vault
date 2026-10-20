@@ -4,7 +4,7 @@ type: es
 id: HNK-07
 phase: F3
 lead: Hans
-owners: [Hans, Dave, Dex]
+owners: [Hans, Dex]
 status: PARSIAL
 updated: 2026-10-17
 ---
@@ -13,7 +13,7 @@ updated: 2026-10-17
 
 > **Peta link:** [[Exec Summary Hub]] · [[Backlog]] · [[AC-HNK-07 - Deteksi pembiayaan ganda dan bukti tanda tangan ganda|AC]] · [[TEST-HNK-07 - Deteksi pembiayaan ganda dan bukti tanda tangan ganda|Test]] · **Exec Summary**
 
-**Lead:** Hans #hans · **Tim:** Hans #hans, Dave #dave, Dex #dex
+**Lead:** Hans #hans · **Tim:** Hans #hans, Dex #dex 
 
 ## Apa diubah
 - `jitsuin-core::DoubleSignProof` (`JTSP`, `8e523f0`): invoice bertanda tangan buyer + dua entri register untuk N yang sama, ditandatangani key supplier dari invoice, dengan commitment berbeda; posisi papan opsional per entri; verifikasi offline.

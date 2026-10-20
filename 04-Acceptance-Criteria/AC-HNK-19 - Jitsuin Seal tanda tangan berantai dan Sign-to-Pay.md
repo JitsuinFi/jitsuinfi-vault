@@ -13,7 +13,7 @@ updated: 2026-10-17
 
 > **Peta link:** [[AC Hub]] · [[Backlog]] · **AC** · [[TEST-HNK-19 - Jitsuin Seal tanda tangan berantai dan Sign-to-Pay|Test]] · [[ES-HNK-19 - Jitsuin Seal tanda tangan berantai dan Sign-to-Pay|Exec Summary]]
 
-**Lead:** Hans #hans · **Tim:** Hans #hans
+**Lead:** Hans #hans · **Tim:** Hans #hans 
 
 **Item:** HNK-19 · **Fase:** F3 · **Dependency:** HNK-05, HNK-06
 

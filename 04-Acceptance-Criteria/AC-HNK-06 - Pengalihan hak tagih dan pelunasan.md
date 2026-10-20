@@ -4,7 +4,7 @@ type: ac
 id: HNK-06
 phase: F3
 lead: Hans
-owners: [Dex, Hans, Dave]
+owners: [Dex, Hans]
 status: PARSIAL
 updated: 2026-10-17
 ---
@@ -15,7 +15,7 @@ updated: 2026-10-17
 
 **Item:** HNK-06 · **Fase:** F3 · **Dependency:** HNK-05
 
-**Lead:** Hans #hans · **Tim:** Dex #dex, Hans #hans, Dave #dave
+**Lead:** Hans #hans · **Tim:** Dex #dex, Hans #hans 
 
 ## Deskripsi
 Surat pengalihan ditandatangani supplier dan buyer. Buyer membayar ke financier saat jatuh tempo dengan memo yang merujuk N. Status lunas tercatat (opsional entri settled).

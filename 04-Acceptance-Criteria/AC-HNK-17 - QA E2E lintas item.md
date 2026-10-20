@@ -3,8 +3,8 @@ tags: [ac, "HNK-17"]
 type: ac
 id: HNK-17
 phase: F6
-lead: Dave
-owners: [Dave]
+lead: Hans
+owners: [Hans]
 status: TODO
 updated: 2026-10-16
 ---
@@ -15,7 +15,7 @@ updated: 2026-10-16
 
 **Item:** HNK-17 · **Fase:** F6 · **Dependency:** HNK-05 – HNK-11
 
-**Lead:** Dave #dave · **Tim:** Dave #dave
+**Lead:** Hans #hans · **Tim:** Hans #hans 
 
 ## Deskripsi
 Tester independen menjalankan semua panduan E2E di file TEST tiap item, mencatat hasilnya di tabel E2E masing-masing, dan melaporkan bug ke [[Backlog]].

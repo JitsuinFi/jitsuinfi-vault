@@ -4,7 +4,7 @@ type: ac
 id: HNK-23
 phase: F5
 lead: Dex
-owners: [Hans, Dex, Dave]
+owners: [Hans, Dex]
 status: TODO
 updated: 2026-10-20
 ---
@@ -13,7 +13,7 @@ updated: 2026-10-20
 
 > **Peta link:** [[AC Hub]] · [[Backlog]] · **AC** · [[TEST-HNK-23 - Relay kotak surat end to end|Test]] · [[ES-HNK-23 - Relay kotak surat end to end|Exec Summary]]
 
-**Lead:** Dex #dex · **Tim:** Hans #hans, Dex #dex, Dave #dave · Dibuat 2026-10-20 dari [[FD-01 - Keputusan Usulan dan Gelombang Kerja]] dan [[FD-02 - Penelusuran Business Flow ke Backlog]] (D-30)
+**Lead:** Dex #dex · **Tim:** Hans #hans, Dex #dex · Dibuat 2026-10-20 dari [[FD-01 - Keputusan Usulan dan Gelombang Kerja]] dan [[FD-02 - Penelusuran Business Flow ke Backlog]] (D-30)
 
 **Item:** HNK-23 · **Fase:** F5 · **Dependency:** HNK-22
 

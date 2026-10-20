@@ -3,8 +3,8 @@ tags: [ac, "HNK-25"]
 type: ac
 id: HNK-25
 phase: F5
-lead: Dave
-owners: [Hans, Dave]
+lead: Hans
+owners: [Hans]
 status: PARSIAL
 updated: 2026-10-20
 ---
@@ -13,7 +13,7 @@ updated: 2026-10-20
 
 > **Peta link:** [[AC Hub]] · [[Backlog]] · **AC** · [[TEST-HNK-25 - Alur deal di layar buyer|Test]] · [[ES-HNK-25 - Alur deal di layar buyer|Exec Summary]]
 
-**Lead:** Dave #dave · **Tim:** Hans #hans, Dave #dave · Dibuat 2026-10-20 dari [[FD-01 - Keputusan Usulan dan Gelombang Kerja]] dan [[FD-02 - Penelusuran Business Flow ke Backlog]] (D-30)
+**Lead:** Hans #hans · **Tim:** Hans #hans · Dibuat 2026-10-20 dari [[FD-01 - Keputusan Usulan dan Gelombang Kerja]] dan [[FD-02 - Penelusuran Business Flow ke Backlog]] (D-30)
 
 **Item:** HNK-25 · **Fase:** F5 · **Dependency:** HNK-22, HNK-23, HNK-27
 

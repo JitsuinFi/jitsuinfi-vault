@@ -4,7 +4,7 @@ type: ac
 id: HNK-28
 phase: F4
 lead: Dex
-owners: [Hans, Dex, Dave]
+owners: [Hans, Dex]
 status: PARSIAL
 updated: 2026-10-20
 ---
@@ -13,7 +13,7 @@ updated: 2026-10-20
 
 > **Peta link:** [[AC Hub]] · [[Backlog]] · **AC** · [[TEST-HNK-28 - Verifikasi publik lengkap|Test]] · [[ES-HNK-28 - Verifikasi publik lengkap|Exec Summary]]
 
-**Lead:** Dex #dex · **Tim:** Hans #hans, Dex #dex, Dave #dave · Dibuat 2026-10-20 dari [[FD-01 - Keputusan Usulan dan Gelombang Kerja]] dan [[FD-02 - Penelusuran Business Flow ke Backlog]] (D-30)
+**Lead:** Dex #dex · **Tim:** Hans #hans, Dex #dex · Dibuat 2026-10-20 dari [[FD-01 - Keputusan Usulan dan Gelombang Kerja]] dan [[FD-02 - Penelusuran Business Flow ke Backlog]] (D-30)
 
 **Item:** HNK-28 · **Fase:** F4 · **Dependency:** HNK-08, HNK-09, HNK-23
 

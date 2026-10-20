@@ -13,7 +13,7 @@ updated: 2026-10-19
 
 > **Peta link:** [[Exec Summary Hub]] · [[Backlog]] · [[AC-HNK-16 - CI dan quality gate|AC]] · [[TEST-HNK-16 - CI dan quality gate|Test]] · **Exec Summary**
 
-**Lead:** Dex #dex · **Tim:** Dex #dex
+**Lead:** Dex #dex · **Tim:** Dex #dex 
 
 ## Apa diubah
 - `scripts/check.sh`: satu perintah lokal untuk semua cek, berhenti di kegagalan pertama.

@@ -4,7 +4,7 @@ type: test
 id: HNK-01
 phase: F1
 lead: Hans
-owners: [Hans, Dex, Dave]
+owners: [Hans, Dex]
 unit: PASS
 integrasi: TODO
 e2e: TODO
@@ -15,7 +15,7 @@ updated: 2026-10-19
 
 > **Peta link:** [[Testing Hub]] · [[Backlog]] · [[AC-HNK-01 - Format invoice kanonik dan tanda tangan buyer|AC]] · **Test** · [[ES-HNK-01 - Format invoice kanonik dan tanda tangan buyer|Exec Summary]]
 
-**Lead:** Hans #hans · **Tim:** Hans #hans, Dex #dex, Dave #dave
+**Lead:** Hans #hans · **Tim:** Hans #hans, Dex #dex 
 
 ## 1. Unit
 Logika murni, cepat, tanpa DB dan tanpa chain.

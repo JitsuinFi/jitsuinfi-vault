@@ -3,8 +3,8 @@ tags: [ac, "HNK-11"]
 type: ac
 id: HNK-11
 phase: F5
-lead: Dave
-owners: [Dave, Hans]
+lead: Hans
+owners: [Hans]
 status: PASS
 updated: 2026-10-18
 ---
@@ -15,7 +15,7 @@ updated: 2026-10-18
 
 **Item:** HNK-11 · **Fase:** F5 · **Dependency:** HNK-07
 
-**Lead:** Dave #dave · **Tim:** Dave #dave, Hans #hans
+**Lead:** Hans #hans · **Tim:** Hans #hans 
 
 ## Deskripsi
 Threat model per aktor dan halaman "apa yang bisa dilihat orang luar". Draf awal: [[Threat Model]].

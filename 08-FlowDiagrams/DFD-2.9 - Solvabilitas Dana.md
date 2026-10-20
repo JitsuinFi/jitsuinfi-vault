@@ -148,7 +148,7 @@ sp_P6_b -[hidden]- P6
 | 9.5 Hitung solvabilitas | Kas + piutang berjalan + piutang lewat tempo setelah potongan ≥ total root terbaru; tanpa root valid: tanpa verdict. Anggota menjalankannya dengan `jitsuin fund` di perangkat sendiri | ADA (CLI HNK-27.T10) | `solvency`, `SolvencyPolicy`, `jitsuin fund` |
 | 9.6 Kirim jalur Merkle per periode | Setelah tiap JTLR, manajer mengirim jalur Merkle tiap anggota untuk periode itu | USULAN (HNK-15.T1) | — |
 | 9.7 Verifikasi inklusi setoran | Jalur harus berakhir di root JTLR yang diposting dan jumlah root = total JTLR. Jalur Merkle sum membuka jumlah saudara (termasuk nominal setoran anggota lain) | USULAN (HNK-15.T1) | — |
-| 9.8 Tampilkan laporan | Halaman anggota membaca hasil pindaian lokal | USULAN (HNK-15.T3, Dave) | P-10 |
+| 9.8 Tampilkan laporan | Halaman anggota membaca hasil pindaian lokal | USULAN (HNK-15.T3, Hans) | P-10 |
 
 ## Aliran data
 

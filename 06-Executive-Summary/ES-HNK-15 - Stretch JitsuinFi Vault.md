@@ -4,7 +4,7 @@ type: es
 id: HNK-15
 phase: F7
 lead: Hans
-owners: [Dex, Hans, Dave]
+owners: [Dex, Hans]
 status: PARSIAL
 updated: 2026-10-17
 ---
@@ -13,7 +13,7 @@ updated: 2026-10-17
 
 > **Peta link:** [[Exec Summary Hub]] · [[Backlog]] · [[AC-HNK-15 - Stretch JitsuinFi Vault|AC]] · [[TEST-HNK-15 - Stretch JitsuinFi Vault|Test]] · **Exec Summary**
 
-**Lead:** Hans #hans · **Tim:** Dex #dex, Hans #hans, Dave #dave
+**Lead:** Hans #hans · **Tim:** Dex #dex, Hans #hans 
 
 ## Apa diubah
 - `jitsuin-core::fund`: catatan piutang `JTN1` dan root kewajiban `JTLR` bertanda tangan manajer; container memo menerima keduanya (`e54ea36`).
@@ -30,7 +30,7 @@ updated: 2026-10-17
 | Root palsu yang diterima | 0 | 0 (1 diabaikan) |
 
 ## Status
-**PARSIAL**. Bagian Hans (T2) selesai; T1 Merkle sum tree + inklusi simpanan (Dex) dan T3 halaman anggota (Dave) belum.
+**PARSIAL**. Bagian Hans (T2) selesai; T1 Merkle sum tree + inklusi simpanan (Dex) dan T3 halaman anggota (Hans, dari Dave, D-35) belum.
 
 ## Risiko tersisa
 - Total kewajiban di root hanya sebaik Merkle sum tree-nya: tanpa T1 (Dex), anggota belum bisa mengecek simpanannya ikut terhitung.

@@ -3,8 +3,8 @@ tags: [ac, "HNK-22"]
 type: ac
 id: HNK-22
 phase: F5
-lead: Dave
-owners: [Dave]
+lead: Hans
+owners: [Hans]
 status: PARSIAL
 updated: 2026-10-20
 ---
@@ -13,7 +13,7 @@ updated: 2026-10-20
 
 > **Peta link:** [[AC Hub]] · [[Backlog]] · **AC** · [[TEST-HNK-22 - Akun passkey peran dan kontak|Test]] · [[ES-HNK-22 - Akun passkey peran dan kontak|Exec Summary]]
 
-**Lead:** Dave #dave · **Tim:** Dave #dave · Dibuat 2026-10-20 dari [[FD-01 - Keputusan Usulan dan Gelombang Kerja]] dan [[FD-02 - Penelusuran Business Flow ke Backlog]] (D-30)
+**Lead:** Hans #hans · **Tim:** Hans #hans · Dibuat 2026-10-20 dari [[FD-01 - Keputusan Usulan dan Gelombang Kerja]] dan [[FD-02 - Penelusuran Business Flow ke Backlog]] (D-30)
 
 **Item:** HNK-22 · **Fase:** F5 · **Dependency:** HNK-10
 

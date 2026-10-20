@@ -15,7 +15,7 @@ updated: 2026-10-17
 
 **Item:** HNK-03 · **Fase:** F2 · **Dependency:** SPK-01, SPK-02, SPK-03, SPK-10
 
-**Lead:** Hans #hans · **Tim:** Hans #hans, Dex #dex
+**Lead:** Hans #hans · **Tim:** Hans #hans, Dex #dex 
 
 ## Deskripsi
 Modul wallet backend (crate stabil, atau zcash-devtool/Zally) yang bisa sync, mengirim output shielded Ironwood dengan memo biner, dan mendekode memo masuk.

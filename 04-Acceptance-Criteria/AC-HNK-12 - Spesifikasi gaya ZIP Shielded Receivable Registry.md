@@ -3,8 +3,8 @@ tags: [ac, "HNK-12"]
 type: ac
 id: HNK-12
 phase: F4
-lead: Dave
-owners: [Dave, Dex, Hans]
+lead: Hans
+owners: [Hans, Dex]
 status: TODO
 updated: 2026-10-16
 ---
@@ -15,7 +15,7 @@ updated: 2026-10-16
 
 **Item:** HNK-12 · **Fase:** F4 · **Dependency:** HNK-02, HNK-07
 
-**Lead:** Dave #dave · **Tim:** Dave #dave, Dex #dex, Hans #hans
+**Lead:** Hans #hans · **Tim:** Hans #hans, Dex #dex 
 
 ## Deskripsi
 Dokumen spesifikasi bergaya ZIP: motivasi, spesifikasi format dan algoritma, pertimbangan keamanan, dan test vector.

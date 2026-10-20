@@ -15,7 +15,7 @@ updated: 2026-10-19
 
 > **Peta link:** [[Testing Hub]] · [[Backlog]] · [[AC-HNK-16 - CI dan quality gate|AC]] · **Test** · [[ES-HNK-16 - CI dan quality gate|Exec Summary]]
 
-**Lead:** Dex #dex · **Tim:** Dex #dex
+**Lead:** Dex #dex · **Tim:** Dex #dex 
 
 ## 1. Unit
 Logika murni, cepat, tanpa DB dan tanpa chain.

@@ -3,7 +3,7 @@ tags: [spike, "SPK-16"]
 type: spike
 id: SPK-16
 area: Resource
-owner: Dave
+owner: Hans
 status: FAIL
 updated: 2026-10-16
 ---
@@ -12,7 +12,7 @@ updated: 2026-10-16
 
 > **Peta link:** [[Spikes Hub]] · [[Backlog]] · [[Rencana Fase]]
 
-**Owner:** Dave #dave · **Area:** Resource · **Dipakai oleh:** HNK-11, HNK-14
+**Owner:** Hans #hans · **Area:** Resource · **Dipakai oleh:** HNK-11, HNK-14
 
 ## Tujuan
 Temukan explorer mainnet yang bisa menampilkan transaksi shielded Ironwood (terlihat ada, isinya tidak) untuk demo dan halaman orang luar.

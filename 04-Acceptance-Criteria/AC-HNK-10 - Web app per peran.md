@@ -3,8 +3,8 @@ tags: [ac, "HNK-10"]
 type: ac
 id: HNK-10
 phase: F5
-lead: Dave
-owners: [Dave, Hans, Dex]
+lead: Hans
+owners: [Hans, Dex]
 status: TODO
 updated: 2026-10-16
 ---
@@ -15,7 +15,7 @@ updated: 2026-10-16
 
 **Item:** HNK-10 · **Fase:** F5 · **Dependency:** HNK-05, HNK-06, SPK-09
 
-**Lead:** Dave #dave · **Tim:** Dave #dave, Hans #hans, Dex #dex
+**Lead:** Hans #hans · **Tim:** Hans #hans, Dex #dex 
 
 ## Deskripsi
 Antarmuka web untuk supplier, buyer, dan financier; tanpa CDN pihak ketiga, analytics, atau cookie pelacak; header CSP ketat.

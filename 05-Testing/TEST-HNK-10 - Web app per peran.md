@@ -3,8 +3,8 @@ tags: [test, "HNK-10"]
 type: test
 id: HNK-10
 phase: F5
-lead: Dave
-owners: [Dave, Hans, Dex]
+lead: Hans
+owners: [Hans, Dex]
 unit: PASS
 integrasi: TODO
 e2e: TODO
@@ -15,7 +15,7 @@ updated: 2026-10-18
 
 > **Peta link:** [[Testing Hub]] · [[Backlog]] · [[AC-HNK-10 - Web app per peran|AC]] · **Test** · [[ES-HNK-10 - Web app per peran|Exec Summary]]
 
-**Lead:** Dave #dave · **Tim:** Dave #dave, Hans #hans, Dex #dex
+**Lead:** Hans #hans · **Tim:** Hans #hans, Dex #dex 
 
 ## 1. Unit
 Logika murni, cepat, tanpa DB dan tanpa chain.

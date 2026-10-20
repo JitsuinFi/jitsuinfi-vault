@@ -4,7 +4,7 @@ type: es
 id: HNK-09
 phase: F4
 lead: Dex
-owners: [Dex, Dave]
+owners: [Dex, Hans]
 status: PARSIAL
 updated: 2026-10-20
 ---
@@ -13,7 +13,7 @@ updated: 2026-10-20
 
 > **Peta link:** [[Exec Summary Hub]] · [[Backlog]] · [[AC-HNK-09 - Verifier CLI hanko verify|AC]] · [[TEST-HNK-09 - Verifier CLI hanko verify|Test]] · **Exec Summary**
 
-**Lead:** Dex #dex · **Tim:** Dex #dex, Dave #dave
+**Lead:** Dex #dex · **Tim:** Dex #dex, Hans #hans 
 
 ## Apa diubah
 - Crate baru `jitsuin-cli` (biner `jitsuin`) di jitsuinfi-zcash PR #4: `jitsuin verify` membaca papan secara live dengan UFVK papan (wallet watch-only `zcash-devtool` + `jitsuin_board::scan`) atau dari snapshot JSON (bentuk yang sama dengan data papan untuk web app), menampilkan semua entri dalam urutan papan, lalu mengecek bukti tanda tangan ganda dan bundel verifikasi. Semua vonis memakai fungsi `jitsuin-core`/`jitsuin-board`, tanpa aturan baru. Output teks atau `--json`; exit 0 lulus, 1 ada cek gagal, 2 salah pakai/input/jaringan.

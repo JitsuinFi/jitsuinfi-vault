@@ -13,7 +13,7 @@ updated: 2026-10-17
 
 > **Peta link:** [[Exec Summary Hub]] · [[Backlog]] · [[AC-HNK-03 - Wallet backend kirim dan terima memo di mainnet|AC]] · [[TEST-HNK-03 - Wallet backend kirim dan terima memo di mainnet|Test]] · **Exec Summary**
 
-**Lead:** Hans #hans · **Tim:** Hans #hans, Dex #dex
+**Lead:** Hans #hans · **Tim:** Hans #hans, Dex #dex 
 
 ## Apa diubah
 - Crate `jitsuin-wallet`: `Devtool` membungkus `zcash-devtool` (sync, enhance, alamat default, `pay` dengan URI ZIP-321 multi-output dan memo biner/teks, `--disable-confirmation`, `--target-note-count 1`), parser `list-tx` (tinggi blok, fee, output, memo, flag transparan).

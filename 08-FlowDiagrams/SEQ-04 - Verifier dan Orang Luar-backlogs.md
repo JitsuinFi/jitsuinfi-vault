@@ -31,4 +31,4 @@ Kolom Status mengikuti langkah 6 "Audit flow diagram" di [[Workflow Development]
 
 | ID | Bagian | Task | Selesai bila | Ref | Task backlog | Owner | Status |
 |---|---|---|---|---|---|---|---|
-| BL-S04-01 | A – D | Juri menjalankan alur A sampai D dari mesin bersih dengan README saja, hasil web dan CLI sama untuk bundel dan bukti contoh | Kasus lulus di TEST-HNK-09 | BL-D28-08 | HNK-17.T4 | Dave | TODO |
+| BL-S04-01 | A – D | Juri menjalankan alur A sampai D dari mesin bersih dengan README saja, hasil web dan CLI sama untuk bundel dan bukti contoh | Kasus lulus di TEST-HNK-09 | BL-D28-08 | HNK-17.T4 | Hans | TODO |

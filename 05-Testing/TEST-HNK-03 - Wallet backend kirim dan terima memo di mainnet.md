@@ -15,7 +15,7 @@ updated: 2026-10-17
 
 > **Peta link:** [[Testing Hub]] · [[Backlog]] · [[AC-HNK-03 - Wallet backend kirim dan terima memo di mainnet|AC]] · **Test** · [[ES-HNK-03 - Wallet backend kirim dan terima memo di mainnet|Exec Summary]]
 
-**Lead:** Hans #hans · **Tim:** Hans #hans, Dex #dex
+**Lead:** Hans #hans · **Tim:** Hans #hans, Dex #dex 
 
 ## 1. Unit
 Logika murni, cepat, tanpa DB dan tanpa chain.

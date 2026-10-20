@@ -30,12 +30,12 @@ Spike = eksperimen singkat untuk membuktikan bahwa skenario, tools, dan resource
 | SPK-09 | [[SPK-09 - Hosting Railway dan hardening web\|Hosting Railway dan hardening web]] | Dex #dex | 2 | Infra | — | HNK-10, HNK-14 |
 | SPK-10 | [[SPK-10 - Dana mainnet dan keamanan seed\|Dana mainnet dan keamanan seed]] | Hans #hans | 1 | Resource | — | HNK-03 – HNK-07, HNK-13 |
 | SPK-11 | [[SPK-11 - Distribusi verifier CLI di mesin bersih\|Distribusi verifier CLI di mesin bersih]] | Dex #dex | 1 | Tooling | — | HNK-09 |
-| SPK-12 | [[SPK-12 - Kepastian aturan dan form ZECATHON\|Kepastian aturan dan form ZECATHON]] | Dave #dave | 1 | Aturan | — | HNK-14 |
+| SPK-12 | [[SPK-12 - Kepastian aturan dan form ZECATHON\|Kepastian aturan dan form ZECATHON]] | Hans #hans | 1 | Aturan | — | HNK-14 |
 | SPK-13 | [[SPK-13 - Dampak NU7 dan versi crate\|Dampak NU7 dan versi crate]] | Dex #dex | 1 | Zcash | — | Semua item |
 | SPK-14 | [[SPK-14 - Repo baru lisensi dan originalitas\|Repo baru lisensi dan originalitas]] | Dex #dex | 1 | Aturan | — | Semua item |
-| SPK-15 | [[SPK-15 - Tooling produksi video\|Tooling produksi video]] | Dave #dave | 1 | Video | — | HNK-14 |
-| SPK-16 | [[SPK-16 - Block explorer untuk demo\|Block explorer untuk demo]] | Dave #dave | 1 | Resource | — | HNK-11, HNK-14 |
-| SPK-17 | [[SPK-17 - Toolchain frontend dan aset offline\|Toolchain frontend dan aset offline]] | Dave #dave | 1 | Tooling | — | HNK-10, HNK-11, HNK-08 |
+| SPK-15 | [[SPK-15 - Tooling produksi video\|Tooling produksi video]] | Hans #hans | 1 | Video | — | HNK-14 |
+| SPK-16 | [[SPK-16 - Block explorer untuk demo\|Block explorer untuk demo]] | Hans #hans | 1 | Resource | — | HNK-11, HNK-14 |
+| SPK-17 | [[SPK-17 - Toolchain frontend dan aset offline\|Toolchain frontend dan aset offline]] | Hans #hans | 1 | Tooling | — | HNK-10, HNK-11, HNK-08 |
 | SPK-18 | [[SPK-18 - Akses tim dan kesamaan environment\|Akses tim dan kesamaan environment]] | Dex #dex | 1 | Infra | — | Semua item |
 | SPK-19 | [[SPK-19 - Testnet NU7 untuk development\|Testnet NU7 untuk development]] | Hans #hans | 2 | Zcash | — | HNK-03 – HNK-07 (opsional) |
 
@@ -51,12 +51,12 @@ Spike = eksperimen singkat untuk membuktikan bahwa skenario, tools, dan resource
 - [[SPK-09 - Hosting Railway dan hardening web]] — Dex #dex
 - [[SPK-10 - Dana mainnet dan keamanan seed]] — Hans #hans
 - [[SPK-11 - Distribusi verifier CLI di mesin bersih]] — Dex #dex
-- [[SPK-12 - Kepastian aturan dan form ZECATHON]] — Dave #dave
+- [[SPK-12 - Kepastian aturan dan form ZECATHON]] — Hans #hans
 - [[SPK-13 - Dampak NU7 dan versi crate]] — Dex #dex
 - [[SPK-14 - Repo baru lisensi dan originalitas]] — Dex #dex
-- [[SPK-15 - Tooling produksi video]] — Dave #dave
-- [[SPK-16 - Block explorer untuk demo]] — Dave #dave
-- [[SPK-17 - Toolchain frontend dan aset offline]] — Dave #dave
+- [[SPK-15 - Tooling produksi video]] — Hans #hans
+- [[SPK-16 - Block explorer untuk demo]] — Hans #hans
+- [[SPK-17 - Toolchain frontend dan aset offline]] — Hans #hans
 - [[SPK-18 - Akses tim dan kesamaan environment]] — Dex #dex
 - [[SPK-19 - Testnet NU7 untuk development]] — Hans #hans
 

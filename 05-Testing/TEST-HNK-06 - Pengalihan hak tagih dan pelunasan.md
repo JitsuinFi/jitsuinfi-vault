@@ -4,7 +4,7 @@ type: test
 id: HNK-06
 phase: F3
 lead: Hans
-owners: [Dex, Hans, Dave]
+owners: [Dex, Hans]
 unit: PASS
 integrasi: PASS
 e2e: TODO
@@ -15,7 +15,7 @@ updated: 2026-10-17
 
 > **Peta link:** [[Testing Hub]] · [[Backlog]] · [[AC-HNK-06 - Pengalihan hak tagih dan pelunasan|AC]] · **Test** · [[ES-HNK-06 - Pengalihan hak tagih dan pelunasan|Exec Summary]]
 
-**Lead:** Hans #hans · **Tim:** Dex #dex, Hans #hans, Dave #dave
+**Lead:** Hans #hans · **Tim:** Dex #dex, Hans #hans 
 
 ## 1. Unit
 Logika murni, cepat, tanpa DB dan tanpa chain.

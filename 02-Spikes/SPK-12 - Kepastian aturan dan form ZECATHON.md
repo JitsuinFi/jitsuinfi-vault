@@ -3,7 +3,7 @@ tags: [spike, "SPK-12"]
 type: spike
 id: SPK-12
 area: Aturan
-owner: Dave
+owner: Hans
 status: TODO
 updated: 2026-10-16
 ---
@@ -12,7 +12,7 @@ updated: 2026-10-16
 
 > **Peta link:** [[Spikes Hub]] · [[Backlog]] · [[Rencana Fase]]
 
-**Owner:** Dave #dave · **Area:** Aturan · **Dipakai oleh:** HNK-14
+**Owner:** Hans #hans · **Area:** Aturan · **Dipakai oleh:** HNK-14
 
 ## Tujuan
 Hilangkan ketidakpastian aturan dan form sebelum terlambat.

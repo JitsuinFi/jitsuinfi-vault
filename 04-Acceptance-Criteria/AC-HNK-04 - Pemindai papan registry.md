@@ -15,7 +15,7 @@ updated: 2026-10-17
 
 **Item:** HNK-04 · **Fase:** F2 · **Dependency:** HNK-02, HNK-03, SPK-05, SPK-08
 
-**Lead:** Hans #hans · **Tim:** Hans #hans, Dex #dex
+**Lead:** Hans #hans · **Tim:** Hans #hans, Dex #dex 
 
 ## Deskripsi
 Scanner watch-only yang memakai viewing key papan untuk membaca semua entri, memvalidasi, dan menyusun urutan (tinggi blok, indeks transaksi).

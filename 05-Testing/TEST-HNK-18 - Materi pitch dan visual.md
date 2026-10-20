@@ -3,8 +3,8 @@ tags: [test, "HNK-18"]
 type: test
 id: HNK-18
 phase: F5
-lead: Dave
-owners: [Dave]
+lead: Hans
+owners: [Hans]
 unit: TODO
 integrasi: TODO
 e2e: TODO
@@ -15,7 +15,7 @@ updated: 2026-10-16
 
 > **Peta link:** [[Testing Hub]] · [[Backlog]] · [[AC-HNK-18 - Materi pitch dan visual|AC]] · **Test** · [[ES-HNK-18 - Materi pitch dan visual|Exec Summary]]
 
-**Lead:** Dave #dave · **Tim:** Dave #dave
+**Lead:** Hans #hans · **Tim:** Hans #hans 
 
 ## 1. Unit
 Logika murni, cepat, tanpa DB dan tanpa chain.

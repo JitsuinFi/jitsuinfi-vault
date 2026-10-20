@@ -16,7 +16,7 @@ Deadline submission: **28 Okt 2026 23:59 UTC** (29 Okt 06:59 WIB). Target submit
 |---|---|---|---|
 | Hans | #hans | Semua integrasi Zcash, core kripto, backend dan FE krusial, submit final | 40% |
 | Dex | #dex | Backend pendukung, verifier CLI, CI, uji integrasi, DevOps | 30% |
-| Dave | #dave | FE non-krusial, dokumentasi dan spesifikasi, QA E2E, uji pengguna, video, pitch | 30% |
+| Dave | #dave | Tidak lagi memegang task sejak 2026-10-20 (D-35): semua task Dave dipindah ke Hans | 0% |
 
 Rincian task per orang: [[Backlog]].
 

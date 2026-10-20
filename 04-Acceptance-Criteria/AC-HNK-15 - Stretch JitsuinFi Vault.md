@@ -4,7 +4,7 @@ type: ac
 id: HNK-15
 phase: F7
 lead: Hans
-owners: [Dex, Hans, Dave]
+owners: [Dex, Hans]
 status: PARSIAL
 updated: 2026-10-17
 ---
@@ -15,7 +15,7 @@ updated: 2026-10-17
 
 **Item:** HNK-15 · **Fase:** F7 · **Dependency:** HNK-07, SPK-05
 
-**Lead:** Hans #hans · **Tim:** Dex #dex, Hans #hans, Dave #dave
+**Lead:** Hans #hans · **Tim:** Dex #dex, Hans #hans 
 
 ## Deskripsi
 Dana bersama: setoran anggota → Merkle sum tree kewajiban → uji solvabilitas lewat FVK akun operasional. Hanya dikerjakan kalau F3 lulus paling lambat 23 Okt dan user setuju.

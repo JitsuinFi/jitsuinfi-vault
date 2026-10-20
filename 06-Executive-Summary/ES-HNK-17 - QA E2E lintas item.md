@@ -3,8 +3,8 @@ tags: [es, "HNK-17"]
 type: es
 id: HNK-17
 phase: F6
-lead: Dave
-owners: [Dave]
+lead: Hans
+owners: [Hans]
 status: BELUM
 updated: 2026-10-16
 ---
@@ -13,7 +13,7 @@ updated: 2026-10-16
 
 > **Peta link:** [[Exec Summary Hub]] · [[Backlog]] · [[AC-HNK-17 - QA E2E lintas item|AC]] · [[TEST-HNK-17 - QA E2E lintas item|Test]] · **Exec Summary**
 
-**Lead:** Dave #dave · **Tim:** Dave #dave
+**Lead:** Hans #hans · **Tim:** Hans #hans 
 
 ## Apa diubah
 _TODO setelah langkah 1 selesai._

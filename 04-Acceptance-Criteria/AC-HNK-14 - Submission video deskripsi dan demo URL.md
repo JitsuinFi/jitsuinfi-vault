@@ -3,8 +3,8 @@ tags: [ac, "HNK-14"]
 type: ac
 id: HNK-14
 phase: F6
-lead: Dave
-owners: [Dave, Dex, Hans]
+lead: Hans
+owners: [Hans, Dex]
 status: TODO
 updated: 2026-10-16
 ---
@@ -15,7 +15,7 @@ updated: 2026-10-16
 
 **Item:** HNK-14 · **Fase:** F6 · **Dependency:** HNK-13, SPK-12, SPK-15
 
-**Lead:** Dave #dave · **Tim:** Dave #dave, Dex #dex, Hans #hans
+**Lead:** Hans #hans · **Tim:** Hans #hans, Dex #dex 
 
 ## Deskripsi
 Video ≤ 2:00, deskripsi ≤ 2.000 karakter, demo URL stabil, repo publik, dan submit sebelum 27 Okt 23:59 UTC.

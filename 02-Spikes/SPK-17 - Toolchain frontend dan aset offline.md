@@ -3,7 +3,7 @@ tags: [spike, "SPK-17"]
 type: spike
 id: SPK-17
 area: Tooling
-owner: Dave
+owner: Hans
 status: PASS
 updated: 2026-10-16
 ---
@@ -12,7 +12,7 @@ updated: 2026-10-16
 
 > **Peta link:** [[Spikes Hub]] · [[Backlog]] · [[Rencana Fase]]
 
-**Owner:** Dave #dave · **Area:** Tooling · **Dipakai oleh:** HNK-10, HNK-11, HNK-08
+**Owner:** Hans #hans · **Area:** Tooling · **Dipakai oleh:** HNK-10, HNK-11, HNK-08
 
 ## Tujuan
 Pastikan stack frontend bisa di-build lokal tanpa resource pihak ketiga saat runtime.

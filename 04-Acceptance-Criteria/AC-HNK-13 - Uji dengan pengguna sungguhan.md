@@ -3,8 +3,8 @@ tags: [ac, "HNK-13"]
 type: ac
 id: HNK-13
 phase: F6
-lead: Dave
-owners: [Dave, Hans]
+lead: Hans
+owners: [Hans]
 status: TODO
 updated: 2026-10-16
 ---
@@ -15,7 +15,7 @@ updated: 2026-10-16
 
 **Item:** HNK-13 · **Fase:** F6 · **Dependency:** HNK-05, HNK-06, HNK-07, HNK-10
 
-**Lead:** Dave #dave · **Tim:** Dave #dave, Hans #hans
+**Lead:** Hans #hans · **Tim:** Hans #hans 
 
 ## Deskripsi
 2–3 orang sungguhan berperan sebagai supplier, buyer, dan financier; satu siklus penuh di mainnet; kutipan dikumpulkan dengan izin.

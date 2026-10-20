@@ -3,8 +3,8 @@ tags: [test, "HNK-12"]
 type: test
 id: HNK-12
 phase: F4
-lead: Dave
-owners: [Dave, Dex, Hans]
+lead: Hans
+owners: [Hans, Dex]
 unit: TODO
 integrasi: TODO
 e2e: TODO
@@ -15,7 +15,7 @@ updated: 2026-10-18
 
 > **Peta link:** [[Testing Hub]] · [[Backlog]] · [[AC-HNK-12 - Spesifikasi gaya ZIP Shielded Receivable Registry|AC]] · **Test** · [[ES-HNK-12 - Spesifikasi gaya ZIP Shielded Receivable Registry|Exec Summary]]
 
-**Lead:** Dave #dave · **Tim:** Dave #dave, Dex #dex, Hans #hans
+**Lead:** Hans #hans · **Tim:** Hans #hans, Dex #dex 
 
 ## 1. Unit
 Logika murni, cepat, tanpa DB dan tanpa chain.

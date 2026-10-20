@@ -4,7 +4,7 @@ type: es
 id: HNK-06
 phase: F3
 lead: Hans
-owners: [Dex, Hans, Dave]
+owners: [Dex, Hans]
 status: PARSIAL
 updated: 2026-10-17
 ---
@@ -13,7 +13,7 @@ updated: 2026-10-17
 
 > **Peta link:** [[Exec Summary Hub]] · [[Backlog]] · [[AC-HNK-06 - Pengalihan hak tagih dan pelunasan|AC]] · [[TEST-HNK-06 - Pengalihan hak tagih dan pelunasan|Test]] · **Exec Summary**
 
-**Lead:** Hans #hans · **Tim:** Dex #dex, Hans #hans, Dave #dave
+**Lead:** Hans #hans · **Tim:** Dex #dex, Hans #hans 
 
 ## Apa diubah
 - `jitsuin-flow::buyer`: `repayment_request` membuat URI ZIP-321 ke alamat financier dengan memo kuitansi pelunasan `JTR1` bertanda tangan buyer, plus `qr_svg`.
@@ -32,7 +32,7 @@ updated: 2026-10-17
 **PARSIAL**. Bagian Hans (T2, T3, T4) selesai; T1 surat pengalihan (Dex), T5 layar QR dan T6 mode confidential (Dave) belum.
 
 ## Risiko tersisa
-- AC-HNK-06.1 (surat pengalihan, Dex) dan AC-HNK-06.4 (mode confidential, Dave) belum.
+- AC-HNK-06.1 (surat pengalihan, Dex) dan AC-HNK-06.4 (mode confidential, Hans, dari Dave, D-35) belum.
 - D-18 (penanda tangan entri `settled` = financier) menunggu keputusan user.
 - Zodl belum diuji memindai QR ini (SPK-04 opsional); uji memakai `zcash-devtool` sebagai wallet buyer.
 - Status `Pending` butuh mempool; `zcash-devtool sync` hanya melihat transaksi yang sudah ditambang, jadi di uji status langsung dari `Unpaid` ke `Settled`.

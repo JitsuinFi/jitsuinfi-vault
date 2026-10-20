@@ -3,8 +3,8 @@ tags: [test, "HNK-14"]
 type: test
 id: HNK-14
 phase: F6
-lead: Dave
-owners: [Dave, Dex, Hans]
+lead: Hans
+owners: [Hans, Dex]
 unit: TODO
 integrasi: TODO
 e2e: TODO
@@ -15,7 +15,7 @@ updated: 2026-10-16
 
 > **Peta link:** [[Testing Hub]] · [[Backlog]] · [[AC-HNK-14 - Submission video deskripsi dan demo URL|AC]] · **Test** · [[ES-HNK-14 - Submission video deskripsi dan demo URL|Exec Summary]]
 
-**Lead:** Dave #dave · **Tim:** Dave #dave, Dex #dex, Hans #hans
+**Lead:** Hans #hans · **Tim:** Hans #hans, Dex #dex 
 
 ## 1. Unit
 Logika murni, cepat, tanpa DB dan tanpa chain.

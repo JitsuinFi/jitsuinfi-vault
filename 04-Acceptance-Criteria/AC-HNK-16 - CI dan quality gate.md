@@ -15,7 +15,7 @@ updated: 2026-10-19
 
 **Item:** HNK-16 · **Fase:** F1 · **Dependency:** SPK-01, SPK-14
 
-**Lead:** Dex #dex · **Tim:** Dex #dex
+**Lead:** Dex #dex · **Tim:** Dex #dex 
 
 ## Deskripsi
 Pipeline yang membuat langkah 1 workflow bisa diverifikasi: `cargo fmt --check`, `cargo check`, `cargo clippy -- -D warnings`, `cargo test`, `npx tsc --noEmit`, build frontend, dan secret scanning (gitleaks). Satu perintah lokal + GitHub Actions (aktif setelah push disetujui user).

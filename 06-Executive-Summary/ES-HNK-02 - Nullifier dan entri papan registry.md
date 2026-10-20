@@ -13,7 +13,7 @@ updated: 2026-10-17
 
 > **Peta link:** [[Exec Summary Hub]] · [[Backlog]] · [[AC-HNK-02 - Nullifier dan entri papan registry|AC]] · [[TEST-HNK-02 - Nullifier dan entri papan registry|Test]] · **Exec Summary**
 
-**Lead:** Hans #hans · **Tim:** Hans #hans, Dex #dex
+**Lead:** Hans #hans · **Tim:** Hans #hans, Dex #dex 
 
 ## Apa diubah
 - `BoardEntry` di `jitsuin-core`: `sign` (key sementara supplier), `verify` (`verify_strict`), `to_memo_bytes` (memo 512 byte: marker `0xFF` ZIP-302, magic `JTS1`, kind, N, commitment, bucket, signature, padding nol), `from_memo_bytes` (decoder ketat, padding wajib nol).

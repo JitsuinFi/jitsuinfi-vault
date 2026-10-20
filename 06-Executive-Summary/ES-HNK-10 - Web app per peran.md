@@ -3,8 +3,8 @@ tags: [es, "HNK-10"]
 type: es
 id: HNK-10
 phase: F5
-lead: Dave
-owners: [Dave, Hans, Dex]
+lead: Hans
+owners: [Hans, Dex]
 status: PARSIAL
 updated: 2026-10-18
 ---
@@ -13,14 +13,14 @@ updated: 2026-10-18
 
 > **Peta link:** [[Exec Summary Hub]] · [[Backlog]] · [[AC-HNK-10 - Web app per peran|AC]] · [[TEST-HNK-10 - Web app per peran|Test]] · **Exec Summary**
 
-**Lead:** Dave #dave · **Tim:** Dave #dave, Hans #hans, Dex #dex
+**Lead:** Hans #hans · **Tim:** Hans #hans, Dex #dex 
 
 ## Apa diubah
 - Repo lokal `jitsuinfi-frontend` (`cdcba0d`, `98466b2`, tanpa remote, D-25): Vite + TypeScript tanpa framework dan tanpa CDN, CSP ketat, token desain terang/gelap.
 - Layar supplier, buyer (passkey PRF), financier, Verify (termasuk tampilan "Caught"), dan halaman orang luar; semua kriptografi lewat `jitsuin-wasm` di browser.
 - Uji klik alur penuh di build produksi: lulus; 0 request ke domain lain.
 
-_Dikerjakan Hans (agent) atas keputusan user D-25 / DEV-11; Dave me-review._
+_Dikerjakan Hans (agent) atas keputusan user D-25 / DEV-11; review oleh Hans (Dave tidak lagi memegang task, D-35)._
 
 ## Hasil vs KPI (angka riil)
 | KPI | Target | Aktual |

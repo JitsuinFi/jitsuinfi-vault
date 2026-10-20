@@ -4,7 +4,7 @@ type: es
 id: HNK-01
 phase: F1
 lead: Hans
-owners: [Hans, Dex, Dave]
+owners: [Hans, Dex]
 status: PARSIAL
 updated: 2026-10-16
 ---
@@ -13,7 +13,7 @@ updated: 2026-10-16
 
 > **Peta link:** [[Exec Summary Hub]] · [[Backlog]] · [[AC-HNK-01 - Format invoice kanonik dan tanda tangan buyer|AC]] · [[TEST-HNK-01 - Format invoice kanonik dan tanda tangan buyer|Test]] · **Exec Summary**
 
-**Lead:** Hans #hans · **Tim:** Hans #hans, Dex #dex, Dave #dave
+**Lead:** Hans #hans · **Tim:** Hans #hans, Dex #dex 
 
 ## Apa diubah
 - Crate baru `jitsuin-core` (repo lokal `zkSNARK/jitsuinfi-zcash/`): struct `Invoice`, encoding kanonik deterministik (`to_canonical_bytes`), decoder ketat (`from_canonical_bytes`), validasi field, `sign_invoice` (cek kecocokan key buyer) dan `verify_invoice` (`verify_strict`).
@@ -32,7 +32,7 @@ updated: 2026-10-16
 
 ## Risiko tersisa
 - Unit test resmi dan file test vector belum ada (HNK-01.T3, Dex).
-- Review [[Format Data]] oleh Dave (HNK-01.T4).
+- Review [[Format Data]] oleh Hans (HNK-01.T4, dari Dave, D-35).
 - Waktu sign + verify belum diukur.
 - Signer buyer non-deterministik → lihat DEV-04 (dampaknya di HNK-02).
 

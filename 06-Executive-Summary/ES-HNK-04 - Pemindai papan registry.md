@@ -13,7 +13,7 @@ updated: 2026-10-17
 
 > **Peta link:** [[Exec Summary Hub]] · [[Backlog]] · [[AC-HNK-04 - Pemindai papan registry|AC]] · [[TEST-HNK-04 - Pemindai papan registry|Test]] · **Exec Summary**
 
-**Lead:** Hans #hans · **Tim:** Hans #hans, Dex #dex
+**Lead:** Hans #hans · **Tim:** Hans #hans, Dex #dex 
 
 ## Apa diubah
 - Crate `jitsuin-board`: `scan` (sync + enhance + list-tx wallet watch-only, urutan tx per blok dari `GetBlock` lightwalletd), `collect` (decode entri, tolak memo rusak, urut total), `lookup` (sudut pandang pemegang invoice: entri pertama dengan signature supplier valid menang, signature invalid diabaikan, commitment financier kedua = `DoubleFinanced`).

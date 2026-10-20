@@ -4,7 +4,7 @@ type: ac
 id: HNK-01
 phase: F1
 lead: Hans
-owners: [Hans, Dex, Dave]
+owners: [Hans, Dex]
 status: PASS
 updated: 2026-10-16
 ---
@@ -15,7 +15,7 @@ updated: 2026-10-16
 
 **Item:** HNK-01 · **Fase:** F1 · **Dependency:** SPK-06
 
-**Lead:** Hans #hans · **Tim:** Hans #hans, Dex #dex, Dave #dave
+**Lead:** Hans #hans · **Tim:** Hans #hans, Dex #dex 
 
 ## Deskripsi
 Definisikan format invoice kanonik (field berurutan, encoding deterministik) dan tanda tangan Ed25519 deterministik oleh buyer. Fondasi nullifier.

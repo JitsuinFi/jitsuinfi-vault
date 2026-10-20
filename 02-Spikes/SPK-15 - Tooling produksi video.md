@@ -3,7 +3,7 @@ tags: [spike, "SPK-15"]
 type: spike
 id: SPK-15
 area: Video
-owner: Dave
+owner: Hans
 status: BLOCKED
 updated: 2026-10-16
 ---
@@ -12,7 +12,7 @@ updated: 2026-10-16
 
 > **Peta link:** [[Spikes Hub]] · [[Backlog]] · [[Rencana Fase]]
 
-**Owner:** Dave #dave · **Area:** Video · **Dipakai oleh:** HNK-14
+**Owner:** Hans #hans · **Area:** Video · **Dipakai oleh:** HNK-14
 
 ## Tujuan
 Pastikan alat rekam dan edit siap, dan hasil memenuhi syarat ≤ 2:00.

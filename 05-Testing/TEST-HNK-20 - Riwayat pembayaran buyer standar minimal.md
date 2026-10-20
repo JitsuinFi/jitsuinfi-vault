@@ -15,7 +15,7 @@ updated: 2026-10-17
 
 > **Peta link:** [[Testing Hub]] · [[Backlog]] · [[AC-HNK-20 - Riwayat pembayaran buyer standar minimal|AC]] · **Test** · [[ES-HNK-20 - Riwayat pembayaran buyer standar minimal|Exec Summary]]
 
-**Lead:** Hans #hans · **Tim:** Hans #hans
+**Lead:** Hans #hans · **Tim:** Hans #hans 
 
 ## 1. Unit
 Logika murni, cepat, tanpa DB dan tanpa chain.

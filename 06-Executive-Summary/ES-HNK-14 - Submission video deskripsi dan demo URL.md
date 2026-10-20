@@ -3,8 +3,8 @@ tags: [es, "HNK-14"]
 type: es
 id: HNK-14
 phase: F6
-lead: Dave
-owners: [Dave, Dex, Hans]
+lead: Hans
+owners: [Hans, Dex]
 status: BELUM
 updated: 2026-10-16
 ---
@@ -13,7 +13,7 @@ updated: 2026-10-16
 
 > **Peta link:** [[Exec Summary Hub]] · [[Backlog]] · [[AC-HNK-14 - Submission video deskripsi dan demo URL|AC]] · [[TEST-HNK-14 - Submission video deskripsi dan demo URL|Test]] · **Exec Summary**
 
-**Lead:** Dave #dave · **Tim:** Dave #dave, Dex #dex, Hans #hans
+**Lead:** Hans #hans · **Tim:** Hans #hans, Dex #dex 
 
 ## Apa diubah
 _TODO setelah langkah 1 selesai._

@@ -13,7 +13,7 @@ updated: 2026-10-17
 
 > **Peta link:** [[Exec Summary Hub]] · [[Backlog]] · [[AC-HNK-19 - Jitsuin Seal tanda tangan berantai dan Sign-to-Pay|AC]] · [[TEST-HNK-19 - Jitsuin Seal tanda tangan berantai dan Sign-to-Pay|Test]] · **Exec Summary**
 
-**Lead:** Hans #hans · **Tim:** Hans #hans
+**Lead:** Hans #hans · **Tim:** Hans #hans 
 
 ## Apa diubah
 - **Seal berantai** (`b007a26`): seal 200 byte per langkah, policy per dokumen, verifikasi rantai (urutan, role, signer, tanpa self-approval).

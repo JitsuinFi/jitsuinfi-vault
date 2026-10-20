@@ -3,8 +3,8 @@ tags: [test, "HNK-13"]
 type: test
 id: HNK-13
 phase: F6
-lead: Dave
-owners: [Dave, Hans]
+lead: Hans
+owners: [Hans]
 unit: TODO
 integrasi: TODO
 e2e: TODO
@@ -15,7 +15,7 @@ updated: 2026-10-16
 
 > **Peta link:** [[Testing Hub]] · [[Backlog]] · [[AC-HNK-13 - Uji dengan pengguna sungguhan|AC]] · **Test** · [[ES-HNK-13 - Uji dengan pengguna sungguhan|Exec Summary]]
 
-**Lead:** Dave #dave · **Tim:** Dave #dave, Hans #hans
+**Lead:** Hans #hans · **Tim:** Hans #hans 
 
 ## 1. Unit
 Logika murni, cepat, tanpa DB dan tanpa chain.

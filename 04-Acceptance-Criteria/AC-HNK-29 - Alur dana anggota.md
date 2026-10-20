@@ -4,7 +4,7 @@ type: ac
 id: HNK-29
 phase: F7
 lead: Dex
-owners: [Dex, Dave]
+owners: [Dex, Hans]
 status: TODO
 updated: 2026-10-20
 ---
@@ -13,7 +13,7 @@ updated: 2026-10-20
 
 > **Peta link:** [[AC Hub]] · [[Backlog]] · **AC** · [[TEST-HNK-29 - Alur dana anggota|Test]] · [[ES-HNK-29 - Alur dana anggota|Exec Summary]]
 
-**Lead:** Dex #dex · **Tim:** Dex #dex, Dave #dave · Dibuat 2026-10-20 dari [[FD-01 - Keputusan Usulan dan Gelombang Kerja]] dan [[FD-02 - Penelusuran Business Flow ke Backlog]] (D-30)
+**Lead:** Dex #dex · **Tim:** Dex #dex, Hans #hans · Dibuat 2026-10-20 dari [[FD-01 - Keputusan Usulan dan Gelombang Kerja]] dan [[FD-02 - Penelusuran Business Flow ke Backlog]] (D-30)
 
 **Item:** HNK-29 · **Fase:** F7 · **Dependency:** HNK-15, HNK-23
 
