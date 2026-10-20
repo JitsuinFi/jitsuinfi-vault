@@ -113,6 +113,7 @@ Urutan kerja mengikuti gelombang FD-01: fondasi (HNK-27, HNK-22, HNK-24.T1, HNK-
 | HNK-27 | Perbaikan protokol dan flow | F3 | Hans #hans | #hans | HNK-05, HNK-19, HNK-20 | [[AC-HNK-27 - Perbaikan protokol dan flow\|AC]] | [[TEST-HNK-27 - Perbaikan protokol dan flow\|Test]] | [[ES-HNK-27 - Perbaikan protokol dan flow\|ES]] |
 | HNK-28 | Verifikasi publik lengkap | F4 | Hans #hans | #hans | HNK-08, HNK-09, HNK-23 | [[AC-HNK-28 - Verifikasi publik lengkap\|AC]] | [[TEST-HNK-28 - Verifikasi publik lengkap\|Test]] | [[ES-HNK-28 - Verifikasi publik lengkap\|ES]] |
 | HNK-29 | Alur dana anggota | F7 | Hans #hans | #hans | HNK-15, HNK-23 | [[AC-HNK-29 - Alur dana anggota\|AC]] | [[TEST-HNK-29 - Alur dana anggota\|Test]] | [[ES-HNK-29 - Alur dana anggota\|ES]] |
+| HNK-30 | Demo juri dan narasi dari judging | F6 | Hans #hans | #hans | HNK-07, HNK-09, HNK-28 | [[AC-HNK-30 - Demo juri dan narasi dari judging\|AC]] | [[TEST-HNK-30 - Demo juri dan narasi dari judging\|Test]] | [[ES-HNK-30 - Demo juri dan narasi dari judging\|ES]] |
 
 ## Spike (F0)
 
@@ -443,6 +444,20 @@ Urutan kerja mengikuti gelombang FD-01: fondasi (HNK-27, HNK-22, HNK-24.T1, HNK-
 | HNK-17.T3 | Retest bug yang sudah diperbaiki | Hans #hans (dari Dave, D-35) | 1 | TODO |
 | HNK-17.T4 | E2E arsitektur target per business flow (BF-01 – BF-12, [[FD-02 - Penelusuran Business Flow ke Backlog]]) lewat relay dan node testnet. Rincian: `BL-D0-07`, `BL-D22-11`, `BL-D23-15`, `BL-D24-14`, `BL-D26-10`, `BL-D29-08`, `BL-S00-04`, `BL-S01-03`, `BL-S02-03`, `BL-S03-03`, `BL-S04-01`, `BL-S05-02` | Hans #hans (dari Dave, D-35) | 3 | TODO |
 
+**HNK-30 — Demo juri dan narasi dari judging** · Lead Hans #hans · [[AC-HNK-30 - Demo juri dan narasi dari judging|AC]] · Dibuat 2026-10-21 (D-40)
+
+| Task | Deskripsi | Owner | Jam | Status |
+|---|---|---|---|---|
+| HNK-30.T1 | Fuzz kanonikalisasi invoice sebelum klaim "dua pintu keluar" (W-16, AC-HNK-30.1) | Hans #hans | 2 | TODO |
+| HNK-30.T2 | W-14 opsi (b): kelas diskon dan tenor terenkripsi ke financier di entri papan, indeks dari agregat; cadangan opsi (a) di threat model dan spesifikasi (D-41, AC-HNK-30.6) | Hans #hans | 5 | TODO |
+| HNK-30.T3 | Kit invoice tersegel M-02: tautan berisi invoice testnet bertanda tangan dan dua meja financier (AC-HNK-30.2) | Hans #hans | 3 | TODO |
+| HNK-30.T4 | Dua pintu keluar M-01 di papan testnet hidup + panel "yang tidak dicegah" N-13 (AC-HNK-30.3) | Hans #hans | 3 | TODO |
+| HNK-30.T5 | Exhibit A M-03: bukti tanda tangan ganda minimal, PASS di `/verify` dan `jitsuin verify` (AC-HNK-30.4) | Hans #hans | 2 | TODO |
+| HNK-30.T6 | Lensa "yang dilihat dunia" M-04, jujur atas semua yang terbaca lewat UFVK (AC-HNK-30.5) | Hans #hans | 2 | TODO |
+| HNK-30.T7 | Demo tahan outage host: `/verify` dan alur emas dari snapshot statis (W-23, AC-HNK-30.8; bersama HNK-28.T1) | Hans #hans | 2 | TODO |
+| HNK-30.T8 | Teks: N-06 (W-15), label jaringan (W-17), N-13, N-11 di README; cek fakta N-07 Ironwood (AC-HNK-30.7) | Hans #hans | 1 | TODO |
+| HNK-30.T9 | Fixture Case File #0417 (M-07) dan klip M-01 + M-03 ≤ 20 detik (AC-HNK-30.9; masuk video HNK-14.T1) | Hans #hans | 1 | TODO |
+
 ### Fase F7
 
 **HNK-15 — Stretch JitsuinFi Vault** · Lead Hans #hans · [[AC-HNK-15 - Stretch JitsuinFi Vault|AC]]
@@ -495,4 +510,5 @@ SORT id ASC
 | DEV-21 | 2026-10-20 | HNK-21 (Dex) | Penyelarasan app ke palet utama dan gaya tanpa kartu bagian dari HNK-21 (Dex) | Hans mengerjakan fondasinya lebih dulu (D-36, D-37; PR #8 di-merge `e0f0a66`): token DS-PAL, gaya iOS dari `09-Design` (lembar kertas, panel kolam, nav pill / tab bar, daftar berkelompok, stepper segel), verdict cap hanko, di `src/style.css` dan `ui.ts` (jitsuinfi-frontend `ba9383a`, PR #8). HNK-21.T1 – T8 tetap milik Dex untuk adegan per layar, ilustrasi, i18n, dan regresi | Permintaan user: palet diselaraskan sekarang | **Disetujui user 2026-10-20** ("Ya, selaraskan sekarang") |
 | DEV-22 | 2026-10-20 | Task backend Dex | Relay, node, snapshot, node dana, API financier milik Dex (D-29, DEV-12) | 26 task dipindah ke Hans (D-38); lead HNK-23, HNK-26, HNK-28, HNK-29 jadi Hans | Keputusan user, supaya app production-ready | **Disetujui user 2026-10-20** ("Pindahin task backend Dex ke saya, mulai relay") |
 | DEV-23 | 2026-10-21 | HNK-26.T4, kartu kontak financier | Sidik jari kartu kontak = HMAC atas master peran (DEV-18) | Node: SHA-256(`jitsuin-fingerprint-v1:financier:` ‖ `financier_pk`), 10 byte pertama, base32 grup 4 (format tampilan sama) | Node punya satu key publik financier; rekan bisa menghitung ulang dari `financier_pk` yang ia terima | **Disetujui user 2026-10-21** ("DEV-23 disetujui") |
+| DEV-24 | 2026-10-21 | Rekomendasi judging JDG-01, JDG-10 ("bekukan scope ke satu alur emas", W-01) | Scope dibekukan | Scope tidak dibekukan; backlog tetap jalan, ditambah HNK-30 (21 jam) dari adopsi judging | Keputusan user: waktu dinilai cukup | **Disetujui user 2026-10-21** ("Mengenai bekukan scope menurut saya jgn dulu, fokus ke backlog ini") |
 | DEV-05 | 2026-10-16 | SPK-04 | [[Rencana Fase]]: SPK-04 spike kritis | SPK-04 tidak lagi kritis; gerbang F0 dihitung tanpa SPK-04 | D-15: Zodl opsional (keputusan user) | **Mengikuti keputusan user 2026-10-16** |
