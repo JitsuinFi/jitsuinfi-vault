@@ -12,8 +12,8 @@ updated: 2026-10-20
 > **Peta link:** [[Exec Summary Hub]] · [[Backlog]] · [[AC-HNK-28 - Verifikasi publik lengkap|AC]] · [[TEST-HNK-28 - Verifikasi publik lengkap|Test]] · **Exec Summary**
 
 ## Apa diubah
-- **T2 (Hans), lokal:** `jitsuin-board` `ProofOnBoard` (satu field per klaim) dipakai CLI dan wasm `verifyProofOnBoard`; layar Verify memeriksa posisi bukti terhadap data papan, tanpa data papan posisi ditulis sebagai klaim. Bukti tanpa posisi pertama FAIL di web dan CLI.
-- **T3 (Hans), lokal:** `rate_index_json` bersama; wasm `rateIndex` sama dengan `jitsuin index --json`. Halaman `#/index` (HNK-08.T3, Dave) belum ada.
+- **T2 (Hans), di-merge:** `jitsuin-board` `ProofOnBoard` (satu field per klaim) dipakai CLI dan wasm `verifyProofOnBoard`; layar Verify memeriksa posisi bukti terhadap data papan, tanpa data papan posisi ditulis sebagai klaim. Bukti tanpa posisi pertama FAIL di web dan CLI.
+- **T3 (Hans), di-merge:** `rate_index_json` bersama; wasm `rateIndex` sama dengan `jitsuin index --json`. Halaman `#/index` (HNK-08.T3, Dave) belum ada.
 
 ## Hasil vs KPI (angka riil)
 | KPI | Target | Aktual |
@@ -21,7 +21,7 @@ updated: 2026-10-20
 | Verdict web vs CLI berbeda | 0 | — |
 
 ## Status
-**PARSIAL.** T2, T3 DONE (lokal); halaman indeks, snapshot otomatis, dan sisa item belum.
+**PARSIAL.** T2, T3 DONE (di-merge); halaman indeks, snapshot otomatis, dan sisa item belum.
 
 ## Risiko tersisa
 _TODO_
