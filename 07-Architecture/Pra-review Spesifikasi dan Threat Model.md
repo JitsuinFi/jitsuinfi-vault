@@ -4,7 +4,7 @@ tags: [architecture, review]
 
 # Pra-review Spesifikasi dan Threat Model
 
-**Bagian dari:** [[Backlog]] · Untuk: HNK-12.T3 (review teknis spesifikasi) dan HNK-11.T3 (review kebocoran Zcash) · Terkait: [[Threat Model]] · [[Format Data]] · [[Desain Jitsuin Seal]] · [[Decision Log]]
+**Bagian dari:** [[Backlog]] · Untuk: HNK-12.T3 (review teknis spesifikasi) dan HNK-11.T3 (review kebocoran Zcash) · Checklist: [[Checklist Review HNK-11.T3 dan HNK-12.T3]] · Terkait: [[Threat Model]] · [[Format Data]] · [[Desain Jitsuin Seal]] · [[Decision Log]]
 
 > Disiapkan 2026-10-19 oleh agent (dua pemeriksa terpisah, hanya baca, kode dicocokkan baris per baris). **Ini bukan review-nya.** HNK-11.T3 dan HNK-12.T3 tetap direview Hans sendiri (DEV-11): Hans memutuskan tiap temuan (terima, tolak, tunda) di kolom Keputusan. Path kode relatif ke `jitsuinfi-zcash/crates/` kecuali disebut lain. Temuan bertanda ✔ sudah dicek ulang langsung di kode oleh agent utama.
 
