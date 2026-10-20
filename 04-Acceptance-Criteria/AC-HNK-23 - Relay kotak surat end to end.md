@@ -26,9 +26,9 @@ Status per kriteria: `TODO` / `PASS` / `FAIL` / `BLOCKED`, wajib dengan tanggal 
 | ID | Kriteria | Status | Tanggal | Bukti |
 |---|---|---|---|---|
 | AC-HNK-23.1 | Relay hidup di URL same-origin web app; CSP tetap `connect-src 'self'`. | TODO | — | — |
-| AC-HNK-23.2 | `mailbox_id` yang disimpan relay sama dengan hitungan klien; pendaftaran tanpa bukti kepemilikan ditolak. | TODO | — | — |
-| AC-HNK-23.3 | Pihak yang hanya tahu `mailbox_id` tidak bisa membaca daftar pesan. | TODO | — | — |
-| AC-HNK-23.4 | Relay hanya menyimpan `mailbox_pk`, `mailbox_id`, ciphertext, dan masa simpan; isi tidak terbaca di server. | TODO | — | — |
+| AC-HNK-23.2 | `mailbox_id` yang disimpan relay sama dengan hitungan klien; pendaftaran tanpa bukti kepemilikan ditolak. | PASS (lokal) | 2026-10-20 | jitsuinfi-backend `2d987dd`: relay menghitung id dari `mailbox_pk`; bukti salah, dipakai ulang, kedaluwarsa, untuk key lain, atau untuk tujuan lain ditolak (U-HNK-23.2). Sisi klien wasm = HNK-23.T2 |
+| AC-HNK-23.3 | Pihak yang hanya tahu `mailbox_id` tidak bisa membaca daftar pesan. | PASS (lokal) | 2026-10-20 | `2d987dd`: daftar dan ambil pesan wajib token baca dari bukti kepemilikan; tanpa token, token kotak surat lain, atau token kedaluwarsa = 401; bukti untuk kotak surat lain = 403 (U-HNK-23.5) |
+| AC-HNK-23.4 | Relay hanya menyimpan `mailbox_pk`, `mailbox_id`, ciphertext, dan masa simpan; isi tidak terbaca di server. | PASS (lokal) | 2026-10-20 | `db/001_relay.sql` (`2d987dd`): kotak surat (id, key), pesan (ciphertext opak, ukuran, waktu masuk dan kedaluwarsa), challenge sekali pakai, hash token baca; tanpa IP, pengirim, atau isi. Isi dienkripsi di browser (HNK-23.T2) |
 | AC-HNK-23.5 | Pesan financier dengan tanda tangan salah ditolak di layar penerima. | TODO | — | — |
 
 ## Deviasi
