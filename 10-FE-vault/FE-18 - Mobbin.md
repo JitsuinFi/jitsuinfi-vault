@@ -16,7 +16,7 @@ Perpustakaan layar dan alur aplikasi nyata (web dan iOS).
 ## Akar
 | | |
 |---|---|
-| Server | `https://api.mobbin.com/mcp` (HTTP), scope **user** (semua proyek) |
+| Server | `https://api.mobbin.com/mcp` (HTTP), scope **user** (semua proyek). Koneksi sempat putus (`ECONNRESET`) 2026-10-20 lalu tersambung lagi |
 | Tool | `mcp__mobbin__search_screens`, `mcp__mobbin__search_flows`, `mcp__mobbin__search_sections` |
 
 ## Kemampuan

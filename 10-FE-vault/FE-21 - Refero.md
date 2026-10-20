@@ -20,7 +20,7 @@ Referensi desain: layar dan alur nyata (web dan iOS), gaya visual terkurasi, sit
 | Dipasang | 2026-10-20: `claude mcp add --transport http refero https://api.refero.design/mcp --header "Authorization: Bearer <token>"` |
 | Scope | **local** (hanya proyek `zkSNARK`, hanya user ini); token disimpan di `~/.claude.json`, tidak di repo atau vault |
 | Token | Pernah ditempel di chat; disarankan rotasi di dashboard Refero |
-| Ketersediaan | Tool baru muncul di sesi Claude berikutnya |
+| Ketersediaan | Aktif di sesi sejak 2026-10-20 (tool `mcp__refero__refero_*`) |
 
 ## Tool (10)
 | Tool | Isi |

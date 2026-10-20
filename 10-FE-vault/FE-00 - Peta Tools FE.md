@@ -26,6 +26,7 @@ Semua tool frontend yang tersedia untuk JitsuinFi per 2026-10-20, dari awal proy
 ## Peta lengkap
 | ID | Tool | Lapisan | Versi / sumber | Lokasi | Dipakai di | Status |
 |---|---|---|---|---|---|---|
+| [[FE-M0 - Mandat FE\|FE-M0]] | Mandat FE user (level PortoWeb, anti-mainstream, 65/35, tanpa kartu, semua MCP dan tool) | Mandat | [[Landing Page - Brief]] | Vault | Landing (HNK-18.T4) | AKTIF |
 | [[FE-01 - Batasan Platform FE\|FE-01]] | Batasan platform (CSP, tanpa CDN) | Platform | `vercel.json`, meta CSP | Repo frontend | Semua | AKTIF |
 | [[FE-02 - Vite\|FE-02]] | Vite | Build | 8.3.4 | `devDependencies` | Landing dan app | AKTIF |
 | [[FE-03 - TypeScript\|FE-03]] | TypeScript | Build | 5.9.3 | `devDependencies` | Semua kode | AKTIF |
@@ -54,6 +55,7 @@ Semua tool frontend yang tersedia untuk JitsuinFi per 2026-10-20, dari awal proy
 | [[FE-25 - React Bits shadcn MCP\|FE-25]] | React Bits (shadcn MCP) | Komponen | `npx shadcn@latest mcp init` | — | — | BELUM-TERPASANG |
 | [[FE-26 - motionmaxxing\|FE-26]] | motionmaxxing | Skill referensi | GitHub, Apache-2.0 | — | Ease di `src/landing/motion.ts` | REFERENSI-DIPAKAI |
 | [[FE-27 - Referensi Visual Vault\|FE-27]] | `MotionSites-References/`, `ColorPalette-JitsuinFi/` | Referensi | Vault | Vault, untracked | `MASTER.md` §1, §2 | REFERENSI |
+| [[FE-29 - PortoWeb Benchmark\|FE-29]] | PortoWeb (tolok ukur level + basis pengetahuan FE di `_resources/notes`) | Benchmark | `Hans_Porto_Web` `3f47e4a` | `/Users/Shenhan/HansProject/PortoWeb` | Acuan M1 | REFERENSI |
 
 ## Alur end to end
 ```mermaid
@@ -78,6 +80,21 @@ Batasan [[FE-01 - Batasan Platform FE]] berlaku di setiap tahap.
 8. **Bundle landing 796 KB** dengan peringatan chunk Vite ([[FE-02 - Vite]]).
 9. **App dan landing memakai sistem visual berbeda**: font Fontsource dan library gerak hanya di landing; app memakai font sistem dan `src/style.css` (redesain app = HNK-21, Dex).
 10. **README frontend usang**: masih menyebut secret tidak pernah ditulis ke storage, padahal sekarang ada store IndexedDB terenkripsi (HNK-24.T3).
+11. **Mandat FE belum terpenuhi penuh** ([[FE-M0 - Mandat FE]]): rasio 65/35 belum diukur, hairline dan React Bits belum dipakai, Mobbin/ScreensDesign/Refero belum dipakai untuk landing.
+12. **PortoWeb sudah punya basis pengetahuan FE** yang terverifikasi (`_resources/notes`) dan klon semua tool di mandat; dipakai ulang lewat [[FE-29 - PortoWeb Benchmark]].
+
+## Audit 2026-10-20 (akurasi)
+Setiap klaim dicek ulang ke sumbernya. Koreksi:
+| File | Sebelum | Sesudah |
+|---|---|---|
+| FE-01 | Satu string CSP untuk `vercel.json` dan kedua `<meta>` | Tiga versi: header lengkap; meta landing tanpa `frame-ancestors`; meta app tanpa `font-src` |
+| FE-02 | "796 KB" | Ukuran file di disk, belum gzip |
+| FE-04, FE-05 | Versi dari ingatan | Node v26.11.1 dan `wasm-bindgen` 0.2.129 dicek langsung |
+| FE-13 | `/genjutsu:cast` dst. sebagai cara panggil | Hanya untuk instalasi plugin; instalasi ini dipanggil lewat skill `genjutsu` |
+| FE-18, FE-19 | Terhubung | Sempat `ECONNRESET`, lalu tersambung lagi |
+| FE-21, FE-28 | Aktif di sesi berikutnya | Sudah aktif di sesi ini |
+| FE-25 | Lisensi `NOASSERTION`, cara pasang tidak jelas | MIT + Commons Clause; `npx shadcn@latest add @react-bits/<Nama>-<varian>`; 102 komponen WebGL dengan hanya 16 yang memakai `ogl`/`three` |
+| FE-11, FE-26, FE-08 | Tanpa basis pengetahuan | Ditautkan ke catatan PortoWeb: API dan ukuran hairline, figur relevan, 12 ease, peringatan "premium pastiche", digest anime.js |
 
 ## Di luar cakupan (sengaja tidak dipetakan)
 | Tool | Alasan |

@@ -18,7 +18,7 @@ Semua kriptografi di browser (invoice, N, tanda tangan, seal, bukti, key turunan
 |---|---|
 | Sumber | Repo `jitsuinfi-zcash`, crate `crates/jitsuin-wasm` |
 | Build | `scripts/build-wasm.sh` di frontend: `cargo build -p jitsuin-wasm --target wasm32-unknown-unknown --release`, lalu `wasm-bindgen --target web --out-dir src/wasm` |
-| Alat | Rust + target `wasm32-unknown-unknown`, `wasm-bindgen-cli` 0.2.129 |
+| Alat | Rust + target `wasm32-unknown-unknown`, `wasm-bindgen-cli` 0.2.129 (dicek `wasm-bindgen --version`, 2026-10-20) |
 | Hasil | `src/wasm/jitsuin_wasm.js`, `.d.ts`, `jitsuin_wasm_bg.wasm` (586 KB), di-commit karena Vercel tidak punya toolchain Rust |
 | Jejak versi | `src/wasm/SOURCE` = commit zcash yang dibangun (sekarang `a252568`) |
 

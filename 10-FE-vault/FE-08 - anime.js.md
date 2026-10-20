@@ -32,6 +32,11 @@ Mesin animasi utama landing: entri teks, segel, garis SVG, timer episode hero.
 
 Ease dikirim sebagai fungsi (`fn(ease.softLand)`) agar kurva persis sama dengan motionmaxxing ([[FE-26 - motionmaxxing]]).
 
+## Basis pengetahuan
+- `PortoWeb/_resources/notes/animejs-v4.md`: digest API anime.js 4.5.0 yang dicek ke source (core, easing, `onScroll`/ScrollObserver, `splitText`/`scrambleText`, SVG, Draggable dan Layout, Scope, modul WAAPI, gotcha dan performa).
+- Klon source: `PortoWeb/_resources/repos/anime` (commit `01b81be`).
+- Fitur yang belum dipakai landing JitsuinFi: `onScroll` (scroll-driven), `splitText`/`scrambleText` (teks), `Draggable`, modul WAAPI.
+
 ## Batasan
 - Reduced motion: `reducedMotion()` di `motion.ts`; setiap bab menampilkan keadaan akhir.
 - Larangan dari `MASTER.md`: fade tunggal, stagger fade-up seragam, bounce atau elastic (kecuali satu `popOver`).

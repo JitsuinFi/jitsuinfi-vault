@@ -25,7 +25,7 @@ Build tool dan dev server untuk dua halaman: landing (`index.html`) dan app (`ap
 - `build.target: "es2022"`.
 - `assetsInlineLimit: 0`: semua aset jadi file terpisah di `dist/assets/` (tidak ada `data:` URI besar), cocok dengan CSP.
 - Dua input: `landing` (index.html) dan `app` (app.html).
-- Ukuran build terakhir: `landing-*.js` 796 KB (three.js, anime.js, Motion, Lenis), `app-*.js` 44 KB, `jitsuin_wasm-*.js` 20 KB + `.wasm` 586 KB.
+- Ukuran file build terakhir (ukuran di disk, belum gzip): `landing-*.js` ±796 KB (three.js, anime.js, Motion, Lenis), `app-*.js` 44 KB, `jitsuin_wasm-*.js` 20 KB + `.wasm` 586 KB.
 
 ## Perintah (`package.json`)
 | Script | Isi |

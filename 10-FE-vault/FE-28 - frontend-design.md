@@ -21,7 +21,7 @@ Skill resmi Anthropic untuk desain antarmuka yang punya karakter dan tidak teras
 | Lokasi | `~/.claude/plugins/cache/claude-plugins-official/frontend-design/a0b04d9ddcca/skills/frontend-design/SKILL.md` (71 baris) |
 | Isi plugin | 1 skill; tanpa agent, hook, atau server MCP |
 | Biaya token | ±80 token selalu aktif per sesi, ±2.7k token setiap dipanggil |
-| Tersedia | Di sesi Claude Code berikutnya |
+| Tersedia | Aktif di sesi sejak 2026-10-20 sebagai `frontend-design:frontend-design` |
 
 ## Isi skill
 - **Berpijak pada subjek**: pilihan visual datang dari industri, bahan, dan kosakata subjeknya; konten nyata, bukan placeholder.

@@ -18,9 +18,10 @@ Skill creative coding untuk antarmuka: gerak, micro-interaction, sistem visual, 
 |---|---|
 | Versi | v4.1.1 |
 | Sumber | https://genjutsu.athevon.dev (well-known), zip dari `github.com/AThevon/genjutsu/releases/download/v4.1.1/genjutsu.zip`, digest `sha256:2d74fddd…034f` |
-| Dipasang | 2026-10-10 lewat `npx skills add` (tercatat di `~/.agents/.skill-lock.json`) |
+| Dipasang | 2026-10-10 lewat installer skill `npx skills` (tercatat di `~/.agents/.skill-lock.json`, `sourceType: well-known`) |
+| Klon referensi | `PortoWeb/_resources/repos/genjutsu` (commit `1f518a7`, 2026-10-06), lihat [[FE-29 - PortoWeb Benchmark]] |
 | Lokasi | `~/.agents/skills/genjutsu/`, ditautkan ke `~/.claude/skills/genjutsu` (symlink), jadi aktif di semua proyek |
-| Pemanggilan | `/genjutsu` (router), `/genjutsu:cast`, `/genjutsu:paint`, `/genjutsu:bunshin`, atau skill `genjutsu` |
+| Pemanggilan | Skill `genjutsu` atau `/genjutsu`; router memilih pipeline (cast default, paint, bunshin). Bentuk `/genjutsu:cast` hanya ada bila genjutsu dipasang sebagai plugin Claude Code, bukan instalasi skill ini |
 
 ## Tiga pipeline
 | Pipeline | File | Untuk | Catatan |

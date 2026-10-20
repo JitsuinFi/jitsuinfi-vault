@@ -4,6 +4,8 @@ tags: [project, landing, brief]
 
 # Landing Page - Brief
 
+> Mandat ini juga dipetakan sebagai aturan yang bisa dicek di [[FE-M0 - Mandat FE]]; tolok ukur level: [[FE-29 - PortoWeb Benchmark]].
+
 **Bagian dari:** [[00 - Project]] · Kembali: [[START-HERE]] · Item: HNK-18.T4 di [[Backlog]] · Terkait: [[JitsuinFi - Ringkasan Proyek]] · [[Desain Jitsuin Seal]]
 
 > Panduan wajib untuk landing page JitsuinFi. Prompt user dicatat **verbatim** (2026-10-19); setiap keputusan desain landing page harus bisa dicek terhadap prompt ini.

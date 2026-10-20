@@ -16,7 +16,7 @@ Riset aplikasi mobile: layar dan alur terekam, screenshot App Store, ulasan, dev
 ## Akar
 | | |
 |---|---|
-| Server | `https://api.screensdesign.com/v1/mcp` (HTTP), scope **user** |
+| Server | `https://api.screensdesign.com/v1/mcp` (HTTP), scope **user**. Koneksi sempat putus (`ECONNRESET`) 2026-10-20 lalu tersambung lagi |
 | Kuota | Setiap hasil memakai jatah riset; cek dengan `describe_screensdesign_mcp` |
 
 ## Tool (19)

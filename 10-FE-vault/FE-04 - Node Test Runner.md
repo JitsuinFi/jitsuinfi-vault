@@ -16,7 +16,7 @@ Tes unit frontend tanpa dependensi tambahan: `node --test` langsung pada file `.
 ## Akar
 | | |
 |---|---|
-| Runtime | Node 26 (bawaan `node:test`, `node:assert/strict`) |
+| Runtime | Node v26.11.1 (dicek 2026-10-20; bawaan `node:test`, `node:assert/strict`) |
 | Cara jalan | Type stripping bawaan Node: file `.ts` dijalankan tanpa kompilasi |
 | Script | `npm test` = `node --test tests/store.test.ts tests/supplier-deal.test.ts` (+ `tests/account.test.ts` di PR #4) |
 

@@ -9,6 +9,7 @@ tags: [module, "10"]
 Kembali: [[START-HERE]]
 
 ## Mulai di sini
+- [[10-FE-vault/FE-M0 - Mandat FE]]: mandat user untuk FE (level PortoWeb, 65/35, tanpa kartu, semua MCP dan tool) dengan aturan yang bisa dicek.
 - [[10-FE-vault/FE-00 - Peta Tools FE]]: tabel semua tool, alur end to end, temuan audit.
 - [[10-FE-vault/FE-01 - Batasan Platform FE]]: CSP same-origin, tanpa CDN, izin dependensi; berlaku untuk semua tool.
 
@@ -27,7 +28,7 @@ Kembali: [[START-HERE]]
 - Presentasi dan media: [[10-FE-vault/FE-22 - Visualize Widget]] · [[10-FE-vault/FE-23 - Motion.so]] · [[10-FE-vault/FE-24 - Canva]]
 
 ## Belum terpasang dan referensi
-- [[10-FE-vault/FE-25 - React Bits shadcn MCP]] · [[10-FE-vault/FE-26 - motionmaxxing]] · [[10-FE-vault/FE-27 - Referensi Visual Vault]]
+- [[10-FE-vault/FE-25 - React Bits shadcn MCP]] · [[10-FE-vault/FE-26 - motionmaxxing]] · [[10-FE-vault/FE-27 - Referensi Visual Vault]] · [[10-FE-vault/FE-29 - PortoWeb Benchmark]]
 
 ## Konsep kunci
 - Satu tool = satu file `FE-xx`; ID tidak dipakai ulang.
