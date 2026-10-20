@@ -39,7 +39,7 @@ Skill resmi Anthropic untuk desain antarmuka yang punya karakter dan tidak teras
 ## Hubungan dengan JitsuinFi
 - **Brief menang**: `MASTER.md` dan [[DS-PAL - Palet Utama JitsuinFi]] sudah menetapkan arah; skill ini dipakai untuk menguji keputusan baru, bukan menggantinya.
 - Beberapa referensi di `09-Design` persis "tell" di atas: DS-03, DS-04 (gelap + lime, tell 2 dan 4), DS-09 (hitam bernada `#0F0F0F`, label nomor `01 – 03`, tell 5). Ambil polanya, hindari ciri generiknya ([[DS-00 - Peta Visual Design]]).
-- App sekarang (`src/style.css`: krem `#f7f5f0`, merah `#b3261e`, kartu radius 10 px) dekat dengan tell 1 dan 4; masukan untuk HNK-21.
+- App sebelum 2026-10-20 (`src/style.css`: krem `#f7f5f0`, merah `#b3261e`, kartu radius 10 px) dekat dengan tell 1 dan 4. Restyle pertama D-36 (garis tipis, radius 0) jatuh ke tell 3 dan dikoreksi D-37 (gaya iOS dari `09-Design`, palet DS-PAL, `ba9383a`).
 - Landing memakai Geist Mono untuk data nyata (N, txid): pengecualian yang disengaja di `MASTER.md`, bukan label dekoratif.
 
 ## Dibanding skill lain
