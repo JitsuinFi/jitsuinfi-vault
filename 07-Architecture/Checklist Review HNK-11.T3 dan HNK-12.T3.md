@@ -29,6 +29,8 @@ Format isi kolom Keputusan: `terima: <perubahan teks atau task>` · `tolak: <ala
   - [ ] Skema pesan relay `JTSM` (HNK-23.T1): apa yang terlihat relay (penerima `to`, ukuran, waktu) masuk threat model?
   - [ ] Snapshot deal `JTSF` (HNK-26.T10): disimpan node, memuat invoice dan surat; perlu enkripsi di disk?
   - [ ] File bukti pelunasan `JTSE` (HNK-26.T13): nilai dan tinggi output tidak bertanda tangan; siapa penerimanya dan apa yang ia pelajari?
+  - [ ] Kelas indeks `0/0` default, supplier opt-in (D-42, W-14): cek baris bucket indeks di threat model dan bagian Classes di spesifikasi.
+  - [ ] Operator relay dan node financier (W-10, HNK-30.T10).
   - [ ] Riwayat buyer otomatis (HNK-25.T2): tag penerus di papan dipakai untuk mendeteksi sertifikat hilang; terkait keputusan B1.
 
 ## B. Lima keputusan dulu

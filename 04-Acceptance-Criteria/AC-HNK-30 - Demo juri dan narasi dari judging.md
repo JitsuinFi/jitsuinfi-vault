@@ -30,6 +30,9 @@ Status per kriteria: `TODO` / `PASS` / `FAIL` / `BLOCKED`, wajib dengan tanggal 
 | AC-HNK-30.7 | Teks: semua materi memakai N-06 (W-15), label jaringan resmi (W-17), kalimat batas N-13; N-07 dipakai hanya setelah fakta Ironwood dicek dengan sumber | TODO | — | — |
 | AC-HNK-30.8 | Demo tahan outage host (W-23): `/verify` dan alur emas berjalan dari snapshot statis papan bila relay atau node tidak bisa dijangkau | TODO | — | — |
 | AC-HNK-30.9 | Klip M-01 + M-03 ≤ 20 detik yang bisa dipahami tanpa sisa video; fixture Case File #0417 tanpa nama atau data perusahaan nyata (M-07) | TODO | — | — |
+| AC-HNK-30.10 | [[Threat Model]] menyebut apa yang dilihat operator relay dan node financier, dan bahwa financier produksi menjalankan node sendiri (W-10) | TODO | — | — |
+| AC-HNK-30.11 | Mandat privat (N-15): penawaran yang cocok dengan mandat tampil sebagai kandidat di konsol, yang tidak cocok ditolak dengan alasan; financier setuju atau tolak; tidak ada data penawaran keluar dari node | TODO | — | — |
+| AC-HNK-30.12 | Opsional (W-09): txid registrasi dan deteksi mainnet di README, dengan izin user | TODO | — | — |
 
 ## Deviasi
 _Kosong._ Kalau implementasi menyimpang dari keputusan, tulis di sini **dan** di [[Backlog]] bagian Log Deviasi. Tidak ada perubahan diam-diam.

@@ -72,6 +72,8 @@ Estimasi kasar; diperbarui di Exec Summary dengan jam aktual.
 
 **Revisi 2026-10-20 (D-38, DEV-22):** task backend Dex dipindah ke Hans (label "Hans #hans (dari Dex, D-38)"). Dihitung ulang dari tabel task (tanpa task yang dipindah ke item lain):
 
+**Revisi 2026-10-21 (D-39, D-40, DEV-24):** scope tidak dibekukan; hasil judging diadopsi lewat item baru HNK-30 (26 jam, Hans: T1 – T11; T12 opsional 1 jam). Penyesuaian task lama: HNK-14.T1, HNK-14.T2, HNK-18.T2, HNK-18.T4 mengikuti tumpukan narasi D-40.
+
 | Orang | Jam | Porsi |
 |---|---|---|
 | Hans #hans | 240,5 | 85,7% |
@@ -322,9 +324,9 @@ Urutan kerja mengikuti gelombang FD-01: fondasi (HNK-27, HNK-22, HNK-24.T1, HNK-
 | Task | Deskripsi | Owner | Jam | Status |
 |---|---|---|---|---|
 | HNK-18.T1 | Logo dan identitas visual JitsuinFi | Hans #hans (dari Dave, D-35) | 1 | TODO |
-| HNK-18.T2 | Tiga slide video (masalah, threat model, penutup) | Hans #hans (dari Dave, D-35) | 1 | TODO |
+| HNK-18.T2 | Tiga slide video (masalah, threat model, penutup). Isi mengikuti D-40: masalah = N-06 dengan tiga kegagalan examiner, threat model = lensa M-04, penutup = tagline | Hans #hans (dari Dave, D-35) | 1 | TODO |
 | HNK-18.T3 | Diagram arsitektur untuk README | Hans #hans (dari Dave, D-35) | 1 | DONE (`d99680b`): diagram mermaid di README |
-| HNK-18.T4 | Landing page immersive (visual 65% / caption 35%, tanpa UI kartu kotak), setara PortoWeb | Hans #hans (dari Dave, D-35) | 4 | IN PROGRESS: 6 bab + toggle EN/中文 selesai dan di-push (frontend `389b9d3`, 2026-10-19); bab 1–4 divalidasi user, bab 5–6 disetujui ("Mantap lanjut"); bab 5 butuh zcash PR#3 (wasm riwayat). Live di https://jitsuinfi.vercel.app (Vercel, deploy prebuilt 2026-10-19, header CSP + `frame-ancestors 'none'`). Lihat [[Landing Page - Brief]] |
+| HNK-18.T4 | Landing page immersive (visual 65% / caption 35%, tanpa UI kartu kotak), setara PortoWeb. Copy dicek terhadap D-40 (merek N-10, hook N-06, tanpa overclaim W-15) | Hans #hans (dari Dave, D-35) | 4 | IN PROGRESS: 6 bab + toggle EN/中文 selesai dan di-push (frontend `389b9d3`, 2026-10-19); bab 1–4 divalidasi user, bab 5–6 disetujui ("Mantap lanjut"); bab 5 butuh zcash PR#3 (wasm riwayat). Live di https://jitsuinfi.vercel.app (Vercel, deploy prebuilt 2026-10-19, header CSP + `frame-ancestors 'none'`). Lihat [[Landing Page - Brief]] |
 
 **HNK-21 — Polish halaman internal web app** · Lead Dex #dex (dari Hans, D-29, DEV-12) · [[AC-HNK-21 - Polish halaman internal web app|AC]] · Dicatat 2026-10-19 (D-26), dikerjakan setelah backlog terbuka yang ada
 
@@ -430,8 +432,8 @@ Urutan kerja mengikuti gelombang FD-01: fondasi (HNK-27, HNK-22, HNK-24.T1, HNK-
 
 | Task | Deskripsi | Owner | Jam | Status |
 |---|---|---|---|---|
-| HNK-14.T1 | Rekam dan edit video 2 menit | Hans #hans (dari Dave, D-35) | 4 | TODO |
-| HNK-14.T2 | Deskripsi ≤ 2.000 karakter | Hans #hans (dari Dave, D-35) | 1 | PARSIAL: draf di [[Submission - Deskripsi]] (1.801 karakter), menunggu review Hans (D-35) |
+| HNK-14.T1 | Rekam dan edit video 2 menit. Urutan dan isi mengikuti tumpukan narasi D-40 (N-06, M-07/M-02/M-01/M-03/M-04, N-09 + N-12, N-15, N-13, tagline); klip M-01 + M-03 ≤ 20 detik dari HNK-30.T9 | Hans #hans (dari Dave, D-35) | 4 | TODO |
+| HNK-14.T2 | Deskripsi ≤ 2.000 karakter. Revisi sesuai D-40: hook N-06 (bukan "$2.3B financed twice", W-15), N-11, jawaban satu kalimat untuk W-07 (kenapa bukan hash di chain mana saja), W-08 (beda dengan MonetaGo / ABS Trade Finance Registry, klaim dicek ke sumber), W-04 (CrossPay / NEAR Intents sebagai jalur produksi, tidak dibangun), W-05 + N-12, W-06 (cold start diakui), W-12 (hukum = roadmap), N-13 (batas), label jaringan W-17 | Hans #hans (dari Dave, D-35) | 1 | PARSIAL: draf di [[Submission - Deskripsi]] (1.801 karakter), menunggu review Hans (D-35) |
 | HNK-14.T3 | Checklist publikasi repo (lisensi, README, txid) | Dex #dex | 1 | TODO |
 | HNK-14.T4 | Submit final dari akun pendaftar | Hans #hans | 1 | TODO |
 
@@ -457,6 +459,9 @@ Urutan kerja mengikuti gelombang FD-01: fondasi (HNK-27, HNK-22, HNK-24.T1, HNK-
 | HNK-30.T7 | Demo tahan outage host: `/verify` dan alur emas dari snapshot statis (W-23, AC-HNK-30.8; bersama HNK-28.T1) | Hans #hans | 2 | TODO |
 | HNK-30.T8 | Teks: N-06 (W-15), label jaringan (W-17), N-13, N-11 di README; cek fakta N-07 Ironwood (AC-HNK-30.7) | Hans #hans | 1 | TODO |
 | HNK-30.T9 | Fixture Case File #0417 (M-07) dan klip M-01 + M-03 ≤ 20 detik (AC-HNK-30.9; masuk video HNK-14.T1) | Hans #hans | 1 | TODO |
+| HNK-30.T10 | Threat model: apa yang dilihat operator relay (penerima `to`, ukuran, waktu) dan node financier (hot wallet, `/node/info` publik); financier produksi menjalankan node sendiri (W-10) | Hans #hans | 1 | TODO |
+| HNK-30.T11 | Mandat privat N-15: aturan terstruktur di konsol node (kelas tenor, diskon minimum, nominal maksimum, riwayat buyer minimum, allowlist) dicocokkan lokal ke `deal.offer` tersegel, lalu financier setuju atau tolak (HITL). Tanpa LLM, x402, voting. Setelah HNK-26.T5 dan HNK-26.T9 | Hans #hans | 3 | TODO |
+| HNK-30.T12 | Opsional W-09: satu registrasi dan satu deteksi double-financing di mainnet dengan nominal kecil, txid di README. Butuh izin user untuk dana mainnet sebelum dijalankan | Hans #hans | 1 | TODO |
 
 ### Fase F7
 
