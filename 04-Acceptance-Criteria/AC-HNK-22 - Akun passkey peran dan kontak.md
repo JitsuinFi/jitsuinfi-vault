@@ -5,7 +5,7 @@ id: HNK-22
 phase: F5
 lead: Dave
 owners: [Dave]
-status: TODO
+status: PARSIAL
 updated: 2026-10-20
 ---
 
@@ -25,11 +25,12 @@ Status per kriteria: `TODO` / `PASS` / `FAIL` / `BLOCKED`, wajib dengan tanggal 
 
 | ID | Kriteria | Status | Tanggal | Bukti |
 |---|---|---|---|---|
-| AC-HNK-22.1 | Satu passkey dipakai untuk supplier, buyer, dan anggota; klik Daftar dua kali tidak membuat credential kedua. | TODO | — | — |
-| AC-HNK-22.2 | Masuk di perangkat kedua dengan passkey tersinkron menghasilkan sidik jari key yang sama; localStorage kosong tidak mengubah key. | TODO | — | — |
-| AC-HNK-22.3 | Key buyer lama (salt `jitsuin/buyer/master/v1`) tidak berubah setelah migrasi. | TODO | — | — |
-| AC-HNK-22.4 | Setelah stempel, tidak ada master atau key tanda tangan di memori tab; sesi terkunci setelah 15 menit idle. | TODO | — | — |
-| AC-HNK-22.5 | Supplier dan buyer bisa saling menambah kontak; kotak masuk menampilkan dokumen baru tanpa muat ulang. | TODO | — | — |
+| AC-HNK-22.1 | Satu passkey dipakai untuk supplier, buyer, dan anggota; klik Daftar dua kali tidak membuat credential kedua. | TODO | 2026-10-20 | Lulus dengan authenticator palsu (U-HNK-22.1, I-HNK-22.2, `7814fbc`); menunggu authenticator nyata (HNK-22.T7) |
+| AC-HNK-22.2 | Masuk di perangkat kedua dengan passkey tersinkron menghasilkan sidik jari key yang sama; localStorage kosong tidak mengubah key. | TODO | 2026-10-20 | Disimulasikan: profil kosong, passkey sama, sidik jari sama, deal terbaca lagi (U-HNK-22.1, I-HNK-22.2); dua perangkat nyata di HNK-22.T7 |
+| AC-HNK-22.3 | Key buyer lama (salt `jitsuin/buyer/master/v1`) tidak berubah setelah migrasi. | PASS | 2026-10-20 | `buyerKeysBytes` dari alur baru = `buyerKeys` dari PRF hex cara lama (I-HNK-22.2) |
+| AC-HNK-22.4 | Setelah stempel, tidak ada master atau key tanda tangan di memori tab; sesi terkunci setelah 15 menit idle. | PASS | 2026-10-20 | U-HNK-22.1 (output PRF dinolkan, sesi hanya key kotak surat, kunci idle dengan timer palsu), I-HNK-22.2 |
+| AC-HNK-22.5 | Supplier dan buyer bisa saling menambah kontak; kotak masuk menampilkan dokumen baru tanpa muat ulang. | BLOCKED | 2026-10-20 | Butuh `mailbox_pk` X25519 (HNK-23.T2) dan relay (HNK-23.T4) |
 
 ## Deviasi
-_Kosong._ Kalau implementasi menyimpang dari keputusan, tulis di sini **dan** di [[Backlog]] bagian Log Deviasi. Tidak ada perubahan diam-diam.
+- DEV-17: dikerjakan Hans sebagai backup, lokal sampai dicek user (disetujui).
+- DEV-18: sidik jari dari HMAC master peran, bukan key publik; menunggu persetujuan. Lihat [[Backlog]] Log Deviasi.

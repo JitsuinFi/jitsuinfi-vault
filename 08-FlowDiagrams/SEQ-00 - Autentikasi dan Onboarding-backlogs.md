@@ -1,7 +1,7 @@
 ---
 tags: [flow, backlog]
 status: DITETAPKAN
-progress: 0/4 SELESAI
+progress: 2/4 SELESAI
 updated: 2026-10-20
 ---
 
@@ -34,7 +34,7 @@ Kolom Status mengikuti langkah 6 "Audit flow diagram" di [[Workflow Development]
 
 | ID | Bagian | Task | Selesai bila | Ref | Task backlog | Owner | Status |
 |---|---|---|---|---|---|---|---|
-| BL-S00-01 | Daftar | Mode demo: browser tanpa WebAuthn atau bukan HTTPS memakai test secret; label "data uji saja" jelas di layar | Mode demo hanya muncul bila passkey tidak tersedia | SEQ-00 catatan | HNK-22.T1 | Dave | TODO |
+| BL-S00-01 | Daftar | Mode demo: browser tanpa WebAuthn atau bukan HTTPS memakai test secret; label "data uji saja" jelas di layar | Mode demo hanya muncul bila passkey tidak tersedia | SEQ-00 catatan | HNK-22.T1 | Dave | SELESAI (2026-10-20, `7814fbc`, U-HNK-22.1, I-HNK-22.2: test secret hanya bila passkey tidak tersedia atau authenticator tanpa PRF, berlabel data uji) |
 | BL-S00-02 | Masuk | Kotak masuk per peran: ambil pesan baru setelah masuk dan secara berkala, tampilkan sebagai tindakan yang perlu dikerjakan | Dokumen yang dikirim rekan muncul tanpa muat ulang halaman | C-31 | HNK-22.T6 | Dave | TODO |
-| BL-S00-03 | Tambah atau ganti peran | Pilihan peran setelah masuk dan navigasi per peran (menggantikan lima tab simulasi) | Pengguna dengan dua peran berpindah peran tanpa daftar ulang | P-01, HNK-21.T1 | HNK-22.T3 | Dave | TODO |
+| BL-S00-03 | Tambah atau ganti peran | Pilihan peran setelah masuk dan navigasi per peran (menggantikan lima tab simulasi) | Pengguna dengan dua peran berpindah peran tanpa daftar ulang | P-01, HNK-21.T1 | HNK-22.T3 | Dave | SELESAI (2026-10-20, `7814fbc`, U-HNK-22.1, I-HNK-22.2: ganti peran dengan passkey yang sama, satu sentuhan, tanpa daftar ulang) |
 | BL-S00-04 | Semua | E2E BF-01: daftar, masuk di perangkat kedua, tambah peran, tukar kontak, stempel, pairing konsol | Satu siklus lulus di HNK-17 | HNK-17 | HNK-17.T4 | Dave | TODO |
