@@ -1,7 +1,7 @@
 ---
 tags: [flow, backlog]
 status: DITETAPKAN
-progress: 11/19 SELESAI
+progress: 12/19 SELESAI
 updated: 2026-10-20
 ---
 
@@ -23,7 +23,7 @@ Kolom Status mengikuti langkah 6 "Audit flow diagram" di [[Workflow Development]
 | BL-D21-04 | 1.2, F1.11 – F1.13 | `get()` dengan `prf.eval.first` = SHA-256 salt peran dan `second` = SHA-256 salt inbox; peran supplier, buyer, anggota | Output PRF first dan second berbeda per peran; buyer tetap memakai salt lama (key buyer lama tidak berubah) | P-02 | HNK-22.T2 | Hans | SELESAI (2026-10-20, `7814fbc`, U-HNK-22.1, I-HNK-22.2: `first` salt master peran, `second` salt inbox, enam salt berbeda; key buyer sama dengan turunan lama) |
 | BL-D21-05 | 1.3, F1.14 – F1.15 | Turunkan key peran dan tampilkan sidik jari key publik setelah masuk | Sidik jari sama di dua perangkat dengan passkey tersinkron yang sama, berbeda untuk passkey lain | P-01 | HNK-22.T2 | Hans | SELESAI (2026-10-20, `7814fbc`, U-HNK-22.1, I-HNK-22.2: sidik jari sama untuk passkey tersinkron (disimulasikan), beda untuk passkey lain; HMAC master, DEV-18 disetujui) |
 | BL-D21-06 | 1.3 (anggota) | Peran anggota dana: tanpa key tanda tangan, hanya key kotak surat | Layar anggota tidak pernah meminta stempel | P-01 | HNK-22.T2 | Hans | SELESAI (2026-10-20, `7814fbc`, U-HNK-22.1, I-HNK-22.2: peran anggota tanpa store dan tanpa key tanda tangan, stempel ditolak, layar tanpa tombol tanda tangan) |
-| BL-D21-07 | 1.4, F1.15 – F1.16 | Key kotak surat X25519 dari PRF second dan `mailbox_id` = BLAKE2b(`mailbox_pk`) di `jitsuin-wasm` | Test vector: PRF tetap menghasilkan `mailbox_pk` dan `mailbox_id` tetap; dependensi kripto disetujui Hans dulu | P-04 | HNK-23.T2 | Hans | DIKERJAKAN |
+| BL-D21-07 | 1.4, F1.15 – F1.16 | Key kotak surat X25519 dari PRF second dan `mailbox_id` = BLAKE2b(`mailbox_pk`) di `jitsuin-wasm` | Test vector: PRF tetap menghasilkan `mailbox_pk` dan `mailbox_id` tetap; dependensi kripto disetujui Hans dulu | P-04 | HNK-23.T2 | Hans | SELESAI (2026-10-20: `mailbox_pk` dan `mailbox_id` tetap dari PRF tetap, vektor sama dengan relay; dependensi disetujui user; PR #15 `5c4e702`) |
 | BL-D21-08 | 1.4, F1.18 – F1.19 | Endpoint relay `POST /api/mailbox` (daftar `mailbox_pk` + bukti kepemilikan) | Id yang disimpan relay sama dengan hitungan klien; pendaftaran tanpa bukti ditolak | P-04 | HNK-23.T4 | Hans | SELESAI (2026-10-20: relay menghitung id dari `mailbox_pk`, bukti salah/dipakai ulang/kedaluwarsa ditolak (U-HNK-23.2), vektor sama dengan wasm; live di Railway, PR #1 `0b41be5`) |
 | BL-D21-09 | 1.4 (baca) | Baca kotak surat dengan challenge yang dienkripsi ke `mailbox_pk` | Pihak lain yang tahu `mailbox_id` tidak bisa membaca daftar pesan | P-04 | HNK-23.T4 | Hans | SELESAI (2026-10-20: daftar dan ambil pesan hanya dengan token baca dari bukti kepemilikan, tanpa token 401 (U-HNK-23.5); live di Railway, PR #1 `0b41be5`) |
 | BL-D21-10 | 1.4, F1.17 | Key kotak surat financier dibuat dan disimpan di node; node mendaftarkan kotak suratnya ke relay | Konsol membaca pesan financier lewat `/node/mail/*` tanpa key di browser | P-05, P-11 | HNK-26.T4 | Hans | TODO |
