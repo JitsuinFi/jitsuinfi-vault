@@ -271,8 +271,8 @@ Urutan kerja mengikuti gelombang FD-01: fondasi (HNK-27, HNK-22, HNK-24.T1, HNK-
 | Task | Deskripsi | Owner | Jam | Status |
 |---|---|---|---|---|
 | HNK-28.T1 | Layanan snapshot papan di relay (JSON same-origin). Rincian: `BL-D28-06` | Dex #dex | 3 | TODO |
-| HNK-28.T2 | `verifyProofOnBoard(proof, snapshot)` di wasm; layar Verify memakainya. Rincian: `BL-D27-05` | Hans #hans | 2 | TODO |
-| HNK-28.T3 | `rateIndex(snapshot, k)` di wasm untuk halaman indeks HNK-08.T3. Rincian: `BL-D28-05` | Hans #hans | 1 | TODO |
+| HNK-28.T2 | `verifyProofOnBoard(proof, snapshot)` di wasm; layar Verify memakainya. Rincian: `BL-D27-05` | Hans #hans | 2 | DONE (jitsuinfi-zcash `32a3977`, `53016fe` (branch `hans/hnk-28-board-wasm`, lokal); jitsuinfi-frontend `d13321e` (branch `hans/hnk-28-verify-board`, lokal)): web dan CLI memakai `proof_on_board` yang sama |
+| HNK-28.T3 | `rateIndex(snapshot, k)` di wasm untuk halaman indeks HNK-08.T3. Rincian: `BL-D28-05` | Hans #hans | 1 | DONE (jitsuinfi-zcash `32a3977`, `53016fe` (branch `hans/hnk-28-board-wasm`, lokal)): `rateIndex` sama dengan `jitsuin index --json` (fungsi `rate_index_json` bersama); halaman `#/index` milik HNK-08.T3 |
 | HNK-28.T4 | Teks verdict bundel di layar Verify sesuai status surat dan settled. Rincian: `BL-D28-04` | Dave #dave | 0,5 | TODO |
 | HNK-28.T5 | Teks dan tabel halaman orang luar sesuai TM #13 – #14. Rincian: `BL-D28-07` | Dave #dave | 0,5 | TODO |
 | HNK-28.T6 | Publikasi UFVK + birthday papan dan README juri (publikasi setelah izin user). Rincian: `BL-D28-01`, `BL-D0-05` | Hans #hans | 0,5 | TODO |
@@ -366,7 +366,7 @@ Urutan kerja mengikuti gelombang FD-01: fondasi (HNK-27, HNK-22, HNK-24.T1, HNK-
 | Task | Deskripsi | Owner | Jam | Status |
 |---|---|---|---|---|
 | HNK-25.T1 | Input PDF syarat, cek hash, tampilkan apakah `buyer_pk` = `invoice_pk(k)`. Rincian: `BL-D22-06` | Dave #dave | 1 | TODO |
-| HNK-25.T2 | Nomor `k` otomatis dari rantai yang tertambat, kepala rantai bertanda tangan, bagikan `invoice_pk(k)`, layar permintaan riwayat. Rincian: `BL-D26-03`, `BL-D22-01`, `BL-D26-02` | Hans #hans | 3 | TODO |
+| HNK-25.T2 | Nomor `k` otomatis dari rantai yang tertambat, kepala rantai bertanda tangan, bagikan `invoice_pk(k)`, layar permintaan riwayat. Rincian: `BL-D26-03`, `BL-D22-01`, `BL-D26-02` | Hans #hans | 3 | PARSIAL (jitsuinfi-zcash `88af897` (branch `hans/hnk-25-auto-k`, lokal); jitsuinfi-frontend `0e59952` (branch `hans/hnk-28-verify-board`, lokal)): `k` otomatis dari rantai tertambat, sertifikat tak tertambat dibuang, sertifikat terakhir yang hilang terdeteksi lewat tag penerus di papan. Sisa: bagikan `invoice_pk(k)` dan permintaan riwayat lewat relay, kepala rantai di relay (HNK-23) |
 | HNK-25.T3 | Segel surat buyer dengan isi terbaca dan cek PDF surat. Rincian: `BL-D24-06` | Dave #dave | 0,5 | TODO |
 | HNK-25.T4 | QR hanya untuk surat `Sealed`, menunggu s2, alamat bayar ditampilkan. Rincian: `BL-D25-01`, `BL-S02-02` | Dave #dave | 1 | TODO |
 | HNK-25.T5 | Pengingat jatuh tempo lokal. Rincian: `BL-D25-02` | Dave #dave | 1 | TODO |

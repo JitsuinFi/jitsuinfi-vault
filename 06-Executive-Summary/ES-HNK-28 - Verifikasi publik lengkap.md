@@ -3,7 +3,7 @@ tags: [es, "HNK-28"]
 type: es
 id: HNK-28
 phase: F4
-status: BELUM
+status: PARSIAL
 updated: 2026-10-20
 ---
 
@@ -12,7 +12,8 @@ updated: 2026-10-20
 > **Peta link:** [[Exec Summary Hub]] · [[Backlog]] · [[AC-HNK-28 - Verifikasi publik lengkap|AC]] · [[TEST-HNK-28 - Verifikasi publik lengkap|Test]] · **Exec Summary**
 
 ## Apa diubah
-_TODO setelah langkah 1 selesai._
+- **T2 (Hans), lokal:** `jitsuin-board` `ProofOnBoard` (satu field per klaim) dipakai CLI dan wasm `verifyProofOnBoard`; layar Verify memeriksa posisi bukti terhadap data papan, tanpa data papan posisi ditulis sebagai klaim. Bukti tanpa posisi pertama FAIL di web dan CLI.
+- **T3 (Hans), lokal:** `rate_index_json` bersama; wasm `rateIndex` sama dengan `jitsuin index --json`. Halaman `#/index` (HNK-08.T3, Dave) belum ada.
 
 ## Hasil vs KPI (angka riil)
 | KPI | Target | Aktual |
@@ -20,7 +21,7 @@ _TODO setelah langkah 1 selesai._
 | Verdict web vs CLI berbeda | 0 | — |
 
 ## Status
-`BELUM` → isi `SELESAI` / `PARSIAL` / `BLOCKED` (juga di frontmatter).
+**PARSIAL.** T2, T3 DONE (lokal); halaman indeks, snapshot otomatis, dan sisa item belum.
 
 ## Risiko tersisa
 _TODO_
