@@ -22,13 +22,13 @@ updated: 2026-10-20
 | Langkah salin-tempel | 0 | — |
 
 ## Status
-**PARSIAL.** T1 – T4, T6 – T8 DONE. T5 dan T9 PARSIAL: penawaran dan permintaan entri butuh relay (HNK-23). AC 24.2 – 24.5 PASS; AC 24.1 (tanpa salin-tempel) menunggu relay.
+**PARSIAL.** T1 – T4, T6 – T8 DONE. T5 PARSIAL: penawaran butuh relay (HNK-23). T9 PARSIAL: kartu entri sekarang menunggu kode permintaan entri dari financier (`7a0b911`); langkah pelunasan butuh `settled` lewat relay. AC 24.2 – 24.5 PASS; AC 24.1 (tanpa salin-tempel) menunggu relay.
 
 ## Risiko tersisa
 - Key per invoice bergantung pada `invoice_pk(k)` dari buyer: supplier harus menerima key buyer sebelum membuat invoice (urutan SEQ-01 bagian 1 sudah disesuaikan).
 - Skrip yang berjalan di tab saat store terbuka tetap bisa membaca dokumen (lihat [[Threat Model]]).
 
 ## Bukti
-- Commit: `17a01ea` (jitsuinfi-frontend `17a01ea` (branch `hans/hnk-24-supplier-screens`, belum di-push)); `a252568` (jitsuinfi-zcash `a252568` (jitsuinfi-zcash PR #8, di-merge `dbfc422`)); `c7d4b1b` (jitsuinfi-frontend `c7d4b1b` (jitsuinfi-frontend PR #1, di-merge `7fa4fae`))
-- ID tes: U-HNK-24.1 – .4 PASS, I-HNK-24.2 – .3 PASS
+- Commit: `7a0b911` (jitsuinfi-frontend `7a0b911` (branch `hans/hnk-24-entry-request`, belum di-push)); `17a01ea` (jitsuinfi-frontend `17a01ea` (PR #2, di-merge `2180881`)); `a252568` (jitsuinfi-zcash `a252568` (jitsuinfi-zcash PR #8, di-merge `dbfc422`)); `c7d4b1b` (jitsuinfi-frontend `c7d4b1b` (jitsuinfi-frontend PR #1, di-merge `7fa4fae`))
+- ID tes: U-HNK-24.1 – .5 PASS, I-HNK-24.2 – .4 PASS
 - Persetujuan user untuk push/deploy: push + PR disetujui 2026-10-20 ("Gas"); [JitsuinFi/jitsuinfi-zcash#8](https://github.com/JitsuinFi/jitsuinfi-zcash/pull/8), [JitsuinFi/jitsuinfi-frontend#1](https://github.com/JitsuinFi/jitsuinfi-frontend/pull/1); di-merge 2026-10-20 setelah CI hijau (`dbfc422`, `7fa4fae`)

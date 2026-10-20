@@ -134,8 +134,9 @@ note right of W #DDEBFA
 PARSIAL: fungsi wasm ADA, dengan kelas opsional
 (HNK-27.T2) dan varian dari history_tag saja
 (supplierRegisterTaggedEntry, HNK-27.T8); kartu di
-layar supplier ADA (HNK-24.T6); permintaan entri dari
-financier menunggu relay (HNK-23)
+layar supplier ADA (HNK-24.T6) dan menunggu
+permintaan entri: sementara kode salin-tempel tanpa
+tanda tangan (membawa salt); lewat relay HNK-23
 end note
 W -> R : entri bertanda tangan
 R -> FA : entri
@@ -245,7 +246,7 @@ end note
 | 2 | Kirim invoice + PDF syarat dan terima tanda tangan lewat relay | USULAN P-04 | sekarang salin-tempel; PDF di luar sistem |
 | 2 | Cek tanda tangan buyer | ADA (HNK-24.T4) | wasm `bundleBuild` |
 | 3 | Penawaran, pembuka komitmen, surat + PDF surat, sertifikat k | PARSIAL: kode penawaran salin-tempel ADA (HNK-24.T5); relay USULAN P-04 | `src/lib/supplier-deal.ts` `encodeOffer` |
-| 4 | Tanda tangani entri register (dengan atau tanpa tag riwayat) | ADA (HNK-27, HNK-24.T6); stempel per tanda tangan USULAN P-07 | wasm `supplierRegisterEntry`, `supplierRegisterHistoryEntry` |
+| 4 | Tanda tangani entri register (dengan atau tanpa tag riwayat) | ADA (HNK-27, HNK-24.T6; kartu menunggu kode permintaan entri `jitsuin-entry-request-v1:`); stempel per tanda tangan USULAN P-07 | wasm `supplierRegisterEntry`, `supplierRegisterHistoryEntry` |
 | 5 | Segel surat pengalihan | ADA, dengan isi surat dan cek PDF surat (HNK-24.T7); stempel per tanda tangan USULAN P-07 | wasm `supplierSealAssignment`, `assignmentStatus` |
 | 6 | Verifikasi Sign-to-Pay | PARSIAL: jalur lemah di layar ADA (nominal vs advance yang diminta, HNK-24.T8); jalur kuat lewat CLI lokal USULAN | `jitsuin-flow::supplier::received_advances`, `verify_sign_to_pay` |
 | 7 | Status pelunasan dari papan | PARSIAL | wasm `bundleOnBoard` (butuh bundel lengkap dan snapshot papan, P-06) |

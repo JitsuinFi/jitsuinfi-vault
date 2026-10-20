@@ -69,6 +69,11 @@ Layout: magic `JTSP` (4), versi `0x01` (1), panjang invoice (2, LE), invoice kan
 
 Semua vector dicek silang dengan Python `hashlib.blake2b(..., key=..., person=...)`.
 
+## Kode salin-tempel sementara (HNK-24.T5, T6) — **diimplementasikan** (jitsuinfi-frontend `17a01ea`, `7a0b911`)
+Dipakai sampai skema pesan relay (HNK-23.T1) ada. Keduanya `<prefix>` ‖ base64url (tanpa padding) dari JSON dengan `v: 1`. Tidak bertanda tangan: pesan node bertanda tangan `financier_pk` datang dengan HNK-23.T8 (lihat [[Threat Model]], baris pesan relay).
+- Penawaran, supplier ke financier: `jitsuin-offer-v1:` `{v, invoice, buyer_signature, financier_pk, advance_zat, supplier_address}`.
+- Permintaan entri, financier ke supplier setelah cek papan (SEQ-03 bagian 4): `jitsuin-entry-request-v1:` `{v, n, financier_pk, salt, discount?, tenor?, history_tag?}`. `n`, `financier_pk`, `salt`, `history_tag` 64 hex; kelas 0 – 7, keduanya atau tidak sama sekali. Layar supplier menolak permintaan untuk N lain atau dari financier selain yang ditawari. Sementara ini pembuka komitmen (`salt`) ikut di permintaan; dengan relay, pembuka dikirim di bagian 1b dan permintaan hanya merujuknya.
+
 ## Commitment financier (HNK-05) — **diimplementasikan** (`6b5c343`)
 `financier_commitment = BLAKE2b-256(financier_pk ‖ salt)` (output 32 byte, tanpa personalisasi, sesuai spesifikasi entri). `salt` 32 byte dipegang financier dan supplier (dibagikan off-chain bersama `financier_pk`), jadi papan tidak membuka siapa financier-nya.
 
