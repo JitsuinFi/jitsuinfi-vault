@@ -351,9 +351,9 @@ Urutan kerja mengikuti gelombang FD-01: fondasi (HNK-27, HNK-22, HNK-24.T1, HNK-
 
 | Task | Deskripsi | Owner | Jam | Status |
 |---|---|---|---|---|
-| HNK-24.T1 | Key per invoice dari master supplier di `jitsuin-core` + `jitsuin-wasm` (personalisasi sendiri, input unik), test vector. Rincian: `BL-D22-02` | Hans #hans | 2 | DONE (`a252568`, jitsuinfi-zcash `a252568` (jitsuinfi-zcash PR #8)) |
+| HNK-24.T1 | Key per invoice dari master supplier di `jitsuin-core` + `jitsuin-wasm` (personalisasi sendiri, input unik), test vector. Rincian: `BL-D22-02` | Hans #hans | 2 | DONE (`a252568`, jitsuinfi-zcash `a252568` (jitsuinfi-zcash PR #8, di-merge `dbfc422`)) |
 | HNK-24.T2 | Layar supplier memakai key turunan; unduh JSON plaintext dihapus; `invoice_id` dipakai ulang ditolak. Rincian: `BL-D22-03` | Dave #dave | 1 | TODO |
-| HNK-24.T3 | Penyimpanan dokumen deal lintas sesi di perangkat supplier dan buyer (IndexedDB terenkripsi dengan key dari PRF). Rincian: `BL-D1-02`, `BL-D22-07`, `BL-D22-10` | Hans #hans | 3 | PARSIAL (`c7d4b1b`, jitsuinfi-frontend `c7d4b1b` (jitsuinfi-frontend PR #1, merge setelah zcash #8)): store terenkripsi selesai dan teruji di browser; belum ada layar yang menyimpan deal (GAGAL AUDIT BL-D1-02, BL-D22-07, BL-D22-10, 2026-10-20) |
+| HNK-24.T3 | Penyimpanan dokumen deal lintas sesi di perangkat supplier dan buyer (IndexedDB terenkripsi dengan key dari PRF). Rincian: `BL-D1-02`, `BL-D22-07`, `BL-D22-10` | Hans #hans | 3 | PARSIAL (`c7d4b1b`, jitsuinfi-frontend `c7d4b1b` (jitsuinfi-frontend PR #1, di-merge `7fa4fae`)): store terenkripsi selesai dan teruji di browser; belum ada layar yang menyimpan deal (GAGAL AUDIT BL-D1-02, BL-D22-07, BL-D22-10, 2026-10-20) |
 | HNK-24.T4 | Kartu cek tanda tangan buyer (`bundleBuild`). Rincian: `BL-D22-09` | Dave #dave | 1 | TODO |
 | HNK-24.T5 | Tawarkan ke financier: pilih kontak, advance, alamat shielded baru per deal. Rincian: `BL-D23-01` | Dave #dave | 2 | TODO |
 | HNK-24.T6 | Kartu tanda tangani entri papan (0x01 / 0x03) dengan kelas. Rincian: `BL-D23-09` | Dave #dave | 1 | TODO |

@@ -29,6 +29,6 @@ updated: 2026-10-20
 - Skrip yang berjalan di tab saat store terbuka tetap bisa membaca dokumen (lihat [[Threat Model]]).
 
 ## Bukti
-- Commit: `a252568` (jitsuinfi-zcash `a252568` (jitsuinfi-zcash PR #8)); `c7d4b1b` (jitsuinfi-frontend `c7d4b1b` (jitsuinfi-frontend PR #1, merge setelah zcash #8))
+- Commit: `a252568` (jitsuinfi-zcash `a252568` (jitsuinfi-zcash PR #8, di-merge `dbfc422`)); `c7d4b1b` (jitsuinfi-frontend `c7d4b1b` (jitsuinfi-frontend PR #1, di-merge `7fa4fae`))
 - ID tes: U-HNK-24.1 PASS, U-HNK-24.3 PASS, I-HNK-24.2 PASS
-- Persetujuan user untuk push/deploy: push + PR disetujui 2026-10-20 ("Gas"); [JitsuinFi/jitsuinfi-zcash#8](https://github.com/JitsuinFi/jitsuinfi-zcash/pull/8), [JitsuinFi/jitsuinfi-frontend#1](https://github.com/JitsuinFi/jitsuinfi-frontend/pull/1); merge menunggu CI
+- Persetujuan user untuk push/deploy: push + PR disetujui 2026-10-20 ("Gas"); [JitsuinFi/jitsuinfi-zcash#8](https://github.com/JitsuinFi/jitsuinfi-zcash/pull/8), [JitsuinFi/jitsuinfi-frontend#1](https://github.com/JitsuinFi/jitsuinfi-frontend/pull/1); di-merge 2026-10-20 setelah CI hijau (`dbfc422`, `7fa4fae`)
