@@ -33,4 +33,4 @@ Status per kriteria: `TODO` / `PASS` / `FAIL` / `BLOCKED`, wajib dengan tanggal 
 
 ## Deviasi
 - DEV-17: dikerjakan Hans sebagai backup, lokal sampai dicek user (disetujui).
-- DEV-18: sidik jari dari HMAC master peran, bukan key publik; menunggu persetujuan. Lihat [[Backlog]] Log Deviasi.
+- DEV-18: sidik jari dari HMAC master peran, bukan key publik; disetujui user 2026-10-20. Lihat [[Backlog]] Log Deviasi.
