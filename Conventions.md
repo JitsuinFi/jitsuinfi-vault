@@ -28,7 +28,7 @@ Aturan vault ini. Diadaptasi dari panduan `ObsidianGuides/Conventions.md`, ditam
 | `DS-xx`, `DS-PAL` | Satu referensi visual di `09-Design/` (DS-00 hub, DS-PAL palet utama) | `DS-04 - Invoices Dashboard Dark.md` |
 | `FE-xx` | Satu tool frontend (library, skill, MCP, referensi) di `10-FE-vault/` | `FE-07 - three.js.md` |
 | `JDG-0x`, `JDG-1x`, `JDG-Bxx` | Penilaian di `11-Judging/`: tema, putaran, benchmark (JDG-00 hub) | `JDG-05 - Register Titik Lemah.md` |
-| `W-xx`, `N-xx` | Titik lemah dan usulan narasi | baris tabel di JDG-05 dan JDG-06 |
+| `W-xx`, `N-xx`, `M-xx` | Titik lemah, usulan narasi, mekanik demo | baris tabel di JDG-05, JDG-06, JDG-10 |
 | `P-xx` | Usulan desain di [[FD-00 - Arsitektur Target dan Legenda]] (belum keputusan) | `P-04` |
 
 ID tidak pernah dipakai ulang. Item yang dibatalkan tetap ada dengan status `BLOCKED` dan alasan.

@@ -11,7 +11,7 @@ File di bawah ada **di luar vault** (folder induk `zkSNARK/`). Dirujuk sebagai i
 ## Spesifikasi dan brainstorm
 | File | Isi |
 |---|---|
-| `../Brainstorm/JitsuinFi.md` | Catatan lengkap JitsuinFi: mekanisme, keluarga piutang, AVAL, peluang menang, optimasi, JitsuinFi Vault |
+| `../Brainstorm/JitsuinFi.md` | Catatan lengkap JitsuinFi: mekanisme, keluarga piutang, peluang menang, optimasi, JitsuinFi Vault |
 | `../Brainstorm/Kas Kaca.md` | Revenue-share privat (roadmap) |
 | `../Brainstorm/shielded-payments/Affiliate Tanpa Bajak - Standalone.md` | Ide affiliate yang diserahkan ke teman (team terpisah) |
 | `../Brainstorm/Shielded Agent.md` | Ide yang dievaluasi ulang (terlalu berat) |

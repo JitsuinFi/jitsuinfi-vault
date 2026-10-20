@@ -26,7 +26,7 @@ Status per kriteria: `TODO` / `PASS` / `FAIL` / `BLOCKED`, wajib dengan tanggal 
 | ID | Kriteria | Status | Tanggal | Bukti |
 |---|---|---|---|---|
 | AC-HNK-14.1 | Video ≤ 2:00 mengikuti [[VID-01 - Naskah 2 Menit]]. | TODO | — | — |
-| AC-HNK-14.2 | Deskripsi ≤ 2.000 karakter menjawab what it does, why it does not leak, what is real vs mock, plus pengungkapan AVAL. | TODO | — | — |
+| AC-HNK-14.2 | Deskripsi ≤ 2.000 karakter menjawab what it does, why it does not leak, what is real vs mock. | TODO | — | — |
 | AC-HNK-14.3 | Demo URL stabil minimal 24 jam sebelum submit. | TODO | — | — |
 | AC-HNK-14.4 | Repo publik, ada lisensi, README berisi txid dan perintah verifier. | TODO | — | — |
 | AC-HNK-14.5 | Status submitted terkunci; tidak ada penyimpanan draft setelahnya. | TODO | — | — |

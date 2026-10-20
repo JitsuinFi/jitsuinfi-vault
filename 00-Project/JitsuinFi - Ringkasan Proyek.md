@@ -43,8 +43,5 @@ Detail: [[Arsitektur JitsuinFi]] · [[Format Data]] · [[Threat Model]].
 - Track: **Private Markets** (private credit).
 - Kriteria juri berurutan: Privacy (bocor = diskualifikasi), Usefulness, Execution, Originality. Lihat [[ZECATHON - Aturan dan Deadline]].
 
-## Hubungan dengan AVAL
-Konsepnya mirip proyek user sebelumnya, **AVAL** (Casper Agentic Buildathon 2026). **Kode AVAL tidak dipakai.** Repo baru, kode baru, dan AVAL diungkapkan di deskripsi submission. Lihat keputusan D-03 di [[Decision Log]].
-
 ## Sumber
 Catatan lengkap: `../Brainstorm/JitsuinFi.md` (di luar vault, jangan diubah dari sini). Daftar lain: [[Sumber Eksternal]].

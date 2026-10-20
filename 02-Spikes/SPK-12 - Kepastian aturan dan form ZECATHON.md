@@ -21,16 +21,15 @@ Hilangkan ketidakpastian aturan dan form sebelum terlambat.
 Organizer bisa menjawab pertanyaan singkat lewat email.
 
 ## Langkah
-1. User mengirim email ke organizer: apakah boleh membangun ulang konsep dari proyek hackathon sebelumnya (AVAL) dengan desain privasi baru dan kode baru?
-2. Tanyakan field alamat payout hadiah yang tidak ada di form.
-3. Cek format video yang diterima (link atau upload) dan batasnya.
-4. Simpan balasan di sini.
+1. Tanyakan field alamat payout hadiah yang tidak ada di form.
+2. Cek format video yang diterima (link atau upload) dan batasnya.
+3. Simpan balasan di sini.
 
 ## Kriteria lulus
 - [ ] Jawaban tertulis tersimpan, atau keputusan user bila tidak ada balasan sampai 20 Okt.
 
 ## Fallback kalau gagal
-- Tanpa balasan: lanjut dengan pengungkapan AVAL di deskripsi + kode baru; cadangan ide Kas Kaca (`../Brainstorm/Kas Kaca.md`).
+- Tanpa balasan: lanjut sesuai aturan yang tertulis di halaman lomba; cadangan ide Kas Kaca (`../Brainstorm/Kas Kaca.md`).
 
 ## Hasil
 | Status | Tanggal | Bukti | Catatan |

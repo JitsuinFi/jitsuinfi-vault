@@ -24,13 +24,12 @@ Repo baru + lisensi permisif + audit dependency cukup.
 1. Buat repo baru; commit pertama di dalam build window.
 2. Pilih lisensi (MIT atau Apache-2.0).
 3. Audit lisensi dependency (`cargo-deny` atau `cargo-license`); hindari AGPL.
-4. Pastikan tidak ada file atau kode dari AVAL.
-5. Tambahkan bagian "Prior work: AVAL" di README.
+4. Pastikan semua kode ditulis selama build window; tidak ada file dari proyek lain.
 
 ## Kriteria lulus
 - [ ] Repo siap dipublikasikan.
 - [ ] 0 dependency AGPL.
-- [ ] 0 file dari AVAL.
+- [ ] 0 file dari luar build window (selain library).
 
 ## Fallback kalau gagal
 - Ganti dependency yang lisensinya bermasalah.
