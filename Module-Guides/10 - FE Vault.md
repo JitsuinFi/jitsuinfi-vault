@@ -1,0 +1,34 @@
+---
+tags: [module, "10"]
+---
+
+# 10 - FE Vault
+
+**Tujuan:** Peta semua tool frontend JitsuinFi (library, skill, MCP, referensi) sampai ke akarnya: sumber, versi, lisensi, lokasi pasang, cara kerja, tempat dipakai, batasan, dan status. Dibuat 2026-10-20 supaya pekerjaan FE fokus pada tool yang benar dan tidak ada yang terlewat. Tidak mencakup `09-Design`.
+
+Kembali: [[START-HERE]]
+
+## Mulai di sini
+- [[10-FE-vault/FE-00 - Peta Tools FE]]: tabel semua tool, alur end to end, temuan audit.
+- [[10-FE-vault/FE-01 - Batasan Platform FE]]: CSP same-origin, tanpa CDN, izin dependensi; berlaku untuk semua tool.
+
+## Build, tes, deploy
+- [[10-FE-vault/FE-02 - Vite]] · [[10-FE-vault/FE-03 - TypeScript]] · [[10-FE-vault/FE-04 - Node Test Runner]] · [[10-FE-vault/FE-05 - jitsuin-wasm Bindings]] · [[10-FE-vault/FE-06 - Vercel Deploy dan CI]]
+
+## Library
+- [[10-FE-vault/FE-07 - three.js]] · [[10-FE-vault/FE-08 - anime.js]] · [[10-FE-vault/FE-09 - Motion]] · [[10-FE-vault/FE-10 - Lenis]] · [[10-FE-vault/FE-11 - hairline]] · [[10-FE-vault/FE-12 - Font Fontsource]]
+
+## Skill
+- [[10-FE-vault/FE-13 - genjutsu]] · [[10-FE-vault/FE-14 - impeccable]] · [[10-FE-vault/FE-15 - Skill Artifact dan dataviz]]
+
+## MCP
+- Verifikasi: [[10-FE-vault/FE-16 - Claude Browser Pane]] · [[10-FE-vault/FE-17 - Claude in Chrome]]
+- Riset: [[10-FE-vault/FE-18 - Mobbin]] · [[10-FE-vault/FE-19 - ScreensDesign]] · [[10-FE-vault/FE-20 - MotionSites]] · [[10-FE-vault/FE-21 - Refero]]
+- Presentasi dan media: [[10-FE-vault/FE-22 - Visualize Widget]] · [[10-FE-vault/FE-23 - Motion.so]] · [[10-FE-vault/FE-24 - Canva]]
+
+## Belum terpasang dan referensi
+- [[10-FE-vault/FE-25 - React Bits shadcn MCP]] · [[10-FE-vault/FE-26 - motionmaxxing]] · [[10-FE-vault/FE-27 - Referensi Visual Vault]]
+
+## Konsep kunci
+- Satu tool = satu file `FE-xx`; ID tidak dipakai ulang.
+- Saat tool dipasang, dihapus, atau mulai dipakai: perbarui file tool-nya dan baris di FE-00.
