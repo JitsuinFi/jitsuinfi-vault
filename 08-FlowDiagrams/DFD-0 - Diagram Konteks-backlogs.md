@@ -17,7 +17,7 @@ Kolom Status mengikuti langkah 6 "Audit flow diagram" di [[Workflow Development]
 
 | ID | Elemen | Task | Selesai bila | Ref | Task backlog | Owner | Status |
 |---|---|---|---|---|---|---|---|
-| BL-D0-01 | Komponen relay dokumen | Repo `jitsuinfi-backend`: skeleton API, deploy Railway, header CSP, rewrite Vercel `/api/*` (setelah persetujuan deploy) | Relay hidup di URL same-origin web app | HNK-10.T4, HNK-10.T5, P-11 | HNK-23.T3, HNK-23.T5 | Hans | DIKERJAKAN |
+| BL-D0-01 | Komponen relay dokumen | Repo `jitsuinfi-backend`: skeleton API, deploy Railway, header CSP, rewrite Vercel `/api/*` (setelah persetujuan deploy) | Relay hidup di URL same-origin web app | HNK-10.T4, HNK-10.T5, P-11 | HNK-23.T3, HNK-23.T5, HNK-23.T6 | Hans | DIKERJAKAN |
 | BL-D0-02 | Komponen node financier | Node testnet yang bisa dijalankan juri atau penguji: setup, API, konsol di origin node dengan HTTPS (atau tunnel SSH) | Satu panduan menjalankan node dari nol sampai konsol terbuka | P-05, HNK-05.T3 | HNK-26.T1 | Hans | TODO |
 | BL-D0-03 | Entitas Authenticator, K1 – K2 | Daftar authenticator yang diuji (platform macOS/iOS, Android, security key) dan dukungan PRF-nya | Tabel dukungan di TEST-HNK-10 | C-03 | HNK-22.T7 | Hans | TODO |
 | BL-D0-04 | Entitas Jaringan Zcash, K13 – K14 | Konfigurasi jaringan satu tempat (testnet `testnet.zec.rocks:443`, mainnet `zec.rocks:443`) di web app, node, dan CLI | Ganti jaringan cukup di satu konfigurasi | FD-00 §5 | HNK-26.T19 | Hans | TODO |
