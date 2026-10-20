@@ -41,6 +41,7 @@ Semua tool frontend yang tersedia untuk JitsuinFi per 2026-10-20, dari awal proy
 | [[FE-13 - genjutsu\|FE-13]] | genjutsu (+17 sub-skill, termasuk `ui-ux-pro-max`) | Skill | v4.1.1 | `~/.agents/skills/genjutsu` | Desain landing, `MASTER.md` | AKTIF |
 | [[FE-14 - impeccable\|FE-14]] | impeccable (+4 agent) | Skill | 4.7.0, engine 0.1.16 | `zkSNARK/.claude/` | Belum | TERPASANG-BELUM-INIT |
 | [[FE-15 - Skill Artifact dan dataviz\|FE-15]] | artifact-design, artifact-diagramming, artifact-capabilities, dataviz | Skill | Bawaan | Claude Code | Belum | TERSEDIA-BELUM-DIPAKAI |
+| [[FE-28 - frontend-design\|FE-28]] | frontend-design (Anthropic) | Skill | `claude-plugins-official`, Apache 2.0 | `~/.claude/plugins/` (scope user) | Belum | AKTIF |
 | [[FE-16 - Claude Browser Pane\|FE-16]] | Claude Browser (pane) | MCP verifikasi | Bawaan desktop | `.claude/launch.json` | Semua uji browser | AKTIF |
 | [[FE-17 - Claude in Chrome\|FE-17]] | Claude in Chrome | MCP verifikasi | Ekstensi | Chrome user | Belum | TERSEDIA-BELUM-DIPAKAI |
 | [[FE-18 - Mobbin\|FE-18]] | Mobbin | MCP riset | `api.mobbin.com/mcp` | Scope user | Belum | AKTIF |
@@ -57,7 +58,7 @@ Semua tool frontend yang tersedia untuk JitsuinFi per 2026-10-20, dari awal proy
 ## Alur end to end
 ```mermaid
 flowchart LR
-  A[Riset referensi<br/>Mobbin, Refero, ScreensDesign, MotionSites,<br/>vault MotionSites-References, ColorPalette] --> B[Arah desain<br/>genjutsu paint/cast + ui-ux-pro-max,<br/>impeccable shape/critique]
+  A[Riset referensi<br/>Mobbin, Refero, ScreensDesign, MotionSites,<br/>vault MotionSites-References, ColorPalette] --> B[Arah desain<br/>genjutsu paint/cast + ui-ux-pro-max,<br/>impeccable shape/critique,<br/>frontend-design]
   B --> C[Sistem desain<br/>MASTER.md: token warna, font, gerak<br/>motionmaxxing ease]
   C --> D[Bangun<br/>Vite + TypeScript<br/>three.js, anime.js, Motion, Lenis, Fontsource<br/>jitsuin-wasm]
   D --> E[Verifikasi<br/>node --test, tsc, vite build,<br/>Claude Browser pane: preview, 375 px, skrip uji]

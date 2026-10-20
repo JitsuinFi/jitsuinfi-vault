@@ -19,7 +19,7 @@ Kembali: [[START-HERE]]
 - [[10-FE-vault/FE-07 - three.js]] · [[10-FE-vault/FE-08 - anime.js]] · [[10-FE-vault/FE-09 - Motion]] · [[10-FE-vault/FE-10 - Lenis]] · [[10-FE-vault/FE-11 - hairline]] · [[10-FE-vault/FE-12 - Font Fontsource]]
 
 ## Skill
-- [[10-FE-vault/FE-13 - genjutsu]] · [[10-FE-vault/FE-14 - impeccable]] · [[10-FE-vault/FE-15 - Skill Artifact dan dataviz]]
+- [[10-FE-vault/FE-13 - genjutsu]] · [[10-FE-vault/FE-14 - impeccable]] · [[10-FE-vault/FE-15 - Skill Artifact dan dataviz]] · [[10-FE-vault/FE-28 - frontend-design]]
 
 ## MCP
 - Verifikasi: [[10-FE-vault/FE-16 - Claude Browser Pane]] · [[10-FE-vault/FE-17 - Claude in Chrome]]
