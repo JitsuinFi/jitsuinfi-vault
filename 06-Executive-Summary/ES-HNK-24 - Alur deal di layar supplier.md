@@ -3,7 +3,7 @@ tags: [es, "HNK-24"]
 type: es
 id: HNK-24
 phase: F5
-status: BELUM
+status: PARSIAL
 updated: 2026-10-20
 ---
 
@@ -12,7 +12,9 @@ updated: 2026-10-20
 > **Peta link:** [[Exec Summary Hub]] · [[Backlog]] · [[AC-HNK-24 - Alur deal di layar supplier|AC]] · [[TEST-HNK-24 - Alur deal di layar supplier|Test]] · **Exec Summary**
 
 ## Apa diubah
-_TODO setelah langkah 1 selesai._
+- **T1 (Hans):** `SupplierMaster` di `jitsuin-core` (`keys.rs`): key per invoice dari master supplier, `invoice_id`, dan `invoice_pk(k)` buyer; kunci penyimpanan perangkat dari master peran. wasm: `supplierInvoicePublicKeyBytes`, `supplierInvoiceSecretBytes`, `storageKeysBytes` (master dinolkan).
+- **T3 (Hans):** `src/lib/store.ts` di frontend: `DealStore` per peran di IndexedDB, AES-256-GCM, nama record HMAC, fallback memori; `openDealStore(role, master)` di `core.ts`; wasm frontend dibangun ulang dari `a252568`; `npm test`.
+- Belum: semua layar supplier (T2, T4 – T9, Dave).
 
 ## Hasil vs KPI (angka riil)
 | KPI | Target | Aktual |
@@ -20,12 +22,13 @@ _TODO setelah langkah 1 selesai._
 | Langkah salin-tempel | 0 | — |
 
 ## Status
-`BELUM` → isi `SELESAI` / `PARSIAL` / `BLOCKED` (juga di frontmatter).
+**PARSIAL.** T1 DONE. T3 PARSIAL: store selesai dan teruji di browser, tetapi belum ada layar yang menyimpan deal ke store (audit BL-D1-02, BL-D22-07, BL-D22-10 gagal karena itu).
 
 ## Risiko tersisa
-_TODO_
+- Key per invoice bergantung pada `invoice_pk(k)` dari buyer: supplier harus menerima key buyer sebelum membuat invoice (urutan SEQ-01 bagian 1 sudah disesuaikan).
+- Skrip yang berjalan di tab saat store terbuka tetap bisa membaca dokumen (lihat [[Threat Model]]).
 
 ## Bukti
-- Commit: _TODO_
-- ID tes: _TODO_
+- Commit: `a252568` (jitsuinfi-zcash `a252568` (branch `hans/hnk-24-supplier-keys`, belum di-push)); `c7d4b1b` (jitsuinfi-frontend `c7d4b1b` (branch `hans/hnk-24-device-store`, belum di-push))
+- ID tes: U-HNK-24.1 PASS, U-HNK-24.3 PASS, I-HNK-24.2 PASS
 - Persetujuan user untuk push/deploy: _belum_

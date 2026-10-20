@@ -24,7 +24,7 @@ D = {
     "D1": ("Papan registry", 0, "ADA"),
     "D2": ("Node financier\\n(wallet, key,\\nwatch-only papan)", 0, "ADA (zcash-devtool di node)"),
     "D3": ("Key sesi\\n(memori tab)", 0, "ADA (buyer)"),
-    "D4": ("Dokumen deal\\n(salinan tiap pihak)", 0, "ADA (memori / file pengguna)"),
+    "D4": ("Dokumen deal\\n(salinan tiap pihak)", 0, "PARSIAL: memori / file pengguna; store terenkripsi di perangkat ADA (HNK-24.T3), layar belum memakainya"),
     "D5": ("Allowlist\\ndan policy", 0, "ADA (struktur `HistoryPolicy`)"),
     "D6": ("Akun dana\\n(operasional)", 0, "ADA (memo di chain)"),
     "D7": ("Kotak surat\\nterenkripsi", 1, "USULAN P-04"),
@@ -126,7 +126,7 @@ L2[2] = dict(
     flows=[
         ("B@1", "P1", "bagikan key\\ninvoice k", "bagikan key, file syarat, keputusan"), ("D3@1", "P1", "invoice_pk(k)", "key"),
         ("D19@1", "P1", "mailbox_pk supplier", "kontak rekan"), ("P1", "D7@1", "invoice_pk(k)", "invoice_pk, invoice, PDF, sig"),
-        ("S@2", "P2", "invoice_id\\n(unik per supplier)", "data invoice, file syarat"), ("D3@2", "P2", "master supplier\\n(P-03)", "key"),
+        ("S@2", "P2", "invoice_id\\n(unik per supplier)", "data invoice, file syarat"), ("D3@2", "P2", "master supplier\\n(P-03)", "key"), ("D7@2", "P2", "invoice_pk(k)\\ndari buyer", "invoice_pk, invoice, PDF, sig"),
         ("P2", "D3@2", "key per invoice", "key per invoice"), ("P2", "S@2", "backup JSON\\n(saat ini)", "backup key, status"),
         ("S@3", "P3", "file syarat (PDF)", "data invoice, file syarat"), ("P3", "D4@3", "terms_hash", "invoice, N, sig, terms_hash"),
         ("S@4", "P4", "nominal (ZEC),\\ntanggal", "data invoice, file syarat"), ("D7@4", "P4", "invoice_pk(k)\\ndari buyer", "invoice_pk, invoice, PDF, sig"),
@@ -144,7 +144,7 @@ L2[2] = dict(
     ],
     ptable=[
         ("2.1 Bagikan key invoice", "Buyer memberi `invoice_pk(k)` untuk invoice berikutnya ke supplier", "ADA (salin) / USULAN (relay)", "wasm `buyerKeys`"),
-        ("2.2 Siapkan key per invoice", "Sekarang: 32 byte dari `crypto.getRandomValues` di JS + unduh backup JSON plaintext (TM #10). Target: keyed BLAKE2b dengan personalisasi sendiri dan input unik per invoice (bukan `invoice_id` polos); `invoice_id` dipakai ulang ditolak", "ADA (akan diganti) / USULAN P-03", "`src/lib/core.ts`, `supplier.ts`"),
+        ("2.2 Siapkan key per invoice", "Key = keyed BLAKE2b(master supplier, personalisasi `JitsuinSupplKey_`, `invoice` ‖ panjang ‖ `invoice_id` ‖ `buyer_pk`); `buyer_pk` = `invoice_pk(k)` dari buyer (2.1), jadi `invoice_id` yang sama untuk buyer lain memberi key lain; tidak ada backup plaintext. Sekarang layar masih memakai 32 byte acak + unduh JSON (TM #10); `invoice_id` dipakai ulang ditolak di layar", "PARSIAL: turunan key ADA di core dan wasm (HNK-24.T1); layar USULAN (HNK-24.T2)", "`SupplierMaster::invoice_key`, wasm `supplierInvoiceSecretBytes`"),
         ("2.3 Hash file syarat", "SHA-256 file di browser; file tidak diunggah ke server", "ADA", "wasm `documentHash`"),
         ("2.4 Susun invoice kanonik dan N", "Nominal diisi dalam ZEC lalu dikonversi ke zat; JTSI dengan dekoder ketat; N = BLAKE2b-256(\"JitsuinNullifier\", byte kanonik)", "ADA", "wasm `invoiceEncode`, `invoiceDecode`"),
         ("2.5 Kirim invoice ke buyer", "Invoice + PDF syarat lewat kotak surat buyer; sekarang salin-tempel dan PDF dikirim di luar sistem", "USULAN", "P-04"),

@@ -43,6 +43,8 @@ S -> W : masuk sebagai Supplier (SEQ-00)
 note over W #E7F3EA : ADA: layar Supplier; belum ada login (simulasi)
 
 == 1. Siapkan invoice ==
+B -> R : invoice_pk(k) buyer (pesan, SEQ-02 bagian 1)
+R --> W : invoice_pk(k)
 S -> W : "Invoice baru", invoice_id (TES-INV-...)
 alt saat ini (ADA)
   W -> W : secret per invoice: 32 byte acak\n(crypto.getRandomValues di JS)
@@ -51,16 +53,15 @@ alt saat ini (ADA)
 else target (USULAN P-01, P-03)
   W -> A : prf.eval.first =\nSHA-256("jitsuin/supplier/master/v1")
   A --> W : master supplier
-  W -> X : key per invoice = keyed BLAKE2b(master),\npersonalisasi sendiri, input unik per invoice
-  note right of X #FFF6D6
-  Bukan invoice_id polos: id yang dipakai ulang
-  memberi key sama, dan entri lain supplier jadi
-  bisa ditemukan. invoice_id dipakai ulang ditolak
+  W -> X : supplierInvoiceSecretBytes(master, invoice_id,\ninvoice_pk(k)): keyed BLAKE2b "JitsuinSupplKey_"
+  note right of X #DDEBFA
+  PARSIAL: turunan key ADA di wasm (HNK-24.T1); input
+  invoice_id + invoice_pk(k), jadi id yang dipakai ulang
+  untuk buyer lain memberi key lain. Layar dan passkey
+  supplier belum (HNK-24.T2, HNK-22)
   end note
 end
 X --> W : supplier_ephemeral_pk = publicKey(secret)
-B -> R : invoice_pk(k) buyer (pesan, SEQ-02 bagian 1)
-R --> W : invoice_pk(k)
 S -> W : nominal (ZEC, dikonversi ke zat), tanggal terbit,\njatuh tempo, file syarat (PDF)
 W -> X : documentHash(file)
 X --> W : terms_hash = SHA-256(file)

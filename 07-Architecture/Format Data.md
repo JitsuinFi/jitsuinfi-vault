@@ -62,6 +62,13 @@ Dua entri register dengan `N` sama dan `financier_commitment` berbeda, keduanya 
 
 Layout: magic `JTSP` (4), versi `0x01` (1), panjang invoice (2, LE), invoice kanonik, tanda tangan buyer (64), lalu dua entri masing-masing `panjang (1) ‖ byte entri dengan marker (136/168) ‖ flag (1)`. Flag `1` diikuti posisi papan `txid (32, urutan tampilan) ‖ tinggi (4) ‖ indeks tx (4) ‖ indeks output (4)`; flag `0` untuk entri yang hanya ditawarkan (tidak di papan). Commitment yang sama ditolak (`NotDoubleSigned`): itu re-post, bukan penipuan.
 
+## Key per invoice supplier dan kunci penyimpanan (HNK-24.T1) — **diimplementasikan** (`a252568`)
+- Key per invoice supplier (P-03): `seed = BLAKE2b-256(key = master supplier, personalisasi "JitsuinSupplKey_", "invoice" ‖ len(invoice_id) u16 LE ‖ invoice_id ‖ buyer_pk)`, lalu Ed25519 dari seed. `buyer_pk` = `invoice_pk(k)` dari buyer. Test vector: master 32×`0x11`, `invoice_id` `TES-INV-0001`, `buyer_pk` 32×`0x22` → seed `bb1354a579aa2d4b4335ff9e5cc9f841692839b1903e52d279ef282730f91051`.
+- Kunci penyimpanan perangkat (HNK-24.T3): `BLAKE2b-256(key = master peran, personalisasi "JitsuinStoreKey_", "store-enc")` untuk AES-256-GCM dan `"store-idx"` untuk HMAC-SHA-256 nama record. Vector master 32×`0x11`: enc `1d2dff152b74df11c200d74ec263ab5f7e03ad2dc508a9024f0bee2eeb095f2f`, idx `8d112917040c154cf60c7d5fef8d19e459583c7d2a43906c7acb365967c7c666`.
+- Record di IndexedDB `jitsuinfi-deals` / `records`: `{name = "<peran>:" ‖ hex(HMAC(idx, "<peran>:<id>")), iv (12), ct}`; plaintext JSON `{id, doc}`, AAD `jitsuinfi-store-v1:<name>`.
+
+Semua vector dicek silang dengan Python `hashlib.blake2b(..., key=..., person=...)`.
+
 ## Commitment financier (HNK-05) — **diimplementasikan** (`6b5c343`)
 `financier_commitment = BLAKE2b-256(financier_pk ‖ salt)` (output 32 byte, tanpa personalisasi, sesuai spesifikasi entri). `salt` 32 byte dipegang financier dan supplier (dibagikan off-chain bersama `financier_pk`), jadi papan tidak membuka siapa financier-nya.
 

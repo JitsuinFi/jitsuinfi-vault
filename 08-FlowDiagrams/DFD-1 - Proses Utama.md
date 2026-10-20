@@ -472,7 +472,7 @@ f_F114 --> D7_9
 | D1 | Papan registry | 1 dan 2 | ADA |
 | D2 | Node financier (wallet, key, watch-only papan) | 1 dan 2 | ADA (zcash-devtool di node) |
 | D3 | Key sesi (memori tab) | 1 dan 2 | ADA (buyer) |
-| D4 | Dokumen deal (salinan tiap pihak) | 1 dan 2 | ADA (memori / file pengguna) |
+| D4 | Dokumen deal (salinan tiap pihak) | 1 dan 2 | PARSIAL: memori / file pengguna; store terenkripsi di perangkat ADA (HNK-24.T3), layar belum memakainya |
 | D5 | Allowlist dan policy | 2 (lokal 6.0) | ADA (struktur `HistoryPolicy`) |
 | D6 | Akun dana (operasional) | 1 dan 2 | ADA (memo di chain) |
 | D7 | Kotak surat terenkripsi | 1 dan 2 | USULAN P-04 |
@@ -510,17 +510,17 @@ f_F114 --> D7_9
 | F15 | D7 Kotak surat terenkripsi | 1.0 Identitas, sesi, kotak surat | mailbox_pk, mailbox_id | F1.19 |
 | F16 | 1.0 Identitas, sesi, kotak surat | D7 Kotak surat terenkripsi | mailbox_pk, mailbox_id | F1.18 |
 | F17 | 1.0 Identitas, sesi, kotak surat | D19 Kontak rekan (mailbox_pk) | kontak rekan | F1.23 |
-| F18 | Buyer | 2.0 Terbitkan dan tanda tangani invoice | bagikan key, file syarat, keputusan | F2.01, F2.23 |
-| F19 | 2.0 Terbitkan dan tanda tangani invoice | Buyer | isi invoice | F2.22 |
-| F20 | Supplier | 2.0 Terbitkan dan tanda tangani invoice | data invoice, file syarat | F2.05, F2.09, F2.11 |
-| F21 | 2.0 Terbitkan dan tanda tangani invoice | Supplier | backup key, status | F2.08, F2.31 |
-| F22 | D3 Key sesi (memori tab) | 2.0 Terbitkan dan tanda tangani invoice | key | F2.02, F2.06, F2.13, F2.20, F2.25 |
-| F23 | 2.0 Terbitkan dan tanda tangani invoice | D3 Key sesi (memori tab) | key per invoice | F2.07 |
-| F24 | D4 Dokumen deal (salinan tiap pihak) | 2.0 Terbitkan dan tanda tangani invoice | invoice, terms_hash | F2.14, F2.16, F2.24, F2.29 |
-| F25 | 2.0 Terbitkan dan tanda tangani invoice | D4 Dokumen deal (salinan tiap pihak) | invoice, N, sig, terms_hash | F2.10, F2.15, F2.21, F2.30 |
-| F26 | D7 Kotak surat terenkripsi | 2.0 Terbitkan dan tanda tangani invoice | invoice_pk, invoice, PDF, sig | F2.12, F2.19, F2.28 |
-| F27 | 2.0 Terbitkan dan tanda tangani invoice | D7 Kotak surat terenkripsi | invoice_pk, invoice, PDF, sig | F2.04, F2.18, F2.27 |
-| F28 | D19 Kontak rekan (mailbox_pk) | 2.0 Terbitkan dan tanda tangani invoice | kontak rekan | F2.03, F2.17, F2.26 |
+| F18 | Buyer | 2.0 Terbitkan dan tanda tangani invoice | bagikan key, file syarat, keputusan | F2.01, F2.24 |
+| F19 | 2.0 Terbitkan dan tanda tangani invoice | Buyer | isi invoice | F2.23 |
+| F20 | Supplier | 2.0 Terbitkan dan tanda tangani invoice | data invoice, file syarat | F2.05, F2.10, F2.12 |
+| F21 | 2.0 Terbitkan dan tanda tangani invoice | Supplier | backup key, status | F2.09, F2.32 |
+| F22 | D3 Key sesi (memori tab) | 2.0 Terbitkan dan tanda tangani invoice | key | F2.02, F2.06, F2.14, F2.21, F2.26 |
+| F23 | 2.0 Terbitkan dan tanda tangani invoice | D3 Key sesi (memori tab) | key per invoice | F2.08 |
+| F24 | D4 Dokumen deal (salinan tiap pihak) | 2.0 Terbitkan dan tanda tangani invoice | invoice, terms_hash | F2.15, F2.17, F2.25, F2.30 |
+| F25 | 2.0 Terbitkan dan tanda tangani invoice | D4 Dokumen deal (salinan tiap pihak) | invoice, N, sig, terms_hash | F2.11, F2.16, F2.22, F2.31 |
+| F26 | D7 Kotak surat terenkripsi | 2.0 Terbitkan dan tanda tangani invoice | invoice_pk, invoice, PDF, sig | F2.07, F2.13, F2.20, F2.29 |
+| F27 | 2.0 Terbitkan dan tanda tangani invoice | D7 Kotak surat terenkripsi | invoice_pk, invoice, PDF, sig | F2.04, F2.19, F2.28 |
+| F28 | D19 Kontak rekan (mailbox_pk) | 2.0 Terbitkan dan tanda tangani invoice | kontak rekan | F2.03, F2.18, F2.27 |
 | F29 | Financier | 3.0 Registrasi papan | syarat deal | F3.02 |
 | F30 | 3.0 Registrasi papan | Financier | status cek papan, entri ditolak | F3.03, F3.21, F3.31 |
 | F31 | Supplier | 3.0 Registrasi papan | penawaran, keputusan | F3.01, F3.24 |

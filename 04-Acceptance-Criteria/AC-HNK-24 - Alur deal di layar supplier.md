@@ -26,8 +26,8 @@ Status per kriteria: `TODO` / `PASS` / `FAIL` / `BLOCKED`, wajib dengan tanggal 
 | ID | Kriteria | Status | Tanggal | Bukti |
 |---|---|---|---|---|
 | AC-HNK-24.1 | Supplier menyelesaikan satu deal `TES-` dari invoice sampai advance tanpa salin-tempel. | TODO | — | — |
-| AC-HNK-24.2 | Tidak ada unduhan secret; master + input yang sama memberi key per invoice yang sama (test vector). | TODO | — | — |
-| AC-HNK-24.3 | Deal masih ada setelah tab ditutup dan dibuka lagi. | TODO | — | — |
+| AC-HNK-24.2 | Tidak ada unduhan secret; master + input yang sama memberi key per invoice yang sama (test vector). | TODO | 2026-10-20 | Turunan key dan vector PASS (`a252568`, U-HNK-24.1). Sisa: layar tanpa unduhan secret (HNK-24.T2) |
+| AC-HNK-24.3 | Deal masih ada setelah tab ditutup dan dibuka lagi. | TODO | 2026-10-20 | Store terenkripsi PASS (`c7d4b1b`, U-HNK-24.3, I-HNK-24.2: bertahan setelah reload). Sisa: layar supplier menyimpan deal ke store (HNK-24.T4 – T9) |
 | AC-HNK-24.4 | Isi surat (alamat bayar, `financier_pk`, `terms_hash`) tampil dan PDF surat dicek sebelum segel. | TODO | — | — |
 | AC-HNK-24.5 | Timeline menunjukkan langkah berikutnya untuk tiap deal. | TODO | — | — |
 
