@@ -93,5 +93,5 @@ Landing sekarang memakai satu tingkat (nama peran langsung berisi hex). Ini usul
 | Permukaan | Memakai palet utama? |
 |---|---|
 | Landing (`index.html`, `src/landing/tokens.css`) | **Ya**, semua sepuluh warna |
-| App (`app.html`, `src/style.css`) | **Ya** sejak 2026-10-20 (D-36, jitsuinfi-frontend `ba9383a`): token landing di-import, tanpa mode gelap; status ok/menunggu/ditolak memakai Catalina, Japanese Violet, Dark Raspberry |
+| App (`app.html`, `src/style.css`) | **Ya** sejak 2026-10-20 (D-36, jitsuinfi-frontend `ba9383a`, PR #8): token landing di-import, tanpa mode gelap; status ok/menunggu/ditolak memakai Catalina, Japanese Violet, Dark Raspberry |
 | Video, slide, logo | Belum ada; catat di [[VID-05 - Aset dan Lisensi]] bila dipakai |

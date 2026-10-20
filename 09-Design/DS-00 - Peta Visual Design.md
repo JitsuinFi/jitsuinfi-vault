@@ -91,7 +91,7 @@ File non-gambar di folder ini (belum dipetakan karena permintaan hanya gambar): 
 
 ## Keputusan yang perlu user
 1. ~~Kartu boleh dipakai di **app**?~~ **Dijawab 2026-10-20 (D-36, dikoreksi D-37):** app bergaya iOS seperti referensi di sini; panel boleh mengelompokkan isian, data, dan aksi, tetapi paragraf tidak pernah dibungkus kotak.
-2. ~~App diselaraskan ke palet utama?~~ **Dijawab 2026-10-20 (D-36): ya, sekarang.** `src/style.css` memakai token landing (jitsuinfi-frontend `ba9383a`).
+2. ~~App diselaraskan ke palet utama?~~ **Dijawab 2026-10-20 (D-36): ya, sekarang.** `src/style.css` memakai token landing (jitsuinfi-frontend `ba9383a`, PR #8).
 3. hairline dipakai sebagai gaya ilustrasi resmi (DS-08, DS-09)?
 4. Referensi mana yang jadi acuan utama layar app? **Dipakai 2026-10-20 (D-37):** DS-02 dan DS-08 (tab bar mengambang, daftar berkelompok, aksi bulat), DS-04 (master–detail, baris terpilih gelap), DS-06 (stepper centang = rantai segel).
 

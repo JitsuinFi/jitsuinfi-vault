@@ -21,7 +21,7 @@ Logika murni, cepat, tanpa DB dan tanpa chain.
 | U-HNK-28.1 | `verifyProofOnBoard` menolak posisi palsu | PASS | 2026-10-20 | `jitsuin-wasm` tes `proofs_and_the_rate_index_are_checked_against_board_data_as_in_the_cli`: posisi di papan, entri kedua hilang, tanpa posisi pertama, posisi geser, tanda tangan palsu (`32a3977`) |
 | U-HNK-28.2 | `rateIndex` sama dengan `rate_index` | PASS | 2026-10-20 | Tes yang sama: k = 1, 5, 9 sama persis dengan `rate_index_json` (`32a3977`) |
 | U-HNK-28.3 | Snapshot dan bukti testnet yang dipublikasikan tetap terverifikasi | PASS | 2026-10-20 | `jitsuin-cli` tes `published_testnet_board_and_proof_still_verify`: output sama persis dengan `examples/testnet/expected-output.txt`, entri di 4509299/2/0 dan 4509521/3/0, UFVK berawalan testnet (`5fdb4e3`) |
-| U-HNK-28.4 | Verdict bundel sesuai status surat | PASS | 2026-10-20 | jitsuinfi-frontend `tests/bundle-verdict.test.ts` (3 tes): "every seal" hanya untuk `Sealed`; `AwaitingSeal:Supplier/Buyer/Financier` = peringatan yang menyebut seal yang kurang; tanpa surat = "Invoice is genuine"; status tak dikenal ditolak (`1dcedf3`) |
+| U-HNK-28.4 | Verdict bundel sesuai status surat | PASS | 2026-10-20 | jitsuinfi-frontend `tests/bundle-verdict.test.ts` (3 tes): "every seal" hanya untuk `Sealed`; `AwaitingSeal:Supplier/Buyer/Financier` = peringatan yang menyebut seal yang kurang; tanpa surat = "Invoice is genuine"; status tak dikenal ditolak (`1dcedf3`, PR #9) |
 
 ## 2. Integrasi
 Skrip vs DB/chain sungguhan. Semua artefak memakai prefix `TES-` (invoice, akun, label, order).
