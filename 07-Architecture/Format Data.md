@@ -169,7 +169,7 @@ Untuk anggota dana yang memegang viewing key akun operasional:
 - **Solvabilitas:** kas (saldo watch-only) + piutang berjalan (nominal − pelunasan yang masuk untuk N itu) + piutang lewat jatuh tempo setelah potongan ≥ total di root terbaru.
 
 ## Bucket indeks (HNK-08) — **diimplementasikan** (`90a64c7`, PR #5, usulan D-27)
-`discount_bucket` dan `tenor_bucket` = kelas diskon dan tenor (tanpa nominal). Diskon = (nominal − advance) / nominal dalam basis poin; tenor = hari dari advance sampai jatuh tempo.
+`discount_bucket` dan `tenor_bucket` = kelas diskon dan tenor (tanpa nominal). **Default `0/0`** (D-42, W-14): supplier memilih ikut indeks; financier menerima entri dengan kelas deal atau `0/0`, pasangan lain ditolak (`EntryMismatch`). Diskon = (nominal − advance) / nominal dalam basis poin; tenor = hari dari advance sampai jatuh tempo.
 
 | Kode | Diskon | Tenor |
 |---|---|---|

@@ -449,7 +449,7 @@ Urutan kerja mengikuti gelombang FD-01: fondasi (HNK-27, HNK-22, HNK-24.T1, HNK-
 | Task | Deskripsi | Owner | Jam | Status |
 |---|---|---|---|---|
 | HNK-30.T1 | Fuzz kanonikalisasi invoice sebelum klaim "dua pintu keluar" (W-16, AC-HNK-30.1) | Hans #hans | 2 | DONE (2026-10-21, jitsuinfi-zcash `20a9543`, lokal, belum PR): 20.000 mutasi byte, 12.000 mutasi field, S termalleasi, 162 varian JSON, varian base64url; nol mutasi yang mempertahankan tanda tangan buyer dengan N baru |
-| HNK-30.T2 | W-14 opsi (b): kelas diskon dan tenor terenkripsi ke financier di entri papan, indeks dari agregat; cadangan opsi (a) di threat model dan spesifikasi (D-41, AC-HNK-30.6) | Hans #hans | 5 | TODO |
+| HNK-30.T2 | W-14 opsi (b): kelas diskon dan tenor terenkripsi ke financier di entri papan, indeks dari agregat; cadangan opsi (a) di threat model dan spesifikasi (D-41, AC-HNK-30.6) | Hans #hans | 5 | DONE (2026-10-21, D-42 menggantikan opsi b: jitsuinfi-zcash `af08a9e` dan jitsuinfi-frontend `bbedfc3`, lokal, belum PR): entri `0/0` default, supplier opt-in dengan peringatan, financier menerima kelas deal atau `0/0`; spek, README, [[Threat Model]], [[Format Data]] diperbarui |
 | HNK-30.T3 | Kit invoice tersegel M-02: tautan berisi invoice testnet bertanda tangan dan dua meja financier (AC-HNK-30.2) | Hans #hans | 3 | TODO |
 | HNK-30.T4 | Dua pintu keluar M-01 di papan testnet hidup + panel "yang tidak dicegah" N-13 (AC-HNK-30.3) | Hans #hans | 3 | TODO |
 | HNK-30.T5 | Exhibit A M-03: bukti tanda tangan ganda minimal, PASS di `/verify` dan `jitsuin verify` (AC-HNK-30.4) | Hans #hans | 2 | TODO |
