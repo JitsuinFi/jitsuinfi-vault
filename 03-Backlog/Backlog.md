@@ -338,7 +338,7 @@ Urutan kerja mengikuti gelombang FD-01: fondasi (HNK-27, HNK-22, HNK-24.T1, HNK-
 
 | Task | Deskripsi | Owner | Jam | Status |
 |---|---|---|---|---|
-| HNK-23.T1 | Skema pesan relay (jenis, versi, pengirim, batas ukuran PDF) dan tinjau ulang baris relay di [[Threat Model]]. Rincian: `BL-D1-01`, `BL-D22-05`, `BL-D0-08` | Hans #hans | 2 | DONE (jitsuinfi-frontend `d015312` (branch `hans/hnk-23-message-schema`, lokal)): skema 15 jenis pesan, framing `JTSM`, batas PDF 2 MiB, tanda tangan Ed25519; baris relay Threat Model ditinjau terhadap skema (tinjau lagi setelah relay dibangun) |
+| HNK-23.T1 | Skema pesan relay (jenis, versi, pengirim, batas ukuran PDF) dan tinjau ulang baris relay di [[Threat Model]]. Rincian: `BL-D1-01`, `BL-D22-05`, `BL-D0-08` | Hans #hans | 2 | DONE (jitsuinfi-frontend `d015312` (PR #5, di-merge `48caa3a`)): skema 15 jenis pesan, framing `JTSM`, batas PDF 2 MiB, tanda tangan Ed25519; baris relay Threat Model ditinjau terhadap skema (tinjau lagi setelah relay dibangun) |
 | HNK-23.T2 | X25519 + AEAD dan `mailbox_id` = BLAKE2b(`mailbox_pk`) di `jitsuin-wasm` (dependensi disetujui Hans dulu). Rincian: `BL-D21-07` | Dex #dex | 2 | TODO |
 | HNK-23.T3 | Skeleton backend API (dari HNK-10.T4). Basis data: Postgres Supabase (D-33). Rincian: `BL-D0-01` | Dex #dex | 3 (dari HNK-10.T4) | TODO |
 | HNK-23.T4 | Endpoint kotak surat: daftar `mailbox_pk` + bukti kepemilikan, baca dengan challenge terenkripsi, masa simpan. Disimpan di Postgres Supabase (D-33). Rincian: `BL-D21-08`, `BL-D21-09` | Dex #dex | 3 | TODO |

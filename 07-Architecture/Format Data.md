@@ -187,7 +187,7 @@ Untuk anggota dana yang memegang viewing key akun operasional:
 - Indeks: tiap N dihitung sekali dengan entri register pertamanya di urutan papan; entri `settled` tidak membawa kelas. Per kelas tenor: jumlah invoice, median bawah kelas diskon, kelas diskon yang punya ≥ k invoice, sisanya satu total "other".
 - **k = 5** (`jitsuin_core::index::K`): kelas di bawah k tidak diberi angka. k boleh dinaikkan, tidak boleh diturunkan.
 
-## Pesan relay (HNK-23.T1, C-04) — **diimplementasikan** (jitsuinfi-frontend `d015312` (branch `hans/hnk-23-message-schema`, lokal))
+## Pesan relay (HNK-23.T1, C-04) — **diimplementasikan** (jitsuinfi-frontend `d015312` (PR #5, di-merge `48caa3a`))
 Satu pesan = satu dokumen yang berpindah antar pihak lewat relay. Kode: `jitsuinfi-frontend/src/lib/relay-message.ts`, tes `tests/relay-message.test.ts`.
 
 **Plaintext** (lalu disegel ke `mailbox_pk` penerima dengan sealed box X25519, HNK-23.T2; relay hanya menyimpan ciphertext):
