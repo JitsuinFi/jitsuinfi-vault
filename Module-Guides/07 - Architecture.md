@@ -17,3 +17,4 @@ Kembali: [[START-HERE]]
 ## Konsep kunci
 - Tanpa smart contract, ZSA, TEE, cross-chain.
 - Format data masih draf sampai HNK-01/HNK-02.
+- [[07-Architecture/Rencana Akun Server]]: status backend dan DB, tempat credential Supabase, usulan API akun dengan verifikasi passkey, wallet dari passkey (menunggu keputusan).
