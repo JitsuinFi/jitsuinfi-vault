@@ -36,6 +36,6 @@ Kolom Status mengikuti langkah 6 "Audit flow diagram" di [[Workflow Development]
 
 | ID | Bagian | Task | Selesai bila | Ref | Task backlog | Owner | Status |
 |---|---|---|---|---|---|---|---|
-| BL-S02-01 | Semua | Kotak masuk buyer: invoice untuk ditandatangani, permintaan riwayat, surat untuk disegel, tagihan jatuh tempo | Setiap tindakan buyer dimulai dari kotak masuk | C-31, PG-01 | HNK-22.T6 | Hans | TODO |
+| BL-S02-01 | Semua | Kotak masuk buyer: invoice untuk ditandatangani, permintaan riwayat, surat untuk disegel, tagihan jatuh tempo | Setiap tindakan buyer dimulai dari kotak masuk | C-31, PG-01 | HNK-22.T6 | Hans | DIKERJAKAN |
 | BL-S02-02 | 4 – 5 | Setelah s1, layar buyer menunggu s2 dan baru menawarkan QR saat surat `Sealed` | Tombol QR tidak aktif sebelum s2 tiba | BL-D25-01 | HNK-25.T4 | Hans | TODO |
 | BL-S02-03 | Semua | E2E peran buyer: tanda tangan, riwayat, segel, bayar, status | Satu siklus `TES-` lulus di HNK-17 | HNK-17 | HNK-17.T4 | Hans | TODO |

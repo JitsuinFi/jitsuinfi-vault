@@ -30,7 +30,7 @@ Skrip vs DB/chain sungguhan. Semua artefak memakai prefix `TES-` (invoice, akun,
 
 | ID | Skenario | Hasil | Tanggal | Bukti (txid/log) |
 |---|---|---|---|---|
-| I-HNK-23.1 | Supplier mengirim invoice + PDF ke buyer lewat relay di Railway, buyer membalas tanda tangan | TODO | — | — |
+| I-HNK-23.1 | Supplier mengirim invoice + PDF ke buyer lewat relay di Railway, buyer membalas tanda tangan | PARSIAL | 2026-10-20 | Relay lokal (memory store, bukan Railway), build produksi, dua sesi test data: kotak surat buyer terdaftar lewat proxy `/api`; supplier `TES-INV-R7` (0,05 ZEC) + PDF dikirim; kotak masuk buyer "Invoice to sign", Open mengisi invoice dan `terms.pdf`, cek "Ready to sign", tanda tangan, "Signature sent"; kotak masuk supplier "Buyer's signature", Check and keep: "Signed by the buyer", deal maju ke penawaran; kotak masuk kosong sesudahnya. Railway menunggu HNK-23.T5 |
 
 **Bukti pembersihan:** sisa artefak off-chain `TES-` = _TODO_ (target **0**). Artefak on-chain tidak bisa dihapus; catat txid-nya di tabel di atas. Data produksi tidak boleh tersentuh.
 
