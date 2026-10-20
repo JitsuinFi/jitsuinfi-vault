@@ -47,7 +47,7 @@ alt prf.enabled = false (atau tidak ada)
   W --> U : "Authenticator tanpa PRF".\nMinta pengguna menghapus credential yatim ini\n(atau signalUnknownCredential)
 end
 note over W #E7F3EA
-ADA (HNK-22.T1, lokal): registerPasskey()
+ADA (HNK-22.T1, PR #4): registerPasskey()
 di src/lib/passkey.ts dengan excludeCredentials
 dari profil, nama "JitsuinFi", rp.id eksplisit
 untuk produksi; authenticator nyata belum diuji
@@ -131,7 +131,7 @@ end
 note over W #FDECEC
 Ini cek niat (UX), bukan kontrol keamanan:
 skrip di tab yang sama tetap bisa meminta PRF.
-ADA (HNK-22.T4, lokal): account.stamp() per tanda
+ADA (HNK-22.T4, PR #4): account.stamp() per tanda
 tangan, varian *Bytes menolkan Uint8Array (HNK-27.T9);
 sesi hanya memegang key kotak surat dan sidik jari
 end note
@@ -181,17 +181,17 @@ end note
 
 | Bagian | Langkah | Status | Sumber |
 |---|---|---|---|
-| Daftar | `create()` dengan ekstensi PRF, cek `prf.enabled` | ADA (HNK-22.T1, lokal): `excludeCredentials`, nama netral, tolak tanpa PRF; authenticator nyata belum diuji (HNK-22.T7) | `src/lib/passkey.ts` `registerPasskey` |
-| Daftar | `get()` dengan `prf.eval.first = SHA-256("jitsuin/<peran>/master/v1")`, `second` = salt inbox | ADA (HNK-22.T2, lokal); uji PRF nyata belum tercatat | `evaluatePrf` |
-| Daftar | Satu passkey per orang, menambah peran lewat `get()`, sidik jari key | ADA (HNK-22.T1 – T3, lokal; sidik jari HMAC master, DEV-18) | `src/lib/session.ts`, `src/pages/account.ts` |
-| Daftar | Salt supplier dan anggota dana, salt inbox untuk semua peran di web app (financier tanpa salt di browser) | ADA (HNK-22.T2, lokal) | `src/lib/account.ts` |
+| Daftar | `create()` dengan ekstensi PRF, cek `prf.enabled` | ADA (HNK-22.T1, PR #4): `excludeCredentials`, nama netral, tolak tanpa PRF; authenticator nyata belum diuji (HNK-22.T7) | `src/lib/passkey.ts` `registerPasskey` |
+| Daftar | `get()` dengan `prf.eval.first = SHA-256("jitsuin/<peran>/master/v1")`, `second` = salt inbox | ADA (HNK-22.T2, PR #4); uji PRF nyata belum tercatat | `evaluatePrf` |
+| Daftar | Satu passkey per orang, menambah peran lewat `get()`, sidik jari key | ADA (HNK-22.T1 – T3, PR #4; sidik jari HMAC master, DEV-18) | `src/lib/session.ts`, `src/pages/account.ts` |
+| Daftar | Salt supplier dan anggota dana, salt inbox untuk semua peran di web app (financier tanpa salt di browser) | ADA (HNK-22.T2, PR #4) | `src/lib/account.ts` |
 | Daftar | Turunan key buyer `identity_pk`, `invoice_pk(k)` | ADA | `jitsuin-core::history::BuyerIdentity`, wasm `buyerKeys` |
 | Daftar | Key per invoice supplier dari master | USULAN P-03 | menggantikan `downloadSecret` di `src/pages/supplier.ts` |
 | Daftar | Kotak surat, `mailbox_id` turunan, kartu kontak | USULAN P-04 | — |
 | Masuk | Key identik di perangkat baru (credential tersinkron yang sama) | Belum diuji | sifat PRF; belum ada kasus di TEST-HNK-10 |
 | Masuk | Baca kotak surat dengan bukti kepemilikan | USULAN P-04 | — |
-| Sesi | Master di memori modul | Dihapus (HNK-22.T4, lokal): tidak ada master di memori tab; API wasm berbasis byte yang menolkan key (HNK-27.T9) | U-HNK-22.1, U-HNK-27.10 |
-| Sesi | Satu sentuhan per stempel, key stempel sebagai `Uint8Array` lalu dinolkan, kunci 15 menit | ADA (HNK-22.T4, lokal) | `account.stamp()`, U-HNK-22.1 |
+| Sesi | Master di memori modul | Dihapus (HNK-22.T4, PR #4): tidak ada master di memori tab; API wasm berbasis byte yang menolkan key (HNK-27.T9) | U-HNK-22.1, U-HNK-27.10 |
+| Sesi | Satu sentuhan per stempel, key stempel sebagai `Uint8Array` lalu dinolkan, kunci 15 menit | ADA (HNK-22.T4, PR #4) | `account.stamp()`, U-HNK-22.1 |
 | Pairing node | Seed, key financier, dan key kotak surat dibuat di node, UFVK papan diimpor, credential disimpan | USULAN P-05 | sekarang manual lewat CLI |
 | Konsol financier | Assertion passkey ke node, konsol di origin node | USULAN P-05, P-11 | API HNK-05.T3 |
 
