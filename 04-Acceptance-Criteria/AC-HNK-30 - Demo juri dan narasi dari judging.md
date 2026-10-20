@@ -3,7 +3,7 @@ tags: [ac, "HNK-30"]
 type: ac
 id: HNK-30
 phase: F6
-status: TODO
+status: PARSIAL
 updated: 2026-10-21
 ---
 
@@ -21,7 +21,7 @@ Status per kriteria: `TODO` / `PASS` / `FAIL` / `BLOCKED`, wajib dengan tanggal 
 
 | ID | Kriteria | Status | Tanggal | Bukti |
 |---|---|---|---|---|
-| AC-HNK-30.1 | Fuzz kanonikalisasi invoice (≥ 10.000 mutasi field, spasi, urutan, encoding, huruf): setiap mutasi berakhir di 偽 (tanda tangan buyer tidak valid) atau 重 (N sama); nol mutasi menghasilkan N baru yang valid (W-16) | TODO | — | — |
+| AC-HNK-30.1 | Fuzz kanonikalisasi invoice (≥ 10.000 mutasi field, spasi, urutan, encoding, huruf): setiap mutasi berakhir di 偽 (tanda tangan buyer tidak valid) atau 重 (N sama); nol mutasi menghasilkan N baru yang valid (W-16) | PASS | 2026-10-21 | jitsuinfi-zcash `20a9543` (lokal): `jitsuin-core/tests/canonical_fuzz.rs` (20.000 byte: 16.806 malformed, 3.106 seal palsu, 88 N sama; 12.000 field: semua ditolak), `jitsuin-wasm/tests/canonical_fuzz.rs` (162 varian JSON: 41 byte sama, 10 id benar-benar beda, 111 ditolak) |
 | AC-HNK-30.2 | Kit invoice tersegel (M-02): satu tautan membuka invoice testnet yang sudah ditandatangani dan dua meja financier, tanpa connect wallet, tanpa telemetri | TODO | — | — |
 | AC-HNK-30.3 | Dua pintu keluar (M-01): cek N memukul papan testnet hidup lewat UFVK publik (bukan fixture lokal); panel satu baris "yang tidak dicegah" (N-13) tampil | TODO | — | — |
 | AC-HNK-30.4 | Exhibit A (M-03): bukti tanda tangan ganda berisi hanya dua tanda tangan supplier atas N dan rujukan papan (tanpa nominal, buyer, identitas financier pertama); PASS di `/verify` dan `jitsuin verify` | TODO | — | — |
