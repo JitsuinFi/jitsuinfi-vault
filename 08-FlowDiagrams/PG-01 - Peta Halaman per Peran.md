@@ -120,6 +120,7 @@ m1 -down- m2
 | Peran | Halaman | Isi | Sequence | Status |
 |---|---|---|---|---|
 | Publik | Landing | 6 bab, EN/中文 | — | ADA (jitsuinfi.vercel.app) |
+| Publik | Coba double-finance (`/app.html#/try`) | Kit invoice tersegel Case File #0417 (M-02), meja financier A dan B, verdict 偽 / 重; tanpa wallet dan akun (D-40) | [[SEQ-04 - Verifier dan Orang Luar]] | PARSIAL (HNK-30.T3; edit invoice T4, Exhibit A T5) |
 | Publik | Verify (`/app.html#/verify`) | Tempel bundel/bukti, verdict, unduh bukti; snapshot papan otomatis (P-06) | [[SEQ-04 - Verifier dan Orang Luar]] | ADA (snapshot diunggah sebagai file) |
 | Publik | Orang luar (`/app.html#/outsider`) | Tabel publik vs tersembunyi, uraian memo | SEQ-04 | ADA |
 | Publik | Indeks bunga (`/app.html#/index`) | Kelas tenor × kelas diskon, k = 5; butuh export wasm `rateIndex` | SEQ-04 | USULAN (HNK-08.T3) |
