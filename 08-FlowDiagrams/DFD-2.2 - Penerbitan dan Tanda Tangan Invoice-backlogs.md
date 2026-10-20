@@ -1,7 +1,7 @@
 ---
 tags: [flow, backlog]
 status: DITETAPKAN
-progress: 5/11 SELESAI
+progress: 4/11 SELESAI
 updated: 2026-10-20
 ---
 
@@ -22,8 +22,8 @@ Kolom Status mengikuti langkah 6 "Audit flow diagram" di [[Workflow Development]
 | BL-D22-03 | 2.2, F2.05, F2.08 | Layar supplier memakai key turunan; tombol unduh JSON plaintext dihapus; `invoice_id` yang sudah dipakai ditolak | Tidak ada unduhan secret; `invoice_id` kembar memunculkan pesan | P-03 | HNK-24.T2 | Hans | SELESAI (2026-10-20, `17a01ea`: tanpa unduhan secret; nomor invoice yang dipakai ulang ditolak, I-HNK-24.3) |
 | BL-D22-04 | 2.4 | Invoice sebagai lembar kertas (polish) | Sesuai HNK-21.T2 | HNK-21.T2 | HNK-21.T2 | Dex | TODO |
 | BL-D22-05 | 2.5, F2.16 – F2.18 | Pesan relay "invoice" berisi invoice kanonik + PDF syarat terenkripsi; batas ukuran PDF | Pesan sesuai skema C-04; PDF di atas batas ditolak dengan pesan | C-04, P-04 | HNK-23.T1, HNK-23.T7 | Hans, Dex | DIKERJAKAN (2026-10-20, `d015312`: jenis `invoice.sign_request` dan batas PDF 2 MiB dengan pesan penolakan ADA; pengiriman lewat relay menunggu HNK-23.T7) |
-| BL-D22-06 | 2.6, F2.19 – F2.22 | Layar buyer: input PDF syarat, cek SHA-256 dengan `terms_hash`, tampilkan apakah `buyer_pk` = `invoice_pk(k)` | Hash salah atau key salah memunculkan peringatan sebelum tombol tanda tangan aktif | C-05 | HNK-25.T1 | Hans | SELESAI (2026-10-20: hash PDF atau key salah memunculkan peringatan dan tombol tanda tangan tetap mati; I-HNK-25.3; PR #11 `dd63246`) |
-| BL-D22-07 | 2.6, F2.21, D4 | Simpan invoice yang diterima di penyimpanan lokal buyer (lintas sesi) | Invoice masih ada setelah tab ditutup dan dibuka lagi | C-07 | HNK-25.T1 | Hans | TODO (2026-10-20, DEV-16: dipindah dari HNK-24.T3; store sudah ADA) |
+| BL-D22-06 | 2.6, F2.19 – F2.22 | Layar buyer: input PDF syarat, cek SHA-256 dengan `terms_hash`, tampilkan apakah `buyer_pk` = `invoice_pk(k)` | Hash salah atau key salah memunculkan peringatan sebelum tombol tanda tangan aktif | C-05 | HNK-25.T1 | Hans | DIKERJAKAN (kriteria terpenuhi: 2026-10-20: hash PDF atau key salah memunculkan peringatan dan tombol tanda tangan tetap mati; I-HNK-25.3; PR #11 `dd63246`; menunggu HNK-25.T1 lengkap, BL-D22-07) |
+| BL-D22-07 | 2.6, F2.21, D4 | Simpan invoice yang diterima di penyimpanan lokal buyer (lintas sesi) | Invoice masih ada setelah tab ditutup dan dibuka lagi | C-07 | HNK-25.T1 | Hans | GAGAL AUDIT (2026-10-20: PR #11 hanya cek PDF dan key; invoice yang diterima belum disimpan di store buyer) |
 | BL-D22-08 | 2.7, F2.26 – F2.27 | Kirim `buyer_signature` ke supplier lewat relay | Supplier menerima tanda tangan tanpa salin-tempel | P-04 | HNK-23.T7 | Dex | TODO |
 | BL-D22-09 | 2.8, F2.28 – F2.31 | Kartu supplier: cek tanda tangan buyer (`bundleBuild`), simpan invoice + tanda tangan sah | Tanda tangan palsu ditolak dengan pesan; yang sah tersimpan di deal | C-06 | HNK-24.T4 | Hans | SELESAI (2026-10-20, `17a01ea`: tanda tangan palsu ditolak, yang sah tersimpan, I-HNK-24.3) |
 | BL-D22-10 | 2.8, D4 | Simpan dokumen deal supplier lintas sesi | Deal masih ada setelah tab ditutup | C-07 | HNK-24.T3 | Hans | SELESAI (2026-10-20, `17a01ea`: deal supplier bertahan setelah reload dan unlock ulang, I-HNK-24.3) |
