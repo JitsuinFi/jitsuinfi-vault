@@ -18,7 +18,7 @@ Logika murni, cepat, tanpa DB dan tanpa chain.
 
 | ID | Kasus | Hasil | Tanggal | Bukti |
 |---|---|---|---|---|
-| U-HNK-23.1 | Enkripsi dan dekripsi pesan roundtrip | TODO | — | — |
+| U-HNK-23.1 | Enkripsi dan dekripsi pesan roundtrip | PASS | 2026-10-20 | jitsuin-core `mailbox::tests` (4) dan jitsuin-wasm `mailbox_keys_proof_and_sealed_messages_through_the_api`: segel lalu buka, kotak surat lain gagal, byte diubah gagal, terpotong gagal, key ephemeral baru = kotak berbeda, pesan kosong, key low-order ditolak, secret ephemeral dihapus; vektor tetap (PRF 0x11, e 0x22, nonce 0x33) sama dengan relay di jitsuinfi-backend `tests/vectors.test.ts` (`370fa2a`, `5143a65`) |
 | U-HNK-23.2 | Bukti kepemilikan salah ditolak | PASS | 2026-10-20 | jitsuinfi-backend `tests/relay.test.ts` "registration needs a fresh, matching proof": bukti nol, challenge dipakai ulang, bukti dari secret lain dengan `mailbox_pk` korban, challenge untuk key lain, challenge untuk baca, challenge kedaluwarsa; tak satu pun mendaftarkan kotak surat (`2d987dd`) |
 | U-HNK-23.3 | Pesan di atas batas ukuran ditolak | PASS | 2026-10-20 | `tests/relay-message.test.ts`: PDF > 2 MiB ditolak dengan pesan, saat encode dan saat header dibaca (`d015312`) |
 | U-HNK-23.4 | Skema pesan: framing, jenis, peran, field wajib dan asing, versi, `to`, hash lampiran, tanda tangan Ed25519 (termasuk header atau lampiran yang diubah), cakupan semua aliran D7 | PASS | 2026-10-20 | `tests/relay-message.test.ts` 9 kasus, `npm test` 25/25 (`d015312`) |
