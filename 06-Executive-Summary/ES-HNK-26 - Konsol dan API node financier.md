@@ -23,7 +23,7 @@ updated: 2026-10-20
 | Deal tanpa operator di terminal | 100% | — |
 
 ## Status
-**PARSIAL.** Bagian library T14, T10, dan T13 di-merge; node (T1, Dex) belum ada, jadi API, penyimpanan, dan konsol belum.
+**PARSIAL.** Bagian library T14, T10, dan T13 di-merge; node (T1) belum ada, jadi API, penyimpanan, dan konsol belum.
 
 ## Risiko tersisa
 - Nilai dan tinggi output di file bukti pelunasan adalah bacaan wallet financier, tidak bertanda tangan; pihak ketiga perlu viewing key financier untuk mengonfirmasinya.

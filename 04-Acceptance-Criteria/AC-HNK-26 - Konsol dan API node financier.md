@@ -3,8 +3,8 @@ tags: [ac, "HNK-26"]
 type: ac
 id: HNK-26
 phase: F5
-lead: Dex
-owners: [Hans, Dex]
+lead: Hans
+owners: [Hans]
 status: TODO
 updated: 2026-10-20
 ---
@@ -13,7 +13,7 @@ updated: 2026-10-20
 
 > **Peta link:** [[AC Hub]] · [[Backlog]] · **AC** · [[TEST-HNK-26 - Konsol dan API node financier|Test]] · [[ES-HNK-26 - Konsol dan API node financier|Exec Summary]]
 
-**Lead:** Dex #dex · **Tim:** Hans #hans, Dex #dex · Dibuat 2026-10-20 dari [[FD-01 - Keputusan Usulan dan Gelombang Kerja]] dan [[FD-02 - Penelusuran Business Flow ke Backlog]] (D-30)
+**Lead:** Hans #hans · **Tim:** Hans #hans · Dibuat 2026-10-20 dari [[FD-01 - Keputusan Usulan dan Gelombang Kerja]] dan [[FD-02 - Penelusuran Business Flow ke Backlog]] (D-30)
 
 **Item:** HNK-26 · **Fase:** F5 · **Dependency:** HNK-05.T3, HNK-23, HNK-27
 

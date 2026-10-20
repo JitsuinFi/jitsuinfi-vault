@@ -4,7 +4,7 @@ type: test
 id: HNK-15
 phase: F7
 lead: Hans
-owners: [Dex, Hans]
+owners: [Hans]
 unit: PARSIAL
 integrasi: PARSIAL
 e2e: TODO
@@ -15,7 +15,7 @@ updated: 2026-10-17
 
 > **Peta link:** [[Testing Hub]] · [[Backlog]] · [[AC-HNK-15 - Stretch JitsuinFi Vault|AC]] · **Test** · [[ES-HNK-15 - Stretch JitsuinFi Vault|Exec Summary]]
 
-**Lead:** Hans #hans · **Tim:** Dex #dex, Hans #hans 
+**Lead:** Hans #hans · **Tim:** Hans #hans 
 
 ## 1. Unit
 Logika murni, cepat, tanpa DB dan tanpa chain.

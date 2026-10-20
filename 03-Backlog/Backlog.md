@@ -70,6 +70,14 @@ Estimasi kasar; diperbarui di Exec Summary dengan jam aktual.
 | Dave #dave | 0 | 0% |
 | **Total** | **280,5** | 100% |
 
+**Revisi 2026-10-20 (D-38, DEV-22):** task backend Dex dipindah ke Hans (label "Hans #hans (dari Dex, D-38)"). Dihitung ulang dari tabel task (tanpa task yang dipindah ke item lain):
+
+| Orang | Jam | Porsi |
+|---|---|---|
+| Hans #hans | 240,5 | 85,7% |
+| Dex #dex | 40 | 14,3% |
+| **Total** | **280,5** | 100% |
+
 Urutan kerja mengikuti gelombang FD-01: fondasi (HNK-27, HNK-22, HNK-24.T1, HNK-24.T3) 21–23 Okt, antarpihak (HNK-23, HNK-26, HNK-21) 23–26 Okt, lengkapi (HNK-25, HNK-28, HNK-29, HNK-17.T4) 26–27 Okt.
 
 ## Daftar item
@@ -80,8 +88,8 @@ Urutan kerja mengikuti gelombang FD-01: fondasi (HNK-27, HNK-22, HNK-24.T1, HNK-
 | HNK-02 | Nullifier dan entri papan registry | F1 | Hans #hans | #hans #dex | HNK-01 | [[AC-HNK-02 - Nullifier dan entri papan registry\|AC]] | [[TEST-HNK-02 - Nullifier dan entri papan registry\|Test]] | [[ES-HNK-02 - Nullifier dan entri papan registry\|ES]] |
 | HNK-03 | Wallet backend kirim dan terima memo di mainnet | F2 | Hans #hans | #hans #dex | SPK-01, SPK-02, SPK-03, SPK-10 | [[AC-HNK-03 - Wallet backend kirim dan terima memo di mainnet\|AC]] | [[TEST-HNK-03 - Wallet backend kirim dan terima memo di mainnet\|Test]] | [[ES-HNK-03 - Wallet backend kirim dan terima memo di mainnet\|ES]] |
 | HNK-04 | Pemindai papan registry | F2 | Hans #hans | #hans #dex | HNK-02, HNK-03, SPK-05, SPK-08 | [[AC-HNK-04 - Pemindai papan registry\|AC]] | [[TEST-HNK-04 - Pemindai papan registry\|Test]] | [[ES-HNK-04 - Pemindai papan registry\|ES]] |
-| HNK-05 | Alur financier cek registrasi bayar di muka | F3 | Hans #hans | #hans #dex | HNK-04 | [[AC-HNK-05 - Alur financier cek registrasi bayar di muka\|AC]] | [[TEST-HNK-05 - Alur financier cek registrasi bayar di muka\|Test]] | [[ES-HNK-05 - Alur financier cek registrasi bayar di muka\|ES]] |
-| HNK-06 | Pengalihan hak tagih dan pelunasan | F3 | Hans #hans | #dex #hans | HNK-05 | [[AC-HNK-06 - Pengalihan hak tagih dan pelunasan\|AC]] | [[TEST-HNK-06 - Pengalihan hak tagih dan pelunasan\|Test]] | [[ES-HNK-06 - Pengalihan hak tagih dan pelunasan\|ES]] |
+| HNK-05 | Alur financier cek registrasi bayar di muka | F3 | Hans #hans | #hans | HNK-04 | [[AC-HNK-05 - Alur financier cek registrasi bayar di muka\|AC]] | [[TEST-HNK-05 - Alur financier cek registrasi bayar di muka\|Test]] | [[ES-HNK-05 - Alur financier cek registrasi bayar di muka\|ES]] |
+| HNK-06 | Pengalihan hak tagih dan pelunasan | F3 | Hans #hans | #hans | HNK-05 | [[AC-HNK-06 - Pengalihan hak tagih dan pelunasan\|AC]] | [[TEST-HNK-06 - Pengalihan hak tagih dan pelunasan\|Test]] | [[ES-HNK-06 - Pengalihan hak tagih dan pelunasan\|ES]] |
 | HNK-07 | Deteksi pembiayaan ganda dan bukti tanda tangan ganda | F3 | Hans #hans | #hans #dex | HNK-05 | [[AC-HNK-07 - Deteksi pembiayaan ganda dan bukti tanda tangan ganda\|AC]] | [[TEST-HNK-07 - Deteksi pembiayaan ganda dan bukti tanda tangan ganda\|Test]] | [[ES-HNK-07 - Deteksi pembiayaan ganda dan bukti tanda tangan ganda\|ES]] |
 | HNK-08 | Indeks suku bunga publik | F4 | Dex #dex | #dex #hans | HNK-04 | [[AC-HNK-08 - Indeks suku bunga publik\|AC]] | [[TEST-HNK-08 - Indeks suku bunga publik\|Test]] | [[ES-HNK-08 - Indeks suku bunga publik\|ES]] |
 | HNK-09 | Verifier CLI hanko verify | F4 | Dex #dex | #dex #hans | HNK-04, HNK-07, SPK-11 | [[AC-HNK-09 - Verifier CLI hanko verify\|AC]] | [[TEST-HNK-09 - Verifier CLI hanko verify\|Test]] | [[ES-HNK-09 - Verifier CLI hanko verify\|ES]] |
@@ -90,7 +98,7 @@ Urutan kerja mengikuti gelombang FD-01: fondasi (HNK-27, HNK-22, HNK-24.T1, HNK-
 | HNK-12 | Spesifikasi gaya ZIP Shielded Receivable Registry | F4 | Hans #hans | #hans #dex | HNK-02, HNK-07 | [[AC-HNK-12 - Spesifikasi gaya ZIP Shielded Receivable Registry\|AC]] | [[TEST-HNK-12 - Spesifikasi gaya ZIP Shielded Receivable Registry\|Test]] | [[ES-HNK-12 - Spesifikasi gaya ZIP Shielded Receivable Registry\|ES]] |
 | HNK-13 | Uji dengan pengguna sungguhan | F6 | Hans #hans | #hans | HNK-05, HNK-06, HNK-07, HNK-10 | [[AC-HNK-13 - Uji dengan pengguna sungguhan\|AC]] | [[TEST-HNK-13 - Uji dengan pengguna sungguhan\|Test]] | [[ES-HNK-13 - Uji dengan pengguna sungguhan\|ES]] |
 | HNK-14 | Submission video deskripsi dan demo URL | F6 | Hans #hans | #hans #dex | HNK-13, SPK-12, SPK-15 | [[AC-HNK-14 - Submission video deskripsi dan demo URL\|AC]] | [[TEST-HNK-14 - Submission video deskripsi dan demo URL\|Test]] | [[ES-HNK-14 - Submission video deskripsi dan demo URL\|ES]] |
-| HNK-15 | Stretch JitsuinFi Vault | F7 | Hans #hans | #dex #hans | HNK-07, SPK-05 | [[AC-HNK-15 - Stretch JitsuinFi Vault\|AC]] | [[TEST-HNK-15 - Stretch JitsuinFi Vault\|Test]] | [[ES-HNK-15 - Stretch JitsuinFi Vault\|ES]] |
+| HNK-15 | Stretch JitsuinFi Vault | F7 | Hans #hans | #hans | HNK-07, SPK-05 | [[AC-HNK-15 - Stretch JitsuinFi Vault\|AC]] | [[TEST-HNK-15 - Stretch JitsuinFi Vault\|Test]] | [[ES-HNK-15 - Stretch JitsuinFi Vault\|ES]] |
 | HNK-16 | CI dan quality gate | F1 | Dex #dex | #dex | SPK-01, SPK-14 | [[AC-HNK-16 - CI dan quality gate\|AC]] | [[TEST-HNK-16 - CI dan quality gate\|Test]] | [[ES-HNK-16 - CI dan quality gate\|ES]] |
 | HNK-17 | QA E2E lintas item | F6 | Hans #hans | #hans | HNK-05 – HNK-11 | [[AC-HNK-17 - QA E2E lintas item\|AC]] | [[TEST-HNK-17 - QA E2E lintas item\|Test]] | [[ES-HNK-17 - QA E2E lintas item\|ES]] |
 | HNK-18 | Materi pitch dan visual | F5 | Hans #hans | #hans | HNK-07, HNK-11 | [[AC-HNK-18 - Materi pitch dan visual\|AC]] | [[TEST-HNK-18 - Materi pitch dan visual\|Test]] | [[ES-HNK-18 - Materi pitch dan visual\|ES]] |
@@ -98,13 +106,13 @@ Urutan kerja mengikuti gelombang FD-01: fondasi (HNK-27, HNK-22, HNK-24.T1, HNK-
 | HNK-20 | Riwayat pembayaran buyer standar minimal | F3 | Hans #hans | #hans | HNK-19 | [[AC-HNK-20 - Riwayat pembayaran buyer standar minimal\|AC]] | [[TEST-HNK-20 - Riwayat pembayaran buyer standar minimal\|Test]] | [[ES-HNK-20 - Riwayat pembayaran buyer standar minimal\|ES]] |
 | HNK-21 | Polish halaman internal web app | F5 | Dex #dex | #dex #hans (dari Hans, D-29, DEV-12) | HNK-10, HNK-18.T4 | [[AC-HNK-21 - Polish halaman internal web app\|AC]] | [[TEST-HNK-21 - Polish halaman internal web app\|Test]] | [[ES-HNK-21 - Polish halaman internal web app\|ES]] |
 | HNK-22 | Akun passkey peran dan kontak | F5 | Hans #hans | #hans | HNK-10 | [[AC-HNK-22 - Akun passkey peran dan kontak\|AC]] | [[TEST-HNK-22 - Akun passkey peran dan kontak\|Test]] | [[ES-HNK-22 - Akun passkey peran dan kontak\|ES]] |
-| HNK-23 | Relay kotak surat end to end | F5 | Dex #dex | #hans #dex | HNK-22 | [[AC-HNK-23 - Relay kotak surat end to end\|AC]] | [[TEST-HNK-23 - Relay kotak surat end to end\|Test]] | [[ES-HNK-23 - Relay kotak surat end to end\|ES]] |
+| HNK-23 | Relay kotak surat end to end | F5 | Hans #hans | #hans | HNK-22 | [[AC-HNK-23 - Relay kotak surat end to end\|AC]] | [[TEST-HNK-23 - Relay kotak surat end to end\|Test]] | [[ES-HNK-23 - Relay kotak surat end to end\|ES]] |
 | HNK-24 | Alur deal di layar supplier | F5 | Hans #hans | #hans | HNK-22, HNK-23, HNK-27 | [[AC-HNK-24 - Alur deal di layar supplier\|AC]] | [[TEST-HNK-24 - Alur deal di layar supplier\|Test]] | [[ES-HNK-24 - Alur deal di layar supplier\|ES]] |
 | HNK-25 | Alur deal di layar buyer | F5 | Hans #hans | #hans | HNK-22, HNK-23, HNK-27 | [[AC-HNK-25 - Alur deal di layar buyer\|AC]] | [[TEST-HNK-25 - Alur deal di layar buyer\|Test]] | [[ES-HNK-25 - Alur deal di layar buyer\|ES]] |
-| HNK-26 | Konsol dan API node financier | F5 | Dex #dex | #hans #dex | HNK-05.T3, HNK-23, HNK-27 | [[AC-HNK-26 - Konsol dan API node financier\|AC]] | [[TEST-HNK-26 - Konsol dan API node financier\|Test]] | [[ES-HNK-26 - Konsol dan API node financier\|ES]] |
+| HNK-26 | Konsol dan API node financier | F5 | Hans #hans | #hans | HNK-05.T3, HNK-23, HNK-27 | [[AC-HNK-26 - Konsol dan API node financier\|AC]] | [[TEST-HNK-26 - Konsol dan API node financier\|Test]] | [[ES-HNK-26 - Konsol dan API node financier\|ES]] |
 | HNK-27 | Perbaikan protokol dan flow | F3 | Hans #hans | #hans | HNK-05, HNK-19, HNK-20 | [[AC-HNK-27 - Perbaikan protokol dan flow\|AC]] | [[TEST-HNK-27 - Perbaikan protokol dan flow\|Test]] | [[ES-HNK-27 - Perbaikan protokol dan flow\|ES]] |
-| HNK-28 | Verifikasi publik lengkap | F4 | Dex #dex | #hans #dex | HNK-08, HNK-09, HNK-23 | [[AC-HNK-28 - Verifikasi publik lengkap\|AC]] | [[TEST-HNK-28 - Verifikasi publik lengkap\|Test]] | [[ES-HNK-28 - Verifikasi publik lengkap\|ES]] |
-| HNK-29 | Alur dana anggota | F7 | Dex #dex | #dex #hans | HNK-15, HNK-23 | [[AC-HNK-29 - Alur dana anggota\|AC]] | [[TEST-HNK-29 - Alur dana anggota\|Test]] | [[ES-HNK-29 - Alur dana anggota\|ES]] |
+| HNK-28 | Verifikasi publik lengkap | F4 | Hans #hans | #hans | HNK-08, HNK-09, HNK-23 | [[AC-HNK-28 - Verifikasi publik lengkap\|AC]] | [[TEST-HNK-28 - Verifikasi publik lengkap\|Test]] | [[ES-HNK-28 - Verifikasi publik lengkap\|ES]] |
+| HNK-29 | Alur dana anggota | F7 | Hans #hans | #hans | HNK-15, HNK-23 | [[AC-HNK-29 - Alur dana anggota\|AC]] | [[TEST-HNK-29 - Alur dana anggota\|Test]] | [[ES-HNK-29 - Alur dana anggota\|ES]] |
 
 ## Spike (F0)
 
@@ -189,8 +197,8 @@ Urutan kerja mengikuti gelombang FD-01: fondasi (HNK-27, HNK-22, HNK-24.T1, HNK-
 |---|---|---|---|---|
 | HNK-05.T1 | State machine financier: cek → daftar → tunggu konfirmasi → bayar (Zcash) | Hans #hans | 4 | DONE (`6b5c343`) |
 | HNK-05.T2 | Format dan verifikasi memo kuitansi | Hans #hans | 2 | DONE (`6b5c343`) |
-| HNK-05.T3 | Endpoint API alur financier | Dex #dex | 3 | TODO |
-| HNK-05.T4 | Integrasi layar financier ↔ backend/wallet (status txid, konfirmasi) — FE krusial | Dex #dex (dari Hans, D-29, DEV-12) | 2 | PARSIAL: layar financier siap; status txid/konfirmasi butuh API backend (HNK-05.T3, Dex) |
+| HNK-05.T3 | Endpoint API alur financier | Hans #hans (dari Dex, D-38) | 3 | TODO |
+| HNK-05.T4 | Integrasi layar financier ↔ backend/wallet (status txid, konfirmasi) — FE krusial | Hans #hans (dari Dex, D-38) | 2 | PARSIAL: layar financier siap; status txid/konfirmasi butuh API backend (HNK-05.T3, Dex) |
 | HNK-05.T5 | Layout dan komponen layar financier | Hans #hans (dari Dave, D-35) | 1 | DONE (`cdcba0d`, `98466b2` (`jitsuinfi-frontend`, lokal)) |
 | HNK-05.T6 | Panduan E2E financier | Hans #hans (dari Dave, D-35) | 1 | DONE: panduan E2E di TEST-HNK-05 |
 
@@ -275,11 +283,11 @@ Urutan kerja mengikuti gelombang FD-01: fondasi (HNK-27, HNK-22, HNK-24.T1, HNK-
 | HNK-12.T2 | Test vector dari spesifikasi dijalankan sebagai test | Dex #dex | 1 | TODO |
 | HNK-12.T3 | Review teknis spesifikasi | Hans #hans | 1 | TODO — review oleh Hans sendiri: spesifikasi ditulis agent (DEV-11). Pra-review siap: [[Pra-review Spesifikasi dan Threat Model]]; checklist: [[Checklist Review HNK-11.T3 dan HNK-12.T3]] (24 temuan, 1 salah: griefing riwayat) |
 
-**HNK-28 — Verifikasi publik lengkap** · Lead Dex #dex · [[AC-HNK-28 - Verifikasi publik lengkap|AC]] · Dibuat 2026-10-20 (D-30)
+**HNK-28 — Verifikasi publik lengkap** · Lead Hans #hans · [[AC-HNK-28 - Verifikasi publik lengkap|AC]] · Dibuat 2026-10-20 (D-30)
 
 | Task | Deskripsi | Owner | Jam | Status |
 |---|---|---|---|---|
-| HNK-28.T1 | Layanan snapshot papan di relay (JSON same-origin). Rincian: `BL-D28-06` | Dex #dex | 3 | TODO |
+| HNK-28.T1 | Layanan snapshot papan di relay (JSON same-origin). Rincian: `BL-D28-06` | Hans #hans (dari Dex, D-38) | 3 | TODO |
 | HNK-28.T2 | `verifyProofOnBoard(proof, snapshot)` di wasm; layar Verify memakainya. Rincian: `BL-D27-05` | Hans #hans | 2 | DONE (jitsuinfi-zcash `32a3977`, `53016fe` (PR #9, di-merge `87424e7`); jitsuinfi-frontend `d13321e` (jitsuinfi-frontend PR #6, di-merge `5104a7d`)): web dan CLI memakai `proof_on_board` yang sama |
 | HNK-28.T3 | `rateIndex(snapshot, k)` di wasm untuk halaman indeks HNK-08.T3. Rincian: `BL-D28-05` | Hans #hans | 1 | DONE (jitsuinfi-zcash `32a3977`, `53016fe` (PR #9, di-merge `87424e7`)): `rateIndex` sama dengan `jitsuin index --json` (fungsi `rate_index_json` bersama); halaman `#/index` milik HNK-08.T3 |
 | HNK-28.T4 | Teks verdict bundel di layar Verify sesuai status surat dan settled. Rincian: `BL-D28-04` | Hans #hans (dari Dave, D-35) | 0,5 | DONE (jitsuinfi-frontend `1dcedf3` (PR #9, di-merge `36da302`)): verdict bundel mengikuti status surat: tanpa surat = invoice asli saja; surat menunggu seal = peringatan yang menyebut seal yang kurang dan "does not prove a financed deal yet"; "every seal checks out" hanya untuk surat yang disegel supplier, buyer, dan financier. Status settled tetap dari data papan |
@@ -339,22 +347,22 @@ Urutan kerja mengikuti gelombang FD-01: fondasi (HNK-27, HNK-22, HNK-24.T1, HNK-
 | HNK-22.T2 | Salt per peran dan salt inbox, turunan key per peran, sidik jari key publik, peran anggota tanpa key tanda tangan. Rincian: `BL-D21-04`, `BL-D21-05`, `BL-D21-06` | Hans #hans (dari Dave, D-35) | 2 | DONE (jitsuinfi-frontend `7814fbc` (PR #4, di-merge `a68f075`)); sidik jari dari HMAC master peran (DEV-18, disetujui) |
 | HNK-22.T3 | Tambah atau ganti peran dan router `app.html` per peran (konsol financier tidak lagi di web app). Rincian: `BL-S00-03`, `BL-PG-01` | Hans #hans (dari Dave, D-35) | 1 | DONE (jitsuinfi-frontend `7814fbc` (PR #4, di-merge `a68f075`)); rute `/financier` masih bisa dibuka lewat alamat sampai konsol node ada (HNK-26) |
 | HNK-22.T4 | Stempel: PRF baru per tanda tangan, key `Uint8Array` dinolkan, kunci sesi 15 menit. Rincian: `BL-D21-12` | Hans #hans (dari Dave, D-35) | 3 | DONE (jitsuinfi-frontend `7814fbc` (PR #4, di-merge `a68f075`)) |
-| HNK-22.T5 | Kartu kontak (QR dan teks), impor kontak rekan, cocokkan sidik jari. Rincian: `BL-D21-11` | Hans #hans (dari Dave, D-35) | 2 | TODO: kartu kontak memuat `mailbox_pk` dari X25519 (HNK-23.T2, Dex) |
+| HNK-22.T5 | Kartu kontak (QR dan teks), impor kontak rekan, cocokkan sidik jari. Rincian: `BL-D21-11` | Hans #hans (dari Dave, D-35) | 2 | TODO: kartu kontak memuat `mailbox_pk` dari X25519 (HNK-23.T2) |
 | HNK-22.T6 | Kotak masuk per peran: ambil pesan setelah masuk dan berkala, tampilkan sebagai tindakan. Rincian: `BL-S00-02`, `BL-S02-01` | Hans #hans (dari Dave, D-35) | 1 | TODO: kotak masuk butuh relay (HNK-23.T4) |
 | HNK-22.T7 | Uji PRF dengan authenticator nyata, dua perangkat tersinkron, uji stateless; tabel dukungan authenticator. Rincian: `BL-D21-19`, `BL-D0-03` | Hans #hans (dari Dave, D-35) | 1 | TODO: butuh authenticator nyata dan dua perangkat (uji oleh user) |
 
-**HNK-23 — Relay kotak surat end to end** · Lead Dex #dex · [[AC-HNK-23 - Relay kotak surat end to end|AC]] · Dibuat 2026-10-20 (D-30)
+**HNK-23 — Relay kotak surat end to end** · Lead Hans #hans · [[AC-HNK-23 - Relay kotak surat end to end|AC]] · Dibuat 2026-10-20 (D-30)
 
 | Task | Deskripsi | Owner | Jam | Status |
 |---|---|---|---|---|
 | HNK-23.T1 | Skema pesan relay (jenis, versi, pengirim, batas ukuran PDF) dan tinjau ulang baris relay di [[Threat Model]]. Rincian: `BL-D1-01`, `BL-D22-05`, `BL-D0-08` | Hans #hans | 2 | DONE (jitsuinfi-frontend `d015312` (PR #5, di-merge `48caa3a`)): skema 15 jenis pesan, framing `JTSM`, batas PDF 2 MiB, tanda tangan Ed25519; baris relay Threat Model ditinjau terhadap skema (tinjau lagi setelah relay dibangun) |
-| HNK-23.T2 | X25519 + AEAD dan `mailbox_id` = BLAKE2b(`mailbox_pk`) di `jitsuin-wasm` (dependensi disetujui Hans dulu). Rincian: `BL-D21-07` | Dex #dex | 2 | TODO |
-| HNK-23.T3 | Skeleton backend API (dari HNK-10.T4). Basis data: Postgres Supabase (D-33). Rincian: `BL-D0-01` | Dex #dex | 3 (dari HNK-10.T4) | TODO |
-| HNK-23.T4 | Endpoint kotak surat: daftar `mailbox_pk` + bukti kepemilikan, baca dengan challenge terenkripsi, masa simpan. Disimpan di Postgres Supabase (D-33). Rincian: `BL-D21-08`, `BL-D21-09` | Dex #dex | 3 | TODO |
-| HNK-23.T5 | Deploy Railway + header CSP (dari HNK-10.T5, setelah persetujuan user). Variabel lingkungan Supabase hanya di Railway (D-33). Rincian: `BL-D0-01` | Dex #dex | 2 (dari HNK-10.T5) | TODO |
+| HNK-23.T2 | X25519 + AEAD dan `mailbox_id` = BLAKE2b(`mailbox_pk`) di `jitsuin-wasm` (dependensi disetujui Hans dulu). Rincian: `BL-D21-07` | Hans #hans (dari Dex, D-38) | 2 | TODO |
+| HNK-23.T3 | Skeleton backend API (dari HNK-10.T4). Basis data: Postgres Supabase (D-33). Rincian: `BL-D0-01` | Hans #hans (dari Dex, D-38) | 3 (dari HNK-10.T4) | TODO |
+| HNK-23.T4 | Endpoint kotak surat: daftar `mailbox_pk` + bukti kepemilikan, baca dengan challenge terenkripsi, masa simpan. Disimpan di Postgres Supabase (D-33). Rincian: `BL-D21-08`, `BL-D21-09` | Hans #hans (dari Dex, D-38) | 3 | TODO |
+| HNK-23.T5 | Deploy Railway + header CSP (dari HNK-10.T5, setelah persetujuan user). Variabel lingkungan Supabase hanya di Railway (D-33). Rincian: `BL-D0-01` | Hans #hans (dari Dex, D-38) | 2 (dari HNK-10.T5) | TODO |
 | HNK-23.T6 | Rewrite Vercel `/api/*` ke relay, CSP tetap `connect-src 'self'`; konsol financier di origin node. Rincian: `BL-PG-01` | Hans #hans (dari Dave, D-35) | 2 | TODO |
-| HNK-23.T7 | Dokumen deal di web app lewat relay: invoice + PDF syarat, tanda tangan buyer, seal, sertifikat atau tag. Rincian: `BL-D22-05`, `BL-D22-08`, `BL-D26-04` | Dex #dex | 3 | TODO |
-| HNK-23.T8 | Pesan dari node bertanda tangan `financier_pk`: pembuka komitmen, surat + PDF surat, permintaan riwayat, s2, txid. Rincian: `BL-D23-06`, `BL-D24-03`, `BL-D24-11`, `BL-D26-01` | Dex #dex | 2 | TODO |
+| HNK-23.T7 | Dokumen deal di web app lewat relay: invoice + PDF syarat, tanda tangan buyer, seal, sertifikat atau tag. Rincian: `BL-D22-05`, `BL-D22-08`, `BL-D26-04` | Hans #hans (dari Dex, D-38) | 3 | TODO |
+| HNK-23.T8 | Pesan dari node bertanda tangan `financier_pk`: pembuka komitmen, surat + PDF surat, permintaan riwayat, s2, txid. Rincian: `BL-D23-06`, `BL-D24-03`, `BL-D24-11`, `BL-D26-01` | Hans #hans (dari Dex, D-38) | 2 | TODO |
 
 **HNK-24 — Alur deal di layar supplier** · Lead Hans #hans · [[AC-HNK-24 - Alur deal di layar supplier|AC]] · Dibuat 2026-10-20 (D-30)
 
@@ -383,29 +391,29 @@ Urutan kerja mengikuti gelombang FD-01: fondasi (HNK-27, HNK-22, HNK-24.T1, HNK-
 | HNK-25.T7 | Status pelunasan di layar buyer dan supplier (`bundleOnBoard` + snapshot). Rincian: `BL-D25-09` | Hans #hans (dari Dave, D-35) | 1 | TODO |
 | HNK-25.T8 | Bayar QR di testnet (Zodl atau `zcash-devtool`) dan dana testnet untuk peserta uji. Rincian: `BL-D25-10` | Hans #hans (dari Dave, D-35) | 1 | TODO |
 
-**HNK-26 — Konsol dan API node financier** · Lead Dex #dex · [[AC-HNK-26 - Konsol dan API node financier|AC]] · Dibuat 2026-10-20 (D-30)
+**HNK-26 — Konsol dan API node financier** · Lead Hans #hans · [[AC-HNK-26 - Konsol dan API node financier|AC]] · Dibuat 2026-10-20 (D-30)
 
 | Task | Deskripsi | Owner | Jam | Status |
 |---|---|---|---|---|
-| HNK-26.T1 | Skrip setup node testnet: seed di node, key financier, key kotak surat, UFVK papan. Rincian: `BL-D21-14`, `BL-D0-02` | Dex #dex | 1 | TODO |
-| HNK-26.T2 | Pairing passkey konsol (kode sekali pakai, attestation, D9) + halaman pairing. Rincian: `BL-D21-15`, `BL-D21-16` | Dex #dex | 2 | TODO |
-| HNK-26.T3 | Sesi konsol: challenge sekali pakai, origin, `rpIdHash`, UV, cookie `__Host-`. Rincian: `BL-D21-17` | Dex #dex | 1 | TODO |
-| HNK-26.T4 | Key kotak surat financier di node dan proxy `/node/mail/*`. Rincian: `BL-D21-10` | Dex #dex | 1 | TODO |
-| HNK-26.T5 | Penawaran masuk: cek tanda tangan buyer sebelum `Deal`, tetapkan advance dan konfirmasi. Rincian: `BL-D23-02` | Dex #dex | 2 | TODO |
-| HNK-26.T6 | Tolak atau kedaluwarsa penawaran. Rincian: `BL-D23-03` | Dex #dex | 1 | TODO |
-| HNK-26.T7 | Registri `identity_pk` buyer hasil KYC. Rincian: `BL-D26-05` | Dex #dex | 1 | TODO |
-| HNK-26.T8 | API `check_buyer` dengan `MinimumStandard`, simpan laporan dan `history_tag`. Rincian: `BL-D26-06` | Hans #hans | 1 | TODO: fungsi `check_buyer` (laporan + tag) sudah ada di `jitsuin-flow` sejak HNK-20.T3; sisa endpoint `POST /node/history/check` dan penyimpanan tag menunggu node (HNK-26.T1, Dex) |
+| HNK-26.T1 | Skrip setup node testnet: seed di node, key financier, key kotak surat, UFVK papan. Rincian: `BL-D21-14`, `BL-D0-02` | Hans #hans (dari Dex, D-38) | 1 | TODO |
+| HNK-26.T2 | Pairing passkey konsol (kode sekali pakai, attestation, D9) + halaman pairing. Rincian: `BL-D21-15`, `BL-D21-16` | Hans #hans (dari Dex, D-38) | 2 | TODO |
+| HNK-26.T3 | Sesi konsol: challenge sekali pakai, origin, `rpIdHash`, UV, cookie `__Host-`. Rincian: `BL-D21-17` | Hans #hans (dari Dex, D-38) | 1 | TODO |
+| HNK-26.T4 | Key kotak surat financier di node dan proxy `/node/mail/*`. Rincian: `BL-D21-10` | Hans #hans (dari Dex, D-38) | 1 | TODO |
+| HNK-26.T5 | Penawaran masuk: cek tanda tangan buyer sebelum `Deal`, tetapkan advance dan konfirmasi. Rincian: `BL-D23-02` | Hans #hans (dari Dex, D-38) | 2 | TODO |
+| HNK-26.T6 | Tolak atau kedaluwarsa penawaran. Rincian: `BL-D23-03` | Hans #hans (dari Dex, D-38) | 1 | TODO |
+| HNK-26.T7 | Registri `identity_pk` buyer hasil KYC. Rincian: `BL-D26-05` | Hans #hans (dari Dex, D-38) | 1 | TODO |
+| HNK-26.T8 | API `check_buyer` dengan `MinimumStandard`, simpan laporan dan `history_tag`. Rincian: `BL-D26-06` | Hans #hans | 1 | TODO: fungsi `check_buyer` (laporan + tag) sudah ada di `jitsuin-flow` sejak HNK-20.T3; sisa endpoint `POST /node/history/check` dan penyimpanan tag menunggu node (HNK-26.T1) |
 | HNK-26.T9 | Pengaturan policy di konsol: allowlist, standar minimal, tenggang. Rincian: `BL-D26-08` | Hans #hans (dari Dave, D-35) | 2 | TODO |
-| HNK-26.T10 | Persistensi state deal dan dokumen deal di node (lanjut setelah restart). Rincian: `BL-D23-13`, `BL-D1-03` | Hans #hans | 3 | PARSIAL (jitsuinfi-zcash `23be34a` (PR #12, di-merge `1792397`)): snapshot deal `Flow::to_bytes` / `Flow::from_bytes` (format `JTSF` v1, tanpa dependency baru); pemuatan mengecek ulang deal, entri kita, dan segel surat, jadi snapshot rusak atau diedit ditolak. Sisa: penyimpanan di node dan dokumen deal (PDF) di disk node (HNK-26.T1, Dex) |
-| HNK-26.T11 | Penjadwal pelunasan berkala (tenggang dan tanggal dari konfigurasi). Rincian: `BL-D25-03` | Dex #dex | 2 | TODO |
-| HNK-26.T12 | Penjadwal mengingat txid `settled` yang sudah dikirim. Rincian: `BL-D25-06` | Dex #dex | 1 | TODO |
-| HNK-26.T13 | Status pelunasan dan sengketa di konsol, ekspor bukti (klaim buyer + txid). Rincian: `BL-D25-04` | Hans #hans | 2 | PARSIAL (jitsuinfi-zcash `2fd155e` (PR #13, di-merge `bda24bc`)): file bukti pelunasan `settlement::Evidence` (format `JTSE` v1): dokumen pelunasan, klaim buyer bertanda tangan, setiap output pelunasan untuk N (txid, tinggi, nilai, receipt buyer); `Evidence::check` mengecek ulang tanda tangan dan menghitung ulang status (`Claimed` / `Disputed` / `Overdue`). Nilai dan tinggi output tidak bertanda tangan, hanya viewing key financier yang mengonfirmasi. Sisa: kartu status dan unduhan di konsol (HNK-26.T2 – T3, Dex) |
-| HNK-26.T14 | Bukti `DoubleFinanced`: `proof_from_lookup` di node + kartu bukti ganda. Rincian: `BL-D27-02`, `BL-D27-04` | Hans #hans | 2 | PARSIAL (jitsuinfi-zcash `0ee55c6` (PR #11, di-merge `01ecdc3`)): `Flow::double_sign_proof(buyer_signature)` membangun bukti dari `Stopped(DoubleFinanced)` lewat `proof_from_lookup`, tanda tangan buyer dicek dulu; bukti lolos aturan `jitsuin verify` terhadap papan. Sisa: simpan bukti di deal (node, HNK-26.T1/T10) dan kartu unduh di konsol (HNK-26.T2 – T3, Dex) |
-| HNK-26.T15 | Persetujuan operator per deal (assertion passkey) sebelum `Pay`. Rincian: `BL-D24-09` | Dex #dex | 1 | TODO |
-| HNK-26.T16 | Pipeline deal per state dan detail deal di konsol. Rincian: `BL-S03-01`, `BL-D23-08`, `BL-D23-14`, `BL-D27-01` | Dex #dex | 2 | TODO |
-| HNK-26.T17 | Alamat shielded diversified baru per deal dari wallet node. Rincian: `BL-D24-01` | Dex #dex | 1 | TODO |
-| HNK-26.T18 | Kirim bundel JTSB ke buyer dan supplier setelah settled. Rincian: `BL-D25-08` | Dex #dex | 1 | TODO |
-| HNK-26.T19 | Konfigurasi jaringan satu tempat (testnet / mainnet) di web app, node, CLI. Rincian: `BL-D0-04` | Dex #dex | 1 | TODO |
+| HNK-26.T10 | Persistensi state deal dan dokumen deal di node (lanjut setelah restart). Rincian: `BL-D23-13`, `BL-D1-03` | Hans #hans | 3 | PARSIAL (jitsuinfi-zcash `23be34a` (PR #12, di-merge `1792397`)): snapshot deal `Flow::to_bytes` / `Flow::from_bytes` (format `JTSF` v1, tanpa dependency baru); pemuatan mengecek ulang deal, entri kita, dan segel surat, jadi snapshot rusak atau diedit ditolak. Sisa: penyimpanan di node dan dokumen deal (PDF) di disk node (HNK-26.T1) |
+| HNK-26.T11 | Penjadwal pelunasan berkala (tenggang dan tanggal dari konfigurasi). Rincian: `BL-D25-03` | Hans #hans (dari Dex, D-38) | 2 | TODO |
+| HNK-26.T12 | Penjadwal mengingat txid `settled` yang sudah dikirim. Rincian: `BL-D25-06` | Hans #hans (dari Dex, D-38) | 1 | TODO |
+| HNK-26.T13 | Status pelunasan dan sengketa di konsol, ekspor bukti (klaim buyer + txid). Rincian: `BL-D25-04` | Hans #hans | 2 | PARSIAL (jitsuinfi-zcash `2fd155e` (PR #13, di-merge `bda24bc`)): file bukti pelunasan `settlement::Evidence` (format `JTSE` v1): dokumen pelunasan, klaim buyer bertanda tangan, setiap output pelunasan untuk N (txid, tinggi, nilai, receipt buyer); `Evidence::check` mengecek ulang tanda tangan dan menghitung ulang status (`Claimed` / `Disputed` / `Overdue`). Nilai dan tinggi output tidak bertanda tangan, hanya viewing key financier yang mengonfirmasi. Sisa: kartu status dan unduhan di konsol (HNK-26.T2 – T3) |
+| HNK-26.T14 | Bukti `DoubleFinanced`: `proof_from_lookup` di node + kartu bukti ganda. Rincian: `BL-D27-02`, `BL-D27-04` | Hans #hans | 2 | PARSIAL (jitsuinfi-zcash `0ee55c6` (PR #11, di-merge `01ecdc3`)): `Flow::double_sign_proof(buyer_signature)` membangun bukti dari `Stopped(DoubleFinanced)` lewat `proof_from_lookup`, tanda tangan buyer dicek dulu; bukti lolos aturan `jitsuin verify` terhadap papan. Sisa: simpan bukti di deal (node, HNK-26.T1/T10) dan kartu unduh di konsol (HNK-26.T2 – T3) |
+| HNK-26.T15 | Persetujuan operator per deal (assertion passkey) sebelum `Pay`. Rincian: `BL-D24-09` | Hans #hans (dari Dex, D-38) | 1 | TODO |
+| HNK-26.T16 | Pipeline deal per state dan detail deal di konsol. Rincian: `BL-S03-01`, `BL-D23-08`, `BL-D23-14`, `BL-D27-01` | Hans #hans (dari Dex, D-38) | 2 | TODO |
+| HNK-26.T17 | Alamat shielded diversified baru per deal dari wallet node. Rincian: `BL-D24-01` | Hans #hans (dari Dex, D-38) | 1 | TODO |
+| HNK-26.T18 | Kirim bundel JTSB ke buyer dan supplier setelah settled. Rincian: `BL-D25-08` | Hans #hans (dari Dex, D-38) | 1 | TODO |
+| HNK-26.T19 | Konfigurasi jaringan satu tempat (testnet / mainnet) di web app, node, CLI. Rincian: `BL-D0-04` | Hans #hans (dari Dex, D-38) | 1 | TODO |
 
 ### Fase F6
 
@@ -441,16 +449,16 @@ Urutan kerja mengikuti gelombang FD-01: fondasi (HNK-27, HNK-22, HNK-24.T1, HNK-
 
 | Task | Deskripsi | Owner | Jam | Status |
 |---|---|---|---|---|
-| HNK-15.T1 | Merkle sum tree kewajiban | Dex #dex | 3 | TODO |
+| HNK-15.T1 | Merkle sum tree kewajiban | Hans #hans (dari Dex, D-38) | 3 | TODO |
 | HNK-15.T2 | Uji solvabilitas lewat FVK akun operasional (Zcash) | Hans #hans | 3 | DONE (`e54ea36`) |
 | HNK-15.T3 | Halaman verifikasi anggota | Hans #hans (dari Dave, D-35) | 2 | TODO |
 
-**HNK-29 — Alur dana anggota** · Lead Dex #dex · [[AC-HNK-29 - Alur dana anggota|AC]] · Dibuat 2026-10-20 (D-30)
+**HNK-29 — Alur dana anggota** · Lead Hans #hans · [[AC-HNK-29 - Alur dana anggota|AC]] · Dibuat 2026-10-20 (D-30)
 
 | Task | Deskripsi | Owner | Jam | Status |
 |---|---|---|---|---|
-| HNK-29.T1 | Pencatatan setoran di node manajer: id anggota acak, kuitansi ke kotak surat anggota. Rincian: `BL-D29-02` | Dex #dex | 1 | TODO |
-| HNK-29.T2 | Jalur Merkle per periode lewat relay dan verifikasi inklusi terhadap root + total JTLR. Rincian: `BL-D29-04`, `BL-D29-05` | Dex #dex | 1 | TODO |
+| HNK-29.T1 | Pencatatan setoran di node manajer: id anggota acak, kuitansi ke kotak surat anggota. Rincian: `BL-D29-02` | Hans #hans (dari Dex, D-38) | 1 | TODO |
+| HNK-29.T2 | Jalur Merkle per periode lewat relay dan verifikasi inklusi terhadap root + total JTLR. Rincian: `BL-D29-04`, `BL-D29-05` | Hans #hans (dari Dex, D-38) | 1 | TODO |
 | HNK-29.T3 | Batas uji solvabilitas dan kebocoran (nominal setoran, alamat supplier) di halaman anggota; panduan UFVK lewat saluran privat. Rincian: `BL-S05-01`, `BL-D0-06` | Hans #hans (dari Dave, D-35) | 1 | TODO |
 
 ## Status (auto)
@@ -485,4 +493,5 @@ SORT id ASC
 | DEV-19 | 2026-10-20 | D-17 (repo privat sampai menjelang submit) | Semua repo `JitsuinFi` privat | `jitsuinfi-frontend` ditemukan **public** di GitHub saat dicek 2026-10-20 (`jitsuinfi-vault` dan `jitsuinfi-zcash` privat) | Belum diketahui disengaja atau tidak. Perbaikan bila tidak disengaja: Settings → Danger Zone → Change visibility (oleh user). Lihat [[Rencana Akun Server]] | _Menunggu keputusan user_ |
 | DEV-20 | 2026-10-20 | Semua task Dave | Target 40/30/30; task Dave tetap milik Dave, Hans hanya backup (D-25, DEV-11) | Semua task Dave, lead item Dave, SPK Dave, dan owner `BL-…` Dave dipindah ke Hans (D-35) | Keputusan user | **Disetujui user 2026-10-20** ("semua tasks Dave di migrate ke saya aja (Hans)") |
 | DEV-21 | 2026-10-20 | HNK-21 (Dex) | Penyelarasan app ke palet utama dan gaya tanpa kartu bagian dari HNK-21 (Dex) | Hans mengerjakan fondasinya lebih dulu (D-36, D-37; PR #8 di-merge `e0f0a66`): token DS-PAL, gaya iOS dari `09-Design` (lembar kertas, panel kolam, nav pill / tab bar, daftar berkelompok, stepper segel), verdict cap hanko, di `src/style.css` dan `ui.ts` (jitsuinfi-frontend `ba9383a`, PR #8). HNK-21.T1 – T8 tetap milik Dex untuk adegan per layar, ilustrasi, i18n, dan regresi | Permintaan user: palet diselaraskan sekarang | **Disetujui user 2026-10-20** ("Ya, selaraskan sekarang") |
+| DEV-22 | 2026-10-20 | Task backend Dex | Relay, node, snapshot, node dana, API financier milik Dex (D-29, DEV-12) | 26 task dipindah ke Hans (D-38); lead HNK-23, HNK-26, HNK-28, HNK-29 jadi Hans | Keputusan user, supaya app production-ready | **Disetujui user 2026-10-20** ("Pindahin task backend Dex ke saya, mulai relay") |
 | DEV-05 | 2026-10-16 | SPK-04 | [[Rencana Fase]]: SPK-04 spike kritis | SPK-04 tidak lagi kritis; gerbang F0 dihitung tanpa SPK-04 | D-15: Zodl opsional (keputusan user) | **Mengikuti keputusan user 2026-10-16** |

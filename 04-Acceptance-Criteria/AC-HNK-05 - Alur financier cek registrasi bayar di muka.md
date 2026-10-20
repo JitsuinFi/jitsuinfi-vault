@@ -4,7 +4,7 @@ type: ac
 id: HNK-05
 phase: F3
 lead: Hans
-owners: [Hans, Dex]
+owners: [Hans]
 status: PASS
 updated: 2026-10-17
 ---
@@ -15,7 +15,7 @@ updated: 2026-10-17
 
 **Item:** HNK-05 · **Fase:** F3 · **Dependency:** HNK-04
 
-**Lead:** Hans #hans · **Tim:** Hans #hans, Dex #dex 
+**Lead:** Hans #hans · **Tim:** Hans #hans 
 
 ## Deskripsi
 Financier memeriksa papan, mendaftarkan N, menunggu minimal satu konfirmasi, lalu membayar di muka secara shielded ke supplier dengan memo kuitansi.

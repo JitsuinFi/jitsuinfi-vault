@@ -4,7 +4,7 @@ type: es
 id: HNK-15
 phase: F7
 lead: Hans
-owners: [Dex, Hans]
+owners: [Hans]
 status: PARSIAL
 updated: 2026-10-17
 ---
@@ -13,7 +13,7 @@ updated: 2026-10-17
 
 > **Peta link:** [[Exec Summary Hub]] · [[Backlog]] · [[AC-HNK-15 - Stretch JitsuinFi Vault|AC]] · [[TEST-HNK-15 - Stretch JitsuinFi Vault|Test]] · **Exec Summary**
 
-**Lead:** Hans #hans · **Tim:** Dex #dex, Hans #hans 
+**Lead:** Hans #hans · **Tim:** Hans #hans 
 
 ## Apa diubah
 - `jitsuin-core::fund`: catatan piutang `JTN1` dan root kewajiban `JTLR` bertanda tangan manajer; container memo menerima keduanya (`e54ea36`).

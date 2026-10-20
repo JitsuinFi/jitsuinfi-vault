@@ -4,7 +4,7 @@ type: test
 id: HNK-05
 phase: F3
 lead: Hans
-owners: [Hans, Dex]
+owners: [Hans]
 unit: PASS
 integrasi: PASS
 e2e: TODO
@@ -15,7 +15,7 @@ updated: 2026-10-17
 
 > **Peta link:** [[Testing Hub]] · [[Backlog]] · [[AC-HNK-05 - Alur financier cek registrasi bayar di muka|AC]] · **Test** · [[ES-HNK-05 - Alur financier cek registrasi bayar di muka|Exec Summary]]
 
-**Lead:** Hans #hans · **Tim:** Hans #hans, Dex #dex 
+**Lead:** Hans #hans · **Tim:** Hans #hans 
 
 ## 1. Unit
 Logika murni, cepat, tanpa DB dan tanpa chain.

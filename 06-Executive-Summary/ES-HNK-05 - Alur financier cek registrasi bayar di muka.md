@@ -4,7 +4,7 @@ type: es
 id: HNK-05
 phase: F3
 lead: Hans
-owners: [Hans, Dex]
+owners: [Hans]
 status: PARSIAL
 updated: 2026-10-17
 ---
@@ -13,7 +13,7 @@ updated: 2026-10-17
 
 > **Peta link:** [[Exec Summary Hub]] · [[Backlog]] · [[AC-HNK-05 - Alur financier cek registrasi bayar di muka|AC]] · [[TEST-HNK-05 - Alur financier cek registrasi bayar di muka|Test]] · **Exec Summary**
 
-**Lead:** Hans #hans · **Tim:** Hans #hans, Dex #dex 
+**Lead:** Hans #hans · **Tim:** Hans #hans 
 
 ## Apa diubah
 - Crate baru `jitsuin-flow`: state machine financier murni (`Check` → `AwaitSupplierSignature` → `Register` → `AwaitConfirmation` → `Pay` → `Done`, atau `Stopped`) dan driver `Financier` (scan papan, post entri, tunggu konfirmasi, bayar advance).
