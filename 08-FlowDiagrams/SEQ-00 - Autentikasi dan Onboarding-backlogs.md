@@ -1,6 +1,7 @@
 ---
 tags: [flow, backlog]
-status: DRAF
+status: DITETAPKAN
+progress: 0/4 SELESAI
 updated: 2026-10-20
 ---
 
@@ -9,6 +10,8 @@ updated: 2026-10-20
 **Diagram:** [[SEQ-00 - Autentikasi dan Onboarding]] · Task data dan proses: [[DFD-2.1 - Identitas dan Sesi-backlogs]] · Rencana: [[FD-01 - Keputusan Usulan dan Gelombang Kerja]] · [[FD-02 - Penelusuran Business Flow ke Backlog]] · Backlog: [[Backlog]]
 
 Backlog sequence merujuk task di backlog DFD (rumah tetap tiap task, supaya tidak dobel) dan hanya menambah task khusus urutan, layar, dan uji per peran (`BL-S00-xx`).
+
+Kolom Status mengikuti langkah 6 "Audit flow diagram" di [[Workflow Development]]: `TODO` → `DIKERJAKAN` → `AUDIT` (semua task backlog-nya DONE) → `SELESAI (tanggal, bukti)` atau `GAGAL AUDIT (tanggal, alasan)`; `DITUNDA` hanya dengan keputusan user. Antrean audit tampil di setiap `python3 scripts/sync-vault.py` (lewat `scripts/check-backlogs.py`). Backlog ini ditetapkan 2026-10-20 (D-32).
 
 ## Pemetaan per bagian
 
@@ -29,9 +32,9 @@ Backlog sequence merujuk task di backlog DFD (rumah tetap tiap task, supaya tida
 
 ## Task khusus sequence
 
-| ID | Bagian | Task | Selesai bila | Ref | Task backlog | Owner |
-|---|---|---|---|---|---|---|
-| BL-S00-01 | Daftar | Mode demo: browser tanpa WebAuthn atau bukan HTTPS memakai test secret; label "data uji saja" jelas di layar | Mode demo hanya muncul bila passkey tidak tersedia | SEQ-00 catatan | HNK-22.T1 | Dave |
-| BL-S00-02 | Masuk | Kotak masuk per peran: ambil pesan baru setelah masuk dan secara berkala, tampilkan sebagai tindakan yang perlu dikerjakan | Dokumen yang dikirim rekan muncul tanpa muat ulang halaman | C-31 | HNK-22.T6 | Dave |
-| BL-S00-03 | Tambah atau ganti peran | Pilihan peran setelah masuk dan navigasi per peran (menggantikan lima tab simulasi) | Pengguna dengan dua peran berpindah peran tanpa daftar ulang | P-01, HNK-21.T1 | HNK-22.T3 | Dave |
-| BL-S00-04 | Semua | E2E BF-01: daftar, masuk di perangkat kedua, tambah peran, tukar kontak, stempel, pairing konsol | Satu siklus lulus di HNK-17 | HNK-17 | HNK-17.T4 | Dave |
+| ID | Bagian | Task | Selesai bila | Ref | Task backlog | Owner | Status |
+|---|---|---|---|---|---|---|---|
+| BL-S00-01 | Daftar | Mode demo: browser tanpa WebAuthn atau bukan HTTPS memakai test secret; label "data uji saja" jelas di layar | Mode demo hanya muncul bila passkey tidak tersedia | SEQ-00 catatan | HNK-22.T1 | Dave | TODO |
+| BL-S00-02 | Masuk | Kotak masuk per peran: ambil pesan baru setelah masuk dan secara berkala, tampilkan sebagai tindakan yang perlu dikerjakan | Dokumen yang dikirim rekan muncul tanpa muat ulang halaman | C-31 | HNK-22.T6 | Dave | TODO |
+| BL-S00-03 | Tambah atau ganti peran | Pilihan peran setelah masuk dan navigasi per peran (menggantikan lima tab simulasi) | Pengguna dengan dua peran berpindah peran tanpa daftar ulang | P-01, HNK-21.T1 | HNK-22.T3 | Dave | TODO |
+| BL-S00-04 | Semua | E2E BF-01: daftar, masuk di perangkat kedua, tambah peran, tukar kontak, stempel, pairing konsol | Satu siklus lulus di HNK-17 | HNK-17 | HNK-17.T4 | Dave | TODO |

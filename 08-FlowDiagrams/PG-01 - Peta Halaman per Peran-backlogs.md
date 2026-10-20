@@ -1,6 +1,7 @@
 ---
 tags: [flow, backlog]
-status: DRAF
+status: DITETAPKAN
+progress: 0/3 SELESAI
 updated: 2026-10-20
 ---
 
@@ -9,6 +10,8 @@ updated: 2026-10-20
 **Diagram:** [[PG-01 - Peta Halaman per Peran]] · Rencana: [[FD-01 - Keputusan Usulan dan Gelombang Kerja]] · [[FD-02 - Penelusuran Business Flow ke Backlog]] · Backlog: [[Backlog]] · Polish: [[AC-HNK-21 - Polish halaman internal web app|HNK-21]]
 
 Satu baris per halaman di peta. Kolom Task merujuk backlog DFD dan SEQ; halaman tanpa task baru ditandai "polish" (HNK-21).
+
+Kolom Status mengikuti langkah 6 "Audit flow diagram" di [[Workflow Development]]: `TODO` → `DIKERJAKAN` → `AUDIT` (semua task backlog-nya DONE) → `SELESAI (tanggal, bukti)` atau `GAGAL AUDIT (tanggal, alasan)`; `DITUNDA` hanya dengan keputusan user. Antrean audit tampil di setiap `python3 scripts/sync-vault.py` (lewat `scripts/check-backlogs.py`). Backlog ini ditetapkan 2026-10-20 (D-32).
 
 ## Halaman
 
@@ -50,8 +53,8 @@ Satu baris per halaman di peta. Kolom Task merujuk backlog DFD dan SEQ; halaman 
 
 ## Task khusus peta halaman
 
-| ID | Task | Selesai bila | Ref | Task backlog | Owner |
-|---|---|---|---|---|---|
-| BL-PG-01 | Router `app.html` per peran: halaman publik tanpa akun, halaman peran hanya setelah masuk; konsol financier tidak ada lagi di jitsuinfi.vercel.app | Tab simulasi Financier hilang dari web app; peran tanpa sesi diarahkan ke Masuk | P-11, HNK-21.T1 | HNK-22.T3, HNK-23.T6 | Dave |
-| BL-PG-02 | i18n EN/中文, responsif 390 px, a11y, reduced motion untuk semua halaman baru | Semua halaman lolos cek HNK-21.T7 | HNK-21.T7 | HNK-21.T7 | Dex |
-| BL-PG-03 | Regresi siklus `TES-` setelah halaman diganti, deploy ulang Vercel (setelah persetujuan) | Siklus lulus sebelum dan sesudah | HNK-21.T8 | HNK-21.T8 | Dex |
+| ID | Task | Selesai bila | Ref | Task backlog | Owner | Status |
+|---|---|---|---|---|---|---|
+| BL-PG-01 | Router `app.html` per peran: halaman publik tanpa akun, halaman peran hanya setelah masuk; konsol financier tidak ada lagi di jitsuinfi.vercel.app | Tab simulasi Financier hilang dari web app; peran tanpa sesi diarahkan ke Masuk | P-11, HNK-21.T1 | HNK-22.T3, HNK-23.T6 | Dave | TODO |
+| BL-PG-02 | i18n EN/中文, responsif 390 px, a11y, reduced motion untuk semua halaman baru | Semua halaman lolos cek HNK-21.T7 | HNK-21.T7 | HNK-21.T7 | Dex | TODO |
+| BL-PG-03 | Regresi siklus `TES-` setelah halaman diganti, deploy ulang Vercel (setelah persetujuan) | Siklus lulus sebelum dan sesudah | HNK-21.T8 | HNK-21.T8 | Dex | TODO |

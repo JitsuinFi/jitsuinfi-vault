@@ -1,6 +1,7 @@
 ---
 tags: [flow, backlog]
-status: DRAF
+status: DITETAPKAN
+progress: 0/3 SELESAI
 updated: 2026-10-20
 ---
 
@@ -9,6 +10,8 @@ updated: 2026-10-20
 **Diagram:** [[SEQ-02 - Buyer]] · Rencana: [[FD-01 - Keputusan Usulan dan Gelombang Kerja]] · [[FD-02 - Penelusuran Business Flow ke Backlog]] · Backlog: [[Backlog]]
 
 Aturan sama dengan [[SEQ-00 - Autentikasi dan Onboarding-backlogs]]: merujuk task backlog DFD, menambah task khusus sequence `BL-S02-xx`.
+
+Kolom Status mengikuti langkah 6 "Audit flow diagram" di [[Workflow Development]]: `TODO` → `DIKERJAKAN` → `AUDIT` (semua task backlog-nya DONE) → `SELESAI (tanggal, bukti)` atau `GAGAL AUDIT (tanggal, alasan)`; `DITUNDA` hanya dengan keputusan user. Antrean audit tampil di setiap `python3 scripts/sync-vault.py` (lewat `scripts/check-backlogs.py`). Backlog ini ditetapkan 2026-10-20 (D-32).
 
 ## Pemetaan per bagian
 
@@ -31,8 +34,8 @@ Aturan sama dengan [[SEQ-00 - Autentikasi dan Onboarding-backlogs]]: merujuk tas
 
 ## Task khusus sequence
 
-| ID | Bagian | Task | Selesai bila | Ref | Task backlog | Owner |
-|---|---|---|---|---|---|---|
-| BL-S02-01 | Semua | Kotak masuk buyer: invoice untuk ditandatangani, permintaan riwayat, surat untuk disegel, tagihan jatuh tempo | Setiap tindakan buyer dimulai dari kotak masuk | C-31, PG-01 | HNK-22.T6 | Dave |
-| BL-S02-02 | 4 – 5 | Setelah s1, layar buyer menunggu s2 dan baru menawarkan QR saat surat `Sealed` | Tombol QR tidak aktif sebelum s2 tiba | BL-D25-01 | HNK-25.T4 | Dave |
-| BL-S02-03 | Semua | E2E peran buyer: tanda tangan, riwayat, segel, bayar, status | Satu siklus `TES-` lulus di HNK-17 | HNK-17 | HNK-17.T4 | Dave |
+| ID | Bagian | Task | Selesai bila | Ref | Task backlog | Owner | Status |
+|---|---|---|---|---|---|---|---|
+| BL-S02-01 | Semua | Kotak masuk buyer: invoice untuk ditandatangani, permintaan riwayat, surat untuk disegel, tagihan jatuh tempo | Setiap tindakan buyer dimulai dari kotak masuk | C-31, PG-01 | HNK-22.T6 | Dave | TODO |
+| BL-S02-02 | 4 – 5 | Setelah s1, layar buyer menunggu s2 dan baru menawarkan QR saat surat `Sealed` | Tombol QR tidak aktif sebelum s2 tiba | BL-D25-01 | HNK-25.T4 | Dave | TODO |
+| BL-S02-03 | Semua | E2E peran buyer: tanda tangan, riwayat, segel, bayar, status | Satu siklus `TES-` lulus di HNK-17 | HNK-17 | HNK-17.T4 | Dave | TODO |

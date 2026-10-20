@@ -1,6 +1,7 @@
 ---
 tags: [flow, backlog]
-status: DRAF
+status: DITETAPKAN
+progress: 0/3 SELESAI
 updated: 2026-10-20
 ---
 
@@ -9,6 +10,8 @@ updated: 2026-10-20
 **Diagram:** [[SEQ-01 - Supplier]] · Rencana: [[FD-01 - Keputusan Usulan dan Gelombang Kerja]] · [[FD-02 - Penelusuran Business Flow ke Backlog]] · Backlog: [[Backlog]]
 
 Aturan sama dengan [[SEQ-00 - Autentikasi dan Onboarding-backlogs]]: merujuk task backlog DFD, menambah task khusus sequence `BL-S01-xx`.
+
+Kolom Status mengikuti langkah 6 "Audit flow diagram" di [[Workflow Development]]: `TODO` → `DIKERJAKAN` → `AUDIT` (semua task backlog-nya DONE) → `SELESAI (tanggal, bukti)` atau `GAGAL AUDIT (tanggal, alasan)`; `DITUNDA` hanya dengan keputusan user. Antrean audit tampil di setiap `python3 scripts/sync-vault.py` (lewat `scripts/check-backlogs.py`). Backlog ini ditetapkan 2026-10-20 (D-32).
 
 ## Pemetaan per bagian
 
@@ -34,8 +37,8 @@ Aturan sama dengan [[SEQ-00 - Autentikasi dan Onboarding-backlogs]]: merujuk tas
 
 ## Task khusus sequence
 
-| ID | Bagian | Task | Selesai bila | Ref | Task backlog | Owner |
-|---|---|---|---|---|---|---|
-| BL-S01-01 | Semua | Halaman "Daftar deal" supplier: satu timeline per N (tanda tangan buyer, penawaran, entri, surat, advance, pelunasan) dari dokumen deal lokal | Supplier melihat langkah berikutnya untuk tiap deal | C-32 | HNK-24.T9 | Dave |
-| BL-S01-02 | 3 – 5 | Urutan pesan supplier mengikuti SEQ-03: pembuka komitmen dan surat dulu, permintaan entri setelah cek papan | Layar tidak meminta entri sebelum permintaan dari financier tiba | SEQ-03 | HNK-24.T9 | Dave |
-| BL-S01-03 | Semua | E2E peran supplier: invoice sampai advance dan status pelunasan lewat relay | Satu siklus `TES-` lulus di HNK-17 | HNK-17 | HNK-17.T4 | Dave |
+| ID | Bagian | Task | Selesai bila | Ref | Task backlog | Owner | Status |
+|---|---|---|---|---|---|---|---|
+| BL-S01-01 | Semua | Halaman "Daftar deal" supplier: satu timeline per N (tanda tangan buyer, penawaran, entri, surat, advance, pelunasan) dari dokumen deal lokal | Supplier melihat langkah berikutnya untuk tiap deal | C-32 | HNK-24.T9 | Dave | TODO |
+| BL-S01-02 | 3 – 5 | Urutan pesan supplier mengikuti SEQ-03: pembuka komitmen dan surat dulu, permintaan entri setelah cek papan | Layar tidak meminta entri sebelum permintaan dari financier tiba | SEQ-03 | HNK-24.T9 | Dave | TODO |
+| BL-S01-03 | Semua | E2E peran supplier: invoice sampai advance dan status pelunasan lewat relay | Satu siklus `TES-` lulus di HNK-17 | HNK-17 | HNK-17.T4 | Dave | TODO |

@@ -1,6 +1,7 @@
 ---
 tags: [flow, backlog]
-status: DRAF
+status: DITETAPKAN
+progress: 0/3 SELESAI
 updated: 2026-10-20
 ---
 
@@ -9,6 +10,8 @@ updated: 2026-10-20
 **Diagram:** [[SEQ-03 - Financier]] · Rencana: [[FD-01 - Keputusan Usulan dan Gelombang Kerja]] · [[FD-02 - Penelusuran Business Flow ke Backlog]] · Backlog: [[Backlog]]
 
 Aturan sama dengan [[SEQ-00 - Autentikasi dan Onboarding-backlogs]]: merujuk task backlog DFD, menambah task khusus sequence `BL-S03-xx`.
+
+Kolom Status mengikuti langkah 6 "Audit flow diagram" di [[Workflow Development]]: `TODO` → `DIKERJAKAN` → `AUDIT` (semua task backlog-nya DONE) → `SELESAI (tanggal, bukti)` atau `GAGAL AUDIT (tanggal, alasan)`; `DITUNDA` hanya dengan keputusan user. Antrean audit tampil di setiap `python3 scripts/sync-vault.py` (lewat `scripts/check-backlogs.py`). Backlog ini ditetapkan 2026-10-20 (D-32).
 
 ## Pemetaan per bagian
 
@@ -34,11 +37,11 @@ Aturan sama dengan [[SEQ-00 - Autentikasi dan Onboarding-backlogs]]: merujuk tas
 
 ## Task khusus sequence
 
-| ID | Bagian | Task | Selesai bila | Ref | Task backlog | Owner |
-|---|---|---|---|---|---|---|
-| BL-S03-01 | Semua | Pipeline deal di konsol (daftar deal per state `Flow`) dan detail deal (papan, entri, surat, advance, pelunasan) dengan tombol aksi per state | Operator menjalankan satu deal dari penawaran sampai settled hanya dari konsol | C-33, HNK-05.T4 | HNK-26.T16 | Dex |
-| BL-S03-02 | Semua | Daftar endpoint API node (`/node/mail`, `/node/deals`, `/node/deals/N/commitment`, `/node/history/check`, `/node/deals/N/seals`, `/node/pairing`, `/node/session`) dengan format request dan response | Daftar ada di repo dan cocok dengan implementasi HNK-05.T3 | HNK-05.T3 | HNK-05.T3 | Dex |
-| BL-S03-03 | Semua | E2E peran financier di testnet lewat konsol: penawaran sampai settled, satu kasus `AlreadyFinanced`, satu `DoubleFinanced` | Tiga kasus lulus di HNK-17 | HNK-17 | HNK-17.T4 | Dave |
+| ID | Bagian | Task | Selesai bila | Ref | Task backlog | Owner | Status |
+|---|---|---|---|---|---|---|---|
+| BL-S03-01 | Semua | Pipeline deal di konsol (daftar deal per state `Flow`) dan detail deal (papan, entri, surat, advance, pelunasan) dengan tombol aksi per state | Operator menjalankan satu deal dari penawaran sampai settled hanya dari konsol | C-33, HNK-05.T4 | HNK-26.T16 | Dex | TODO |
+| BL-S03-02 | Semua | Daftar endpoint API node (`/node/mail`, `/node/deals`, `/node/deals/N/commitment`, `/node/history/check`, `/node/deals/N/seals`, `/node/pairing`, `/node/session`) dengan format request dan response | Daftar ada di repo dan cocok dengan implementasi HNK-05.T3 | HNK-05.T3 | HNK-05.T3 | Dex | TODO |
+| BL-S03-03 | Semua | E2E peran financier di testnet lewat konsol: penawaran sampai settled, satu kasus `AlreadyFinanced`, satu `DoubleFinanced` | Tiga kasus lulus di HNK-17 | HNK-17 | HNK-17.T4 | Dave | TODO |
 
 ## Roadmap
 

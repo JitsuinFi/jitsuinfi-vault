@@ -7,6 +7,7 @@ Port and adaptation of ObsidianGuides/_assets/scripts/sync-vault.ps1 for this pr
   2. Create a stub Module Guide for any module folder that lacks one (existing guides are
      never overwritten).
   3. Run the link check (target: Broken: 0).
+  4. Show the audit queue of the per-diagram backlogs (scripts/check-backlogs.py, workflow step 6).
 Run whenever you add documents/modules:
     python3 scripts/sync-vault.py
 """
@@ -107,6 +108,14 @@ def main():
         created += 1
     if created == 0:
         print("OK  All modules already have a guide.")
+
+    print("")
+    print("--- backlog audit (08-FlowDiagrams/*-backlogs.md) ---")
+    spec = importlib.util.spec_from_file_location(
+        "check_backlogs", str(Path(__file__).resolve().parent / "check-backlogs.py"))
+    cb = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(cb)
+    cb.check()
 
     print("")
     print("--- link check ---")

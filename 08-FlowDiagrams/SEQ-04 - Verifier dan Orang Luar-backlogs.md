@@ -1,6 +1,7 @@
 ---
 tags: [flow, backlog]
-status: DRAF
+status: DITETAPKAN
+progress: 0/1 SELESAI
 updated: 2026-10-20
 ---
 
@@ -9,6 +10,8 @@ updated: 2026-10-20
 **Diagram:** [[SEQ-04 - Verifier dan Orang Luar]] · Rencana: [[FD-01 - Keputusan Usulan dan Gelombang Kerja]] · [[FD-02 - Penelusuran Business Flow ke Backlog]] · Backlog: [[Backlog]]
 
 Aturan sama dengan [[SEQ-00 - Autentikasi dan Onboarding-backlogs]]: merujuk task backlog DFD, menambah task khusus sequence `BL-S04-xx`.
+
+Kolom Status mengikuti langkah 6 "Audit flow diagram" di [[Workflow Development]]: `TODO` → `DIKERJAKAN` → `AUDIT` (semua task backlog-nya DONE) → `SELESAI (tanggal, bukti)` atau `GAGAL AUDIT (tanggal, alasan)`; `DITUNDA` hanya dengan keputusan user. Antrean audit tampil di setiap `python3 scripts/sync-vault.py` (lewat `scripts/check-backlogs.py`). Backlog ini ditetapkan 2026-10-20 (D-32).
 
 ## Pemetaan per bagian
 
@@ -26,6 +29,6 @@ Aturan sama dengan [[SEQ-00 - Autentikasi dan Onboarding-backlogs]]: merujuk tas
 
 ## Task khusus sequence
 
-| ID | Bagian | Task | Selesai bila | Ref | Task backlog | Owner |
-|---|---|---|---|---|---|---|
-| BL-S04-01 | A – D | Juri menjalankan alur A sampai D dari mesin bersih dengan README saja, hasil web dan CLI sama untuk bundel dan bukti contoh | Kasus lulus di TEST-HNK-09 | BL-D28-08 | HNK-17.T4 | Dave |
+| ID | Bagian | Task | Selesai bila | Ref | Task backlog | Owner | Status |
+|---|---|---|---|---|---|---|---|
+| BL-S04-01 | A – D | Juri menjalankan alur A sampai D dari mesin bersih dengan README saja, hasil web dan CLI sama untuk bundel dan bukti contoh | Kasus lulus di TEST-HNK-09 | BL-D28-08 | HNK-17.T4 | Dave | TODO |

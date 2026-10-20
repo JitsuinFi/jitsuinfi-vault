@@ -1,6 +1,6 @@
 ---
 tags: [flow, planning]
-status: DRAF
+status: DITETAPKAN
 updated: 2026-10-20
 ---
 

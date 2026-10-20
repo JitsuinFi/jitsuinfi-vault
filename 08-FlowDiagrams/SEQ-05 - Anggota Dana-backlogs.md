@@ -1,6 +1,7 @@
 ---
 tags: [flow, backlog]
-status: DRAF
+status: DITETAPKAN
+progress: 0/2 SELESAI
 updated: 2026-10-20
 ---
 
@@ -9,6 +10,8 @@ updated: 2026-10-20
 **Diagram:** [[SEQ-05 - Anggota Dana]] · Rencana: [[FD-01 - Keputusan Usulan dan Gelombang Kerja]] · [[FD-02 - Penelusuran Business Flow ke Backlog]] · Backlog: [[Backlog]] · Item: [[AC-HNK-15 - Stretch JitsuinFi Vault|HNK-15]]
 
 Aturan sama dengan [[SEQ-00 - Autentikasi dan Onboarding-backlogs]]: merujuk task backlog DFD, menambah task khusus sequence `BL-S05-xx`.
+
+Kolom Status mengikuti langkah 6 "Audit flow diagram" di [[Workflow Development]]: `TODO` → `DIKERJAKAN` → `AUDIT` (semua task backlog-nya DONE) → `SELESAI (tanggal, bukti)` atau `GAGAL AUDIT (tanggal, alasan)`; `DITUNDA` hanya dengan keputusan user. Antrean audit tampil di setiap `python3 scripts/sync-vault.py` (lewat `scripts/check-backlogs.py`). Backlog ini ditetapkan 2026-10-20 (D-32).
 
 ## Pemetaan per bagian
 
@@ -23,7 +26,7 @@ Aturan sama dengan [[SEQ-00 - Autentikasi dan Onboarding-backlogs]]: merujuk tas
 
 ## Task khusus sequence
 
-| ID | Bagian | Task | Selesai bila | Ref | Task backlog | Owner |
-|---|---|---|---|---|---|---|
-| BL-S05-01 | Pendahuluan | Catat batas uji solvabilitas (sisi aset dinyatakan manajer) dan kebocoran nominal setoran + alamat supplier di halaman anggota dan submission | Halaman anggota menampilkan batas ini | SEQ-05 | HNK-29.T3 | Dave |
-| BL-S05-02 | Semua | E2E anggota: setor, terima kuitansi, root, jalur Merkle, verdict solvent dan inklusi | Kasus lulus di TEST-HNK-15 | BL-D29-08 | HNK-17.T4 | Dave |
+| ID | Bagian | Task | Selesai bila | Ref | Task backlog | Owner | Status |
+|---|---|---|---|---|---|---|---|
+| BL-S05-01 | Pendahuluan | Catat batas uji solvabilitas (sisi aset dinyatakan manajer) dan kebocoran nominal setoran + alamat supplier di halaman anggota dan submission | Halaman anggota menampilkan batas ini | SEQ-05 | HNK-29.T3 | Dave | TODO |
+| BL-S05-02 | Semua | E2E anggota: setor, terima kuitansi, root, jalur Merkle, verdict solvent dan inklusi | Kasus lulus di TEST-HNK-15 | BL-D29-08 | HNK-17.T4 | Dave | TODO |
