@@ -37,8 +37,8 @@ Skrip vs DB/chain sungguhan. Semua artefak memakai prefix `TES-` (invoice, akun,
 ## 3. E2E
 Panduan langkah demi langkah untuk user.
 
-- [ ] Buka halaman indeks dan cocokkan dengan hasil `jitsuin index`.
+- [x] Buka halaman indeks dan cocokkan dengan hasil `jitsuin index`.
 
 | Langkah | Hasil diharapkan | Hasil aktual | Status |
 |---|---|---|---|
-| 1 | _TODO_ | — | TODO |
+| 1 | Buka `app.html#/index`, pilih snapshot papan, tekan Show index; cocokkan dengan `jitsuin index --board` file yang sama | 2026-10-20, build produksi lokal: papan contoh `examples/index/board-sample.json`: "2 of 5 tenor classes published", 31-60 hari 9 invoice median 2-3% (2-3%: 6, other: 3), 61-90 hari 5 invoice median 3-5%, sisanya "fewer than 5 invoices", sama baris per baris dengan `expected-output.txt`; k = 6: 1 kelas; k = 2 dinaikkan ke 5. Papan testnet: 6 invoice, tidak ada kelas, sama dengan `expected-index.txt`. Mobile 375 px: tanpa scroll horizontal | PASS |
