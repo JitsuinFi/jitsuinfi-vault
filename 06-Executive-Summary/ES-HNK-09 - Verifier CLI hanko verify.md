@@ -6,7 +6,7 @@ phase: F4
 lead: Dex
 owners: [Dex, Dave]
 status: PARSIAL
-updated: 2026-10-19
+updated: 2026-10-20
 ---
 
 # ES-HNK-09 - Verifier CLI hanko verify
@@ -20,6 +20,7 @@ updated: 2026-10-19
 - `jitsuin-wallet`: `Devtool::init_fvk` (wallet view-only; scan pertama wajib `--birthday` supaya tidak mulai dari ujung chain).
 - `Dockerfile` (zcash-devtool `b532d4c` + `jitsuin`, runtime Debian slim, non-root) dan `.dockerignore` (tanpa wallet/key).
 - Workflow `verifier-image.yml`: `docker build` tanpa cache di runner bersih (waktu dicatat), contoh di dalam container harus sama dengan `expected-output.txt`, langkah scan papan sungguhan aktif bila variabel `BOARD_UFVK` diisi.
+- 2026-10-20: filter `paths` di `verifier-image.yml` (pull_request dan push) ditambah `crates/jitsuin-flow/**` dan `examples/testnet/**`. Semua crate yang dipakai `jitsuin-cli` (`cargo tree -p jitsuin-cli -e normal`: board, core, flow, wallet) kini memicu job; sebelumnya PR #11 (hanya `jitsuin-flow`) lolos tanpa build image.
 - `examples/verify/`: papan, bukti, dan bundel contoh (sintetis, txid `a1a1…`) + output yang diharapkan.
 - README "Verify the board": perintah Docker dan `cargo install`.
 
@@ -39,6 +40,6 @@ updated: 2026-10-19
 - Urutan tx dalam blok berasal dari lightwalletd (sama dengan HNK-04); juri yang curiga bisa memakai `--lightwalletd` lain.
 
 ## Bukti
-- Commit: `0bdd311` (jitsuinfi-zcash PR #4, branch `dex/hnk-09-verify`)
+- Commit: `0bdd311` (jitsuinfi-zcash PR #4, branch `dex/hnk-09-verify`); filter `paths`: `c5cb50c` (branch `hans/ci-verifier-image-paths`, lokal, menunggu izin push)
 - ID tes: U-HNK-09.1 PASS, U-HNK-09.2 PASS, I-HNK-09.1 BLOCKED (UFVK papan)
 - Persetujuan user untuk push/deploy: push branch + PR atas izin Dex; di-review dan di-merge Hans 2026-10-19 (`8859598`)
