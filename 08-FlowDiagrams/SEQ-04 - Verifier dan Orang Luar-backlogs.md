@@ -26,6 +26,6 @@ Aturan sama dengan [[SEQ-00 - Autentikasi dan Onboarding-backlogs]]: merujuk tas
 
 ## Task khusus sequence
 
-| ID | Bagian | Task | Selesai bila | Ref | Calon item | Kandidat |
+| ID | Bagian | Task | Selesai bila | Ref | Task backlog | Owner |
 |---|---|---|---|---|---|---|
-| BL-S04-01 | A – D | Juri menjalankan alur A sampai D dari mesin bersih dengan README saja, hasil web dan CLI sama untuk bundel dan bukti contoh | Kasus lulus di TEST-HNK-09 | BL-D28-08 | HNK-17 | Dave |
+| BL-S04-01 | A – D | Juri menjalankan alur A sampai D dari mesin bersih dengan README saja, hasil web dan CLI sama untuk bundel dan bukti contoh | Kasus lulus di TEST-HNK-09 | BL-D28-08 | HNK-17.T4 | Dave |

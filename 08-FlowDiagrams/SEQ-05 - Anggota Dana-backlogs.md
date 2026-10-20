@@ -23,7 +23,7 @@ Aturan sama dengan [[SEQ-00 - Autentikasi dan Onboarding-backlogs]]: merujuk tas
 
 ## Task khusus sequence
 
-| ID | Bagian | Task | Selesai bila | Ref | Calon item | Kandidat |
+| ID | Bagian | Task | Selesai bila | Ref | Task backlog | Owner |
 |---|---|---|---|---|---|---|
-| BL-S05-01 | Pendahuluan | Catat batas uji solvabilitas (sisi aset dinyatakan manajer) dan kebocoran nominal setoran + alamat supplier di halaman anggota dan submission | Halaman anggota menampilkan batas ini | SEQ-05 | HNK-29 | Dave |
-| BL-S05-02 | Semua | E2E anggota: setor, terima kuitansi, root, jalur Merkle, verdict solvent dan inklusi | Kasus lulus di TEST-HNK-15 | BL-D29-08 | HNK-17 | Dave |
+| BL-S05-01 | Pendahuluan | Catat batas uji solvabilitas (sisi aset dinyatakan manajer) dan kebocoran nominal setoran + alamat supplier di halaman anggota dan submission | Halaman anggota menampilkan batas ini | SEQ-05 | HNK-29.T3 | Dave |
+| BL-S05-02 | Semua | E2E anggota: setor, terima kuitansi, root, jalur Merkle, verdict solvent dan inklusi | Kasus lulus di TEST-HNK-15 | BL-D29-08 | HNK-17.T4 | Dave |

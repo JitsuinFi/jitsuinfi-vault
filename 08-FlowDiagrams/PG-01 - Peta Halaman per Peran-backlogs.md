@@ -50,8 +50,8 @@ Satu baris per halaman di peta. Kolom Task merujuk backlog DFD dan SEQ; halaman 
 
 ## Task khusus peta halaman
 
-| ID | Task | Selesai bila | Ref | Calon item | Kandidat |
+| ID | Task | Selesai bila | Ref | Task backlog | Owner |
 |---|---|---|---|---|---|
-| BL-PG-01 | Router `app.html` per peran: halaman publik tanpa akun, halaman peran hanya setelah masuk; konsol financier tidak ada lagi di jitsuinfi.vercel.app | Tab simulasi Financier hilang dari web app; peran tanpa sesi diarahkan ke Masuk | P-11, HNK-21.T1 | HNK-22 | Dave |
-| BL-PG-02 | i18n EN/中文, responsif 390 px, a11y, reduced motion untuk semua halaman baru | Semua halaman lolos cek HNK-21.T7 | HNK-21.T7 | HNK-21 | Dex |
-| BL-PG-03 | Regresi siklus `TES-` setelah halaman diganti, deploy ulang Vercel (setelah persetujuan) | Siklus lulus sebelum dan sesudah | HNK-21.T8 | HNK-21 | Dex |
+| BL-PG-01 | Router `app.html` per peran: halaman publik tanpa akun, halaman peran hanya setelah masuk; konsol financier tidak ada lagi di jitsuinfi.vercel.app | Tab simulasi Financier hilang dari web app; peran tanpa sesi diarahkan ke Masuk | P-11, HNK-21.T1 | HNK-22.T3, HNK-23.T6 | Dave |
+| BL-PG-02 | i18n EN/中文, responsif 390 px, a11y, reduced motion untuk semua halaman baru | Semua halaman lolos cek HNK-21.T7 | HNK-21.T7 | HNK-21.T7 | Dex |
+| BL-PG-03 | Regresi siklus `TES-` setelah halaman diganti, deploy ulang Vercel (setelah persetujuan) | Siklus lulus sebelum dan sesudah | HNK-21.T8 | HNK-21.T8 | Dex |

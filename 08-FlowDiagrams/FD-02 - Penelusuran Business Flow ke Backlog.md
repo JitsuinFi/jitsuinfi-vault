@@ -226,6 +226,8 @@ Celah yang dekat dengan kode Hans (skema pesan, penyimpanan terenkripsi, `check_
 
 ## Calon item backlog
 
+**Dibuat 2026-10-20 (D-30)** sebagai HNK-22 – HNK-29 di [[Backlog]]. Pembagian final berbeda sedikit dari kandidat di bawah supaya porsi tetap 40/30/30 (antara lain P-09 dan `rateIndex` ke Hans, alamat per deal di node ke Dex); owner final ada di kolom Owner tiap file `-backlogs`.
+
 Pengelompokan per business flow. Task lama yang sudah ada tetap di itemnya; kolom "Isi" menyebut apa yang ditarik ke item baru.
 
 | Calon | Judul | Isi | Pemilik utama |

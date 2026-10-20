@@ -12,14 +12,14 @@ Task untuk proses 7.1 – 7.5. Aturan kolom sama dengan [[DFD-2.1 - Identitas da
 
 ## Task
 
-| ID | Elemen | Task | Selesai bila | Ref | Calon item | Kandidat |
+| ID | Elemen | Task | Selesai bila | Ref | Task backlog | Owner |
 |---|---|---|---|---|---|---|
-| BL-D27-01 | 7.1, F7.01 – F7.02 | Konsol menampilkan `Stopped(AlreadyFinanced)` dan `Stopped(DoubleFinanced)` dan menutup deal | Deal berhenti tampil sebagai "dihentikan, tanpa transaksi" | HNK-05.T4 | HNK-26 | Dex |
-| BL-D27-02 | 7.2, F7.03, F7.05 | Node memanggil `proof_from_lookup` saat `Stopped(DoubleFinanced)` dan menyimpan bukti di deal | Bukti tersimpan dan lolos `jitsuin verify` | C-23 | HNK-26 | Hans |
-| BL-D27-03 | 7.3, F7.06 – F7.07 | `doubleSignProof` di `jitsuin-wasm` menerima posisi papan | Bukti dari wasm dengan posisi lolos `jitsuin verify` | K-3 | HNK-27 | Hans |
-| BL-D27-04 | 7.3, 7.5 | Kartu "Bukti ganda" di konsol: tampilkan dan unduh bukti untuk pihak berwenang | Operator mengunduh bukti dari konsol | C-23 | HNK-26 | Hans |
-| BL-D27-05 | 7.4, F7.08 – F7.10 | `verifyProofOnBoard(proof, snapshot)` di `jitsuin-wasm`; layar Verify memakai snapshot dan tidak lagi menulis posisi yang hanya diklaim sebagai fakta | Bukti tanpa posisi entri pertama FAIL di web, sama dengan CLI | K-8 | HNK-28 | Hans |
-| BL-D27-06 | Uji | Integrasi testnet: dua financier mendaftarkan N yang sama, bukti dari `proof_from_lookup` diverifikasi CLI dan web | Kasus tercatat di TEST-HNK-07 (I-HNK-07.x) | HNK-07.T4 | HNK-17 | Dex |
+| BL-D27-01 | 7.1, F7.01 – F7.02 | Konsol menampilkan `Stopped(AlreadyFinanced)` dan `Stopped(DoubleFinanced)` dan menutup deal | Deal berhenti tampil sebagai "dihentikan, tanpa transaksi" | HNK-05.T4 | HNK-26.T16 | Dex |
+| BL-D27-02 | 7.2, F7.03, F7.05 | Node memanggil `proof_from_lookup` saat `Stopped(DoubleFinanced)` dan menyimpan bukti di deal | Bukti tersimpan dan lolos `jitsuin verify` | C-23 | HNK-26.T14 | Hans |
+| BL-D27-03 | 7.3, F7.06 – F7.07 | `doubleSignProof` di `jitsuin-wasm` menerima posisi papan | Bukti dari wasm dengan posisi lolos `jitsuin verify` | K-3 | HNK-27.T4 | Hans |
+| BL-D27-04 | 7.3, 7.5 | Kartu "Bukti ganda" di konsol: tampilkan dan unduh bukti untuk pihak berwenang | Operator mengunduh bukti dari konsol | C-23 | HNK-26.T14 | Hans |
+| BL-D27-05 | 7.4, F7.08 – F7.10 | `verifyProofOnBoard(proof, snapshot)` di `jitsuin-wasm`; layar Verify memakai snapshot dan tidak lagi menulis posisi yang hanya diklaim sebagai fakta | Bukti tanpa posisi entri pertama FAIL di web, sama dengan CLI | K-8 | HNK-28.T2 | Hans |
+| BL-D27-06 | Uji | Integrasi testnet: dua financier mendaftarkan N yang sama, bukti dari `proof_from_lookup` diverifikasi CLI dan web | Kasus tercatat di TEST-HNK-07 (I-HNK-07.x) | HNK-07.T4 | HNK-07.T4 | Dex |
 
 ## Sudah ada (tanpa task baru)
 

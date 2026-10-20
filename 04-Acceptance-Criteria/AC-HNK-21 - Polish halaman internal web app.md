@@ -3,8 +3,8 @@ tags: [ac, "HNK-21"]
 type: ac
 id: HNK-21
 phase: F5
-lead: Hans
-owners: [Hans]
+lead: Dex
+owners: [Dex, Dave]
 status: TODO
 updated: 2026-10-19
 ---
@@ -13,7 +13,7 @@ updated: 2026-10-19
 
 > **Peta link:** [[AC Hub]] · [[Backlog]] · **AC** · [[TEST-HNK-21 - Polish halaman internal web app|Test]] · [[ES-HNK-21 - Polish halaman internal web app|Exec Summary]]
 
-**Lead:** Hans #hans · **Tim:** Hans #hans (kandidat dialihkan ke Dex #dex, D-26)
+**Lead:** Dex #dex · **Tim:** Dex #dex, Dave #dave (T9) · Dipindah dari Hans 2026-10-20 (D-29, DEV-12)
 
 **Item:** HNK-21 · **Fase:** F5 · **Dependency:** HNK-10, HNK-18.T4
 

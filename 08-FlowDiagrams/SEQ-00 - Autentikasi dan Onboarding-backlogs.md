@@ -29,9 +29,9 @@ Backlog sequence merujuk task di backlog DFD (rumah tetap tiap task, supaya tida
 
 ## Task khusus sequence
 
-| ID | Bagian | Task | Selesai bila | Ref | Calon item | Kandidat |
+| ID | Bagian | Task | Selesai bila | Ref | Task backlog | Owner |
 |---|---|---|---|---|---|---|
-| BL-S00-01 | Daftar | Mode demo: browser tanpa WebAuthn atau bukan HTTPS memakai test secret; label "data uji saja" jelas di layar | Mode demo hanya muncul bila passkey tidak tersedia | SEQ-00 catatan | HNK-22 | Dave |
-| BL-S00-02 | Masuk | Kotak masuk per peran: ambil pesan baru setelah masuk dan secara berkala, tampilkan sebagai tindakan yang perlu dikerjakan | Dokumen yang dikirim rekan muncul tanpa muat ulang halaman | C-31 | HNK-22 | Dave |
-| BL-S00-03 | Tambah atau ganti peran | Pilihan peran setelah masuk dan navigasi per peran (menggantikan lima tab simulasi) | Pengguna dengan dua peran berpindah peran tanpa daftar ulang | P-01, HNK-21.T1 | HNK-22 | Dave |
-| BL-S00-04 | Semua | E2E BF-01: daftar, masuk di perangkat kedua, tambah peran, tukar kontak, stempel, pairing konsol | Satu siklus lulus di HNK-17 | HNK-17 | HNK-17 | Dave |
+| BL-S00-01 | Daftar | Mode demo: browser tanpa WebAuthn atau bukan HTTPS memakai test secret; label "data uji saja" jelas di layar | Mode demo hanya muncul bila passkey tidak tersedia | SEQ-00 catatan | HNK-22.T1 | Dave |
+| BL-S00-02 | Masuk | Kotak masuk per peran: ambil pesan baru setelah masuk dan secara berkala, tampilkan sebagai tindakan yang perlu dikerjakan | Dokumen yang dikirim rekan muncul tanpa muat ulang halaman | C-31 | HNK-22.T6 | Dave |
+| BL-S00-03 | Tambah atau ganti peran | Pilihan peran setelah masuk dan navigasi per peran (menggantikan lima tab simulasi) | Pengguna dengan dua peran berpindah peran tanpa daftar ulang | P-01, HNK-21.T1 | HNK-22.T3 | Dave |
+| BL-S00-04 | Semua | E2E BF-01: daftar, masuk di perangkat kedua, tambah peran, tukar kontak, stempel, pairing konsol | Satu siklus lulus di HNK-17 | HNK-17 | HNK-17.T4 | Dave |
