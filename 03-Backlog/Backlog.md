@@ -340,9 +340,9 @@ Urutan kerja mengikuti gelombang FD-01: fondasi (HNK-27, HNK-22, HNK-24.T1, HNK-
 |---|---|---|---|---|
 | HNK-23.T1 | Skema pesan relay (jenis, versi, pengirim, batas ukuran PDF) dan tinjau ulang baris relay di [[Threat Model]]. Rincian: `BL-D1-01`, `BL-D22-05`, `BL-D0-08` | Hans #hans | 2 | TODO |
 | HNK-23.T2 | X25519 + AEAD dan `mailbox_id` = BLAKE2b(`mailbox_pk`) di `jitsuin-wasm` (dependensi disetujui Hans dulu). Rincian: `BL-D21-07` | Dex #dex | 2 | TODO |
-| HNK-23.T3 | Skeleton backend API (dari HNK-10.T4). Rincian: `BL-D0-01` | Dex #dex | 3 (dari HNK-10.T4) | TODO |
-| HNK-23.T4 | Endpoint kotak surat: daftar `mailbox_pk` + bukti kepemilikan, baca dengan challenge terenkripsi, masa simpan. Rincian: `BL-D21-08`, `BL-D21-09` | Dex #dex | 3 | TODO |
-| HNK-23.T5 | Deploy Railway + header CSP (dari HNK-10.T5, setelah persetujuan user). Rincian: `BL-D0-01` | Dex #dex | 2 (dari HNK-10.T5) | TODO |
+| HNK-23.T3 | Skeleton backend API (dari HNK-10.T4). Basis data: Postgres Supabase (D-33). Rincian: `BL-D0-01` | Dex #dex | 3 (dari HNK-10.T4) | TODO |
+| HNK-23.T4 | Endpoint kotak surat: daftar `mailbox_pk` + bukti kepemilikan, baca dengan challenge terenkripsi, masa simpan. Disimpan di Postgres Supabase (D-33). Rincian: `BL-D21-08`, `BL-D21-09` | Dex #dex | 3 | TODO |
+| HNK-23.T5 | Deploy Railway + header CSP (dari HNK-10.T5, setelah persetujuan user). Variabel lingkungan Supabase hanya di Railway (D-33). Rincian: `BL-D0-01` | Dex #dex | 2 (dari HNK-10.T5) | TODO |
 | HNK-23.T6 | Rewrite Vercel `/api/*` ke relay, CSP tetap `connect-src 'self'`; konsol financier di origin node. Rincian: `BL-PG-01` | Dave #dave | 2 | TODO |
 | HNK-23.T7 | Dokumen deal di web app lewat relay: invoice + PDF syarat, tanda tangan buyer, seal, sertifikat atau tag. Rincian: `BL-D22-05`, `BL-D22-08`, `BL-D26-04` | Dex #dex | 3 | TODO |
 | HNK-23.T8 | Pesan dari node bertanda tangan `financier_pk`: pembuka komitmen, surat + PDF surat, permintaan riwayat, s2, txid. Rincian: `BL-D23-06`, `BL-D24-03`, `BL-D24-11`, `BL-D26-01` | Dex #dex | 2 | TODO |
