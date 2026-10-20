@@ -26,7 +26,7 @@ Status per kriteria: `TODO` / `PASS` / `FAIL` / `BLOCKED`, wajib dengan tanggal 
 | ID | Kriteria | Status | Tanggal | Bukti |
 |---|---|---|---|---|
 | AC-HNK-25.1 | Buyer tidak mengetik `k`; relay yang menghapus sertifikat terakhir terdeteksi. | PASS | 2026-10-20 | `88af897`, `0e59952`: kolom `k` dihapus; sertifikat terakhir yang hilang dari tempat penyimpanan (perangkat sekarang, relay nanti) terdeteksi lewat tag penerus di papan dan penerbitan diblokir (U-HNK-25.1, I-HNK-25.2) |
-| AC-HNK-25.2 | Hash PDF atau key yang salah memunculkan peringatan sebelum tanda tangan. | PASS (lokal) | 2026-10-20 | `cc9abb1` (PR #11); U-HNK-25.3, I-HNK-25.3: PDF lain dan key lain ditolak dengan peringatan, tombol tanda tangan tetap mati |
+| AC-HNK-25.2 | Hash PDF atau key yang salah memunculkan peringatan sebelum tanda tangan. | PASS | 2026-10-20 | `cc9abb1` (PR #11, di-merge `dd63246`); U-HNK-25.3, I-HNK-25.3: PDF lain dan key lain ditolak dengan peringatan, tombol tanda tangan tetap mati |
 | AC-HNK-25.3 | Surat tanpa s2 atau surat palsu tidak menghasilkan QR. | TODO | — | — |
 | AC-HNK-25.4 | Satu pembayaran QR tertambang dan menjadi `Settled`, statusnya terlihat di layar buyer dan supplier. | TODO | — | — |
 | AC-HNK-25.5 | Riwayat sendiri tampil tanpa unggah file. | TODO | — | — |
