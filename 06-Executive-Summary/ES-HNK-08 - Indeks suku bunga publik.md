@@ -28,7 +28,7 @@ updated: 2026-10-19
 | Ambang k | dicatat | k = 5 (`index::K`), bisa dinaikkan, tidak bisa diturunkan |
 
 ## Status
-**PARSIAL** — T1 dan T2 sudah di `main` (`61ca636`). PR #5 sempat ditumpuk di branch PR #4, jadi saat di-merge isinya masuk ke branch itu, bukan ke `main`; Hans memindahkannya ke `main` lewat PR #6 (19 Okt). AC 08.1–08.3 PASS. Sisa: halaman web (T3, Hans, dari Dave, D-35), uji papan sungguhan (I-HNK-08.1), web/wasm harus menandatangani kelas sungguhan.
+**PARSIAL** — T1 dan T2 sudah di `main` (`61ca636`). PR #5 sempat ditumpuk di branch PR #4, jadi saat di-merge isinya masuk ke branch itu, bukan ke `main`; Hans memindahkannya ke `main` lewat PR #6 (19 Okt). AC 08.1–08.3 PASS. Halaman web (T3) di-merge (PR #7 `8b83506`). Sisa: uji papan sungguhan (I-HNK-08.1), web/wasm harus menandatangani kelas sungguhan.
 
 ## Risiko tersisa
 - Orang luar tidak bisa mengecek tanda tangan supplier: entri griefing yang lebih dulu menentukan kelas N itu, dan N palsu ikut terhitung. Setiap posting butuh fee; pemegang bundel bisa mengecek dealnya sendiri.
