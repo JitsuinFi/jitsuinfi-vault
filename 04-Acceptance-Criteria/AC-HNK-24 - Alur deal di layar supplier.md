@@ -33,4 +33,4 @@ Status per kriteria: `TODO` / `PASS` / `FAIL` / `BLOCKED`, wajib dengan tanggal 
 
 ## Deviasi
 - DEV-15: T2 dan T4 – T9 milik Dave dikerjakan Hans sebagai backup (disetujui user).
-- DEV-16: BL-D22-07 dan BL-D1-02 dipetakan ulang ke HNK-25.T1 (penyimpanan di layar buyer); menunggu persetujuan user. Lihat [[Backlog]] Log Deviasi.
+- DEV-16: BL-D22-07 dan BL-D1-02 dipetakan ulang ke HNK-25.T1 (penyimpanan di layar buyer); disetujui user 2026-10-20. Lihat [[Backlog]] Log Deviasi.
