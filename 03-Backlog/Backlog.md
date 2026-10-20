@@ -229,16 +229,16 @@ Urutan kerja mengikuti gelombang FD-01: fondasi (HNK-27, HNK-22, HNK-24.T1, HNK-
 
 | Task | Deskripsi | Owner | Jam | Status |
 |---|---|---|---|---|
-| HNK-27.T1 | Salt komitmen dari library (CSPRNG), disimpan per (invoice, financier), dipakai ulang saat retry. Rincian: `BL-D23-04` | Hans #hans | 1 | DONE (`748d451`, jitsuinfi-zcash PR #7) |
-| HNK-27.T2 | Kelas: `classes_for` di 3.2, parameter kelas di API entri wasm, cek di `check_entry`. Rincian: `BL-D23-05` | Hans #hans | 3 | PARSIAL (`d5f98d0`, `59cd762`, jitsuinfi-zcash PR #7): kode selesai; bukti indeks berkelas I-HNK-27.1 menunggu HNK-24.T6 dan HNK-26 (GAGAL AUDIT BL-D23-05, 2026-10-20) |
-| HNK-27.T3 | `assignmentDecode` di `jitsuin-wasm`. Rincian: `BL-D24-04` | Hans #hans | 1 | DONE (`948133a`, jitsuinfi-zcash PR #7) |
-| HNK-27.T4 | `doubleSignProof` di wasm menerima posisi papan. Rincian: `BL-D27-03` | Hans #hans | 1 | DONE (`14803af`, jitsuinfi-zcash PR #7) |
-| HNK-27.T5 | `register()`: terima `BoardChecked` di `Register`, cari entri terkirim sebelum posting ulang. Rincian: `BL-D23-12` | Hans #hans | 3 | DONE (`fef1d15`, jitsuinfi-zcash PR #7) |
-| HNK-27.T6 | Hitung ulang konfirmasi entri yang ditambang ulang; `Done` setelah advance terkonfirmasi. Rincian: `BL-D24-08`, `BL-D24-10` | Hans #hans | 2 | DONE (`b6f33d5`, jitsuinfi-zcash PR #7) |
-| HNK-27.T7 | Bandingkan advance yang diterima dengan advance yang disepakati. Rincian: `BL-D24-12` | Hans #hans | 1 | DONE (`a10185f`, jitsuinfi-zcash PR #7) |
-| HNK-27.T8 | Varian entri bertag yang hanya menerima `history_tag`. Rincian: `BL-D23-10` | Hans #hans | 1 | DONE (`8897517`, jitsuinfi-zcash PR #7) |
-| HNK-27.T9 | API `jitsuin-wasm` menerima key sebagai byte. Rincian: `BL-D21-13` | Hans #hans | 1 | DONE (`1ac7057`, jitsuinfi-zcash PR #7) |
-| HNK-27.T10 | Perintah CLI solvabilitas anggota; `SolvencyPolicy.grace_days` dihapus atau dipakai. Rincian: `BL-D29-06` | Hans #hans | 1 | DONE (`9826b09`, jitsuinfi-zcash PR #7) |
+| HNK-27.T1 | Salt komitmen dari library (CSPRNG), disimpan per (invoice, financier), dipakai ulang saat retry. Rincian: `BL-D23-04` | Hans #hans | 1 | DONE (`748d451`, jitsuinfi-zcash PR #7, di-merge `69807f3`) |
+| HNK-27.T2 | Kelas: `classes_for` di 3.2, parameter kelas di API entri wasm, cek di `check_entry`. Rincian: `BL-D23-05` | Hans #hans | 3 | PARSIAL (`d5f98d0`, `59cd762`, jitsuinfi-zcash PR #7, di-merge `69807f3`): kode selesai; bukti indeks berkelas I-HNK-27.1 menunggu HNK-24.T6 dan HNK-26 (GAGAL AUDIT BL-D23-05, 2026-10-20) |
+| HNK-27.T3 | `assignmentDecode` di `jitsuin-wasm`. Rincian: `BL-D24-04` | Hans #hans | 1 | DONE (`948133a`, jitsuinfi-zcash PR #7, di-merge `69807f3`) |
+| HNK-27.T4 | `doubleSignProof` di wasm menerima posisi papan. Rincian: `BL-D27-03` | Hans #hans | 1 | DONE (`14803af`, jitsuinfi-zcash PR #7, di-merge `69807f3`) |
+| HNK-27.T5 | `register()`: terima `BoardChecked` di `Register`, cari entri terkirim sebelum posting ulang. Rincian: `BL-D23-12` | Hans #hans | 3 | DONE (`fef1d15`, jitsuinfi-zcash PR #7, di-merge `69807f3`) |
+| HNK-27.T6 | Hitung ulang konfirmasi entri yang ditambang ulang; `Done` setelah advance terkonfirmasi. Rincian: `BL-D24-08`, `BL-D24-10` | Hans #hans | 2 | DONE (`b6f33d5`, jitsuinfi-zcash PR #7, di-merge `69807f3`) |
+| HNK-27.T7 | Bandingkan advance yang diterima dengan advance yang disepakati. Rincian: `BL-D24-12` | Hans #hans | 1 | DONE (`a10185f`, jitsuinfi-zcash PR #7, di-merge `69807f3`) |
+| HNK-27.T8 | Varian entri bertag yang hanya menerima `history_tag`. Rincian: `BL-D23-10` | Hans #hans | 1 | DONE (`8897517`, jitsuinfi-zcash PR #7, di-merge `69807f3`) |
+| HNK-27.T9 | API `jitsuin-wasm` menerima key sebagai byte. Rincian: `BL-D21-13` | Hans #hans | 1 | DONE (`1ac7057`, jitsuinfi-zcash PR #7, di-merge `69807f3`) |
+| HNK-27.T10 | Perintah CLI solvabilitas anggota; `SolvencyPolicy.grace_days` dihapus atau dipakai. Rincian: `BL-D29-06` | Hans #hans | 1 | DONE (`9826b09`, jitsuinfi-zcash PR #7, di-merge `69807f3`) |
 
 ### Fase F4
 

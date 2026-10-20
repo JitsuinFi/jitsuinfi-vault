@@ -43,4 +43,4 @@ Kompatibilitas: semua parameter baru di wasm opsional, jadi landing page tetap j
 ## Bukti
 - Commit: `748d451`, `d5f98d0`, `59cd762`, `948133a`, `14803af`, `fef1d15`, `b6f33d5`, `a10185f`, `8897517`, `1ac7057`, `9826b09` (branch `hans/hnk-27-protocol-fixes`, [JitsuinFi/jitsuinfi-zcash#7](https://github.com/JitsuinFi/jitsuinfi-zcash/pull/7))
 - ID tes: U-HNK-27.1 – U-HNK-27.11 PASS; I-HNK-27.1 – .3 TODO
-- Persetujuan user untuk push/deploy: push branch + PR disetujui 2026-10-20 ("gas push dan buka PR"); merge menunggu CI dan review
+- Persetujuan user untuk push/deploy: push branch + PR disetujui 2026-10-20 ("gas push dan buka PR"); di-merge 2026-10-20 setelah CI hijau (merge commit `69807f3`)
