@@ -5,7 +5,7 @@ id: HNK-24
 phase: F5
 lead: Dave
 owners: [Hans, Dave]
-status: TODO
+status: PARSIAL
 updated: 2026-10-20
 ---
 
@@ -25,11 +25,12 @@ Status per kriteria: `TODO` / `PASS` / `FAIL` / `BLOCKED`, wajib dengan tanggal 
 
 | ID | Kriteria | Status | Tanggal | Bukti |
 |---|---|---|---|---|
-| AC-HNK-24.1 | Supplier menyelesaikan satu deal `TES-` dari invoice sampai advance tanpa salin-tempel. | TODO | — | — |
-| AC-HNK-24.2 | Tidak ada unduhan secret; master + input yang sama memberi key per invoice yang sama (test vector). | TODO | 2026-10-20 | Turunan key dan vector PASS (`a252568`, U-HNK-24.1). Sisa: layar tanpa unduhan secret (HNK-24.T2) |
-| AC-HNK-24.3 | Deal masih ada setelah tab ditutup dan dibuka lagi. | TODO | 2026-10-20 | Store terenkripsi PASS (`c7d4b1b`, U-HNK-24.3, I-HNK-24.2: bertahan setelah reload). Sisa: layar supplier menyimpan deal ke store (HNK-24.T4 – T9) |
-| AC-HNK-24.4 | Isi surat (alamat bayar, `financier_pk`, `terms_hash`) tampil dan PDF surat dicek sebelum segel. | TODO | — | — |
-| AC-HNK-24.5 | Timeline menunjukkan langkah berikutnya untuk tiap deal. | TODO | — | — |
+| AC-HNK-24.1 | Supplier menyelesaikan satu deal `TES-` dari invoice sampai advance tanpa salin-tempel. | TODO | 2026-10-20 | Seluruh alur jalan dengan salin-tempel (I-HNK-24.3); tanpa salin-tempel menunggu relay HNK-23 |
+| AC-HNK-24.2 | Tidak ada unduhan secret; master + input yang sama memberi key per invoice yang sama (test vector). | PASS | 2026-10-20 | Vector (`a252568`, U-HNK-24.1); layar tanpa unduhan secret dan menolak nomor invoice ganda (`17a01ea`, I-HNK-24.3) |
+| AC-HNK-24.3 | Deal masih ada setelah tab ditutup dan dibuka lagi. | PASS | 2026-10-20 | `c7d4b1b`, `17a01ea`: deal tersimpan, terbaca lagi setelah reload dan unlock ulang; passkey lain melihat 0 deal (I-HNK-24.3) |
+| AC-HNK-24.4 | Isi surat (alamat bayar, `financier_pk`, `terms_hash`) tampil dan PDF surat dicek sebelum segel. | PASS | 2026-10-20 | `17a01ea`, I-HNK-24.3 |
+| AC-HNK-24.5 | Timeline menunjukkan langkah berikutnya untuk tiap deal. | PASS | 2026-10-20 | `17a01ea`, U-HNK-24.4, I-HNK-24.3 |
 
 ## Deviasi
-_Kosong._ Kalau implementasi menyimpang dari keputusan, tulis di sini **dan** di [[Backlog]] bagian Log Deviasi. Tidak ada perubahan diam-diam.
+- DEV-15: T2 dan T4 – T9 milik Dave dikerjakan Hans sebagai backup (disetujui user).
+- DEV-16: BL-D22-07 dan BL-D1-02 dipetakan ulang ke HNK-25.T1 (penyimpanan di layar buyer); menunggu persetujuan user. Lihat [[Backlog]] Log Deviasi.

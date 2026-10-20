@@ -472,7 +472,7 @@ f_F114 --> D7_9
 | D1 | Papan registry | 1 dan 2 | ADA |
 | D2 | Node financier (wallet, key, watch-only papan) | 1 dan 2 | ADA (zcash-devtool di node) |
 | D3 | Key sesi (memori tab) | 1 dan 2 | ADA (buyer) |
-| D4 | Dokumen deal (salinan tiap pihak) | 1 dan 2 | PARSIAL: memori / file pengguna; store terenkripsi di perangkat ADA (HNK-24.T3), layar belum memakainya |
+| D4 | Dokumen deal (salinan tiap pihak) | 1 dan 2 | PARSIAL: memori / file pengguna; store terenkripsi di perangkat ADA (HNK-24.T3), dipakai layar supplier (HNK-24); layar buyer belum (HNK-25) |
 | D5 | Allowlist dan policy | 2 (lokal 6.0) | ADA (struktur `HistoryPolicy`) |
 | D6 | Akun dana (operasional) | 1 dan 2 | ADA (memo di chain) |
 | D7 | Kotak surat terenkripsi | 1 dan 2 | USULAN P-04 |

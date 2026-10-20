@@ -64,12 +64,12 @@ a1 -down- a2
 a2 -down- a3
 a3 -down- a4
 a4 -down- a5
-rectangle "Daftar deal\n(timeline per N)" <<new>> as s1
+rectangle "Daftar deal\n(timeline per N)" <<have>> as s1
 rectangle "Invoice baru" <<have>> as s2
-rectangle "Tawarkan ke\nfinancier" <<new>> as s3
-rectangle "Tanda tangani\nentri papan" <<new>> as s4
+rectangle "Tawarkan ke\nfinancier" <<have>> as s3
+rectangle "Tanda tangani\nentri papan" <<have>> as s4
 rectangle "Segel surat" <<have>> as s5
-rectangle "Advance diterima\n(Sign-to-Pay)" <<new>> as s6
+rectangle "Advance diterima\n(Sign-to-Pay)" <<have>> as s6
 SUP -down- s1
 s1 -down- s2
 s2 -down- s3
@@ -124,10 +124,10 @@ m1 -down- m2
 | Publik | Orang luar (`/app.html#/outsider`) | Tabel publik vs tersembunyi, uraian memo | SEQ-04 | ADA |
 | Publik | Indeks bunga (`/app.html#/index`) | Kelas tenor × kelas diskon, k = 5; butuh export wasm `rateIndex` | SEQ-04 | USULAN (HNK-08.T3) |
 | Akun | Daftar, Masuk, Tambah/ganti peran, Kunci sesi, Kartu kontak | Satu passkey per orang, salt per peran, kotak surat; untuk supplier, buyer, anggota dana (financier lewat pairing node) | [[SEQ-00 - Autentikasi dan Onboarding]] | USULAN (P-01 – P-04, P-07) |
-| Supplier | Daftar deal | Satu timeline per N: tanda tangan buyer, penawaran, entri, surat, advance, pelunasan | [[SEQ-01 - Supplier]] | USULAN |
-| Supplier | Invoice baru | Key per invoice (P-03), file syarat, kirim ke buyer | SEQ-01 | ADA (simulasi) |
-| Supplier | Tawarkan, Tanda tangani entri | Pilih financier dari kontak, tanda tangani entri untuk komitmennya | SEQ-01 | USULAN (wasm ADA) |
-| Supplier | Segel surat, Advance diterima | Seal supplier, isi surat (P-13); status advance. Verifikasi Sign-to-Pay yang kuat berjalan di CLI lokal supplier, bukan di halaman ini | SEQ-01 | ADA (segel) / USULAN (isi surat, advance) |
+| Supplier | Daftar deal | Satu timeline per N: tanda tangan buyer, penawaran, entri, surat, advance (pelunasan menyusul) | [[SEQ-01 - Supplier]] | ADA (HNK-24.T9, tersimpan terenkripsi) |
+| Supplier | Invoice baru | Unlock passkey supplier, key per invoice dari master (P-03), file syarat, kirim ke buyer | SEQ-01 | ADA (HNK-24.T2; kirim lewat salin-tempel) |
+| Supplier | Tawarkan, Tanda tangani entri | Financier dari key yang ditempel (kontak menyusul, HNK-22), tanda tangani entri untuk komitmennya | SEQ-01 | ADA (HNK-24.T5 – T6; salin-tempel sampai relay) |
+| Supplier | Segel surat, Advance diterima | Seal supplier dengan isi surat dan cek PDF (P-13); status advance. Verifikasi Sign-to-Pay yang kuat berjalan di CLI lokal supplier, bukan di halaman ini | SEQ-01 | ADA (HNK-24.T7 – T8) |
 | Buyer | Kotak masuk | Invoice untuk ditandatangani, surat untuk disegel, tagihan jatuh tempo, permintaan riwayat | [[SEQ-02 - Buyer]] | USULAN |
 | Buyer | Tanda tangani invoice, Segel surat, Bayar | Tanda tangan, seal, QR; cek hash file (HNK-21) dan isi surat (P-13) belum ada; QR hanya untuk surat `Sealed` (USULAN) | SEQ-02 | ADA (simulasi, sebagian) |
 | Buyer | Sertifikat riwayat | Terbitkan sertifikat (nomor `k` masih diketik) | SEQ-02 | ADA (simulasi) |

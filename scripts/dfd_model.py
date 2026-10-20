@@ -24,7 +24,7 @@ D = {
     "D1": ("Papan registry", 0, "ADA"),
     "D2": ("Node financier\\n(wallet, key,\\nwatch-only papan)", 0, "ADA (zcash-devtool di node)"),
     "D3": ("Key sesi\\n(memori tab)", 0, "ADA (buyer)"),
-    "D4": ("Dokumen deal\\n(salinan tiap pihak)", 0, "PARSIAL: memori / file pengguna; store terenkripsi di perangkat ADA (HNK-24.T3), layar belum memakainya"),
+    "D4": ("Dokumen deal\\n(salinan tiap pihak)", 0, "PARSIAL: memori / file pengguna; store terenkripsi di perangkat ADA (HNK-24.T3), dipakai layar supplier (HNK-24); layar buyer belum (HNK-25)"),
     "D5": ("Allowlist\\ndan policy", 0, "ADA (struktur `HistoryPolicy`)"),
     "D6": ("Akun dana\\n(operasional)", 0, "ADA (memo di chain)"),
     "D7": ("Kotak surat\\nterenkripsi", 1, "USULAN P-04"),
@@ -144,13 +144,13 @@ L2[2] = dict(
     ],
     ptable=[
         ("2.1 Bagikan key invoice", "Buyer memberi `invoice_pk(k)` untuk invoice berikutnya ke supplier", "ADA (salin) / USULAN (relay)", "wasm `buyerKeys`"),
-        ("2.2 Siapkan key per invoice", "Key = keyed BLAKE2b(master supplier, personalisasi `JitsuinSupplKey_`, `invoice` ‖ panjang ‖ `invoice_id` ‖ `buyer_pk`); `buyer_pk` = `invoice_pk(k)` dari buyer (2.1), jadi `invoice_id` yang sama untuk buyer lain memberi key lain; tidak ada backup plaintext. Sekarang layar masih memakai 32 byte acak + unduh JSON (TM #10); `invoice_id` dipakai ulang ditolak di layar", "PARSIAL: turunan key ADA di core dan wasm (HNK-24.T1); layar USULAN (HNK-24.T2)", "`SupplierMaster::invoice_key`, wasm `supplierInvoiceSecretBytes`"),
+        ("2.2 Siapkan key per invoice", "Key = keyed BLAKE2b(master supplier, personalisasi `JitsuinSupplKey_`, `invoice` ‖ panjang ‖ `invoice_id` ‖ `buyer_pk`); `buyer_pk` = `invoice_pk(k)` dari buyer (2.1), jadi `invoice_id` yang sama untuk buyer lain memberi key lain; tidak ada backup plaintext. Layar supplier membuka master dengan passkey supplier (atau test secret untuk demo), tanpa unduhan secret; `invoice_id` yang sudah dipakai di perangkat ditolak", "ADA (HNK-24.T1 – T2)", "`SupplierMaster::invoice_key`, wasm `supplierInvoiceSecretBytes`"),
         ("2.3 Hash file syarat", "SHA-256 file di browser; file tidak diunggah ke server", "ADA", "wasm `documentHash`"),
         ("2.4 Susun invoice kanonik dan N", "Nominal diisi dalam ZEC lalu dikonversi ke zat; JTSI dengan dekoder ketat; N = BLAKE2b-256(\"JitsuinNullifier\", byte kanonik)", "ADA", "wasm `invoiceEncode`, `invoiceDecode`"),
         ("2.5 Kirim invoice ke buyer", "Invoice + PDF syarat lewat kotak surat buyer; sekarang salin-tempel dan PDF dikirim di luar sistem", "USULAN", "P-04"),
         ("2.6 Periksa invoice", "Decode dan tampilkan; hash PDF syarat dibandingkan dengan `terms_hash`", "PARSIAL: decode ADA; input file dan cek hash belum ada di layar Buyer", "wasm `invoiceDecode`, `documentHash`"),
         ("2.7 Tanda tangani invoice", "Ed25519 atas byte kanonik dengan key invoice buyer; wasm menolak invoice yang `buyer_pk`-nya bukan `invoice_pk(k)`", "ADA", "wasm `buyerSignInvoice`"),
-        ("2.8 Cek tanda tangan buyer", "`bundleBuild` memeriksa tanda tangan (`verify_strict`) dan gagal bila tidak valid", "PARSIAL: fungsi ADA; kartu cek di layar Supplier belum ada", "wasm `bundleBuild`"),
+        ("2.8 Cek tanda tangan buyer", "`bundleBuild` memeriksa tanda tangan (`verify_strict`) dan gagal bila tidak valid", "ADA (kartu di layar Supplier, HNK-24.T4)", "wasm `bundleBuild`"),
     ],
 )
 
@@ -189,12 +189,12 @@ L2[3] = dict(
         ("P9", "D11@9", "AwaitAssignment\\n/ Stopped", "state deal"), ("P9", "D4@9", "entri\\nterkonfirmasi", "deal, komitmen, entri"),
     ],
     ptable=[
-        ("3.1 Terima penawaran", "Supplier mengirim invoice + tanda tangan buyer + alamat advance; financier menetapkan advance dan `min_confirmations` ≥ 1; tanda tangan buyer diperiksa (`bundleBuild`) sebelum deal disimpan, karena `Deal` dan `Flow` sendiri tidak memeriksanya", "USULAN (alur relay); `Deal` ADA", "`financier::Deal`, P-04"),
+        ("3.1 Terima penawaran", "Supplier mengirim invoice + tanda tangan buyer + alamat advance; financier menetapkan advance dan `min_confirmations` ≥ 1; tanda tangan buyer diperiksa (`bundleBuild`) sebelum deal disimpan, karena `Deal` dan `Flow` sendiri tidak memeriksanya", "USULAN (alur relay); `Deal` ADA; kode penawaran salin-tempel dari layar Supplier ADA (HNK-24.T5)", "`financier::Deal`, P-04"),
         ("3.2 Buat komitmen dan kelas", "`financier_commitment = BLAKE2b(financier_pk ‖ salt)`; salt diturunkan dari key financier dan N (`commitment_opening`, DEV-14), jadi retry memberi komitmen yang sama; kelas dari `deal_classes(invoice, advance, tanggal advance)` (0/0 bila tidak cocok kelas mana pun), `check_entry` menolak kelas yang berbeda", "PARSIAL: core, flow, wasm ADA (HNK-27.T1 – T2); API node yang memanggilnya USULAN (HNK-26)", "`commitment_opening`, `deal_classes`, wasm `financierCommitment`"),
         ("3.3 Mulai alur deal", "`Flow::new` memeriksa `min_confirmations` ≥ 1, advance > 0, alamat tidak kosong, dan surat milik invoice (`assignment.verify(&invoice, &[])`)", "ADA", "`Flow::new`"),
         ("3.4 Pindai papan", "`sync`, `enhance`, `list_tx` wallet watch-only di node; `block_txids` per tinggi; `collect`, urut (tinggi, indeks tx, indeks output). Dipanggil ulang setiap pengecekan; tx yang belum tertambang dilewati", "ADA", "`jitsuin_board::scan`"),
         ("3.5 Lookup N", "Entri valid pertama menang; tanda tangan tidak valid diabaikan; komitmen sendiri: lanjut ke `AwaitConfirmation`/`AwaitAssignment`; komitmen lain: `AlreadyFinanced`; lebih dari satu komitmen: `DoubleFinanced`", "ADA", "`lookup`, `Flow::on_board`"),
-        ("3.6 Tanda tangani entri", "Entri `0x01` atau `0x03` dengan key per invoice supplier dan kelas dari financier; `0x03` dari sertifikat k atau cukup `history_tag` 32 byte (supplier tidak perlu sertifikat k)", "PARSIAL (wasm ADA, HNK-27.T2 dan T8; layar belum)", "wasm `supplierRegisterEntry`, `supplierRegisterHistoryEntry`, `supplierRegisterTaggedEntry`"),
+        ("3.6 Tanda tangani entri", "Entri `0x01` atau `0x03` dengan key per invoice supplier dan kelas dari financier; `0x03` dari sertifikat k atau cukup `history_tag` 32 byte (supplier tidak perlu sertifikat k)", "ADA: wasm (HNK-27.T2, T8) dan kartu di layar Supplier (HNK-24.T6); pembuka komitmen datang lewat salin-tempel sampai relay ada", "wasm `supplierRegisterEntry`, `supplierRegisterHistoryEntry`, `supplierRegisterTaggedEntry`"),
         ("3.7 Periksa entri", "Jenis register, N, komitmen, tag riwayat (bila deal punya tag; entri bertag tetap diterima bila deal tanpa tag), kelas, tanda tangan supplier. Ditolak: `EntryMismatch`, state tetap. Kode tidak menyimpan entri yang ditawarkan setelah `Register`", "ADA (penyimpanan entri untuk bukti USULAN P-14)", "`Flow::check_entry`"),
         ("3.8 Posting entri", "10 000 zat ke alamat papan + fee ZIP-317. Tepat sebelum posting papan dicek sekali lagi (`BoardChecked` diterima di `Register`: konflik = `Stopped`, entri sendiri yang sudah tertambang diikuti), lalu `sent_entry` mencari entri yang sudah terkirim supaya crash tidak membuat posting ganda", "ADA (HNK-27.T5)", "`Financier::register`, `sent_entry`"),
         ("3.9 Tunggu konfirmasi", "Ulangi 3.4 + lookup sampai konfirmasi ≥ minimum; entri hilang saat scan kembali ke `AwaitConfirmation`; konflik baru `Stopped`; `Error::Timeout`", "ADA", "`wait_for_confirmation`"),
@@ -240,13 +240,13 @@ L2[4] = dict(
     ],
     ptable=[
         ("4.1 Buat surat pengalihan", "JTSA: N, nominal, jatuh tempo, `financier_pk`, alamat bayar (target: alamat diversified baru per deal dari wallet node), `terms_hash` PDF surat; dibuat sebelum 3.3. Surat tidak bertanda tangan sampai s2, jadi pesan relay perlu autentikasi pengirim (P-04)", "ADA", "wasm `assignmentEncode`"),
-        ("4.2 Segel supplier", "Seal langkah 0. Nominal dan jatuh tempo dipaksa sama dengan invoice; alamat bayar, `financier_pk`, `terms_hash` dibaca dengan `assignmentDecode`", "PARSIAL: `assignmentDecode` ADA (HNK-27.T3); layar belum menampilkannya (HNK-24.T7)", "wasm `supplierSealAssignment`, `assignmentDecode`"),
+        ("4.2 Segel supplier", "Seal langkah 0. Nominal dan jatuh tempo dipaksa sama dengan invoice; alamat bayar, `financier_pk`, `terms_hash` dibaca dengan `assignmentDecode`", "ADA: layar Supplier menampilkan isi surat dan mencocokkan PDF surat sebelum tombol segel muncul (HNK-27.T3, HNK-24.T7)", "wasm `supplierSealAssignment`, `assignmentDecode`"),
         ("4.3 Segel buyer", "Seal langkah 1, pengakuan tertulis (Pasal 613 KUHPerdata); buyer membuka PDF surat dan mencocokkan hash dengan `terms_hash`; wasm memeriksa surat terhadap invoice dan key k", "PARSIAL (P-13)", "wasm `buyerSealAssignment`"),
         ("4.4 Verifikasi rantai seal", "Urutan, rantai hash, signer = key role, tanpa `SelfApproval`; event diterima hanya di `AwaitAssignment`; seal tidak lengkap = error, state tetap", "ADA", "`Assignment::verify`, `AssignmentSealed`"),
         ("4.5 Cek terakhir dan idempotensi", "Key node harus sama dengan `financier_pk` surat (`InvalidDeal`); scan sekali lagi (3.4): entri hilang atau ditambang ulang dengan konfirmasi di bawah minimum: `AwaitConfirmation`; konflik: `Stopped`; advance yang sudah terkirim dicatat (txid kedaluwarsa dilewati)", "ADA (HNK-27.T6)", "`pay_advance`, `sent_advance`"),
         ("4.6 Susun memo Sign-to-Pay", "Kuitansi JTR1 atas `advance_zat` + seal financier JTL1 + catatan piutang JTN1 (394 byte)", "ADA", "`Receipt::sign`, `seal_next`, `ReceivableNote`"),
         ("4.7 Kirim advance", "Satu transaksi shielded ke alamat supplier, lalu `AwaitAdvanceConfirmation`: `Done` setelah tx tertambang; lewat `ADVANCE_EXPIRY_BLOCKS` (50) tanpa tertambang kembali ke `Pay` dan dibayar ulang tepat sekali", "ADA (diuji testnet; konfirmasi HNK-27.T6)", "`Devtool::pay`, `wait_for_advance`"),
-        ("4.8 Verifikasi advance", "Jalur kuat: wallet supplier sendiri (CLI lokal) membaca output + memo: kuitansi oleh `financier_pk`, nominal = nilai output = advance yang disepakati (`verify_sign_to_pay` menerima `agreed_advance_zat`), rantai `Sealed`. Jalur lemah: txid lewat relay + nominal di Zodl", "PARSIAL: fungsi ADA (HNK-27.T7, hanya dipanggil unit test); jalur supplier USULAN", "`supplier::received_advances`, `verify_sign_to_pay`"),
+        ("4.8 Verifikasi advance", "Jalur kuat: wallet supplier sendiri (CLI lokal) membaca output + memo: kuitansi oleh `financier_pk`, nominal = nilai output = advance yang disepakati (`verify_sign_to_pay` menerima `agreed_advance_zat`), rantai `Sealed`. Jalur lemah: txid lewat relay + nominal di Zodl", "PARSIAL: fungsi ADA (HNK-27.T7); jalur lemah di layar Supplier ADA (nominal dibandingkan dengan advance yang diminta, HNK-24.T8); jalur kuat lewat CLI lokal USULAN", "`supplier::received_advances`, `verify_sign_to_pay`"),
     ],
 )
 

@@ -32,6 +32,6 @@ Kolom Status mengikuti langkah 6 "Audit flow diagram" di [[Workflow Development]
 | ID | Elemen | Task | Selesai bila | Ref | Task backlog | Owner | Status |
 |---|---|---|---|---|---|---|---|
 | BL-D1-01 | Penyimpanan bersama D7, D19 | Skema pesan relay untuk semua aliran D7 di level 2 (jenis, versi, pengirim, batas ukuran) | Setiap aliran D7 di DFD-2.1 – 2.9 punya jenis pesan di skema | C-04 | HNK-23.T1 | Hans | TODO |
-| BL-D1-02 | Penyimpanan bersama D4 | Penyimpanan dokumen deal lintas sesi di perangkat supplier dan buyer (IndexedDB terenkripsi dengan key dari PRF) | Semua aliran ke D4 di sisi supplier dan buyer bertahan setelah tab ditutup | C-07 | HNK-24.T3 | Hans | GAGAL AUDIT (2026-10-20: store terenkripsi ADA dan teruji (U-HNK-24.3, I-HNK-24.2), tetapi belum ada layar yang menulis aliran D4 ke store) |
+| BL-D1-02 | Penyimpanan bersama D4 | Penyimpanan dokumen deal lintas sesi di perangkat supplier dan buyer (IndexedDB terenkripsi dengan key dari PRF) | Semua aliran ke D4 di sisi supplier dan buyer bertahan setelah tab ditutup | C-07 | HNK-24.T3, HNK-25.T1 | Hans, Dave | TODO (2026-10-20: aliran D4 sisi supplier tersimpan, HNK-24; sisi buyer menunggu HNK-25.T1) |
 | BL-D1-03 | Penyimpanan bersama D11, D2 | Persistensi state deal dan dokumen deal di node | Semua aliran ke D11 bertahan setelah node restart | C-16 | HNK-26.T10 | Hans | TODO |
 | BL-D1-04 | Balancing | Setiap perubahan level 2 dijalankan lewat `scripts/build-dfd.py` (cek balancing) | Skrip lulus sebelum commit | — | — | Semua | ATURAN |

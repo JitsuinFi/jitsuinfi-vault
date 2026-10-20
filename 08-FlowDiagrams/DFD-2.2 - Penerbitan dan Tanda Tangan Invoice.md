@@ -164,13 +164,13 @@ sp_P5_b -[hidden]- P5
 | Proses | Isi | Status | Kode / item |
 |---|---|---|---|
 | 2.1 Bagikan key invoice | Buyer memberi `invoice_pk(k)` untuk invoice berikutnya ke supplier | ADA (salin) / USULAN (relay) | wasm `buyerKeys` |
-| 2.2 Siapkan key per invoice | Key = keyed BLAKE2b(master supplier, personalisasi `JitsuinSupplKey_`, `invoice` ‖ panjang ‖ `invoice_id` ‖ `buyer_pk`); `buyer_pk` = `invoice_pk(k)` dari buyer (2.1), jadi `invoice_id` yang sama untuk buyer lain memberi key lain; tidak ada backup plaintext. Sekarang layar masih memakai 32 byte acak + unduh JSON (TM #10); `invoice_id` dipakai ulang ditolak di layar | PARSIAL: turunan key ADA di core dan wasm (HNK-24.T1); layar USULAN (HNK-24.T2) | `SupplierMaster::invoice_key`, wasm `supplierInvoiceSecretBytes` |
+| 2.2 Siapkan key per invoice | Key = keyed BLAKE2b(master supplier, personalisasi `JitsuinSupplKey_`, `invoice` ‖ panjang ‖ `invoice_id` ‖ `buyer_pk`); `buyer_pk` = `invoice_pk(k)` dari buyer (2.1), jadi `invoice_id` yang sama untuk buyer lain memberi key lain; tidak ada backup plaintext. Layar supplier membuka master dengan passkey supplier (atau test secret untuk demo), tanpa unduhan secret; `invoice_id` yang sudah dipakai di perangkat ditolak | ADA (HNK-24.T1 – T2) | `SupplierMaster::invoice_key`, wasm `supplierInvoiceSecretBytes` |
 | 2.3 Hash file syarat | SHA-256 file di browser; file tidak diunggah ke server | ADA | wasm `documentHash` |
 | 2.4 Susun invoice kanonik dan N | Nominal diisi dalam ZEC lalu dikonversi ke zat; JTSI dengan dekoder ketat; N = BLAKE2b-256("JitsuinNullifier", byte kanonik) | ADA | wasm `invoiceEncode`, `invoiceDecode` |
 | 2.5 Kirim invoice ke buyer | Invoice + PDF syarat lewat kotak surat buyer; sekarang salin-tempel dan PDF dikirim di luar sistem | USULAN | P-04 |
 | 2.6 Periksa invoice | Decode dan tampilkan; hash PDF syarat dibandingkan dengan `terms_hash` | PARSIAL: decode ADA; input file dan cek hash belum ada di layar Buyer | wasm `invoiceDecode`, `documentHash` |
 | 2.7 Tanda tangani invoice | Ed25519 atas byte kanonik dengan key invoice buyer; wasm menolak invoice yang `buyer_pk`-nya bukan `invoice_pk(k)` | ADA | wasm `buyerSignInvoice` |
-| 2.8 Cek tanda tangan buyer | `bundleBuild` memeriksa tanda tangan (`verify_strict`) dan gagal bila tidak valid | PARSIAL: fungsi ADA; kartu cek di layar Supplier belum ada | wasm `bundleBuild` |
+| 2.8 Cek tanda tangan buyer | `bundleBuild` memeriksa tanda tangan (`verify_strict`) dan gagal bila tidak valid | ADA (kartu di layar Supplier, HNK-24.T4) | wasm `bundleBuild` |
 
 ## Aliran data
 

@@ -40,7 +40,12 @@ participant "Jaringan Zcash\n(lightwalletd)" as Z
 
 == Masuk ==
 S -> W : masuk sebagai Supplier (SEQ-00)
-note over W #E7F3EA : ADA: layar Supplier; belum ada login (simulasi)
+note over W #E7F3EA
+ADA (HNK-24.T2): layar Supplier dibuka dengan passkey supplier
+(salt jitsuin/supplier/master/v1) atau test secret untuk demo;
+deal tersimpan terenkripsi di perangkat. Daftar dan peran
+umum menyusul di HNK-22
+end note
 
 == 1. Siapkan invoice ==
 B -> R : invoice_pk(k) buyer (pesan, SEQ-02 bagian 1)
@@ -55,10 +60,9 @@ else target (USULAN P-01, P-03)
   A --> W : master supplier
   W -> X : supplierInvoiceSecretBytes(master, invoice_id,\ninvoice_pk(k)): keyed BLAKE2b "JitsuinSupplKey_"
   note right of X #DDEBFA
-  PARSIAL: turunan key ADA di wasm (HNK-24.T1); input
-  invoice_id + invoice_pk(k), jadi id yang dipakai ulang
-  untuk buyer lain memberi key lain. Layar dan passkey
-  supplier belum (HNK-24.T2, HNK-22)
+  ADA (HNK-24.T1 – T2): input invoice_id + invoice_pk(k),
+  jadi id yang dipakai ulang untuk buyer lain memberi
+  key lain; invoice_id yang sudah dipakai ditolak
   end note
 end
 X --> W : supplier_ephemeral_pk = publicKey(secret)
@@ -83,9 +87,9 @@ B -> R : buyer_signature (64 byte)
 R --> W : buyer_signature
 W -> X : bundleBuild({invoice, buyer_signature})
 X --> W : bundel; gagal bila tanda tangan buyer\ntidak valid (verify_strict)
-note right of W #DDEBFA
-PARSIAL: fungsi ADA; belum ada kartu
-cek tanda tangan buyer di layar Supplier
+note right of W #E7F3EA
+ADA (HNK-24.T4): kartu cek tanda tangan
+buyer; deal disimpan setelah lolos
 end note
 
 == 3. Tawarkan ke satu financier ==
@@ -130,7 +134,8 @@ note right of W #DDEBFA
 PARSIAL: fungsi wasm ADA, dengan kelas opsional
 (HNK-27.T2) dan varian dari history_tag saja
 (supplierRegisterTaggedEntry, HNK-27.T8); kartu di
-layar supplier belum (HNK-24.T6)
+layar supplier ADA (HNK-24.T6); permintaan entri dari
+financier menunggu relay (HNK-23)
 end note
 W -> R : entri bertanda tangan
 R -> FA : entri
@@ -144,11 +149,10 @@ W -> X : assignmentStatus(invoice, surat, [])
 X --> W : surat cocok dengan invoice (nominal dan\njatuh tempo dipaksa sama); langkah berikut = Supplier
 S -> W : buka PDF surat
 W -> X : documentHash(PDF surat) = terms_hash surat?
-note right of W #DDEBFA
-PARSIAL: assignmentDecode ADA di wasm (HNK-27.T3);
-layar supplier belum menampilkan alamat bayar,
-financier_pk, dan terms_hash, dan belum punya
-input PDF (HNK-24.T7)
+note right of W #E7F3EA
+ADA (HNK-27.T3, HNK-24.T7): layar menampilkan alamat
+bayar, financier_pk, dan terms_hash; tombol segel baru
+muncul bila invoice, financier, dan PDF surat cocok
 end note
 S -> W : "Segel sebagai supplier"
 W -> A : verifikasi pengguna (USULAN P-07)
@@ -234,15 +238,15 @@ end note
 
 | Bagian | Langkah | Status | Kode |
 |---|---|---|---|
-| 1 | Key per invoice acak + unduh backup | ADA (akan diganti) | `src/pages/supplier.ts` `downloadSecret` |
-| 1 | Key per invoice dari master supplier (passkey supplier) | USULAN P-01, P-03 | — |
+| 1 | Key per invoice dari master supplier (passkey supplier), tanpa unduhan secret | ADA (HNK-24.T1 – T2) | wasm `supplierInvoicePublicKeyBytes`, `supplierInvoiceSecretBytes`; `src/pages/supplier.ts` |
+| Semua | Daftar deal dan timeline per N, tersimpan terenkripsi di perangkat | ADA (HNK-24.T3, T9) | `src/lib/store.ts`, `src/lib/supplier-deal.ts` |
 | 1 | Hash file syarat di browser | ADA | wasm `documentHash` |
 | 1 | Invoice kanonik dan N | ADA | wasm `invoiceEncode`, `invoiceDecode` |
 | 2 | Kirim invoice + PDF syarat dan terima tanda tangan lewat relay | USULAN P-04 | sekarang salin-tempel; PDF di luar sistem |
-| 2 | Cek tanda tangan buyer | PARSIAL: `bundleBuild` sudah memeriksa; kartu di layar Supplier belum ada | wasm `bundleBuild` |
-| 3 | Penawaran, pembuka komitmen, surat + PDF surat, sertifikat k | USULAN P-04, P-08 | — |
-| 4 | Tanda tangani entri register (dengan atau tanpa tag riwayat) | PARSIAL: wasm ADA (kelas opsional, varian tag saja; HNK-27), layar dan passkey supplier USULAN P-01, P-03, P-07 | wasm `supplierRegisterEntry`, `supplierRegisterHistoryEntry` |
-| 5 | Segel surat pengalihan | PARSIAL: seal ADA; isi surat dan cek PDF surat USULAN P-13; passkey supplier USULAN P-07 | wasm `supplierSealAssignment`, `assignmentStatus` |
-| 6 | Verifikasi Sign-to-Pay | PARSIAL: fungsi ADA (hanya unit test); jalur kuat lewat CLI lokal USULAN; lewat relay saja lemah | `jitsuin-flow::supplier::received_advances`, `verify_sign_to_pay` |
+| 2 | Cek tanda tangan buyer | ADA (HNK-24.T4) | wasm `bundleBuild` |
+| 3 | Penawaran, pembuka komitmen, surat + PDF surat, sertifikat k | PARSIAL: kode penawaran salin-tempel ADA (HNK-24.T5); relay USULAN P-04 | `src/lib/supplier-deal.ts` `encodeOffer` |
+| 4 | Tanda tangani entri register (dengan atau tanpa tag riwayat) | ADA (HNK-27, HNK-24.T6); stempel per tanda tangan USULAN P-07 | wasm `supplierRegisterEntry`, `supplierRegisterHistoryEntry` |
+| 5 | Segel surat pengalihan | ADA, dengan isi surat dan cek PDF surat (HNK-24.T7); stempel per tanda tangan USULAN P-07 | wasm `supplierSealAssignment`, `assignmentStatus` |
+| 6 | Verifikasi Sign-to-Pay | PARSIAL: jalur lemah di layar ADA (nominal vs advance yang diminta, HNK-24.T8); jalur kuat lewat CLI lokal USULAN | `jitsuin-flow::supplier::received_advances`, `verify_sign_to_pay` |
 | 7 | Status pelunasan dari papan | PARSIAL | wasm `bundleOnBoard` (butuh bundel lengkap dan snapshot papan, P-06) |
 | Nakal | Bukti tanda tangan ganda ke pihak berwenang | PARSIAL: butuh entri B sebelum cek papan (P-14); wasm dengan posisi papan ADA (HNK-27.T4) | `jitsuin_board::proof_from_offer`, wasm `doubleSignProof` |
