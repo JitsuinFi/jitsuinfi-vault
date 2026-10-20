@@ -78,9 +78,10 @@ J -> CLI : jitsuin index ~--ufvk <UFVK> [~--k 5]
 CLI -> CLI : rate_index: tiap N sekali (entri register pertama),\nper kelas tenor, kelas diskon dengan >= k invoice;\ntanda tangan entri tidak diperiksa
 CLI --> J : median kelas diskon per tenor; kelas < k tidak diberi angka
 note right of CLI #FDECEC
-PARSIAL: output selalu kosong selama kelas tidak
-dihitung (classes_for belum dipanggil, entri 0/0,
-FD-00 §6). Entri spam atau griefing ikut terhitung
+PARSIAL: kelas dihitung di flow dan wasm (HNK-27.T2),
+tetapi node dan layar supplier belum mengisinya, jadi
+entri masih 0/0 dan output kosong. Entri spam atau
+griefing ikut terhitung
 end note
 W -> R : GET snapshot papan
 R --> W : memo papan

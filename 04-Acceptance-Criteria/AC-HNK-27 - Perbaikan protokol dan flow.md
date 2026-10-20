@@ -5,7 +5,7 @@ id: HNK-27
 phase: F3
 lead: Hans
 owners: [Hans]
-status: TODO
+status: PARSIAL
 updated: 2026-10-20
 ---
 
@@ -18,18 +18,18 @@ updated: 2026-10-20
 **Item:** HNK-27 · **Fase:** F3 · **Dependency:** HNK-05, HNK-19, HNK-20
 
 ## Deskripsi
-Perbaikan kode dari audit diagram (FD-00 §6) dan usulan kecil yang disetujui D-30: salt komitmen dari library, kelas diskon/tenor, `assignmentDecode`, posisi papan di bukti wasm, pemulihan `register()`, konfirmasi ulang, `Done` setelah konfirmasi, cek nominal advance, entri bertag tanpa sertifikat penuh, API wasm berbasis byte, CLI solvabilitas.
+Perbaikan kode dari audit diagram (FD-00 §6) dan usulan kecil yang disetujui D-30: salt komitmen, kelas diskon/tenor, `assignmentDecode`, posisi papan di bukti wasm, pemulihan `register()`, konfirmasi ulang, `Done` setelah konfirmasi, cek nominal advance, entri bertag tanpa sertifikat penuh, API wasm berbasis byte, CLI solvabilitas.
 
 ## Acceptance criteria
 Status per kriteria: `TODO` / `PASS` / `FAIL` / `BLOCKED`, wajib dengan tanggal dan bukti (commit, txid, log, id tes).
 
 | ID | Kriteria | Status | Tanggal | Bukti |
 |---|---|---|---|---|
-| AC-HNK-27.1 | Retry untuk invoice yang sama memberi komitmen yang sama; tidak ada JTSP dari retry. | TODO | — | — |
-| AC-HNK-27.2 | Entri bertanda tangan membawa kelas sungguhan; `jitsuin index` tidak lagi kosong untuk ≥ 5 deal per kelas. | TODO | — | — |
-| AC-HNK-27.3 | Restart setelah posting tidak membuat posting kedua; advance tidak dibayar dengan konfirmasi di bawah minimum setelah reorg. | TODO | — | — |
-| AC-HNK-27.4 | Advance kurang dari yang disepakati gagal diverifikasi. | TODO | — | — |
-| AC-HNK-27.5 | Bukti dari wasm dengan posisi lolos `jitsuin verify`. | TODO | — | — |
+| AC-HNK-27.1 | Retry untuk invoice yang sama memberi komitmen yang sama; tidak ada JTSP dari retry. | PASS | 2026-10-20 | `748d451`; U-HNK-27.1, vector dicek silang Python |
+| AC-HNK-27.2 | Entri bertanda tangan membawa kelas sungguhan; `jitsuin index` tidak lagi kosong untuk ≥ 5 deal per kelas. | TODO | 2026-10-20 | Kode `d5f98d0` (U-HNK-27.2 PASS). Sisa: I-HNK-27.1 (≥ 5 deal berkelas di papan uji testnet); layar supplier memakai parameter kelas di HNK-24.T6 |
+| AC-HNK-27.3 | Restart setelah posting tidak membuat posting kedua; advance tidak dibayar dengan konfirmasi di bawah minimum setelah reorg. | PASS | 2026-10-20 | `fef1d15`, `b6f33d5`; U-HNK-27.4, U-HNK-27.5, U-HNK-27.6 (logika `Flow` dan pencarian tx terkirim). Uji crash testnet I-HNK-27.2 masih TODO |
+| AC-HNK-27.4 | Advance kurang dari yang disepakati gagal diverifikasi. | PASS | 2026-10-20 | `a10185f`; U-HNK-27.7 |
+| AC-HNK-27.5 | Bukti dari wasm dengan posisi lolos `jitsuin verify`. | PASS | 2026-10-20 | `14803af`; U-HNK-27.8 (`verify_proof_on_board`, fungsi yang dipanggil `jitsuin verify`) |
 
 ## Deviasi
-_Kosong._ Kalau implementasi menyimpang dari keputusan, tulis di sini **dan** di [[Backlog]] bagian Log Deviasi. Tidak ada perubahan diam-diam.
+- **DEV-14:** salt komitmen diturunkan (keyed BLAKE2b dari key financier dan N) alih-alih CSPRNG yang disimpan per (invoice, financier) seperti teks P-08. Hasilnya sama untuk retry (komitmen yang sama), tanpa penyimpanan dan tanpa dependensi baru; tetap tidak bisa ditebak tanpa key financier. Lihat [[Backlog]] Log Deviasi. Menunggu persetujuan user.

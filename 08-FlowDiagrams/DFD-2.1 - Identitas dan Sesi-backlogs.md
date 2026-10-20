@@ -1,7 +1,7 @@
 ---
 tags: [flow, backlog]
 status: DITETAPKAN
-progress: 0/19 SELESAI
+progress: 1/19 SELESAI
 updated: 2026-10-20
 ---
 
@@ -29,7 +29,7 @@ Kolom Status mengikuti langkah 6 "Audit flow diagram" di [[Workflow Development]
 | BL-D21-10 | 1.4, F1.17 | Key kotak surat financier dibuat dan disimpan di node; node mendaftarkan kotak suratnya ke relay | Konsol membaca pesan financier lewat `/node/mail/*` tanpa key di browser | P-05, P-11 | HNK-26.T4 | Dex | TODO |
 | BL-D21-11 | 1.4, F1.20 – F1.27, D19 | Kartu kontak (QR dan teks): buat, tampilkan, impor kontak rekan ke D19, cocokkan sidik jari di luar sistem; kartu buyer tanpa `identity_pk` | Supplier dan buyer bisa saling menambah kontak; kontak tampil dengan peran dan sidik jari | C-01 | HNK-22.T5 | Dave | TODO |
 | BL-D21-12 | 1.5, F1.28 – F1.32 | Stempel: setiap tanda tangan meminta PRF baru, key diturunkan sebagai `Uint8Array` dan dinolkan; di sesi hanya key kotak surat dan key publik; kunci setelah 15 menit idle atau tab ditutup | Tidak ada master atau key tanda tangan yang tersisa di memori setelah stempel (dicek di devtools) | P-07 | HNK-22.T4 | Dave | TODO |
-| BL-D21-13 | 1.5 | **Baru.** API `jitsuin-wasm` menerima key sebagai byte (`Uint8Array`), bukan string hex, supaya bisa dinolkan | Fungsi tanda tangan wasm punya varian byte; varian hex lama tetap untuk mode demo | C-30 | HNK-27.T9 | Hans | TODO |
+| BL-D21-13 | 1.5 | **Baru.** API `jitsuin-wasm` menerima key sebagai byte (`Uint8Array`), bukan string hex, supaya bisa dinolkan | Fungsi tanda tangan wasm punya varian byte; varian hex lama tetap untuk mode demo | C-30 | HNK-27.T9 | Hans | SELESAI (2026-10-20, `1ac7057`, U-HNK-27.10 + uji Node) |
 | BL-D21-14 | 1.6, F1.33, F1.38 | Skrip setup node: `zcash-devtool init` (seed di node), key financier, key kotak surat, `init-fvk` UFVK papan | Satu perintah menyiapkan node testnet dari nol; tidak ada seed atau key di log | P-05 | HNK-26.T1 | Dex | TODO |
 | BL-D21-15 | 1.6, F1.34 – F1.37, D9 | Pairing: kode sekali pakai + challenge, `create()` untuk `rp.id` domain node, verifikasi attestation, simpan credential di D9 | Kode yang sudah dipakai atau kedaluwarsa ditolak; credential tersimpan | P-05 | HNK-26.T2 | Dex | TODO |
 | BL-D21-16 | 1.6 (layar) | Halaman pairing di konsol node | Operator bisa memasangkan passkey dari browser di origin node | P-05 | HNK-26.T2 | Dex | TODO |

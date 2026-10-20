@@ -56,8 +56,8 @@ O -> W : tentukan advance dan min_confirmations (>= 1)
 
 == 1b. Siapkan komitmen dan surat (sebelum Flow::new) ==
 W -> API : POST /node/deals/N/commitment
-API -> API : salt 32 byte CSPRNG, disimpan per (invoice, financier)\ndan dipakai ulang saat retry (USULAN P-08);\ncommitment = BLAKE2b(financier_pk || salt)
-API -> API : kelas diskon/tenor = classes_for(nominal, advance,\ntanggal advance, jatuh tempo) (USULAN: belum dipanggil)
+API -> API : commitment_opening: salt diturunkan dari key financier\ndan N (ADA HNK-27.T1, DEV-14), retry = komitmen sama;\ncommitment = BLAKE2b(financier_pk || salt)
+API -> API : kelas diskon/tenor = deal_classes(invoice, advance,\ntanggal advance) (ADA HNK-27.T2; dipanggil API USULAN)
 API --> W : commitment, kelas (operator mengonfirmasi)
 API -> WF : alamat shielded diversified baru untuk deal ini (USULAN)
 WF --> API : alamat bayar financier
@@ -143,15 +143,18 @@ else lolos
 end
 note right of FL #FDECEC
 Entri yang ditawarkan tidak disimpan setelah Register
-(diganti txid). Tidak ada cek papan ulang: BoardChecked
-ditolak di AwaitSupplierSignature dan Register (UnexpectedEvent).
-register() tidak punya pemulihan seperti sent_advance: crash
-sebelum tertambang bisa membuat posting ganda (entri bertag
-ganda = Equivocation, Spec #2)
+(diganti txid); bukti AlreadyFinanced butuh P-14
 end note
 
 == 5. Posting entri dan tunggu konfirmasi ==
-API -> WF : sync
+API -> WB : cek papan sekali lagi (BoardChecked di Register)
+alt konflik baru
+  FL --> API : Stopped, tanpa posting
+else entri sendiri sudah tertambang (percobaan sebelumnya)
+  FL --> API : AwaitConfirmation / AwaitAssignment, tanpa posting
+end
+API -> WF : sync + list_tx: sent_entry(N, komitmen)?\n(entri yang sudah terkirim dicatat, tidak diposting ulang)
+note right of FL #E7F3EA : ADA (HNK-27.T5): tidak ada posting ganda setelah crash
 API -> WF : pay(alamat papan, 10 000 zat, memo entri)
 WF -> LW : kirim transaksi shielded
 LW -> C : tx entri
@@ -167,9 +170,9 @@ note right of FL #E7F3EA
 ADA: wait_for_confirmation. Entri hilang saat scan kembali
 ke AwaitConfirmation; konflik baru menjadi Stopped
 end note
-note right of FL #FDECEC
-Entri yang ditambang ulang di tinggi lain di antara dua poll
-tidak mengulang hitungan konfirmasi: Flow memakai posisi lama
+note right of FL #E7F3EA
+ADA (HNK-27.T6): entri yang ditambang ulang di tinggi lain
+dihitung ulang dari posisi barunya
 end note
 
 == 6. Kumpulkan seal (surat dikirim di 1b) ==
@@ -200,18 +203,25 @@ else konflik baru
   FL --> API : Stopped, tanpa transaksi
 end
 API -> WF : sync + list_tx
-API -> API : sent_advance(N)? (pemulihan setelah crash:\ncatat txid lama, tidak membayar dua kali)
+API -> API : sent_advance(N)? (pemulihan setelah crash:\ncatat txid lama, tidak membayar dua kali;\ntxid yang kedaluwarsa dilewati)
 API -> API : Receipt::sign(Advance, N, advance_zat, tanggal)\n+ seal_next (seal financier s2)\n+ ReceivableNote (N, nilai, jatuh tempo)
 API -> WF : pay(alamat supplier, advance, memo 394 byte)
 WF -> LW : kirim transaksi shielded
 LW -> C : tx advance
 WF --> API : txid advance
-API -> FL : Event AdvanceSent {txid}
-FL --> API : Done (terkirim, belum tentu tertambang)
-note right of FL #FDECEC
-sent_advance tidak membedakan tx tertambang, tertunda,
-atau kedaluwarsa. Retry setelah advance kedaluwarsa
-mencatat Done tanpa uang sampai. Usulan: cek konfirmasi
+API -> FL : Event AdvanceSent {txid, tip}
+FL --> API : AwaitAdvanceConfirmation
+loop wait_for_advance: sampai tertambang atau kedaluwarsa
+  API -> WF : sync + list_tx (tx advance tertambang?)
+  API -> FL : Event AdvanceChecked {mined, tip}
+end
+alt tertambang
+  FL --> API : Done
+else lewat ADVANCE_EXPIRY_BLOCKS (50) tanpa tertambang
+  FL --> API : Pay (txid lama di expired_advances);\nbayar ulang satu kali
+end
+note right of FL #E7F3EA
+ADA (HNK-27.T6): Done hanya setelah advance tertambang
 end note
 API -> R : txid ke supplier; s2 ke buyer (USULAN)
 
@@ -256,8 +266,8 @@ group financier B menerima invoice yang sama
   API --> W : bukti JTSP dengan posisi entri A
   note right of W #FDECEC
   Di urutan sekarang entri B tidak pernah ada (diminta hanya
-  setelah NotFound). wasm doubleSignProof tidak mengisi posisi
-  papan; bukti seperti itu ditolak jitsuin verify. JTSP
+  setelah NotFound). wasm doubleSignProof kini menerima posisi
+  papan (HNK-27.T4). JTSP
   membuktikan dua tanda tangan, bukan niat menipu (P-14)
   end note
   W --> O : kartu "Bukti ganda" (USULAN, PG-01): supplier\nmenandatangani invoice ini dua kali
@@ -281,14 +291,15 @@ end
 |---|---|---|---|
 | `Check` | `Flow::new` | `AwaitSupplierSignature`; `AwaitConfirmation` / `AwaitAssignment` (entri sendiri sudah ada, lanjut setelah crash); `Stopped` | Tidak |
 | `AwaitSupplierSignature` | papan `NotFound` | `Register` (entri lolos `check_entry`); entri salah: error, state tetap | Tidak |
-| `Register` | `SupplierSigned` | `AwaitConfirmation` | Hanya 10 000 zat + fee ke papan |
+| `Register` | `SupplierSigned` | `AwaitConfirmation` (posting, atau entri yang sudah terkirim ditemukan); cek papan ulang: `Stopped` (konflik) atau `AwaitConfirmation` / `AwaitAssignment` (entri sendiri sudah tertambang) | Hanya 10 000 zat + fee ke papan |
 | `AwaitConfirmation` | `Check` (entri sendiri belum cukup konfirmasi), `EntryPosted`, entri hilang saat scan | `AwaitAssignment`, `Stopped` | Tidak |
-| `AwaitAssignment` | konfirmasi ≥ `min_confirmations` | `Pay` (seal Supplier + Buyer valid; seal salah: error, state tetap); `AwaitConfirmation` (entri hilang saat scan); `Stopped` (konflik baru) | Tidak |
-| `Pay` | `AssignmentSealed` | `Done`; `AwaitConfirmation` (entri hilang saat scan); `Stopped` (konflik baru) | Advance + seal financier dalam satu transaksi |
-| `Done` | `AdvanceSent` (terkirim, belum tentu tertambang) | — | — |
+| `AwaitAssignment` | konfirmasi ≥ `min_confirmations` | `Pay` (seal Supplier + Buyer valid; seal salah: error, state tetap); `AwaitConfirmation` (entri hilang, atau ditambang ulang dengan konfirmasi di bawah minimum); `Stopped` (konflik baru) | Tidak |
+| `Pay` | `AssignmentSealed`; advance kedaluwarsa | `AwaitAdvanceConfirmation`; `AwaitConfirmation` (entri hilang atau ditambang ulang di bawah minimum); `Stopped` (konflik baru) | Advance + seal financier dalam satu transaksi |
+| `AwaitAdvanceConfirmation` | `AdvanceSent` (terkirim) | `Done` (tertambang); `Pay` (lewat `ADVANCE_EXPIRY_BLOCKS` tanpa tertambang, bayar ulang sekali) | Tidak (menunggu) |
+| `Done` | `AdvanceChecked` (advance tertambang) | — | — |
 | `Stopped` | `AlreadyFinanced` / `DoubleFinanced` | — | Tidak pernah |
 
-`BoardChecked` tidak diterima di `AwaitSupplierSignature` dan `Register` (`UnexpectedEvent`). Entri yang ditambang ulang di tinggi lain tidak mengulang hitungan konfirmasi.
+`BoardChecked` tidak diterima di `AwaitSupplierSignature` (`UnexpectedEvent`), tetapi diterima di `Register` sejak HNK-27.T5. Entri yang ditambang ulang di tinggi lain dihitung ulang (HNK-27.T6).
 
 ## Ringkasan status
 
@@ -302,6 +313,6 @@ end
 | Alamat diversified per deal, jeda acak | USULAN | Menunggu keputusan Hans (TM #4, #12, #15 di pra-review) |
 | 8 penjadwal | PARSIAL | Fungsi ADA (`Repayment::status`, `post_settled`); penjadwal belum ada; konflik dengan D-23 (P-12) |
 | Bukti `DoubleFinanced` | PARSIAL | `proof_from_lookup` ADA tanpa pemanggil di node |
-| Jalur B (`AlreadyFinanced`) | PARSIAL | Butuh entri B sebelum cek papan (P-14); wasm `doubleSignProof` tanpa posisi papan |
+| Jalur B (`AlreadyFinanced`) | PARSIAL | Butuh entri B sebelum cek papan (P-14); wasm `doubleSignProof` dengan posisi papan ADA (HNK-27.T4) |
 | Jaringan | — | Development di testnet (D-13, `testnet.zec.rocks:443`); mainnet hanya demo akhir |
-| Salt CSPRNG di library | USULAN P-08 | |
+| Salt komitmen dari library | ADA (HNK-27.T1) | Diturunkan dari key financier dan N (DEV-14, menunggu persetujuan) |

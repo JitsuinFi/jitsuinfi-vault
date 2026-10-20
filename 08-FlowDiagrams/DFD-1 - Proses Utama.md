@@ -457,8 +457,8 @@ f_F114 --> D7_9
 |---|---|---|---|
 | 1.0 Identitas, sesi, kotak surat | [[DFD-2.1 - Identitas dan Sesi]] | PARSIAL: passkey buyer ADA; peran lain, kotak surat, sesi, node USULAN (P-01 – P-07, P-11) | 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7 |
 | 2.0 Terbitkan dan tanda tangani invoice | [[DFD-2.2 - Penerbitan dan Tanda Tangan Invoice]] | PARSIAL: core dan wasm ADA; kirim lewat relay dan cek di layar USULAN | 2.1, 2.2, 2.3, 2.4, 2.5, 2.6, 2.7, 2.8 |
-| 3.0 Registrasi papan | [[DFD-2.3 - Registrasi Papan]] | PARSIAL: flow ADA (diuji testnet); kelas, salt dari library, API node USULAN | 3.1, 3.2, 3.3, 3.4, 3.5, 3.6, 3.7, 3.8, 3.9 |
-| 4.0 Pengalihan dan advance | [[DFD-2.4 - Pengalihan dan Advance]] | PARSIAL: seal dan Sign-to-Pay ADA; tampilan isi surat, cek advance oleh supplier USULAN | 4.1, 4.2, 4.3, 4.4, 4.5, 4.6, 4.7, 4.8 |
+| 3.0 Registrasi papan | [[DFD-2.3 - Registrasi Papan]] | PARSIAL: flow ADA (diuji testnet), salt diturunkan, kelas, cek papan sebelum posting ADA (HNK-27); API node dan layar USULAN | 3.1, 3.2, 3.3, 3.4, 3.5, 3.6, 3.7, 3.8, 3.9 |
+| 4.0 Pengalihan dan advance | [[DFD-2.4 - Pengalihan dan Advance]] | PARSIAL: seal, Sign-to-Pay, assignmentDecode, Done setelah konfirmasi, cek nominal advance ADA (HNK-27); tampilan isi surat dan jalur supplier USULAN | 4.1, 4.2, 4.3, 4.4, 4.5, 4.6, 4.7, 4.8 |
 | 5.0 Pelunasan dan settled | [[DFD-2.5 - Pelunasan dan Settled]] | PARSIAL: QR, pencocokan, status, settled ADA; penjadwal dan cek oleh pihak USULAN | 5.1, 5.2, 5.3, 5.4, 5.5, 5.6 |
 | 6.0 Riwayat buyer | [[DFD-2.6 - Riwayat Buyer]] | PARSIAL: sertifikat dan verifikasi ADA; alur permintaan dan penyimpanan rantai USULAN | 6.1, 6.2, 6.3, 6.4, 6.5, 6.6, 6.7, 6.8 |
 | 7.0 Deteksi pembiayaan ganda | [[DFD-2.7 - Deteksi Pembiayaan Ganda]] | PARSIAL: lookup dan bukti dari dua entri di papan ADA; bukti dari entri tawaran USULAN P-14 | 7.1, 7.2, 7.3, 7.4, 7.5 |
@@ -542,21 +542,21 @@ f_F114 --> D7_9
 | F47 | Buyer | 4.0 Pengalihan dan advance | keputusan | F4.17 |
 | F48 | 4.0 Pengalihan dan advance | Buyer | isi surat | F4.16 |
 | F49 | Financier | 4.0 Pengalihan dan advance | surat, alamat, tanggal | F4.01, F4.29 |
-| F50 | Supplier | 4.0 Pengalihan dan advance | keputusan, nominal di Zodl | F4.10, F4.44 |
-| F51 | 4.0 Pengalihan dan advance | Supplier | isi surat, status advance | F4.09, F4.45 |
-| F52 | Jaringan Zcash (lightwalletd) | 4.0 Pengalihan dan advance | blok, tip, tx wallet, output + memo advance | F4.26, F4.41 |
+| F50 | Supplier | 4.0 Pengalihan dan advance | keputusan, nominal di Zodl | F4.10, F4.45 |
+| F51 | 4.0 Pengalihan dan advance | Supplier | isi surat, status advance | F4.09, F4.46 |
+| F52 | Jaringan Zcash (lightwalletd) | 4.0 Pengalihan dan advance | blok, tip, tx wallet, output + memo advance | F4.26, F4.37, F4.42 |
 | F53 | 4.0 Pengalihan dan advance | Jaringan Zcash (lightwalletd) | tx advance | F4.36 |
 | F54 | D2 Node financier (wallet, key, watch-only papan) | 4.0 Pengalihan dan advance | key, wallet, tx terkirim | F4.03, F4.27, F4.30, F4.35 |
-| F55 | 4.0 Pengalihan dan advance | D2 Node financier (wallet, key, watch-only papan) | tx terkirim | F4.37 |
+| F55 | 4.0 Pengalihan dan advance | D2 Node financier (wallet, key, watch-only papan) | tx terkirim | F4.38 |
 | F56 | D3 Key sesi (memori tab) | 4.0 Pengalihan dan advance | key | F4.11, F4.18 |
-| F57 | D4 Dokumen deal (salinan tiap pihak) | 4.0 Pengalihan dan advance | invoice, surat, seal | F4.02, F4.08, F4.15, F4.21, F4.31, F4.43 |
+| F57 | D4 Dokumen deal (salinan tiap pihak) | 4.0 Pengalihan dan advance | invoice, surat, seal | F4.02, F4.08, F4.15, F4.21, F4.31, F4.44 |
 | F58 | 4.0 Pengalihan dan advance | D4 Dokumen deal (salinan tiap pihak) | surat, seal | F4.05, F4.12 |
-| F59 | 4.0 Pengalihan dan advance | D6 Akun dana (operasional) | advance + JTN1 | F4.39 |
-| F60 | D7 Kotak surat terenkripsi | 4.0 Pengalihan dan advance | surat, PDF, seal, memo advance | F4.07, F4.14, F4.20, F4.42 |
-| F61 | 4.0 Pengalihan dan advance | D7 Kotak surat terenkripsi | surat, PDF, seal, memo advance | F4.06, F4.13, F4.19, F4.40 |
+| F59 | 4.0 Pengalihan dan advance | D6 Akun dana (operasional) | advance + JTN1 | F4.40 |
+| F60 | D7 Kotak surat terenkripsi | 4.0 Pengalihan dan advance | surat, PDF, seal, memo advance | F4.07, F4.14, F4.20, F4.43 |
+| F61 | 4.0 Pengalihan dan advance | D7 Kotak surat terenkripsi | surat, PDF, seal, memo advance | F4.06, F4.13, F4.19, F4.41 |
 | F62 | D10 Hasil pindai papan (node, memori) | 4.0 Pengalihan dan advance | records | F4.25 |
 | F63 | D11 Status deal (node, memori) | 4.0 Pengalihan dan advance | state deal | F4.22, F4.24, F4.32, F4.34 |
-| F64 | 4.0 Pengalihan dan advance | D11 Status deal (node, memori) | state deal, memo | F4.23, F4.28, F4.33, F4.38 |
+| F64 | 4.0 Pengalihan dan advance | D11 Status deal (node, memori) | state deal, memo | F4.23, F4.28, F4.33, F4.39 |
 | F65 | D19 Kontak rekan (mailbox_pk) | 4.0 Pengalihan dan advance | kontak rekan | F4.04 |
 | F66 | Buyer | 5.0 Pelunasan dan settled | minta QR | F5.01 |
 | F67 | 5.0 Pelunasan dan settled | Buyer | QR, status | F5.05, F5.26 |

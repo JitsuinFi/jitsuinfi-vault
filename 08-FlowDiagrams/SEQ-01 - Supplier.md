@@ -93,10 +93,10 @@ ZW --> S : alamat shielded baru untuk deal ini\n(u1... / utest1...)
 W -> R : penawaran {invoice, buyer_signature,\nalamat supplier, advance}
 R -> FA : penawaran
 FA -> R : pembuka komitmen {financier_pk, salt 32 byte},\nkelas diskon/tenor, surat JTSA + PDF surat\n(SEQ-03 bagian 1b, sebelum Flow::new)
-note right of FA #FFF6D6
-USULAN P-08: salt dibuat library (CSPRNG),
-disimpan per (invoice, financier) dan
-dipakai ulang saat retry
+note right of FA #E7F3EA
+ADA (HNK-27.T1, DEV-14): salt diturunkan dari
+key financier dan N, jadi retry memberi
+komitmen yang sama; kelas dari deal_classes
 end note
 R --> W : pembuka komitmen, kelas, surat + PDF surat
 opt buyer memakai riwayat (HNK-20)
@@ -126,10 +126,10 @@ else buyer dengan riwayat (HNK-20)
 end
 X --> W : {memo 512 byte (entri JTS1 136/168 byte\n+ padding nol), commitment}
 note right of W #DDEBFA
-PARSIAL: fungsi wasm ADA; kartu di layar supplier
-belum. Fungsi entri wasm menandatangani kelas 0/0
-tetap: API perlu parameter kelas, memanggil
-classes_for saja tidak cukup
+PARSIAL: fungsi wasm ADA, dengan kelas opsional
+(HNK-27.T2) dan varian dari history_tag saja
+(supplierRegisterTaggedEntry, HNK-27.T8); kartu di
+layar supplier belum (HNK-24.T6)
 end note
 W -> R : entri bertanda tangan
 R -> FA : entri
@@ -143,11 +143,11 @@ W -> X : assignmentStatus(invoice, surat, [])
 X --> W : surat cocok dengan invoice (nominal dan\njatuh tempo dipaksa sama); langkah berikut = Supplier
 S -> W : buka PDF surat
 W -> X : documentHash(PDF surat) = terms_hash surat?
-note right of W #FFF6D6
-USULAN P-13: wasm belum punya assignmentDecode,
-jadi alamat bayar, financier_pk, dan terms_hash
-surat belum bisa ditampilkan atau dicocokkan
-sebelum disegel; supplier.ts belum punya input PDF
+note right of W #DDEBFA
+PARSIAL: assignmentDecode ADA di wasm (HNK-27.T3);
+layar supplier belum menampilkan alamat bayar,
+financier_pk, dan terms_hash, dan belum punya
+input PDF (HNK-24.T7)
 end note
 S -> W : "Segel sebagai supplier"
 W -> A : verifikasi pengguna (USULAN P-07)
@@ -175,8 +175,8 @@ alt verifikasi kuat (USULAN: jalur supplier; fungsi ADA)
   belum ada perintah CLI, export wasm, atau API.
   Di luar browser: wasm tanpa jaringan dan
   connect-src 'self'. UFVK supplier tidak ke server
-  (P-10). Pembanding advance yang disepakati belum
-  ada di kode
+  (P-10). Pembanding advance yang disepakati ADA
+  (verify_sign_to_pay, HNK-27.T7)
   end note
 else hanya lewat relay (jalur lemah)
   W -> X : assignmentStatus(invoice, surat,\n[s0, s1, s2 dari memo lewat relay])
@@ -212,8 +212,8 @@ group menawarkan invoice yang sama ke financier B
   note right of FB #FDECEC
   Tanpa entri B (Flow sekarang meminta entri hanya
   setelah NotFound), B hanya tahu invoice sudah
-  dibiayai, tanpa bukti. wasm doubleSignProof tidak
-  mengisi posisi papan, jadi jitsuin verify menolaknya.
+  dibiayai, tanpa bukti. wasm doubleSignProof kini
+  menerima posisi papan (HNK-27.T4).
   JTSP membuktikan dua tanda tangan, bukan niat menipu
   (lihat risiko P-14 di FD-00)
   end note
@@ -240,8 +240,8 @@ end note
 | 2 | Kirim invoice + PDF syarat dan terima tanda tangan lewat relay | USULAN P-04 | sekarang salin-tempel; PDF di luar sistem |
 | 2 | Cek tanda tangan buyer | PARSIAL: `bundleBuild` sudah memeriksa; kartu di layar Supplier belum ada | wasm `bundleBuild` |
 | 3 | Penawaran, pembuka komitmen, surat + PDF surat, sertifikat k | USULAN P-04, P-08 | — |
-| 4 | Tanda tangani entri register (dengan atau tanpa tag riwayat) | PARSIAL: wasm ADA (kelas 0/0 tetap), layar dan passkey supplier USULAN P-01, P-03, P-07 | wasm `supplierRegisterEntry`, `supplierRegisterHistoryEntry` |
+| 4 | Tanda tangani entri register (dengan atau tanpa tag riwayat) | PARSIAL: wasm ADA (kelas opsional, varian tag saja; HNK-27), layar dan passkey supplier USULAN P-01, P-03, P-07 | wasm `supplierRegisterEntry`, `supplierRegisterHistoryEntry` |
 | 5 | Segel surat pengalihan | PARSIAL: seal ADA; isi surat dan cek PDF surat USULAN P-13; passkey supplier USULAN P-07 | wasm `supplierSealAssignment`, `assignmentStatus` |
 | 6 | Verifikasi Sign-to-Pay | PARSIAL: fungsi ADA (hanya unit test); jalur kuat lewat CLI lokal USULAN; lewat relay saja lemah | `jitsuin-flow::supplier::received_advances`, `verify_sign_to_pay` |
 | 7 | Status pelunasan dari papan | PARSIAL | wasm `bundleOnBoard` (butuh bundel lengkap dan snapshot papan, P-06) |
-| Nakal | Bukti tanda tangan ganda ke pihak berwenang | PARSIAL: butuh entri B sebelum cek papan (P-14); wasm tanpa posisi papan | `jitsuin_board::proof_from_offer`, wasm `doubleSignProof` |
+| Nakal | Bukti tanda tangan ganda ke pihak berwenang | PARSIAL: butuh entri B sebelum cek papan (P-14); wasm dengan posisi papan ADA (HNK-27.T4) | `jitsuin_board::proof_from_offer`, wasm `doubleSignProof` |

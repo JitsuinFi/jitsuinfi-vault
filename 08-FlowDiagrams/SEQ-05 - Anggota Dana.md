@@ -14,7 +14,7 @@ Batas uji ini: sisi aset dinyatakan oleh manajer sendiri. Nilai piutang adalah `
 
 Anggota mendaftar dengan passkey hanya untuk kotak surat (kuitansi setoran dan jalur Merkle tiap periode, [[SEQ-00 - Autentikasi dan Onboarding]]); anggota tidak menandatangani apa pun.
 
-Kode yang dipakai: `jitsuin-flow::fund` (`fund_view`, `member_view`, `solvency`, `SolvencyPolicy`, pembacaan catatan piutang `JTN1` dan root kewajiban `JTLR`), `jitsuin-core::fund`, wallet watch-only `zcash-devtool`. Belum ada: Merkle sum tree kewajiban (HNK-15.T1, Dex), halaman anggota (HNK-15.T3, Dave), perintah CLI untuk solvabilitas.
+Kode yang dipakai: `jitsuin-flow::fund` (`fund_view`, `member_view`, `solvency`, `SolvencyPolicy`, pembacaan catatan piutang `JTN1` dan root kewajiban `JTLR`), `jitsuin-core::fund`, wallet watch-only `zcash-devtool`. Belum ada: Merkle sum tree kewajiban (HNK-15.T1, Dex), halaman anggota (HNK-15.T3, Dave). Perintah CLI: `jitsuin fund` (HNK-27.T10).
 
 ![SEQ-05](assets/seq-05-fund.svg)
 
@@ -67,17 +67,16 @@ M -> LOC : init-fvk(UFVK, birthday)
 LOC -> LW : sync + enhance
 LW --> LOC : transaksi akun operasional (masuk dan keluar)
 LOC -> LOC : balance_zat = kas
-LOC -> LOC : member_view(manager_pk, tenggang, hari ini)\nlalu fund_view: advance dengan kuitansi bertanda\ntangan manajer + JTN1 menjadi piutang;\npelunasan per N; Open / Repaid / Overdue;\nroot JTLR bertanda tangan manajer (lain diabaikan)
+LOC -> LOC : jitsuin fund: member_view(manager_pk, tenggang, hari ini)\nlalu fund_view: advance dengan kuitansi bertanda\ntangan manajer + JTN1 menjadi piutang;\npelunasan per N; Open / Repaid / Overdue;\nroot JTLR bertanda tangan manajer (lain diabaikan)
 LOC -> LOC : solvency(potongan): kas + piutang berjalan +\npiutang lewat tempo setelah potongan\n>= total root terbaru
 LOC -> LOC : bukti inklusi: jalur Merkle periode p berakhir\ndi root JTLR terbaru dan jumlah = total JTLR\n(HNK-15.T1)
 LOC --> M : solvent / tidak / belum ada root,\nrincian per N (tanpa pihak)
 LOC -> W : ekspor hasil pindaian lokal (opsional)
 W --> M : tampilan laporan (HNK-15.T3, belum ada)
 note right of LOC #DDEBFA
-PARSIAL: fund_view dan solvabilitas ADA di
-jitsuin-flow, belum ada perintah CLI dan halaman
-anggota. SolvencyPolicy.grace_days tidak dipakai:
-tenggang masuk lewat member_view
+PARSIAL: fund_view, solvabilitas, dan perintah
+jitsuin fund ADA (HNK-27.T10); halaman anggota
+belum (HNK-15.T3). Tenggang masuk lewat member_view
 end note
 @enduml
 ```

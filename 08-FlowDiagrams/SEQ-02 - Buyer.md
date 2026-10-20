@@ -103,8 +103,9 @@ note right of R #FDECEC
 Supplier dan setiap financier yang diminta (termasuk
 yang menolak) memegang sertifikat k, jadi bisa menghitung
 tag invoice berikutnya dan memantau atau mengganggu
-(TM #6). Usulan: varian wasm yang hanya menerima
-history_tag 32 byte, supaya sertifikat k tetap di financier
+(TM #6). Varian wasm yang hanya menerima history_tag
+sudah ADA (HNK-27.T8); pengiriman tag saja ke supplier
+menunggu relay (HNK-23.T7)
 end note
 
 == 4. Segel surat pengalihan ==
@@ -116,10 +117,10 @@ X --> W : rantai valid, langkah berikut = Buyer
 B -> W : buka PDF surat
 W -> X : documentHash(PDF surat) = terms_hash surat?
 W --> B : tampilkan: alamat bayar, financier_pk,\nnominal, jatuh tempo
-note right of W #FFF6D6
-USULAN P-13: wasm belum punya assignmentDecode;
-layar Buyer sekarang menyegel surat tanpa
-menampilkan isi dan tanpa cek PDF surat. Seal ini
+note right of W #DDEBFA
+PARSIAL: assignmentDecode ADA di wasm (HNK-27.T3);
+layar Buyer masih menyegel surat tanpa menampilkan
+isi dan tanpa cek PDF surat (HNK-25.T3). Seal ini
 pengakuan tertulis (Pasal 613), jadi isi wajib terbaca
 end note
 B -> W : "Segel sebagai buyer"

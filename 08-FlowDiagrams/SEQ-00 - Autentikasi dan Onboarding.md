@@ -131,8 +131,9 @@ end
 note over W #FDECEC
 Ini cek niat (UX), bukan kontrol keamanan:
 skrip di tab yang sama tetap bisa meminta PRF.
-Sekarang master buyer disimpan sebagai string hex
-di memori modul, jadi belum bisa dihapus
+wasm sudah punya varian byte (*Bytes) yang menolkan
+Uint8Array pemanggil (HNK-27.T9); layar buyer masih
+menyimpan master hex di memori modul (HNK-22.T4)
 end note
 W -> W : kunci otomatis setelah 15 menit idle\natau tab ditutup
 
@@ -189,7 +190,7 @@ end note
 | Daftar | Kotak surat, `mailbox_id` turunan, kartu kontak | USULAN P-04 | — |
 | Masuk | Key identik di perangkat baru (credential tersinkron yang sama) | Belum diuji | sifat PRF; belum ada kasus di TEST-HNK-10 |
 | Masuk | Baca kotak surat dengan bukti kepemilikan | USULAN P-04 | — |
-| Sesi | Master di memori modul | ADA (buyer, string hex) | U-HNK-10.3 di TEST-HNK-10 |
+| Sesi | Master di memori modul | ADA (buyer, string hex); API wasm berbasis byte yang menolkan key ADA (HNK-27.T9) | U-HNK-10.3 di TEST-HNK-10, U-HNK-27.10 |
 | Sesi | Satu sentuhan per stempel, key stempel sebagai `Uint8Array` lalu dinolkan, kunci 15 menit | USULAN P-07 | — |
 | Pairing node | Seed, key financier, dan key kotak surat dibuat di node, UFVK papan diimpor, credential disimpan | USULAN P-05 | sekarang manual lewat CLI |
 | Konsol financier | Assertion passkey ke node, konsol di origin node | USULAN P-05, P-11 | API HNK-05.T3 |

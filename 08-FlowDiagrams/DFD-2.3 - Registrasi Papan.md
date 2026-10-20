@@ -83,7 +83,7 @@ rectangle "F3.18 state" <<flow>> as f_F3_18
 rectangle "F3.19 tinggi tip" <<flow>> as f_F3_19
 rectangle "F3.20 AwaitSupplierSignature /\nAwaitConfirmation /\nAwaitAssignment / Stopped" <<flow>> as f_F3_20
 rectangle "F3.21 bebas / sudah\ndibiayai" <<flow>> as f_F3_21
-rectangle "F3.22 pembuka komitmen, kelas,\nsertifikat k (dari buyer)" <<flow>> as f_F3_22
+rectangle "F3.22 pembuka komitmen, kelas,\nhistory_tag atau sertifikat k" <<flow>> as f_F3_22
 rectangle "F3.23 rincian entri: N,\nfinancier, kelas" <<flow>> as f_F3_23
 rectangle "F3.24 keputusan setuju" <<flow>> as f_F3_24
 rectangle "F3.25 key per invoice" <<flow>> as f_F3_25
@@ -208,13 +208,13 @@ sp_P8_b -[hidden]- P8
 | Proses | Isi | Status | Kode / item |
 |---|---|---|---|
 | 3.1 Terima penawaran | Supplier mengirim invoice + tanda tangan buyer + alamat advance; financier menetapkan advance dan `min_confirmations` ≥ 1; tanda tangan buyer diperiksa (`bundleBuild`) sebelum deal disimpan, karena `Deal` dan `Flow` sendiri tidak memeriksanya | USULAN (alur relay); `Deal` ADA | `financier::Deal`, P-04 |
-| 3.2 Buat komitmen dan kelas | `financier_commitment = BLAKE2b(financier_pk ‖ salt)`; salt 32 byte CSPRNG, disimpan per (invoice, financier) dan dipakai ulang saat retry; kelas dari `classes_for(nominal, advance, tanggal advance, jatuh tempo)` | PARSIAL: salt diisi pemanggil (P-08); `classes_for` hanya dipanggil test; fungsi entri wasm menandatangani 0/0 tetap (API harus diberi parameter kelas); `check_entry` tidak memeriksa kelas | `financier_commitment`, `index::classes_for` |
+| 3.2 Buat komitmen dan kelas | `financier_commitment = BLAKE2b(financier_pk ‖ salt)`; salt diturunkan dari key financier dan N (`commitment_opening`, DEV-14), jadi retry memberi komitmen yang sama; kelas dari `deal_classes(invoice, advance, tanggal advance)` (0/0 bila tidak cocok kelas mana pun), `check_entry` menolak kelas yang berbeda | PARSIAL: core, flow, wasm ADA (HNK-27.T1 – T2); API node yang memanggilnya USULAN (HNK-26) | `commitment_opening`, `deal_classes`, wasm `financierCommitment` |
 | 3.3 Mulai alur deal | `Flow::new` memeriksa `min_confirmations` ≥ 1, advance > 0, alamat tidak kosong, dan surat milik invoice (`assignment.verify(&invoice, &[])`) | ADA | `Flow::new` |
 | 3.4 Pindai papan | `sync`, `enhance`, `list_tx` wallet watch-only di node; `block_txids` per tinggi; `collect`, urut (tinggi, indeks tx, indeks output). Dipanggil ulang setiap pengecekan; tx yang belum tertambang dilewati | ADA | `jitsuin_board::scan` |
 | 3.5 Lookup N | Entri valid pertama menang; tanda tangan tidak valid diabaikan; komitmen sendiri: lanjut ke `AwaitConfirmation`/`AwaitAssignment`; komitmen lain: `AlreadyFinanced`; lebih dari satu komitmen: `DoubleFinanced` | ADA | `lookup`, `Flow::on_board` |
-| 3.6 Tanda tangani entri | Entri `0x01` atau `0x03` dengan key per invoice supplier; `0x03` butuh sertifikat k dari buyer (wasm memakai `cert.tag()`) | PARSIAL (wasm ADA, layar belum) | wasm `supplierRegisterEntry`, `supplierRegisterHistoryEntry` |
-| 3.7 Periksa entri | Jenis register, N, komitmen, tag riwayat (bila deal punya tag; entri bertag tetap diterima bila deal tanpa tag), tanda tangan supplier. Ditolak: `EntryMismatch`, state tetap. Kode tidak menyimpan entri yang ditawarkan setelah `Register` | ADA (penyimpanan entri untuk bukti USULAN P-14) | `Flow::check_entry` |
-| 3.8 Posting entri | 10 000 zat ke alamat papan + fee ZIP-317. Celah: tidak ada cek papan ulang (event `BoardChecked` ditolak di `AwaitSupplierSignature` dan `Register`) dan tidak ada pemulihan seperti `sent_advance`; crash sebelum tertambang bisa membuat posting ganda (entri bertag ganda = `Equivocation`, Spec #2) | ADA (dengan celah) | `Financier::register` |
+| 3.6 Tanda tangani entri | Entri `0x01` atau `0x03` dengan key per invoice supplier dan kelas dari financier; `0x03` dari sertifikat k atau cukup `history_tag` 32 byte (supplier tidak perlu sertifikat k) | PARSIAL (wasm ADA, HNK-27.T2 dan T8; layar belum) | wasm `supplierRegisterEntry`, `supplierRegisterHistoryEntry`, `supplierRegisterTaggedEntry` |
+| 3.7 Periksa entri | Jenis register, N, komitmen, tag riwayat (bila deal punya tag; entri bertag tetap diterima bila deal tanpa tag), kelas, tanda tangan supplier. Ditolak: `EntryMismatch`, state tetap. Kode tidak menyimpan entri yang ditawarkan setelah `Register` | ADA (penyimpanan entri untuk bukti USULAN P-14) | `Flow::check_entry` |
+| 3.8 Posting entri | 10 000 zat ke alamat papan + fee ZIP-317. Tepat sebelum posting papan dicek sekali lagi (`BoardChecked` diterima di `Register`: konflik = `Stopped`, entri sendiri yang sudah tertambang diikuti), lalu `sent_entry` mencari entri yang sudah terkirim supaya crash tidak membuat posting ganda | ADA (HNK-27.T5) | `Financier::register`, `sent_entry` |
 | 3.9 Tunggu konfirmasi | Ulangi 3.4 + lookup sampai konfirmasi ≥ minimum; entri hilang saat scan kembali ke `AwaitConfirmation`; konflik baru `Stopped`; `Error::Timeout` | ADA | `wait_for_confirmation` |
 
 ## Aliran data
@@ -242,7 +242,7 @@ sp_P8_b -[hidden]- P8
 | F3.19 | Jaringan Zcash (lightwalletd) | 3.5 Lookup N | tinggi tip |
 | F3.20 | 3.5 Lookup N | D11 Status deal (node, memori) | AwaitSupplierSignature / AwaitConfirmation / AwaitAssignment / Stopped |
 | F3.21 | 3.5 Lookup N | Financier | bebas / sudah dibiayai |
-| F3.22 | D7 Kotak surat terenkripsi | 3.6 Tanda tangani entri (supplier) | pembuka komitmen, kelas, sertifikat k (dari buyer) |
+| F3.22 | D7 Kotak surat terenkripsi | 3.6 Tanda tangani entri (supplier) | pembuka komitmen, kelas, history_tag atau sertifikat k |
 | F3.23 | 3.6 Tanda tangani entri (supplier) | Supplier | rincian entri: N, financier, kelas |
 | F3.24 | Supplier | 3.6 Tanda tangani entri (supplier) | keputusan setuju |
 | F3.25 | D3 Key sesi (memori tab) | 3.6 Tanda tangani entri (supplier) | key per invoice |

@@ -67,6 +67,8 @@ Layout: magic `JTSP` (4), versi `0x01` (1), panjang invoice (2, LE), invoice kan
 
 **Test vector:** `financier_pk` 32×`0x03`, `salt` 32×`0x04` → `c72255e7b3f5bd4f2e652cf71eceb37d0b35074f2bb11c4a788ce2282d982b3a` (dicek silang dengan Python `hashlib.blake2b(digest_size=32)`).
 
+**Salt (HNK-27.T1, DEV-14):** `salt = BLAKE2b-256(key = secret key financier (32 byte), personalisasi "JitsuinCommSalt_", "salt" ‖ N)`. Financier yang sama selalu mendapat salt yang sama untuk invoice yang sama, jadi retry setelah crash memberi komitmen yang sama (tidak pernah dua komitmen untuk satu financier). Tanpa key financier salt tidak bisa ditebak. Test vector: secret key 32×`0x01`, N 32×`0x07` → salt `caaf1dce90a13c204ad70d305bf31a307b5dea3a82f764f2a6787788919a7d23` (Python `hashlib.blake2b(b"salt" + N, digest_size=32, key=…, person=b"JitsuinCommSalt_")`).
+
 ## Memo kuitansi (HNK-05, HNK-06) — **diimplementasikan** (`6b5c343`)
 Kuitansi ada di memo output shielded yang membawa uangnya, jadi hanya penerima yang bisa membacanya. Byte pertama memo `0xFF` (ZIP-302).
 
@@ -169,6 +171,7 @@ Untuk anggota dana yang memegang viewing key akun operasional:
 | 7 | ≥ 12% | — |
 
 - Dua-duanya diisi atau `0/0` (nilai entri sebelum HNK-08). Kombinasi lain = kelas salah: entri tetap registrasi yang sah untuk `lookup`, tetapi tidak masuk indeks.
+- Sejak HNK-27.T2 kelas sebuah deal dihitung financier dengan `deal_classes(invoice, advance, tanggal advance)` (`0/0` bila deal tidak cocok kelas mana pun) dan `check_entry` menolak entri yang kelasnya berbeda. Fungsi entri di `jitsuin-wasm` menerima kelas opsional; tanpa kelas tetap `0/0`.
 - Indeks: tiap N dihitung sekali dengan entri register pertamanya di urutan papan; entri `settled` tidak membawa kelas. Per kelas tenor: jumlah invoice, median bawah kelas diskon, kelas diskon yang punya ≥ k invoice, sisanya satu total "other".
 - **k = 5** (`jitsuin_core::index::K`): kelas di bawah k tidak diberi angka. k boleh dinaikkan, tidak boleh diturunkan.
 

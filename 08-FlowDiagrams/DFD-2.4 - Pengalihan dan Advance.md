@@ -97,15 +97,16 @@ rectangle "F4.33 memo: kuitansi +\nseal s2 + JTN1" <<flow>> as f_F4_33
 rectangle "F4.34 memo, alamat\nsupplier" <<flow>> as f_F4_34
 rectangle "F4.35 wallet" <<flow>> as f_F4_35
 rectangle "F4.36 tx advance\nshielded" <<flow>> as f_F4_36
-rectangle "F4.37 tx advance\nterkirim" <<flow>> as f_F4_37
-rectangle "F4.38 Done (terkirim,\nbelum tentu tertambang)" <<flow>> as f_F4_38
-rectangle "F4.39 advance + catatan\npiutang (dana)" <<flow>> as f_F4_39
-rectangle "F4.40 txid ke supplier;\ns2 ke buyer" <<flow>> as f_F4_40
-rectangle "F4.41 output + memo tx advance\n(wallet supplier, CLI lokal)" <<flow>> as f_F4_41
-rectangle "F4.42 txid, s1\n(petunjuk)" <<flow>> as f_F4_42
-rectangle "F4.43 invoice, surat, s0,\nadvance yang disepakati" <<flow>> as f_F4_43
-rectangle "F4.44 nominal di Zodl\n(jalur lemah)" <<flow>> as f_F4_44
-rectangle "F4.45 Sealed / gagal" <<flow>> as f_F4_45
+rectangle "F4.37 tx advance tertambang\n/ kedaluwarsa" <<flow>> as f_F4_37
+rectangle "F4.38 tx advance\nterkirim" <<flow>> as f_F4_38
+rectangle "F4.39 AwaitAdvanceConfirmation,\nlalu Done (tertambang)" <<flow>> as f_F4_39
+rectangle "F4.40 advance + catatan\npiutang (dana)" <<flow>> as f_F4_40
+rectangle "F4.41 txid ke supplier;\ns2 ke buyer" <<flow>> as f_F4_41
+rectangle "F4.42 output + memo tx advance\n(wallet supplier, CLI lokal)" <<flow>> as f_F4_42
+rectangle "F4.43 txid, s1\n(petunjuk)" <<flow>> as f_F4_43
+rectangle "F4.44 invoice, surat, s0,\nadvance yang disepakati" <<flow>> as f_F4_44
+rectangle "F4.45 nominal di Zodl\n(jalur lemah)" <<flow>> as f_F4_45
+rectangle "F4.46 Sealed / gagal" <<flow>> as f_F4_46
 F_1 -- f_F4_01
 f_F4_01 --> P1
 P1 <-- f_F4_02
@@ -178,24 +179,26 @@ P7 <-- f_F4_35
 f_F4_35 -- D2_7
 Z_7 <-- f_F4_36
 f_F4_36 -- P7
-P7 -- f_F4_37
-f_F4_37 --> D2_7
+Z_7 -- f_F4_37
+f_F4_37 --> P7
 P7 -- f_F4_38
-f_F4_38 --> D11_7
+f_F4_38 --> D2_7
 P7 -- f_F4_39
-f_F4_39 --> D6_7
+f_F4_39 --> D11_7
 P7 -- f_F4_40
-f_F4_40 --> D7_7
-Z_8 -- f_F4_41
-f_F4_41 --> P8
-P8 <-- f_F4_42
-f_F4_42 -- D7_8
+f_F4_40 --> D6_7
+P7 -- f_F4_41
+f_F4_41 --> D7_7
+Z_8 -- f_F4_42
+f_F4_42 --> P8
 P8 <-- f_F4_43
-f_F4_43 -- D4_8
-S_8 -- f_F4_44
-f_F4_44 --> P8
-S_8 <-- f_F4_45
-f_F4_45 -- P8
+f_F4_43 -- D7_8
+P8 <-- f_F4_44
+f_F4_44 -- D4_8
+S_8 -- f_F4_45
+f_F4_45 --> P8
+S_8 <-- f_F4_46
+f_F4_46 -- P8
 rectangle " " <<spacer>> as sp_P4_a
 rectangle " " <<spacer>> as sp_P4_b
 sp_P4_a -[hidden]- sp_P4_b
@@ -208,13 +211,13 @@ sp_P4_b -[hidden]- P4
 | Proses | Isi | Status | Kode / item |
 |---|---|---|---|
 | 4.1 Buat surat pengalihan | JTSA: N, nominal, jatuh tempo, `financier_pk`, alamat bayar (target: alamat diversified baru per deal dari wallet node), `terms_hash` PDF surat; dibuat sebelum 3.3. Surat tidak bertanda tangan sampai s2, jadi pesan relay perlu autentikasi pengirim (P-04) | ADA | wasm `assignmentEncode` |
-| 4.2 Segel supplier | Seal langkah 0. Nominal dan jatuh tempo dipaksa sama dengan invoice; yang belum bisa ditampilkan: alamat bayar, `financier_pk`, `terms_hash` (tidak ada `assignmentDecode`) | PARSIAL (P-13) | wasm `supplierSealAssignment` |
+| 4.2 Segel supplier | Seal langkah 0. Nominal dan jatuh tempo dipaksa sama dengan invoice; alamat bayar, `financier_pk`, `terms_hash` dibaca dengan `assignmentDecode` | PARSIAL: `assignmentDecode` ADA (HNK-27.T3); layar belum menampilkannya (HNK-24.T7) | wasm `supplierSealAssignment`, `assignmentDecode` |
 | 4.3 Segel buyer | Seal langkah 1, pengakuan tertulis (Pasal 613 KUHPerdata); buyer membuka PDF surat dan mencocokkan hash dengan `terms_hash`; wasm memeriksa surat terhadap invoice dan key k | PARSIAL (P-13) | wasm `buyerSealAssignment` |
 | 4.4 Verifikasi rantai seal | Urutan, rantai hash, signer = key role, tanpa `SelfApproval`; event diterima hanya di `AwaitAssignment`; seal tidak lengkap = error, state tetap | ADA | `Assignment::verify`, `AssignmentSealed` |
-| 4.5 Cek terakhir dan idempotensi | Scan sekali lagi (3.4); entri hilang: `AwaitConfirmation`; konflik: `Stopped`; key node harus sama dengan `financier_pk` surat (`InvalidDeal`); advance yang sudah terkirim dicatat. Entri yang ditambang ulang di tinggi lain tidak mengulang hitungan konfirmasi | ADA | `pay_advance`, `sent_advance` |
+| 4.5 Cek terakhir dan idempotensi | Key node harus sama dengan `financier_pk` surat (`InvalidDeal`); scan sekali lagi (3.4): entri hilang atau ditambang ulang dengan konfirmasi di bawah minimum: `AwaitConfirmation`; konflik: `Stopped`; advance yang sudah terkirim dicatat (txid kedaluwarsa dilewati) | ADA (HNK-27.T6) | `pay_advance`, `sent_advance` |
 | 4.6 Susun memo Sign-to-Pay | Kuitansi JTR1 atas `advance_zat` + seal financier JTL1 + catatan piutang JTN1 (394 byte) | ADA | `Receipt::sign`, `seal_next`, `ReceivableNote` |
-| 4.7 Kirim advance | Satu transaksi shielded ke alamat supplier. `Done` berarti terkirim, belum tentu tertambang; `sent_advance` tidak membedakan tertambang, tertunda, atau kedaluwarsa | ADA (diuji testnet) | `Devtool::pay` |
-| 4.8 Verifikasi advance | Jalur kuat: wallet supplier sendiri (CLI lokal) membaca output + memo: kuitansi oleh `financier_pk`, nominal = nilai output = advance yang disepakati, rantai `Sealed`. Jalur lemah: txid lewat relay + nominal di Zodl. Kode belum membandingkan dengan advance yang disepakati | PARSIAL: fungsi ADA (hanya dipanggil unit test); jalur supplier USULAN | `supplier::received_advances`, `verify_sign_to_pay` |
+| 4.7 Kirim advance | Satu transaksi shielded ke alamat supplier, lalu `AwaitAdvanceConfirmation`: `Done` setelah tx tertambang; lewat `ADVANCE_EXPIRY_BLOCKS` (50) tanpa tertambang kembali ke `Pay` dan dibayar ulang tepat sekali | ADA (diuji testnet; konfirmasi HNK-27.T6) | `Devtool::pay`, `wait_for_advance` |
+| 4.8 Verifikasi advance | Jalur kuat: wallet supplier sendiri (CLI lokal) membaca output + memo: kuitansi oleh `financier_pk`, nominal = nilai output = advance yang disepakati (`verify_sign_to_pay` menerima `agreed_advance_zat`), rantai `Sealed`. Jalur lemah: txid lewat relay + nominal di Zodl | PARSIAL: fungsi ADA (HNK-27.T7, hanya dipanggil unit test); jalur supplier USULAN | `supplier::received_advances`, `verify_sign_to_pay` |
 
 ## Aliran data
 
@@ -256,12 +259,13 @@ sp_P4_b -[hidden]- P4
 | F4.34 | D11 Status deal (node, memori) | 4.7 Kirim advance | memo, alamat supplier |
 | F4.35 | D2 Node financier (wallet, key, watch-only papan) | 4.7 Kirim advance | wallet |
 | F4.36 | 4.7 Kirim advance | Jaringan Zcash (lightwalletd) | tx advance shielded |
-| F4.37 | 4.7 Kirim advance | D2 Node financier (wallet, key, watch-only papan) | tx advance terkirim |
-| F4.38 | 4.7 Kirim advance | D11 Status deal (node, memori) | Done (terkirim, belum tentu tertambang) |
-| F4.39 | 4.7 Kirim advance | D6 Akun dana (operasional) | advance + catatan piutang (dana) |
-| F4.40 | 4.7 Kirim advance | D7 Kotak surat terenkripsi | txid ke supplier; s2 ke buyer |
-| F4.41 | Jaringan Zcash (lightwalletd) | 4.8 Verifikasi advance (supplier) | output + memo tx advance (wallet supplier, CLI lokal) |
-| F4.42 | D7 Kotak surat terenkripsi | 4.8 Verifikasi advance (supplier) | txid, s1 (petunjuk) |
-| F4.43 | D4 Dokumen deal (salinan tiap pihak) | 4.8 Verifikasi advance (supplier) | invoice, surat, s0, advance yang disepakati |
-| F4.44 | Supplier | 4.8 Verifikasi advance (supplier) | nominal di Zodl (jalur lemah) |
-| F4.45 | 4.8 Verifikasi advance (supplier) | Supplier | Sealed / gagal |
+| F4.37 | Jaringan Zcash (lightwalletd) | 4.7 Kirim advance | tx advance tertambang / kedaluwarsa |
+| F4.38 | 4.7 Kirim advance | D2 Node financier (wallet, key, watch-only papan) | tx advance terkirim |
+| F4.39 | 4.7 Kirim advance | D11 Status deal (node, memori) | AwaitAdvanceConfirmation, lalu Done (tertambang) |
+| F4.40 | 4.7 Kirim advance | D6 Akun dana (operasional) | advance + catatan piutang (dana) |
+| F4.41 | 4.7 Kirim advance | D7 Kotak surat terenkripsi | txid ke supplier; s2 ke buyer |
+| F4.42 | Jaringan Zcash (lightwalletd) | 4.8 Verifikasi advance (supplier) | output + memo tx advance (wallet supplier, CLI lokal) |
+| F4.43 | D7 Kotak surat terenkripsi | 4.8 Verifikasi advance (supplier) | txid, s1 (petunjuk) |
+| F4.44 | D4 Dokumen deal (salinan tiap pihak) | 4.8 Verifikasi advance (supplier) | invoice, surat, s0, advance yang disepakati |
+| F4.45 | Supplier | 4.8 Verifikasi advance (supplier) | nominal di Zodl (jalur lemah) |
+| F4.46 | 4.8 Verifikasi advance (supplier) | Supplier | Sealed / gagal |
