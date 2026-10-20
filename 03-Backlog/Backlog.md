@@ -265,7 +265,7 @@ Urutan kerja mengikuti gelombang FD-01: fondasi (HNK-27, HNK-22, HNK-24.T1, HNK-
 |---|---|---|---|---|
 | HNK-09.T1 | Perintah `jitsuin verify` (memakai ulang scanner) | Dex #dex | 3 | DONE (`8859598`, jitsuinfi-zcash PR #4 di-merge 19 Okt): crate `jitsuin-cli`, scan live via UFVK atau snapshot, cek bukti + bundel; 13 tes |
 | HNK-09.T2 | Image Docker + instruksi `cargo install` | Dex #dex | 2 | DONE (`8859598`, PR #4): `Dockerfile`, workflow `verifier-image.yml`, README. Build dari sumber 9–15 mnt, jadi AC-HNK-09.1 + SPK-11 FAIL; fallback image jadi = usulan D-28. 2026-10-20: filter `paths` workflow ditambah `crates/jitsuin-flow/**` (dependensi `jitsuin-cli`) dan `examples/testnet/**` (ikut di-`COPY` ke image), karena PR #11 yang hanya mengubah `jitsuin-flow` tidak memicu job (`c5cb50c`, branch `hans/ci-verifier-image-paths`, lokal) |
-| HNK-09.T3 | README: perintah persis + output yang diharapkan | Hans #hans (dari Dave, D-35) | 1 | TODO |
+| HNK-09.T3 | README: perintah persis + output yang diharapkan | Hans #hans (dari Dave, D-35) | 1 | IN REVIEW (jitsuinfi-zcash `27b46c6`, PR #14): bagian "For judges" (HNK-28.T6) berisi perintah persis untuk papan testnet sungguhan; ditambah output `jitsuin index` yang diharapkan (`examples/testnet/expected-index.txt`, dicek byte per byte oleh tes `samples`) dan perintah Docker offline. Kedua perintah Docker offline mencetak persis file yang di-commit |
 
 **HNK-12 — Spesifikasi gaya ZIP Shielded Receivable Registry** · Lead Hans #hans · [[AC-HNK-12 - Spesifikasi gaya ZIP Shielded Receivable Registry|AC]]
 
