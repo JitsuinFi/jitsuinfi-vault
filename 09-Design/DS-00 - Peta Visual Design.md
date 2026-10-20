@@ -90,8 +90,8 @@ File non-gambar di folder ini (belum dipetakan karena permintaan hanya gambar): 
 | Sign in / Account (HNK-22) | DS-08 | Ilustrasi garis, satu CTA |
 
 ## Keputusan yang perlu user
-1. Kartu boleh dipakai di **app** (landing tetap tanpa kartu)? Hampir semua referensi app berbasis kartu.
-2. App diselaraskan ke palet utama (saat ini `src/style.css` memakai krem dan merah `#b3261e`)?
+1. ~~Kartu boleh dipakai di **app**?~~ **Dijawab 2026-10-20 (D-36): tidak.** App juga tanpa kartu; bagian layar diset di atas kertas.
+2. ~~App diselaraskan ke palet utama?~~ **Dijawab 2026-10-20 (D-36): ya, sekarang.** `src/style.css` memakai token landing (jitsuinfi-frontend `0cce4e8`).
 3. hairline dipakai sebagai gaya ilustrasi resmi (DS-08, DS-09)?
 4. Referensi mana yang jadi acuan utama layar app (usulan: DS-04 untuk struktur, DS-06/DS-07 untuk timeline)?
 
