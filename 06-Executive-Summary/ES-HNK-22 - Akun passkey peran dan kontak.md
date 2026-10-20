@@ -13,6 +13,7 @@ updated: 2026-10-20
 
 ## Apa diubah
 - **T1 – T4 (Dave, backup Hans, DEV-17), PR #4:** layar Account: daftar satu passkey (`excludeCredentials`, nama netral, `rp.id` eksplisit untuk produksi), masuk, tambah atau ganti peran dengan passkey yang sama, sidik jari key, kunci. Authenticator tanpa PRF ditolak; test secret hanya bila passkey tidak bisa memberi key. Salt master dan inbox per peran (supplier, buyer, anggota); salt buyer tetap. Sesi hanya memegang key kotak surat; setiap tanda tangan = satu stempel (`Uint8Array` dinolkan); kunci setelah 15 menit idle. Router: layar peran hanya setelah masuk, Financier keluar dari navigasi. Layar supplier dan buyer memakai stempel.
+- **Desain ulang layar akun (lokal, `c9784b8` → `703bac4` → `e42ac5d`):** gaya aplikasi consumer. Sign up: email, username, peran → passkey (sidik jari, wajah, atau password/PIN perangkat) → onboarding tiga bagian dengan indikator langkah. Log in: username → passkey → peran terakhir. Email dan username di profil perangkat sampai server akun ada (D-34).
 - Belum: T5 kartu kontak dan T6 kotak masuk (butuh HNK-23), T7 uji authenticator nyata (user).
 
 ## Hasil vs KPI (angka riil)
