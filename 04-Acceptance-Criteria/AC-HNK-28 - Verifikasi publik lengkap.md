@@ -28,7 +28,7 @@ Status per kriteria: `TODO` / `PASS` / `FAIL` / `BLOCKED`, wajib dengan tanggal 
 | AC-HNK-28.1 | Verify, status pelunasan, dan riwayat sendiri memakai snapshot tanpa unggah file. | TODO | — | — |
 | AC-HNK-28.2 | Bukti tanpa posisi entri pertama FAIL di web, sama dengan CLI. | PASS | 2026-10-20 | `32a3977`, `d13321e`; U-HNK-28.1, I-HNK-28.2 (web dan `jitsuin verify` pada data TES- yang sama) |
 | AC-HNK-28.3 | Halaman `#/index` menampilkan indeks yang sama dengan `jitsuin index`. | PASS (lokal) | 2026-10-20 | `rateIndex` sama dengan CLI (U-HNK-28.2, I-HNK-28.2); halaman `#/index` (HNK-08.T3, jitsuinfi-frontend `e9f5afb`, PR #7) menampilkan tabel yang sama dengan CLI untuk papan contoh dan papan testnet |
-| AC-HNK-28.4 | "every seal checks out" tidak muncul bila surat belum lengkap; halaman orang luar menyebut yang terlihat pemegang UFVK papan. | TODO | — | — |
+| AC-HNK-28.4 | "every seal checks out" tidak muncul bila surat belum lengkap; halaman orang luar menyebut yang terlihat pemegang UFVK papan. | TODO | 2026-10-20 | Bagian pertama lokal: `1dcedf3`, U-HNK-28.4; bundel contoh (surat lengkap) tetap "every seal ... checks out" di build produksi. Bagian halaman orang luar = HNK-28.T5 |
 | AC-HNK-28.5 | Juri bisa memverifikasi dari README tanpa bertanya ke tim. | PASS | 2026-10-20 | `5fdb4e3` (PR #10, `c73009b`); I-HNK-28.3 (wallet baru, hanya data README: 11 entri, bukti `TES-INV-0003` PASS 4/4), I-HNK-28.4 (layar Verify live, verdict sama), U-HNK-28.3. Publik saat repo dibuka (DEV-19) |
 
 ## Deviasi
