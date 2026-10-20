@@ -27,6 +27,8 @@ Tambahan dari referensi lain (Reeve): tombol utama magnetik. Ditolak: kartu dan 
 - Dua gambar palet (`870121ac….jpg`, `ffc1eb9c….jpg`).
 - Diterjemahkan ke token di `jitsuinfi-frontend/MASTER.md` §2 (Cetacean Blue, Catalina Blue, Absolute Zero, Button Blue, Dark Raspberry, Brown Coffee, Japanese Violet, Classic Rose, Pearly Purple, Vodka) dengan rasio kontras WCAG. Catatan MASTER: label chart Vodka `29B4D1` salah; nilai benar RGB 196,199,242.
 
+Dipetakan sebagai **palet utama** di [[DS-PAL - Palet Utama JitsuinFi]] (permintaan user 2026-10-20).
+
 ## Status di git
 - Kedua folder **belum di-commit** ke repo vault (untracked). Putuskan: commit, atau pindahkan ke `09-Design`.
 

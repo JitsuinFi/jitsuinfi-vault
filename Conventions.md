@@ -25,6 +25,7 @@ Aturan vault ini. Diadaptasi dari panduan `ObsidianGuides/Conventions.md`, ditam
 | `FD-xx`, `PG-xx` | Dokumen alur: arsitektur target, peta halaman | `FD-00 - <Judul>.md`, `PG-01 - <Judul>.md` |
 | `SEQ-xx` | Sequence diagram per peran | `SEQ-01 - Supplier.md` |
 | `DFD-n` / `DFD-2.k` | DFD level 0, 1, dan level 2 per proses k | `DFD-2.3 - Registrasi Papan.md` |
+| `DS-xx`, `DS-PAL` | Satu referensi visual di `09-Design/` (DS-00 hub, DS-PAL palet utama) | `DS-04 - Invoices Dashboard Dark.md` |
 | `FE-xx` | Satu tool frontend (library, skill, MCP, referensi) di `10-FE-vault/` | `FE-07 - three.js.md` |
 | `P-xx` | Usulan desain di [[FD-00 - Arsitektur Target dan Legenda]] (belum keputusan) | `P-04` |
 
