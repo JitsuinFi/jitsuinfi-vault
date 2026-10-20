@@ -1,7 +1,7 @@
 ---
 tags: [flow, backlog]
 status: DITETAPKAN
-progress: 0/8 SELESAI
+progress: 1/8 SELESAI
 updated: 2026-10-20
 ---
 
@@ -17,7 +17,7 @@ Kolom Status mengikuti langkah 6 "Audit flow diagram" di [[Workflow Development]
 
 | ID | Elemen | Task | Selesai bila | Ref | Task backlog | Owner | Status |
 |---|---|---|---|---|---|---|---|
-| BL-D28-01 | 8.1, F8.01 | Keputusan D-11: publikasi UFVK + birthday papan untuk juri | Keputusan tercatat; UFVK ada di README juri | C-26 | HNK-28.T6 | Hans | DIKERJAKAN |
+| BL-D28-01 | 8.1, F8.01 | Keputusan D-11: publikasi UFVK + birthday papan untuk juri | Keputusan tercatat; UFVK ada di README juri | C-26 | HNK-28.T6 | Hans | SELESAI (2026-10-20, D-11 tercatat; UFVK di `examples/testnet/board-ufvk.txt` dan README "For judges", PR #10 `c73009b`) |
 | BL-D28-02 | 8.1 – 8.6 | Review dan merge `jitsuin verify` / `jitsuin index` (PR #4, #5), README dengan perintah persis, image Docker (D-28) | HNK-09.T1 – T3 dan HNK-08.T1 – T2 selesai | HNK-09, HNK-08, D-28 | HNK-09.T3 | Dave | TODO |
 | BL-D28-03 | 8.4, F8.12 – F8.14 | Kartu bundel dipindah ke konsol node (origin node) | Bundel dibuat dari detail deal di konsol | HNK-21.T4, P-11 | HNK-21.T4 | Dex | TODO |
 | BL-D28-04 | 8.5, F8.17 – F8.18 | Teks verdict bundel di layar Verify sesuai status surat dan settled | "every seal checks out" tidak muncul bila surat belum lengkap | C-24 | HNK-28.T4 | Dave | TODO |

@@ -13,7 +13,7 @@ updated: 2026-10-20
 
 ## Apa diubah
 - **T2 (Hans), di-merge:** `jitsuin-board` `ProofOnBoard` (satu field per klaim) dipakai CLI dan wasm `verifyProofOnBoard`; layar Verify memeriksa posisi bukti terhadap data papan, tanpa data papan posisi ditulis sebagai klaim. Bukti tanpa posisi pertama FAIL di web dan CLI.
-- **T6 (Hans), lokal, menunggu izin push:** UFVK papan testnet dipublikasikan di `jitsuinfi-zcash/examples/testnet/board-ufvk.txt` (D-11, disetujui user 2026-10-20), birthday 4508703, snapshot papan live, dan bukti pembiayaan ganda `TES-INV-0003` yang dibangun ulang dari papan. README punya bagian "For judges" (scan live, indeks, offline, layar Verify).
+- **T6 (Hans), di-merge (PR #10, `c73009b`):** UFVK papan testnet dipublikasikan di `jitsuinfi-zcash/examples/testnet/board-ufvk.txt` (D-11, disetujui user 2026-10-20), birthday 4508703, snapshot papan live, dan bukti pembiayaan ganda `TES-INV-0003` yang dibangun ulang dari papan. README punya bagian "For judges" (scan live, indeks, offline, layar Verify).
 - **T3 (Hans), di-merge:** `rate_index_json` bersama; wasm `rateIndex` sama dengan `jitsuin index --json`. Halaman `#/index` (HNK-08.T3, Dave) belum ada.
 
 ## Hasil vs KPI (angka riil)
@@ -23,7 +23,7 @@ updated: 2026-10-20
 | Pertanyaan juri ke tim untuk verifikasi | 0 | 0: uji wallet baru hanya dengan data README (I-HNK-28.3) |
 
 ## Status
-**PARSIAL.** T2, T3 DONE (di-merge); T6 IN REVIEW (lokal); halaman indeks, snapshot otomatis, dan sisa item belum.
+**PARSIAL.** T2, T3 DONE (di-merge); T6 DONE (di-merge); halaman indeks, snapshot otomatis, dan sisa item belum.
 
 ## Risiko tersisa
 - UFVK baru publik saat repo `jitsuinfi-zcash` dibuka (DEV-19, menjelang submit).
@@ -33,4 +33,4 @@ updated: 2026-10-20
 ## Bukti
 - Commit: _TODO_
 - ID tes: _TODO_
-- Persetujuan user untuk push/deploy: _belum_
+- Persetujuan user untuk push/deploy: 2026-10-20 ("Gas push semua dan buka PR", "cek lagi, kalau hijau merge #10"); T6 di-merge `c73009b`
