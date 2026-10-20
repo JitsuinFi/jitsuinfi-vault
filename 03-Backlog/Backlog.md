@@ -229,16 +229,16 @@ Urutan kerja mengikuti gelombang FD-01: fondasi (HNK-27, HNK-22, HNK-24.T1, HNK-
 
 | Task | Deskripsi | Owner | Jam | Status |
 |---|---|---|---|---|
-| HNK-27.T1 | Salt komitmen dari library (CSPRNG), disimpan per (invoice, financier), dipakai ulang saat retry. Rincian: `BL-D23-04` | Hans #hans | 1 | DONE (`748d451`, branch `hans/hnk-27-protocol-fixes` jitsuinfi-zcash, belum di-push) |
-| HNK-27.T2 | Kelas: `classes_for` di 3.2, parameter kelas di API entri wasm, cek di `check_entry`. Rincian: `BL-D23-05` | Hans #hans | 3 | PARSIAL (`d5f98d0`, `59cd762`, branch `hans/hnk-27-protocol-fixes` jitsuinfi-zcash, belum di-push): kode selesai; bukti indeks berkelas I-HNK-27.1 menunggu HNK-24.T6 dan HNK-26 (GAGAL AUDIT BL-D23-05, 2026-10-20) |
-| HNK-27.T3 | `assignmentDecode` di `jitsuin-wasm`. Rincian: `BL-D24-04` | Hans #hans | 1 | DONE (`948133a`, branch `hans/hnk-27-protocol-fixes` jitsuinfi-zcash, belum di-push) |
-| HNK-27.T4 | `doubleSignProof` di wasm menerima posisi papan. Rincian: `BL-D27-03` | Hans #hans | 1 | DONE (`14803af`, branch `hans/hnk-27-protocol-fixes` jitsuinfi-zcash, belum di-push) |
-| HNK-27.T5 | `register()`: terima `BoardChecked` di `Register`, cari entri terkirim sebelum posting ulang. Rincian: `BL-D23-12` | Hans #hans | 3 | DONE (`fef1d15`, branch `hans/hnk-27-protocol-fixes` jitsuinfi-zcash, belum di-push) |
-| HNK-27.T6 | Hitung ulang konfirmasi entri yang ditambang ulang; `Done` setelah advance terkonfirmasi. Rincian: `BL-D24-08`, `BL-D24-10` | Hans #hans | 2 | DONE (`b6f33d5`, branch `hans/hnk-27-protocol-fixes` jitsuinfi-zcash, belum di-push) |
-| HNK-27.T7 | Bandingkan advance yang diterima dengan advance yang disepakati. Rincian: `BL-D24-12` | Hans #hans | 1 | DONE (`a10185f`, branch `hans/hnk-27-protocol-fixes` jitsuinfi-zcash, belum di-push) |
-| HNK-27.T8 | Varian entri bertag yang hanya menerima `history_tag`. Rincian: `BL-D23-10` | Hans #hans | 1 | DONE (`8897517`, branch `hans/hnk-27-protocol-fixes` jitsuinfi-zcash, belum di-push) |
-| HNK-27.T9 | API `jitsuin-wasm` menerima key sebagai byte. Rincian: `BL-D21-13` | Hans #hans | 1 | DONE (`1ac7057`, branch `hans/hnk-27-protocol-fixes` jitsuinfi-zcash, belum di-push) |
-| HNK-27.T10 | Perintah CLI solvabilitas anggota; `SolvencyPolicy.grace_days` dihapus atau dipakai. Rincian: `BL-D29-06` | Hans #hans | 1 | DONE (`9826b09`, branch `hans/hnk-27-protocol-fixes` jitsuinfi-zcash, belum di-push) |
+| HNK-27.T1 | Salt komitmen dari library (CSPRNG), disimpan per (invoice, financier), dipakai ulang saat retry. Rincian: `BL-D23-04` | Hans #hans | 1 | DONE (`748d451`, jitsuinfi-zcash PR #7) |
+| HNK-27.T2 | Kelas: `classes_for` di 3.2, parameter kelas di API entri wasm, cek di `check_entry`. Rincian: `BL-D23-05` | Hans #hans | 3 | PARSIAL (`d5f98d0`, `59cd762`, jitsuinfi-zcash PR #7): kode selesai; bukti indeks berkelas I-HNK-27.1 menunggu HNK-24.T6 dan HNK-26 (GAGAL AUDIT BL-D23-05, 2026-10-20) |
+| HNK-27.T3 | `assignmentDecode` di `jitsuin-wasm`. Rincian: `BL-D24-04` | Hans #hans | 1 | DONE (`948133a`, jitsuinfi-zcash PR #7) |
+| HNK-27.T4 | `doubleSignProof` di wasm menerima posisi papan. Rincian: `BL-D27-03` | Hans #hans | 1 | DONE (`14803af`, jitsuinfi-zcash PR #7) |
+| HNK-27.T5 | `register()`: terima `BoardChecked` di `Register`, cari entri terkirim sebelum posting ulang. Rincian: `BL-D23-12` | Hans #hans | 3 | DONE (`fef1d15`, jitsuinfi-zcash PR #7) |
+| HNK-27.T6 | Hitung ulang konfirmasi entri yang ditambang ulang; `Done` setelah advance terkonfirmasi. Rincian: `BL-D24-08`, `BL-D24-10` | Hans #hans | 2 | DONE (`b6f33d5`, jitsuinfi-zcash PR #7) |
+| HNK-27.T7 | Bandingkan advance yang diterima dengan advance yang disepakati. Rincian: `BL-D24-12` | Hans #hans | 1 | DONE (`a10185f`, jitsuinfi-zcash PR #7) |
+| HNK-27.T8 | Varian entri bertag yang hanya menerima `history_tag`. Rincian: `BL-D23-10` | Hans #hans | 1 | DONE (`8897517`, jitsuinfi-zcash PR #7) |
+| HNK-27.T9 | API `jitsuin-wasm` menerima key sebagai byte. Rincian: `BL-D21-13` | Hans #hans | 1 | DONE (`1ac7057`, jitsuinfi-zcash PR #7) |
+| HNK-27.T10 | Perintah CLI solvabilitas anggota; `SolvencyPolicy.grace_days` dihapus atau dipakai. Rincian: `BL-D29-06` | Hans #hans | 1 | DONE (`9826b09`, jitsuinfi-zcash PR #7) |
 
 ### Fase F4
 
@@ -468,5 +468,5 @@ SORT id ASC
 | DEV-11 | 2026-10-18 | HNK-01.T4, HNK-05.T5–T6, HNK-06.T5–T6, HNK-07.T3, HNK-07.T5, HNK-10.T1–T2, HNK-11.T1–T2, HNK-12.T1, HNK-15.T3, HNK-18.T3 | Owner Dave | Owner tetap Dave; dikerjakan sementara oleh Hans (agent) sebagai backup, lokal; Dave me-review. Status tiap task diperbarui saat selesai; porsi beban kerja dihitung ulang setelahnya | Keputusan user D-25, supaya alur bisa jalan | **Disetujui user 2026-10-18** |
 | DEV-12 | 2026-10-20 | HNK-21 (T1 – T8), HNK-05.T4 | Owner Hans | Owner **Dex** (D-29 Opsi B dijalankan); HNK-21.T9 baru untuk Dave | Porsi 40/30/30 | **Disetujui user 2026-10-19** (D-29) dan 2026-10-20 ("Setuju semua sesuai rekomendasi, gas bikin HNK-nya") |
 | DEV-13 | 2026-10-20 | HNK-10.T4, HNK-10.T5 | Bagian HNK-10 | Diserap HNK-23 (relay) sebagai HNK-23.T3 dan HNK-23.T5, owner tetap Dex | Relay butuh skeleton backend dan deploy yang sama | **Disetujui user 2026-10-20** |
-| DEV-14 | 2026-10-20 | HNK-27.T1, [[Format Data]] | P-08: salt komitmen CSPRNG 32 byte, disimpan per (invoice, financier), dipakai ulang saat retry | Salt **diturunkan**: `BLAKE2b-256(key = secret key financier, personalisasi "JitsuinCommSalt_", "salt" ‖ N)`. Retry tetap memberi komitmen yang sama, tanpa penyimpanan dan tanpa dependensi CSPRNG baru; tetap tidak bisa ditebak tanpa key financier | Tujuan P-08 (tidak pernah dua komitmen per financier) tercapai lebih sederhana | _Menunggu persetujuan user_ |
+| DEV-14 | 2026-10-20 | HNK-27.T1, [[Format Data]] | P-08: salt komitmen CSPRNG 32 byte, disimpan per (invoice, financier), dipakai ulang saat retry | Salt **diturunkan**: `BLAKE2b-256(key = secret key financier, personalisasi "JitsuinCommSalt_", "salt" ‖ N)`. Retry tetap memberi komitmen yang sama, tanpa penyimpanan dan tanpa dependensi CSPRNG baru; tetap tidak bisa ditebak tanpa key financier | Tujuan P-08 (tidak pernah dua komitmen per financier) tercapai lebih sederhana | **Disetujui user 2026-10-20** ("Setuju DEV-14, gas push dan buka PR") |
 | DEV-05 | 2026-10-16 | SPK-04 | [[Rencana Fase]]: SPK-04 spike kritis | SPK-04 tidak lagi kritis; gerbang F0 dihitung tanpa SPK-04 | D-15: Zodl opsional (keputusan user) | **Mengikuti keputusan user 2026-10-16** |

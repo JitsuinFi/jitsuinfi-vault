@@ -32,4 +32,4 @@ Status per kriteria: `TODO` / `PASS` / `FAIL` / `BLOCKED`, wajib dengan tanggal 
 | AC-HNK-27.5 | Bukti dari wasm dengan posisi lolos `jitsuin verify`. | PASS | 2026-10-20 | `14803af`; U-HNK-27.8 (`verify_proof_on_board`, fungsi yang dipanggil `jitsuin verify`) |
 
 ## Deviasi
-- **DEV-14:** salt komitmen diturunkan (keyed BLAKE2b dari key financier dan N) alih-alih CSPRNG yang disimpan per (invoice, financier) seperti teks P-08. Hasilnya sama untuk retry (komitmen yang sama), tanpa penyimpanan dan tanpa dependensi baru; tetap tidak bisa ditebak tanpa key financier. Lihat [[Backlog]] Log Deviasi. Menunggu persetujuan user.
+- **DEV-14:** salt komitmen diturunkan (keyed BLAKE2b dari key financier dan N) alih-alih CSPRNG yang disimpan per (invoice, financier) seperti teks P-08. Hasilnya sama untuk retry (komitmen yang sama), tanpa penyimpanan dan tanpa dependensi baru; tetap tidak bisa ditebak tanpa key financier. Lihat [[Backlog]] Log Deviasi. **Disetujui user 2026-10-20** ("Setuju DEV-14, gas push dan buka PR").

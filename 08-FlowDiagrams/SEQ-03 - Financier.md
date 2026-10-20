@@ -315,4 +315,4 @@ end
 | Bukti `DoubleFinanced` | PARSIAL | `proof_from_lookup` ADA tanpa pemanggil di node |
 | Jalur B (`AlreadyFinanced`) | PARSIAL | Butuh entri B sebelum cek papan (P-14); wasm `doubleSignProof` dengan posisi papan ADA (HNK-27.T4) |
 | Jaringan | — | Development di testnet (D-13, `testnet.zec.rocks:443`); mainnet hanya demo akhir |
-| Salt komitmen dari library | ADA (HNK-27.T1) | Diturunkan dari key financier dan N (DEV-14, menunggu persetujuan) |
+| Salt komitmen dari library | ADA (HNK-27.T1) | Diturunkan dari key financier dan N (DEV-14, disetujui 2026-10-20) |

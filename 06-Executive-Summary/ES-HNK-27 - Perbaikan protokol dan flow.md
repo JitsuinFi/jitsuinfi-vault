@@ -12,7 +12,7 @@ updated: 2026-10-20
 > **Peta link:** [[Exec Summary Hub]] · [[Backlog]] · [[AC-HNK-27 - Perbaikan protokol dan flow|AC]] · [[TEST-HNK-27 - Perbaikan protokol dan flow|Test]] · **Exec Summary**
 
 ## Apa diubah
-- **Salt komitmen (T1):** `commitment_salt` / `commitment_opening` di `jitsuin-core`, `Financier::commitment_opening`, wasm `financierCommitment`. Diturunkan dari key financier dan N (DEV-14).
+- **Salt komitmen (T1):** `commitment_salt` / `commitment_opening` di `jitsuin-core`, `Financier::commitment_opening`, wasm `financierCommitment`. Diturunkan dari key financier dan N (DEV-14, disetujui).
 - **Kelas (T2):** `Deal` membawa kelas, `deal_classes()` memakai `classes_for` (0/0 bila tidak cocok kelas mana pun), `check_entry` menolak kelas yang berbeda; fungsi entri wasm menerima kelas opsional.
 - **`assignmentDecode` (T3)** di wasm, dengan `matches_invoice`.
 - **Bukti dengan posisi (T4):** `doubleSignProof` menerima posisi opsional kedua entri.
@@ -41,6 +41,6 @@ Kompatibilitas: semua parameter baru di wasm opsional, jadi landing page tetap j
 - Kelas tetap 0/0 sampai layar supplier (HNK-24.T6) dan node (HNK-26) mengisinya.
 
 ## Bukti
-- Commit: `748d451`, `d5f98d0`, `59cd762`, `948133a`, `14803af`, `fef1d15`, `b6f33d5`, `a10185f`, `8897517`, `1ac7057`, `9826b09` (branch `hans/hnk-27-protocol-fixes` jitsuinfi-zcash, belum di-push)
+- Commit: `748d451`, `d5f98d0`, `59cd762`, `948133a`, `14803af`, `fef1d15`, `b6f33d5`, `a10185f`, `8897517`, `1ac7057`, `9826b09` (branch `hans/hnk-27-protocol-fixes`, [JitsuinFi/jitsuinfi-zcash#7](https://github.com/JitsuinFi/jitsuinfi-zcash/pull/7))
 - ID tes: U-HNK-27.1 – U-HNK-27.11 PASS; I-HNK-27.1 – .3 TODO
-- Persetujuan user untuk push/deploy: _belum_
+- Persetujuan user untuk push/deploy: push branch + PR disetujui 2026-10-20 ("gas push dan buka PR"); merge menunggu CI dan review
