@@ -417,6 +417,7 @@ Urutan kerja mengikuti gelombang FD-01: fondasi (HNK-27, HNK-22, HNK-24.T1, HNK-
 | HNK-26.T17 | Alamat shielded diversified baru per deal dari wallet node. Rincian: `BL-D24-01` | Hans #hans (dari Dex, D-38) | 1 | TODO |
 | HNK-26.T18 | Kirim bundel JTSB ke buyer dan supplier setelah settled. Rincian: `BL-D25-08` | Hans #hans (dari Dex, D-38) | 1 | TODO |
 | HNK-26.T19 | Konfigurasi jaringan satu tempat (testnet / mainnet) di web app, node, CLI. Rincian: `BL-D0-04` | Hans #hans (dari Dex, D-38) | 1 | TODO |
+| HNK-26.T20 | Onboarding financier tanpa terminal (D-43): kode pairing pertama dari variabel `SETUP_CODE` atau dibuat penyedia, tautan undangan `…/console/pair#KODE` yang mengisi kode otomatis, tombol "Add a device" di konsol (kode sekali pakai dari sesi), `NODE_ORIGIN` otomatis dari `RAILWAY_PUBLIC_DOMAIN`, README penyedia. Rincian: `BL-D0-02` | Hans #hans | 2 | TODO |
 
 ### Fase F6
 
