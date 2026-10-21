@@ -15,7 +15,7 @@ What it does: each invoice gets a fingerprint N, a hash of the buyer-signed invo
 
 Why it does not leak: all money moves in the shielded pool, with no transparent inputs or outputs. The board holds only hashes and signatures that can be checked only with the invoice. Financiers hide behind salted commitments, buyers use a fresh key per invoice from a passkey, and settled entries cannot be linked to registrations. Verification runs in the browser (WASM) under a same-origin CSP. Known leaks (timing, entry counts, a repeated N) are listed in our threat model.
 
-Real vs mock: everything ran on Zcash testnet (NU7, Ironwood): registrations, advances, repayments by ZIP-321 QR, settled entries, double-financing proofs, buyer histories and a fund solvency check. Txids are in the README; test data starts with TES-. The financier backend is a library and CLI, not a hosted service.
+Real vs mock: everything ran on Zcash testnet, in the Ironwood pool: registrations, advances, repayments by ZIP-321 QR, settled entries, double-financing proofs, buyer histories and a fund solvency check. Txids are in the README; test data starts with TES-. The financier backend is a library and CLI, not a hosted service.
 ```
 
 ## Cek sebelum submit
