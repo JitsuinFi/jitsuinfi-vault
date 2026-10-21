@@ -470,6 +470,11 @@ Urutan kerja mengikuti gelombang FD-01: fondasi (HNK-27, HNK-22, HNK-24.T1, HNK-
 | HNK-30.T10 | Threat model: apa yang dilihat operator relay (penerima `to`, ukuran, waktu) dan node financier (hot wallet, `/node/info` publik); financier produksi menjalankan node sendiri (W-10) | Hans #hans | 1 | TODO |
 | HNK-30.T11 | Mandat privat N-15: aturan terstruktur di konsol node (kelas tenor, diskon minimum, nominal maksimum, riwayat buyer minimum, allowlist) dicocokkan lokal ke `deal.offer` tersegel, lalu financier setuju atau tolak (HITL). Tanpa LLM, x402, voting. Setelah HNK-26.T5 dan HNK-26.T9 | Hans #hans | 3 | TODO |
 | HNK-30.T12 | Opsional W-09: satu registrasi dan satu deteksi double-financing di mainnet dengan nominal kecil, txid di README. Butuh izin user untuk dana mainnet sebelum dijalankan | Hans #hans | 1 | TODO |
+| HNK-30.T13 | Visual pass app (FE-M0): `#/try` jadi meja barang bukti: lembar invoice dengan segel buyer yang retak saat byte diubah, sidik jari N (print view landing), papan sebagai kolam dengan satu slip per entri, tali segel merah dan cap 偽/重, angka tally besar, bab Exhibit A / lensa / batas / konsol. Ukur M3 | Hans #hans | 2 | DONE (2026-10-21, jitsuinfi-frontend `add7983`, lokal, belum PR): M3 terukur visual 76% / caption 24% di 1440×900, 79% / 21% di 375×812; tanpa overflow. Referensi DS-10 |
+| HNK-30.T14 | Visual pass `#/verify`: kaca pembesar dan lembar bukti, verdict sebagai cap besar; ukur M3 | Hans #hans | 1 | TODO |
+| HNK-30.T15 | Visual pass `#/apply`, sign in / akun, beranda app: amplop tersegel yang berjalan ke penyedia, kunci passkey; ukur M3 | Hans #hans | 1,5 | TODO |
+| HNK-30.T16 | Visual pass konsol financier: penawaran sebagai lembar yang datang, timeline deal per N (stepper tiga segel, DS-06), riwayat buyer bercabang (DS-07), angka advance besar; ukur M3 | Hans #hans | 2 | TODO |
+| HNK-30.T17 | Visual pass halaman peran (supplier, buyer, anggota dana), `#/outsiders`, `#/rate`: ukur M3 dan ganti panel-form polos dengan adegan | Hans #hans | 3 | TODO |
 
 ### Fase F7
 

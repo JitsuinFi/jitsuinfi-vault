@@ -56,6 +56,7 @@ mindmap
 | [[DS-06 - Automatic Payment Moss\|DS-06]] | Automatic payment (RonDesignLab) | `8628ae96….jpg` | Dashboard | Operate | Hijau daun `#93C870` | **Stepper tiga centang = rantai tiga segel**, tekstur kertas |
 | [[DS-07 - Cardiology Timeline Tree\|DS-07]] | Cardiology (RON Design) | `9a7830b3….jpg` | Timeline | Operate | Kuning neon `#F3FE51` | **Garis waktu bercabang = riwayat buyer**, tab map, scrubber |
 | [[DS-08 - Paytin Finance Mobile\|DS-08]] | Paytin | `bf2cdcf1….jpg` | Mobile | Persuade/Operate | Lime `#C4E860` | Ilustrasi garis onboarding, progres titik, kartu bertab |
+| [[DS-10 - Referensi Pinterest Meja Bukti\|DS-10]] | Meja bukti (Pinterest) | — | Kumpulan | Persuade/Operate | Dark Raspberry (DS-PAL) | Map kasus, cap barang bukti, tali merah, angka besar: `#/try` |
 | [[DS-09 - ROX Landing Dark Gold\|DS-09]] | ROX (Refero) | `refero.design 31fd7d97….jpg` | Landing | Persuade | Emas `#DCC1A1` | **Tumpukan lapisan meledak**, ilustrasi isometrik, grid konstruksi |
 
 File non-gambar di folder ini (belum dipetakan karena permintaan hanya gambar): `button.md` (tombol "Learn More" dari Uiverse, cssbuttons-io), `card1.md` (kartu tiket dari Uiverse, zeeshan_2112), `rox.md` (kosong).
