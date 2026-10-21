@@ -13,7 +13,7 @@ updated: 2026-10-21
 Klip M-01 lalu M-03 (HNK-30.T9) yang bisa dipahami sendiri, juga dipakai di video 2 menit (HNK-14.T1). Fixture: Case File #0417, supplier fiktif "Kurogane Trading", invoice tes `TES-INV-0003-1792179703` di papan testnet; tidak ada nama atau data perusahaan nyata.
 
 ## Cara rekam
-1. Buka `https://jitsuinfi.vercel.app/app.html#/try/play` di jendela 1440 × 900 (atau 390 × 844 untuk versi ponsel).
+1. Buka `https://jitsuinfi.vercel.app/app.html#/try/play` (live sejak PR #25) di jendela 1440 × 900 (atau 390 × 844 untuk versi ponsel).
 2. Mulai rekam layar sebelum halaman selesai dimuat; halaman berjalan sendiri, tanpa klik.
 3. Berhenti 3 detik setelah banner "Double signature on the board" muncul.
 
