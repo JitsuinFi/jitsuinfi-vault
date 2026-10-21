@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>JitsuinFi video slides</title>
+<!-- HNK-18.T2 (D-40): three slides for the 2-minute video, 1920x1080. Arrow keys or click to move;
+     slide 1 replays its checks on every visit. Record full screen at 100 % zoom. -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1:wght@600;800&family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@500&display=swap">
+<style>
+  :root {
+    --pool: #020D2F; --pool-2: #032C7D; --wave: #0841C9; --mist: #C4C7F2;
+    --paper: #F6F5FC; --sheet: #FCFCFE; --ink: #461D3A; --ink-2: #502A50; --seal: #7E2A53; --head: #020D2F;
+    --bad: #E0608B; --good: #9FD6FF;
+    --f-seal: "Shippori Mincho B1", "Hiragino Mincho ProN", "Yu Mincho", serif;
+    --f-body: "Geist", ui-sans-serif, system-ui, sans-serif;
+    --f-mono: "Geist Mono", ui-monospace, monospace;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; height: 100%; background: #000; overflow: hidden; }
+  .deck { position: fixed; inset: 0; display: grid; place-items: center; }
+  .slide {
+    position: absolute; width: 1920px; height: 1080px; transform-origin: center;
+    background: radial-gradient(1200px 700px at 70% 10%, var(--pool-2), var(--pool) 70%);
+    color: var(--mist); font-family: var(--f-body); opacity: 0; pointer-events: none; transition: opacity .6s ease;
+    display: grid; padding: 120px 160px;
+  }
+  .slide.on { opacity: 1; pointer-events: auto; }
+  .eyebrow { margin: 0; font: 600 28px/1 var(--f-body); letter-spacing: .18em; text-transform: uppercase; color: var(--mist); opacity: .8; }
+  .kanji { font: 800 34px/1 var(--f-seal); letter-spacing: .3em; color: var(--sheet); margin-right: 18px; }
+
+  /* 1. hook N-06: three failures turn into three checks */
+  .s1 { align-content: center; gap: 56px; }
+  .s1 h1 { margin: 0; font: 600 64px/1.15 var(--f-body); color: var(--sheet); max-width: 1500px; letter-spacing: -.01em; }
+  .rows { display: grid; gap: 30px; margin: 0; padding: 0; list-style: none; }
+  .rows li { display: grid; grid-template-columns: 96px 1fr; align-items: center; gap: 36px; font: 500 52px/1.2 var(--f-body); color: var(--sheet); }
+  .mark { position: relative; width: 96px; height: 96px; border-radius: 50%; display: grid; place-items: center; font: 800 54px/1 var(--f-seal); color: var(--bad); box-shadow: inset 0 0 0 5px currentColor; transform: rotate(-10deg); }
+  .mark::after { content: "✕"; font-family: var(--f-body); font-weight: 700; }
+  .rows li.ok .mark { color: var(--good); background: rgba(159, 214, 255, .1); animation: press .5s cubic-bezier(.3, 1.6, .5, 1) both; }
+  .rows li.ok .mark::after { content: "認"; font-family: var(--f-seal); }
+  .rows li small { display: block; margin-top: 8px; font: 400 32px/1.3 var(--f-body); color: var(--mist); opacity: 0; transition: opacity .5s; }
+  .rows li.ok small { opacity: 1; }
+  @keyframes press { from { transform: rotate(-10deg) scale(1.7); opacity: 0; } }
+
+  /* 2. limits N-13 and what the chain shows (M-04) */
+  .s2 { grid-template-columns: 1fr 1fr; gap: 80px; align-content: center; }
+  .s2 h2 { margin: 18px 0 30px; font: 600 52px/1.15 var(--f-body); color: var(--sheet); }
+  .sheet { background: var(--sheet); color: var(--ink); padding: 56px 60px; border-radius: 4px; box-shadow: 0 40px 60px rgba(0, 0, 0, .45); transform: rotate(-.8deg); }
+  .sheet h3 { margin: 0 0 28px; font: 800 36px/1 var(--f-seal); letter-spacing: .2em; color: var(--seal); }
+  .sheet ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 22px; font: 400 34px/1.35 var(--f-body); }
+  .sheet b { color: var(--head); }
+  .chain { display: grid; gap: 22px; font: 500 30px/1.4 var(--f-mono); color: var(--mist); }
+  .chain .row { display: flex; justify-content: space-between; gap: 30px; padding-bottom: 16px; border-bottom: 2px solid rgba(196, 199, 242, .2); }
+  .chain .row span:last-child { color: var(--sheet); }
+  .chain .gone { color: rgba(196, 199, 242, .45); text-decoration: line-through; }
+
+  /* 3. closing */
+  .s3 { place-content: center; justify-items: center; text-align: center; gap: 44px; }
+  .seal { width: 220px; height: 220px; border-radius: 50%; display: grid; place-items: center; font: 800 120px/1 var(--f-seal); color: var(--sheet); background: var(--seal); transform: rotate(-8deg); box-shadow: 0 30px 60px rgba(0, 0, 0, .4); }
+  .s3 p.tag { margin: 0; font: 600 72px/1.2 var(--f-body); color: var(--sheet); max-width: 1600px; }
+  .s3 p.tag em { font-style: normal; color: var(--mist); }
+  .urls { display: flex; gap: 60px; font: 500 34px/1 var(--f-mono); color: var(--mist); }
+  .hint { position: fixed; right: 16px; bottom: 12px; font: 12px var(--f-body); color: #666; }
+</style>
+</head>
+<body>
+<div class="deck">
+  <section class="slide s1" aria-label="Hook">
+    <p class="eyebrow"><span class="kanji">登記所</span>Case for a second lender</p>
+    <h1>First Brands' lenders never…</h1>
+    <ol class="rows">
+      <li data-at="1200"><span class="mark" aria-hidden="true"></span><div>saw the invoice<small>The buyer signs the exact invoice bytes; its fingerprint N is checked on Zcash.</small></div></li>
+      <li data-at="2600"><span class="mark" aria-hidden="true"></span><div>asked the buyer<small>The buyer seals the assignment letter before any money moves.</small></div></li>
+      <li data-at="4000"><span class="mark" aria-hidden="true"></span><div>controlled the cash<small>The buyer pays the financier directly, in the shielded pool.</small></div></li>
+    </ol>
+  </section>
+
+  <section class="slide s2" aria-label="Limits">
+    <div>
+      <p class="eyebrow">What the chain shows · example entry</p>
+      <h2>A fingerprint and ciphertext.<br>Nothing else.</h2>
+      <div class="chain">
+        <div class="row"><span>N (fingerprint)</span><span>3f9a…e01c</span></div>
+        <div class="row"><span>block height</span><span>4 525 119</span></div>
+        <div class="row"><span>memo</span><span>ciphertext</span></div>
+        <div class="row gone"><span>buyer · supplier · financier</span><span>hidden</span></div>
+        <div class="row gone"><span>amount · terms</span><span>hidden</span></div>
+      </div>
+    </div>
+    <div class="sheet">
+      <h3>限界 · limits</h3>
+      <ul>
+        <li><b>Out of scope:</b> a fake invoice the buyer itself co-signs. Credit diligence still applies.</li>
+        <li><b>Visible to viewing-key holders:</b> timing, entry counts, a repeated N.</li>
+        <li><b>Trusted:</b> whoever runs a financier's node holds its wallet. A production financier runs its own.</li>
+        <li>Full threat model in the repository.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="slide s3" aria-label="Closing">
+    <div class="seal" aria-hidden="true">印</div>
+    <p class="tag">Zcash stops double-spending.<br><em>JitsuinFi stops double-financing.</em></p>
+    <div class="urls"><span>jitsuinfi.vercel.app</span><span>github.com/JitsuinFi</span></div>
+  </section>
+</div>
+<p class="hint">← → to move</p>
+<script>
+  const slides = [...document.querySelectorAll(".slide")];
+  let i = 0, timers = [];
+  const fit = () => {
+    const k = Math.min(innerWidth / 1920, innerHeight / 1080);
+    slides.forEach((s) => (s.style.transform = `scale(${k})`));
+  };
+  const show = (n) => {
+    i = (n + slides.length) % slides.length;
+    slides.forEach((s, j) => s.classList.toggle("on", j === i));
+    timers.forEach(clearTimeout);
+    timers = [];
+    const rows = [...slides[i].querySelectorAll(".rows li")];
+    rows.forEach((r) => r.classList.remove("ok"));
+    rows.forEach((r) => timers.push(setTimeout(() => r.classList.add("ok"), +r.dataset.at)));
+  };
+  addEventListener("resize", fit);
+  addEventListener("keydown", (e) => {
+    if (e.key === "ArrowRight" || e.key === " ") show(i + 1);
+    if (e.key === "ArrowLeft") show(i - 1);
+  });
+  addEventListener("click", () => show(i + 1));
+  fit();
+  show(0);
+</script>
+</body>
+</html>
