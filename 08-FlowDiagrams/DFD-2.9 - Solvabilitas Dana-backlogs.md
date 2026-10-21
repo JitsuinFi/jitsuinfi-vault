@@ -1,7 +1,7 @@
 ---
 tags: [flow, backlog]
 status: DITETAPKAN
-progress: 5/8 SELESAI
+progress: 4/8 SELESAI
 updated: 2026-10-20
 ---
 
@@ -20,8 +20,8 @@ Kolom Status mengikuti langkah 6 "Audit flow diagram" di [[Workflow Development]
 | BL-D29-01 | 9.1, D15 | Merkle sum tree kewajiban (daun id acak + nominal, root, total, jalur) | Root dan total cocok dengan jumlah setoran; jalur tiap daun terverifikasi | HNK-15.T1 | HNK-15.T1 | Hans | SELESAI (2026-10-21, jitsuinfi-zcash `51ee18e`: daun berisi unit di bawah id dari token tarik, D-49) |
 | BL-D29-02 | 9.1, F9.01 – F9.04 | Pencatatan setoran di node manajer: deteksi setoran masuk, id anggota acak, kuitansi ke kotak surat anggota | Anggota menerima kuitansi berisi id setoran dan nominal | C-27 | HNK-29.T1 | Hans | SELESAI (2026-10-21, jitsuinfi-node `7b175c8`: setoran dipilih manajer di konsol dan dicek mined di wallet, bukan deteksi otomatis) |
 | BL-D29-03 | 9.2, F9.05 – F9.08 | Root dan total dari Merkle sum tree diteruskan ke `post_liability_root` | Root yang diposting sama dengan root tree periode itu | HNK-15.T1 | HNK-15.T1 | Hans | SELESAI (2026-10-21: tutup periode memposting root dan total unit tree, `fund_close`) |
-| BL-D29-04 | 9.6, F9.19 – F9.20 | Kirim jalur Merkle tiap anggota setelah setiap root lewat relay | Setiap anggota menerima jalur untuk periode terbaru | C-27 | HNK-29.T2 | Hans | SELESAI (2026-10-21) |
-| BL-D29-05 | 9.7, F9.21 – F9.24 | Verifikasi inklusi: jalur berakhir di root JTLR terbaru dan jumlah root = total JTLR | Jalur dari tree lain ditolak | HNK-15.T1, C-27 | HNK-29.T2 | Hans | PARSIAL (2026-10-21: halaman anggota memeriksa jalur dan jumlah terhadap root yang dikirim; pencocokan dengan JTLR on-chain lewat CLI lokal belum) |
+| BL-D29-04 | 9.6, F9.19 – F9.20 | Kirim jalur Merkle tiap anggota setelah setiap root lewat relay | Setiap anggota menerima jalur untuk periode terbaru | C-27 | HNK-29.T2 | Hans | DIKERJAKAN (2026-10-21: jalur terkirim ke semua anggota tiap tutup periode; task induk menunggu BL-D29-05) |
+| BL-D29-05 | 9.7, F9.21 – F9.24 | Verifikasi inklusi: jalur berakhir di root JTLR terbaru dan jumlah root = total JTLR | Jalur dari tree lain ditolak | HNK-15.T1, C-27 | HNK-29.T2 | Hans | DIKERJAKAN (2026-10-21: halaman anggota memeriksa jalur dan jumlah terhadap root yang dikirim; pencocokan dengan JTLR on-chain lewat CLI lokal belum) |
 | BL-D29-06 | 9.4 – 9.5 | Perintah CLI solvabilitas untuk anggota (`member_view` + `solvency`); `SolvencyPolicy.grace_days` dihapus atau dipakai | Anggota mendapat verdict solvent / tidak / belum ada root dari CLI lokal | C-28 | HNK-27.T10 | Hans | SELESAI (2026-10-20, `9826b09`, U-HNK-27.11; uji akun nyata I-HNK-27.3 menyusul) |
 | BL-D29-07 | 9.8, F9.25 – F9.26 | Halaman anggota membaca hasil pindaian lokal | Laporan tampil tanpa UFVK dikirim ke server | HNK-15.T3, P-10 | HNK-15.T3 | Hans | TODO |
 | BL-D29-08 | Uji | Integrasi testnet: dua setoran, satu advance, satu root, verdict solvent, inklusi kedua anggota | Kasus tercatat di TEST-HNK-15 | HNK-17 | HNK-17.T4 | Hans | TODO |

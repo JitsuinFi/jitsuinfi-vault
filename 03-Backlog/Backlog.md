@@ -497,7 +497,7 @@ Urutan kerja mengikuti gelombang FD-01: fondasi (HNK-27, HNK-22, HNK-24.T1, HNK-
 | Task | Deskripsi | Owner | Jam | Status |
 |---|---|---|---|---|
 | HNK-29.T1 | Pencatatan setoran di node manajer: id anggota acak, kuitansi ke kotak surat anggota. Rincian: `BL-D29-02` | Hans #hans (dari Dex, D-38) | 1 | DONE (2026-10-21): `POST /node/console/fund/deposits`: setoran dicek mined di wallet, unit pada NAV periode, token tarik acak, kuitansi `fund.receipt` tersegel ke anggota (jitsuinfi-node `7b175c8`). Id daun = SHA-256 token, bukan id anggota acak (D-49) |
-| HNK-29.T2 | Jalur Merkle per periode lewat relay dan verifikasi inklusi terhadap root + total JTLR. Rincian: `BL-D29-04`, `BL-D29-05` | Hans #hans (dari Dex, D-38) | 1 | DONE (2026-10-21): tutup periode mengirim `fund.merkle_path` (root, total, jalur) ke setiap anggota; halaman anggota memverifikasi inklusi dan jumlah. Pencocokan root dengan JTLR on-chain tetap lewat UFVK di perangkat anggota (`jitsuin fund`) |
+| HNK-29.T2 | Jalur Merkle per periode lewat relay dan verifikasi inklusi terhadap root + total JTLR. Rincian: `BL-D29-04`, `BL-D29-05` | Hans #hans (dari Dex, D-38) | 1 | PARSIAL (2026-10-21): tutup periode mengirim `fund.merkle_path` (root, total, jalur) ke setiap anggota; halaman anggota memverifikasi inklusi dan jumlah. Belum: pencocokan root dengan JTLR on-chain lewat UFVK di perangkat anggota (`jitsuin fund` perlu membaca jalur) |
 | HNK-29.T3 | Batas uji solvabilitas dan kebocoran (nominal setoran, alamat supplier) di halaman anggota; panduan UFVK lewat saluran privat. Rincian: `BL-S05-01`, `BL-D0-06` | Hans #hans (dari Dave, D-35) | 1 | TODO |
 
 ## Status (auto)
