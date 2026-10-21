@@ -27,8 +27,8 @@ Skrip vs DB/chain sungguhan. Semua artefak memakai prefix `TES-` (invoice, akun,
 
 | ID | Skenario | Hasil | Tanggal | Bukti (txid/log) |
 |---|---|---|---|---|
-| I-HNK-30.1 | Dua pintu keluar memukul papan testnet hidup (AC-HNK-30.3) | TODO | — | — |
-| I-HNK-30.2 | Alur emas dari snapshot statis saat relay dimatikan (AC-HNK-30.8) | TODO | — | — |
+| I-HNK-30.1 | Dua pintu keluar memukul papan testnet hidup (AC-HNK-30.3) | PASS | 2026-10-21 | Browser lokal, node lokal `597a353` scan blok 4524208: 3 percobaan 偽, 2 percobaan 重, 0 dibiayai |
+| I-HNK-30.2 | Alur emas dari snapshot statis saat relay dimatikan (AC-HNK-30.8) | PARSIAL | 2026-10-21 | `#/try` dengan node mati: 重 dari salinan bawaan sampai blok 4511024, sumber disebut di halaman; `/verify` belum |
 
 **Bukti pembersihan:** sisa artefak off-chain `TES-` = _TODO_ (target **0**). Artefak on-chain tidak bisa dihapus; catat txid-nya di tabel di atas. Data produksi tidak boleh tersentuh.
 
