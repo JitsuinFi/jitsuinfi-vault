@@ -6,7 +6,7 @@ tags: [project, submission]
 
 **Bagian dari:** [[00 - Project]] · Kembali: [[START-HERE]] · Item: HNK-14.T2 di [[Backlog]] · Terkait: [[AC-HNK-14 - Submission video deskripsi dan demo URL|AC-HNK-14]] · [[ZECATHON - Aturan dan Deadline]] · [[Threat Model]]
 
-> Draf v2 2026-10-21 (ditulis agent; Hans me-review, D-35). Batas **2.000 karakter**; panjang saat ini **1.838** karakter (`wc -m`). Bahasa Inggris (juri internasional). Mengikuti D-40: hook N-06, N-11, N-09, W-07, W-08, apa yang dibangun (node + konsol D-43, direktori D-47, mandat privat N-15, dana D-49), N-13, W-06, N-12 (W-05), W-04, W-12, label jaringan W-17. Tidak memakai "$2.3B financed twice" (W-15). Perbarui "Real vs mock" kalau mainnet jadi dijalankan (HNK-30.T12).
+> Draf v2 2026-10-21 (ditulis agent; Hans me-review, D-35). Batas **2.000 karakter**; panjang saat ini **1.951** karakter (`wc -m`, 2026-10-22 setelah D-50). Bahasa Inggris (juri internasional). Mengikuti D-40: hook N-06, N-11, N-09, W-07, W-08, apa yang dibangun (node + konsol D-43, direktori D-47, mandat privat N-15, dana D-49), N-13, W-06, N-12 (W-05), W-04 (D-50: USD + swap shielded Zodl + ZSA), W-12, label jaringan W-17. Tidak memakai "$2.3B financed twice" (W-15). Perbarui "Real vs mock" kalau mainnet jadi dijalankan (HNK-30.T12).
 
 ```text
 First Brands' lenders never saw an invoice, never asked the buyer, never controlled the cash. JitsuinFi does all three, and no outsider sees the deal. Zcash stops double-spending; JitsuinFi stops double-financing.
@@ -17,7 +17,7 @@ Why Zcash, not a hash on any chain: on a public chain the registrant, timing and
 
 Built: a web app for suppliers, buyers and fund members; a financier node with a passkey console (no terminal); a directory where suppliers pick financiers; private mandates matched on each node against sealed offers, so order flow meets no order book; pooled funds where members verify their units against a signed root and withdraw at the period's price.
 
-Honest limits: a fake invoice the buyer itself co-signs is out of scope; credit diligence still applies. Detection only protects lenders who check the board, so it is one command, open to anyone. Buyers already sign when required (India's TReDS), and gain a provable payment history. Settlement is in ZEC; a stablecoin leg via CrossPay or NEAR Intents is the production path, not built. Legal recognition is roadmap; proofs are built for auditors and courts.
+Honest limits: a fake invoice the buyer itself co-signs is out of scope; credit diligence still applies. Detection only protects lenders who check the board, so it is one command, open to anyone. Buyers already sign when required (India's TReDS), and gain a provable payment history. Settlement is in ZEC for now; next, invoices priced in USD settle in shielded ZEC at a rate both parties sign, buyers already swap USDC into shielded ZEC in Zodl, and Zcash shielded stablecoins would remove the swap. Legal recognition is roadmap; proofs are built for auditors and courts.
 
 Real vs mock: everything runs on Zcash testnet, Ironwood pool, with txids in the README; test data starts with TES-.
 ```
