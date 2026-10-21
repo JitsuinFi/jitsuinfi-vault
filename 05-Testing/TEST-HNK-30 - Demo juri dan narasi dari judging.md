@@ -19,7 +19,7 @@ Logika murni, cepat, tanpa DB dan tanpa chain.
 | ID | Kasus | Hasil | Tanggal | Bukti |
 |---|---|---|---|---|
 | U-HNK-30.1 | Fuzz kanonikalisasi: mutasi invoice hanya berakhir di 偽 atau 重 (AC-HNK-30.1) | PASS | 2026-10-21 | `cargo test -p jitsuin-core --test canonical_fuzz`, `cargo test -p jitsuin-wasm --test canonical_fuzz` (`20a9543`) |
-| U-HNK-30.2 | Exhibit A tidak memuat field selain dua tanda tangan, N, dan rujukan papan (AC-HNK-30.4) | TODO | — | — |
+| U-HNK-30.2 | Exhibit A tidak memuat field selain dua tanda tangan, N, dan rujukan papan (AC-HNK-30.4) | PASS | 2026-10-21 | `cargo test -p jitsuin-core exhibit`, `cargo test -p jitsuin-wasm --test exhibit` (`12c8b81`) |
 | U-HNK-30.3 | Entri dengan kelas terenkripsi: pemegang UFVK tidak bisa membaca kelas; financier bisa (AC-HNK-30.6) | TODO | — | — |
 
 ## 2. Integrasi
