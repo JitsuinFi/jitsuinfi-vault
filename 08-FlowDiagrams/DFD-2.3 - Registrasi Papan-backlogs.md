@@ -1,7 +1,7 @@
 ---
 tags: [flow, backlog]
 status: DITETAPKAN
-progress: 4/15 SELESAI
+progress: 6/15 SELESAI
 updated: 2026-10-20
 ---
 
@@ -17,8 +17,8 @@ Kolom Status mengikuti langkah 6 "Audit flow diagram" di [[Workflow Development]
 
 | ID | Elemen | Task | Selesai bila | Ref | Task backlog | Owner | Status |
 |---|---|---|---|---|---|---|---|
-| BL-D23-01 | 3.1, F3.01 | Layar supplier "Tawarkan ke financier": pilih kontak, advance yang diminta, alamat shielded baru untuk deal ini | Pesan penawaran terkirim ke kotak surat financier | C-08 | HNK-24.T5 | Hans | GAGAL AUDIT (2026-10-20: penawaran jadi kode salin-tempel; belum terkirim ke kotak surat financier karena relay HNK-23 belum ada) |
-| BL-D23-02 | 3.1, F3.01 – F3.04 | Node menerima penawaran: decode, cek tanda tangan buyer (`verify_invoice`) sebelum `Deal` disimpan, operator menetapkan advance dan `min_confirmations` ≥ 1 | Penawaran dengan tanda tangan buyer palsu ditolak tanpa transaksi (F3.03) | C-09 | HNK-26.T5 | Hans | TODO |
+| BL-D23-01 | 3.1, F3.01 | Layar supplier "Tawarkan ke financier": pilih kontak, advance yang diminta, alamat shielded baru untuk deal ini | Pesan penawaran terkirim ke kotak surat financier | C-08 | HNK-24.T5 | Hans | SELESAI (2026-10-21, lokal, belum merge: `deal.offer` dikirim tersegel ke kotak surat financier dari kartu kontak + key yang dicek fingerprint-nya; vektor app dibaca node di `offer.rs`). Sebelumnya GAGAL AUDIT 2026-10-20 (kode salin-tempel) |
+| BL-D23-02 | 3.1, F3.01 – F3.04 | Node menerima penawaran: decode, cek tanda tangan buyer (`verify_invoice`) sebelum `Deal` disimpan, operator menetapkan advance dan `min_confirmations` ≥ 1 | Penawaran dengan tanda tangan buyer palsu ditolak tanpa transaksi (F3.03) | C-09 | HNK-26.T5 | Hans | SELESAI (2026-10-21, lokal, belum merge: `offer::tests::forged_offers_are_refused` (buyer palsu, pengirim bukan key supplier, body diubah, advance > nominal) dan `reads_an_offer_made_by_the_web_app`; tidak ada yang disimpan atau dikirim untuk penawaran yang ditolak; konsol dicek dengan node tiruan) |
 | BL-D23-03 | 3.1 | Tolak atau kedaluwarsa penawaran: pesan ke supplier | Supplier melihat penawaran ditolak atau kedaluwarsa | C-10 | HNK-26.T6 | Hans | TODO |
 | BL-D23-04 | 3.2, F3.05, F3.08 | Salt komitmen dari library (CSPRNG 32 byte), disimpan per (invoice, financier), dipakai ulang saat retry | Retry untuk invoice yang sama memberi komitmen yang sama | P-08 | HNK-27.T1 | Hans | SELESAI (2026-10-20, `748d451`, U-HNK-27.1; DEV-14 disetujui) |
 | BL-D23-05 | 3.2, F3.06, F3.08 | Kelas dari `classes_for(nominal, advance, tanggal advance, jatuh tempo)`; `Deal` membawa kelas; `check_entry` memeriksa kelas | Entri dengan kelas lain ditolak `EntryMismatch`; indeks `jitsuin index` tidak lagi kosong | K-1 | HNK-27.T2 | Hans | GAGAL AUDIT (2026-10-20: penolakan kelas terbukti, U-HNK-27.2; "indeks tidak kosong" belum terbukti karena node dan layar supplier belum mengisi kelas, I-HNK-27.1) |
