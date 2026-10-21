@@ -212,6 +212,7 @@ Satu pesan = satu dokumen yang berpindah antar pihak lewat relay. Kode: `jitsuin
 | `invoice.sign_request` | supplier → buyer | 2.5 → 2.6 | `invoice` (JTSI) | PDF syarat (1) | key per invoice supplier |
 | `invoice.signature` | buyer → supplier | 2.7 → 2.8 | `buyer_signature` | — | tidak (tanda tangan buyer itu sendiri) |
 | `deal.offer` | supplier → financier | SEQ-03 bagian 1 → 3.1 | `invoice`, `buyer_signature`, `advance_zat`, `supplier_address` | PDF syarat (0 – 1) | key per invoice supplier |
+| `deal.decline` | financier → supplier | 3.1 (HNK-26.T6, N-15) | `reason` (≤ 200, hanya jenis aturan) | — | `financier_pk` |
 | `deal.commitment_opening` | financier → supplier | 3.2 → 3.6 | `financier_pk`, `salt`, `discount`?, `tenor`? | — | `financier_pk` |
 | `deal.entry_request` | financier → supplier | 3.5 → 3.6 | `financier_pk`, `history_tag`? | — | `financier_pk` |
 | `deal.entry` | supplier → financier | 3.6 → 3.7 | `memo` (entri papan) | — | tidak (entri bertanda tangan) |
