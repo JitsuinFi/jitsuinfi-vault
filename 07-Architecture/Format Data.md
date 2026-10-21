@@ -221,8 +221,10 @@ Satu pesan = satu dokumen yang berpindah antar pihak lewat relay. Kode: `jitsuin
 | `deal.bundle` | financier → supplier, buyer | 5.5 → 5.6 (HNK-26.T18) | `bundle` (JTSB) | — | `financier_pk` |
 | `history.request` | financier → buyer | 6.1 → 6.2 | `financier_pk`, `nonce` | — | `financier_pk` |
 | `history.chain` | buyer → financier, supplier | 6.3 → 6.4; sertifikat k ke supplier | `certs` (1 – 64), `identity_pk`? | — | tidak (sertifikat bertanda tangan) |
-| `fund.receipt` | dana → anggota | 9.1 → 9.7 | `receipt` | — | key dana |
-| `fund.merkle_path` | dana → anggota | 9.6 → 9.7 | `period`, `root`, `path` | — | key dana |
+| `fund.receipt` | dana → anggota | 9.1 → 9.7 (D-49) | `period`, `deposit_txid`, `amount_zat`, `units`, `nav` {`assets_zat`, `units`}, `withdraw_token` | — | key dana |
+| `fund.merkle_path` | dana → anggota | 9.6 → 9.7 (HNK-15.T1) | `period`, `leaf_id`, `units`, `root`, `total`, `path` (hex, langkah 41 byte) | — | key dana |
+| `fund.withdraw` | anggota → dana | D-49 | `withdraw_token`, `units` (angka atau `"all"`), `address`, `period` | — | tidak (token adalah haknya) |
+| `fund.payout` | dana → anggota | D-49 | `period`, `leaf_id`, `units`, `amount_zat`, `nav`, `txid`, `next_token`? | — | key dana |
 
 Pendaftaran kotak surat (DFD-2.1, 1.4 ↔ D7: `mailbox_pk` + bukti kepemilikan) adalah panggilan API relay, bukan pesan (HNK-23.T4).
 

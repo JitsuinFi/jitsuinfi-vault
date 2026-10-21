@@ -1,7 +1,7 @@
 ---
 tags: [spec, "HNK-30.T23", "D-47", "HNK-29"]
 type: spec
-status: USULAN
+status: DIIMPLEMENTASIKAN
 updated: 2026-10-21
 ---
 
@@ -27,7 +27,7 @@ Celah yang ditutup: alur dana sudah jelas untuk uang **masuk** (setoran, advance
 ## Alur penarikan
 1. Anggota mengirim `fund.withdraw` tersegel ke kotak surat manajer: `{token_tarik, unit | "all", alamat_shielded_baru, periode}`.
 2. Manajer mengantre permintaan sampai **akhir periode** (bukan seketika): penarikan dibayar dari **kas** saja, piutang yang belum jatuh tempo tidak dicairkan paksa.
-3. Di akhir periode: NAV dihitung, setiap permintaan dibayar `unit × NAV` ke alamat shielded anggota (satu transaksi per anggota), memo membawa kuitansi `fund.payout {periode, unit, nav, txid}` + token baru.
+3. Di akhir periode: NAV dihitung, setiap permintaan dibayar `unit × NAV` ke alamat shielded anggota. **Implementasi:** semua pembayaran satu transaksi (output per anggota, tanpa memo); kuitansi `fund.payout` (dengan `leaf_id` yang dibayar dan token baru bila unit tersisa) lewat relay. Pemegang UFVK melihat nominal tiap output, sama seperti transaksi terpisah.
 4. Root `JTLR` periode berikutnya mencerminkan unit yang berkurang; anggota memeriksa jalurnya (9.7).
 5. **Kas kurang:** semua permintaan periode itu dibayar pro-rata sejauh kas cukup, sisanya diantre ke periode berikut. Tidak ada anggota yang didahulukan.
 6. **Tidak solvent** (`solvency` gagal): penarikan ditahan dan dicatat; anggota melihat verdict yang sama di perangkatnya.
@@ -45,7 +45,14 @@ Mitigasi opsional: akun pembayaran terpisah yang viewing key-nya hanya untuk aud
 | Tipe | Dari → ke | Body |
 |---|---|---|
 | `fund.withdraw` | anggota → dana | `token_tarik` (hex 32), `units` (uint atau `"all"`), `address` (teks), `period` (uint) |
-| `fund.payout` | dana → anggota | `period`, `units`, `nav_zat_per_unit`, `txid`, `next_token` (hex 32); signer `fund` |
+| `fund.payout` | dana → anggota | `period`, `leaf_id`, `units`, `amount_zat`, `nav` {`assets_zat`, `units`}, `txid`, `next_token` (hex 32, hanya bila unit tersisa); signer `fund` |
+
+## Implementasi (D-49, 2026-10-21)
+- `jitsuin-core::units` (jitsuinfi-zcash): pohon, jalur, verifikasi; vektor dipakai juga oleh `src/lib/units.ts` di web app.
+- jitsuinfi-node `fund.rs` + endpoint konsol: `GET /node/console/fund`, `POST /node/console/fund/deposits` (setoran harus sudah mined di wallet node), `POST /node/console/fund/withdrawals/{relay_id}`, `POST /node/console/fund/plan`, `POST /node/console/fund/close` (persetujuan passkey atas hash rencana; rencana ditolak bila ledger berubah sejak dibuat). Cadangan kas 100.000 zat untuk fee dan self-send root; potongan piutang lewat tempo 50 % saat menilai aset; tenggang 7 hari.
+- Urutan tutup periode: bayar, simpan ledger (uang sudah keluar), kirim root `JTLR`, kirim jalur dan kuitansi. Bila root gagal dikirim, konsol menampilkan galatnya; ledger tetap benar.
+- Web app: konsol 帳簿 (catat setoran, antre penarikan dari kotak surat, rencana dan tutup periode), halaman anggota (slip unit, cap jalur, permintaan tarik). Token tarik disimpan di store terenkripsi peran anggota.
+- **Batas:** anggota hanya bisa membuktikan unitnya ada di root yang dikirim kepadanya; kecocokan dengan `JTLR` on-chain dan uji solvabilitas tetap lewat UFVK di perangkat sendiri. Kuitansi yang gagal terkirim ke relay belum bisa dikirim ulang.
 
 ## Task turunan bila disetujui
 - HNK-29.T1 diperluas: daun berisi unit dan `id_daun` dari token; kuitansi membawa token.
