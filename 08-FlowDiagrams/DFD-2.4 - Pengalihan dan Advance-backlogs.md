@@ -17,7 +17,7 @@ Kolom Status mengikuti langkah 6 "Audit flow diagram" di [[Workflow Development]
 
 | ID | Elemen | Task | Selesai bila | Ref | Task backlog | Owner | Status |
 |---|---|---|---|---|---|---|---|
-| BL-D24-01 | 4.1, F4.03 | Alamat bayar shielded diversified baru per deal dari wallet node | Dua deal berturut-turut memakai alamat bayar yang berbeda | K-11 | HNK-26.T17 | Hans | TODO |
+| BL-D24-01 | 4.1, F4.03 | Alamat bayar shielded diversified baru per deal dari wallet node | Dua deal berturut-turut memakai alamat bayar yang berbeda | K-11 | HNK-26.T17 | Hans | AUDIT (2026-10-22: alamat Orchard baru per deal di surat, node `322c694`; diaudit di E2E testnet) |
 | BL-D24-02 | 4.1, F4.01 – F4.06 | Kartu surat di konsol: unggah PDF surat, alamat dari node, teks urutan diperbaiki ("sebelum `Flow::new`") | Surat dibuat sebelum deal dimulai; teks kartu tidak lagi menyuruh menunggu entri terkonfirmasi | HNK-21.T4 | HNK-21.T4 | Dex | TODO |
 | BL-D24-03 | 4.1, F4.06 | Surat + PDF surat dikirim ke supplier dan buyer lewat relay, pesan ditandatangani node dengan `financier_pk` | Supplier dan buyer menerima surat; pesan dengan tanda tangan salah ditolak | P-04 | HNK-23.T8 | Hans | TODO |
 | BL-D24-04 | 4.2 – 4.3 | `assignmentDecode` di `jitsuin-wasm`: N, nominal, jatuh tempo, `financier_pk`, alamat bayar, `terms_hash` | Fungsi mengembalikan semua field; test roundtrip dengan `assignmentEncode` | P-13 | HNK-27.T3 | Hans | SELESAI (2026-10-20, `948133a`, U-HNK-27.3) |
