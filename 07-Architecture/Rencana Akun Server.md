@@ -59,3 +59,6 @@ User ingin alamat wallet dibuat dari passkey.
 3. Izin dependensi `@simplewebauthn/server`.
 4. Ruang lingkup wallet dari passkey.
 5. Visibilitas repo `jitsuinfi-frontend` (DEV-19).
+
+## Key penyedia node (2026-10-21, HNK-26.T25)
+Key penyedia (`provider.key`, 32 byte) ada di `~/.jitsuin-provider` di Mac Hans, mode 0600, dibuat `jitsuin-node provider init`. Dari key ini diturunkan kotak surat penyedia (pengajuan financier) dan key tanda tangan undangan; kunci publiknya ada di jitsuinfi-frontend `src/lib/provider.ts`. Perlu backup terenkripsi; hilang = pengajuan tidak terbaca dan undangan baru butuh key baru (ganti kunci publik di app). Tidak pernah masuk repo, vault, log, atau chat.
