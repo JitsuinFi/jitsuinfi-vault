@@ -25,7 +25,7 @@ Kolom Status mengikuti langkah 6 "Audit flow diagram" di [[Workflow Development]
 | BL-D26-06 | 6.5 – 6.6, F6.18 – F6.26 | API `POST /node/history/check` memanggil `check_buyer` dengan `MinimumStandard`, menyimpan laporan dan `history_tag` di deal | Hasil lulus menyimpan `history_tag`; retry setelah crash memakai tag yang tersimpan tanpa cek ulang | C-11 | HNK-26.T8 | Hans | AUDIT (2026-10-22: `check_buyer` di node dengan standar dari mandat privat, tag disimpan di deal, node `9b83bd7`; diaudit di E2E testnet) |
 | BL-D26-07 | 6.5, F6.22 | Alasan penolakan riwayat terbaca (`NotAnchored`, `Equivocation`, `FinancierNotAllowed`, `UndisclosedSuccessor`, di bawah standar) | Tiap alasan punya teks yang menjelaskan artinya | C-13 | HNK-21.T9 | Hans | TODO |
 | BL-D26-08 | 6.7, F6.27 – F6.28 | Pengaturan policy di konsol: allowlist financier, standar minimal, tenggang | Operator mengubah policy tanpa mengedit kode; nilai bertahan setelah restart | C-12 | HNK-26.T9 | Hans | TODO |
-| BL-D26-09 | 6.8, F6.29 – F6.32 | Kartu "Riwayat saya" di layar buyer (`verifyHistory` dengan allowlist dari sertifikat sendiri + snapshot) | Buyer melihat status tiap invoice tanpa unggah file | C-14, P-06 | HNK-25.T6 | Hans | TODO |
+| BL-D26-09 | 6.8, F6.29 – F6.32 | Kartu "Riwayat saya" di layar buyer (`verifyHistory` dengan allowlist dari sertifikat sendiri + snapshot) | Buyer melihat status tiap invoice tanpa unggah file | C-14, P-06 | HNK-25.T6 | Hans | AUDIT (2026-10-22: kode di layar buyer/supplier; diaudit dengan deal nyata di E2E testnet) |
 | BL-D26-10 | Uji | Integrasi testnet: dua invoice berurutan dengan riwayat, invoice kedua lolos standar | Kasus tercatat di TEST-HNK-20 atau HNK-17 | HNK-17 | HNK-17.T4 | Hans | TODO |
 
 ## Sudah ada (tanpa task baru)
