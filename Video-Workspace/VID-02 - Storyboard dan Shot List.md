@@ -6,6 +6,20 @@ tags: [video, "VID-02"]
 
 **Bagian dari:** [[Video-Workspace]] · Terkait: [[VID-01 - Naskah 2 Menit]] · [[VID-03 - Checklist Rekaman]]
 
+## Shot list v2 (2026-10-22, mengikuti [[VID-01 - Naskah 2 Menit]] v2)
+| Shot | Durasi | Jenis | Isi layar | Sumber | Status |
+|---|---|---|---|---|---|
+| 01 | 15 dtk | Motion text | Tiga centang merah menjadi hijau (N-06) | Slide HNK-18.T2 | TODO |
+| 02 | 7 dtk | Screen recording | Landing: noren 登記所, seal 印 | `jitsuinfi.vercel.app` | TODO |
+| 03 | 10 dtk | Screen recording | `/try` Case File #0417, amplop kit terbuka | `app.html#/try` | TODO |
+| 04 | 20 dtk | Screen recording | Ubah nominal → 偽; kirim apa adanya → 重 | `app.html#/try` | TODO |
+| 05 | 13 dtk | Screen recording | Exhibit A, `/verify` 重 | `app.html#/verify` | TODO |
+| 06 | 10 dtk | Screen recording | Lensa: tahan tombol | `app.html#/try` (lensa) | TODO |
+| 07 | 15 dtk | Screen recording | Konsol: kotak surat, 内規, cap 適/外/待, rute 案件 | `jitsuinfi-console.vercel.app` (atau konsol demo) | TODO |
+| 08 | 15 dtk | Slide | Batas N-13 + threat model | Slide HNK-18.T2 | TODO |
+| 09 | 10 dtk | Slide | Tagline + URL | Slide HNK-18.T2 | TODO |
+
+## Shot list v1 (diganti)
 | Shot | Durasi | Jenis | Isi layar | Sumber/aset | Status |
 |---|---|---|---|---|---|
 | 01 | 12 dtk | Motion text | "One invoice. Financed twice." | Editor video | TODO |
