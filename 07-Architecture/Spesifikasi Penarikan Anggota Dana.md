@@ -16,6 +16,9 @@ Celah yang ditutup: alur dana sudah jelas untuk uang **masuk** (setoran, advance
 - **Nilai per unit (NAV)** = (kas + piutang berjalan + piutang lewat tempo setelah potongan) ÷ total unit, dihitung anggota sendiri dengan `fund_view` / `solvency` yang sudah ada (`jitsuin fund`). Bagi hasil terjadi otomatis: pelunasan buyer menaikkan kas, sehingga NAV naik; tidak ada pembagian manual yang harus dipercaya.
 - Setoran baru: unit = setoran ÷ NAV saat periode berjalan, dicatat di kuitansi setoran.
 - `JTLR` tetap: root dan total sekarang berarti total unit. Format tidak berubah (8 byte total), maknanya ditulis di [[Format Data]].
+- **Nilai dasar 1 zat per unit.** Unit pertama diterbitkan pada NAV 1; setoran berikutnya pada NAV saat itu. Karena total `JTLR` = total unit, uji `solvency` yang sudah ada (aset ≥ total) tetap berlaku tanpa diubah dan berarti "NAV tidak di bawah nilai dasar". Laba menaikkan NAV di atas 1.
+- **Merkle sum tree:** daun = `SHA-256("jitsuin-fund-leaf-v1" ‖ id_daun ‖ unit_le8)`, node = `SHA-256("jitsuin-fund-node-v1" ‖ kiri ‖ jumlah_kiri_le8 ‖ kanan ‖ jumlah_kanan_le8)`, jumlah node = jumlah kedua anak; jalur = saudara (hash, jumlah, sisi). Root dan jumlahnya masuk ke `JTLR`.
+- **Pembayaran penarikan** adalah uang keluar dari node, jadi setiap pembayaran butuh persetujuan passkey manajer (D-43, `pay.rs`), sama seperti advance.
 
 ## Hak menarik: token di kuitansi setoran
 - Anggota tidak punya key tanda tangan (hanya key kotak surat). Kuitansi setoran (`fund.receipt`) membawa `token_tarik` acak 32 byte; daun menyimpan `id_daun = SHA-256("jitsuin-fund-leaf-v1" ‖ token_tarik)`.
