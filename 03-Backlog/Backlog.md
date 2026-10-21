@@ -340,7 +340,7 @@ Urutan kerja mengikuti gelombang FD-01: fondasi (HNK-27, HNK-22, HNK-24.T1, HNK-
 | HNK-21.T6 | Layar orang luar: publik vs tersembunyi sebagai ilustrasi | Dex #dex (dari Hans, DEV-12) | 1 | TODO |
 | HNK-21.T7 | i18n semua teks app, responsif 390 px, a11y, reduced motion | Dex #dex (dari Hans, DEV-12) | 2 | TODO |
 | HNK-21.T8 | Regresi alur fungsional (siklus TES- sebelum vs sesudah) + deploy ulang Vercel | Dex #dex (dari Hans, DEV-12) | 1 | TODO |
-| HNK-21.T9 | Pesan error yang terbaca untuk semua penolakan (riwayat, `EntryMismatch`, seal salah, settle tanpa klaim). Rincian: `BL-D23-11`, `BL-D24-07`, `BL-D25-05`, `BL-D26-07` | Hans #hans (dari Dave, D-35) | 1 | TODO |
+| HNK-21.T9 | Pesan error yang terbaca untuk semua penolakan (riwayat, `EntryMismatch`, seal salah, settle tanpa klaim). Rincian: `BL-D23-11`, `BL-D24-07`, `BL-D25-05`, `BL-D26-07` | Hans #hans (dari Dave, D-35) | 1 | DONE (2026-10-22, frontend `996d56f`, belum di-push): `src/lib/explain.ts` memetakan penolakan crate (riwayat, `EntryMismatch`, urutan dan peran seal, settle tanpa klaim atau kurang bayar, kode/key rusak) ke kalimat dengan langkah berikut; dipakai `Out.error` di semua layar app, teks asli tetap kecil di bawahnya; diuji |
 
 **HNK-22 — Akun passkey peran dan kontak** · Lead Hans #hans · [[AC-HNK-22 - Akun passkey peran dan kontak|AC]] · Dibuat 2026-10-20 (D-30)
 

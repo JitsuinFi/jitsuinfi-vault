@@ -1,7 +1,7 @@
 ---
 tags: [flow, backlog]
 status: DITETAPKAN
-progress: 6/14 SELESAI
+progress: 7/14 SELESAI
 updated: 2026-10-20
 ---
 
@@ -23,7 +23,7 @@ Kolom Status mengikuti langkah 6 "Audit flow diagram" di [[Workflow Development]
 | BL-D24-04 | 4.2 – 4.3 | `assignmentDecode` di `jitsuin-wasm`: N, nominal, jatuh tempo, `financier_pk`, alamat bayar, `terms_hash` | Fungsi mengembalikan semua field; test roundtrip dengan `assignmentEncode` | P-13 | HNK-27.T3 | Hans | SELESAI (2026-10-20, `948133a`, U-HNK-27.3) |
 | BL-D24-05 | 4.2, F4.07 – F4.13 | Layar supplier "Segel surat": tampilkan isi surat, cek PDF surat dengan `terms_hash`, segel s0, kirim ke buyer dan financier | PDF salah memunculkan peringatan sebelum tombol segel aktif | P-13 | HNK-24.T7 | Hans | SELESAI (2026-10-20, `17a01ea`: PDF salah dan financier lain ditolak sebelum tombol segel muncul, I-HNK-24.3) |
 | BL-D24-06 | 4.3, F4.14 – F4.19 | Layar buyer "Segel surat": isi surat dan cek PDF yang sama, segel s1, kirim ke financier dan supplier | Sama dengan BL-D24-05 untuk buyer | P-13 | HNK-25.T3 | Hans | TODO |
-| BL-D24-07 | 4.4, F4.20 – F4.23 | API `POST /node/deals/N/seals`; seal salah (`InvalidDeal`, `UnexpectedSigner`) tampil terbaca | Seal salah tidak mengubah state dan alasannya tampil | HNK-05.T3, C-13 | HNK-21.T9 | Hans | TODO |
+| BL-D24-07 | 4.4, F4.20 – F4.23 | API `POST /node/deals/N/seals`; seal salah (`InvalidDeal`, `UnexpectedSigner`) tampil terbaca | Seal salah tidak mengubah state dan alasannya tampil | HNK-05.T3, C-13 | HNK-21.T9 | Hans | SELESAI (2026-10-22, audit: penolakan yang disebut baris ini punya kalimat di `explain.ts`, diuji `tests/explain.test.ts`) |
 | BL-D24-08 | 4.5, F4.24 – F4.28 | Hitung ulang konfirmasi bila entri ditambang ulang di tinggi lain | Advance tidak dibayar dengan konfirmasi di bawah minimum setelah reorg | K-7 | HNK-27.T6 | Hans | SELESAI (2026-10-20, `b6f33d5`, U-HNK-27.6) |
 | BL-D24-09 | 4.5 – 4.7 | Persetujuan operator per deal (assertion passkey) sebelum `Pay` | Tanpa assertion operator untuk deal itu, advance tidak terkirim | P-07, P-05 | HNK-26.T15 | Hans | DIKERJAKAN (2026-10-21: deal API membayar advance hanya lewat `pay::advance`, `POST /node/console/deals/{n}/pay` dengan approval passkey, node `11acddc`; audit setelah E2E testnet) |
 | BL-D24-10 | 4.7, F4.36 – F4.38 | `Done` baru setelah tx advance terkonfirmasi; tx kedaluwarsa dicoba ulang | Retry setelah tx kedaluwarsa membayar lagi tepat satu kali | K-7 | HNK-27.T6 | Hans | SELESAI (2026-10-20, `b6f33d5`, U-HNK-27.6) |

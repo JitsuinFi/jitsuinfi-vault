@@ -1,7 +1,7 @@
 ---
 tags: [flow, backlog]
 status: DITETAPKAN
-progress: 6/15 SELESAI
+progress: 7/15 SELESAI
 updated: 2026-10-20
 ---
 
@@ -27,7 +27,7 @@ Kolom Status mengikuti langkah 6 "Audit flow diagram" di [[Workflow Development]
 | BL-D23-08 | 3.5, F3.20 – F3.21 | Status cek papan di konsol (bebas, sudah dibiayai, lanjut setelah crash) | Tiap hasil lookup tampil dengan label yang terbaca | HNK-05.T4 | HNK-26.T16 | Hans | TODO |
 | BL-D23-09 | 3.6, F3.22 – F3.27 | Kartu supplier "Tanda tangani entri papan" (0x01 atau 0x03 dengan sertifikat k atau tag) memakai fungsi entri wasm dengan parameter kelas | Entri yang ditandatangani lolos `check_entry` di node | C-15, K-1 | HNK-24.T6 | Hans | SELESAI (2026-10-20, `17a01ea`: entri membawa komitmen dari pembuka financier dan kelas 3/1, berstatus Registered di snapshot uji, I-HNK-24.3) |
 | BL-D23-10 | 3.6, F3.22 | Varian entri bertag yang hanya menerima `history_tag` 32 byte | Supplier tidak lagi membutuhkan sertifikat k penuh | K-10 | HNK-27.T8 | Hans | SELESAI (2026-10-20, `8897517`, U-HNK-27.9) |
-| BL-D23-11 | 3.7, F3.31 | Penolakan `EntryMismatch` tampil terbaca di konsol dan dikirim ke supplier | Supplier melihat alasan penolakan entri | C-13 | HNK-21.T9 | Hans | TODO |
+| BL-D23-11 | 3.7, F3.31 | Penolakan `EntryMismatch` tampil terbaca di konsol dan dikirim ke supplier | Supplier melihat alasan penolakan entri | C-13 | HNK-21.T9 | Hans | SELESAI (2026-10-22, audit: penolakan yang disebut baris ini punya kalimat di `explain.ts`, diuji `tests/explain.test.ts`) |
 | BL-D23-12 | 3.8, F3.33 – F3.36 | `Register`: terima `BoardChecked` sebelum posting, cari entri yang sudah terkirim sebelum posting ulang | Restart setelah posting tidak membuat posting kedua; konflik yang muncul sebelum posting menjadi `Stopped` | K-4 | HNK-27.T5 | Hans | SELESAI (2026-10-20, `fef1d15`, U-HNK-27.4 – .5; uji crash testnet I-HNK-27.2 menyusul) |
 | BL-D23-13 | 3.3 – 3.9, D11 | Persistensi state deal di node (serialisasi `Flow` dan dokumen deal) | Node yang di-restart melanjutkan deal dari state terakhir | C-16 | HNK-26.T10 | Hans | DIKERJAKAN |
 | BL-D23-14 | 3.9, F3.37 – F3.42 | Progres konfirmasi di konsol (n dari `min_confirmations`) | Konsol menampilkan hitungan konfirmasi sampai `AwaitAssignment` | HNK-05.T4 | HNK-26.T16 | Hans | TODO |
