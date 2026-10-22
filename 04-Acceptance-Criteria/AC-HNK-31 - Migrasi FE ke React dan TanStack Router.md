@@ -24,12 +24,15 @@ Status per kriteria: `TODO` / `PASS` / `FAIL` / `BLOCKED`, wajib dengan tanggal 
 | AC-HNK-31.1 | **Paritas visual (KPI utama):** tiap halaman yang dimigrasi, di 1440 × 900 dan 390 × 844, sama dengan patokan `hnk31-baseline`: warna DS-PAL, tipografi (Shippori Mincho B1, Geist, Geist Mono), tata letak, animasi dan rasio visual 65/35 tidak berubah; perbedaan yang disengaja dicatat di Deviasi | TODO | — | — |
 | AC-HNK-31.2 | **Paritas teks:** teks terlihat per halaman (`innerText`) sama dengan patokan, kecuali tautan yang berubah dari `#/x` ke `/x` | TODO | — | — |
 | AC-HNK-31.3 | **CSP tetap ketat:** header Vercel tidak berubah (`script-src 'self' 'wasm-unsafe-eval'`, `style-src 'self'`, tanpa `'unsafe-inline'`); nol pelanggaran CSP dan nol error di console di semua route | TODO | — | — |
-| AC-HNK-31.4 | **URL bersih + tautan lama tetap jalan:** `/`, `/app`, `/try`, `/supplier`, `/buyer`, `/member`, `/verify`, `/outsider`, `/index`, `/apply`, `/account`, `/console` (dan `/console/pair`); `app.html#/x` dan `#/x` diarahkan ke `/x`; host konsol (`jitsuinfi-console*.vercel.app`) membuka `/console` | TODO | — | — |
+| AC-HNK-31.4 | **URL bersih + tautan lama tetap jalan:** `/`, `/app`, `/try`, `/supplier`, `/buyer`, `/member`, `/verify`, `/outsider`, `/rates` (dulu `#/index`), `/apply`, `/account`, `/console` (dan `/console/pair`); `app.html#/x` dan `#/x` diarahkan ke `/x`; host konsol (`jitsuinfi-console*.vercel.app`) membuka `/console` | TODO | — | — |
 | AC-HNK-31.5 | **Tanpa regresi logika:** `npm test` (78 test) lulus, `tsc` bersih, build lulus; `src/lib/*` tidak berubah kecuali impor | TODO | — | — |
 | AC-HNK-31.6 | **Alur fungsional utuh:** E2E lokal (relay + node + web app, testnet) menjalankan siklus supplier → buyer → konsol → advance → pelunasan QR → settled di FE baru, sama dengan FE lama (regresi HNK-21.T8) | TODO | — | — |
-| AC-HNK-31.7 | **Ukuran dan performa:** JS awal per route ≤ patokan + 60 KB gzip (React + router); landing tetap 60 fps di desktop dan `prefers-reduced-motion` tetap dihormati | TODO | — | — |
+| AC-HNK-31.7 | **Ukuran dan performa:** JS awal per dunia ≤ patokan + 100 KB gzip (React + router; target awal 60 KB, direvisi, lihat Deviasi); landing tetap 60 fps di desktop dan `prefers-reduced-motion` tetap dihormati | TODO | — | — |
 | AC-HNK-31.8 | **Aksesibilitas dan responsif:** 390 px tanpa overflow horizontal, semua kontrol berlabel, fokus keyboard terlihat, sama dengan patokan HNK-21.T7 | TODO | — | — |
 | AC-HNK-31.9 | **Bersih:** helper `h()`, `app.html`, `console.html` dan routing hash dihapus setelah semua halaman pindah; tidak ada komponen yang masih memakai adaptor halaman lama | TODO | — | — |
 
 ## Deviasi
-_Kosong._ Kalau implementasi menyimpang dari keputusan, tulis di sini **dan** di [[Backlog]] bagian Log Deviasi. Tidak ada perubahan diam-diam.
+- 2026-10-22 (T2): **JS awal.** Target awal +60 KB gzip tidak realistis untuk React 19 + TanStack Router. Terukur: app 83,4 → 178,4 KB, landing 221,6 → 314,6 KB, konsol 15,3 → 109,0 KB (masing-masing sekitar +94 KB: `react-dom` sekitar 58 KB, router sekitar 30 KB). Target direvisi ke +100 KB; menurunkannya berarti mengganti library (Preact), risiko yang tidak sepadan sebelum deadline.
+- 2026-10-22 (T2): **Indeks di `/rates`.** Nama file route `index` dipakai untuk `/`; `#/index` dan `app.html#/index` diarahkan ke `/rates`.
+
+Kalau implementasi menyimpang dari keputusan, tulis di sini **dan** di [[Backlog]] bagian Log Deviasi. Tidak ada perubahan diam-diam.
