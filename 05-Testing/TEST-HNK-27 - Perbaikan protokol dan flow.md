@@ -35,7 +35,7 @@ Skrip vs DB/chain sungguhan. Semua artefak memakai prefix `TES-` (invoice, akun,
 
 | ID | Skenario | Hasil | Tanggal | Bukti (txid/log) |
 |---|---|---|---|---|
-| I-HNK-27.1 | ≥ 5 deal berkelas di papan uji testnet; `jitsuin index` menampilkan kelas | TODO | — | Butuh node financier dan supplier sungguhan (HNK-26, HNK-24) |
+| I-HNK-27.1 | ≥ 5 deal berkelas di papan uji testnet; `jitsuin index` menampilkan kelas | PASS | 2026-10-22 | 5 entri `TES-INV-IDX-77306-0..4` (txid di jitsuinfi-zcash `examples/testnet/index-tes-inv-idx/entries.txt`, blok pertama `55933f17…`); `jitsuin index` papan live: 15 entri register, 12 invoice, kelas `31-60 days` 5 invoice, median diskon 3-5%, kelas diskon digabung `other: 5` karena masing-masing < 5 |
 | I-HNK-27.2 | Crash setelah posting entri, restart, `register()` tidak memposting kedua kalinya | TODO | — | Butuh persistensi `Flow` (HNK-26.T10) untuk dijalankan ulang dari state tersimpan |
 | I-HNK-27.3 | `jitsuin fund` atas akun operasional uji (HNK-15.T2) | TODO | — | Butuh UFVK dan `manager_pk` akun uji |
 
