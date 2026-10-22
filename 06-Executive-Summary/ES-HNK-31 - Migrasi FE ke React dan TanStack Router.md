@@ -21,7 +21,7 @@ Web app JitsuinFi (landing, app, konsol financier) pindah dari TypeScript tanpa 
 | Pelanggaran CSP | 0 | 0 di 18 route, 0 error JS |
 | Test `src/lib/*` | 78/78 lulus | 80/80 (78 + 2 baru) |
 | JS awal tambahan | ≤ 60 KB gzip (direvisi ≤ 100 KB) | +93 – 95 KB per dunia (deviasi tercatat) |
-| Siklus E2E di FE baru | sampai settled | berjalan (T13) |
+| Siklus E2E di FE baru | sampai settled | settled, bundle genuine di `/verify` (`TES-INV-FE-36210`) |
 
 ## Status
 `BELUM` → isi `SELESAI` / `PARSIAL` / `BLOCKED` (juga di frontmatter).
@@ -31,5 +31,5 @@ JS awal lebih berat sekitar 94 KB gzip (React + router). Belum di-deploy: perlu 
 
 ## Bukti
 - Commit: jitsuinfi-frontend branch `hans/fe-react` (`f9da69b` … `19450a2`)
-- ID tes: U-HNK-31.1, U-HNK-31.2, I-HNK-31.1, I-HNK-31.2 (PASS), I-HNK-31.3 (berjalan)
+- ID tes: U-HNK-31.1, U-HNK-31.2, I-HNK-31.1, I-HNK-31.2, I-HNK-31.3 (PASS)
 - Persetujuan user untuk push/deploy: _belum_

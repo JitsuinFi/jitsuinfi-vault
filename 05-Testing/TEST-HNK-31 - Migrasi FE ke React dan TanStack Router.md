@@ -28,9 +28,9 @@ Skrip vs DB/chain sungguhan. Semua artefak memakai prefix `TES-` (invoice, akun,
 |---|---|---|---|---|
 | I-HNK-31.1 | Paritas visual per halaman: tangkapan layar 1440 × 900 dan 390 × 844 dibandingkan berdampingan dengan `assets/hnk31-baseline/`, dicatat per task T3 – T10 | PASS | 2026-10-22 | Harness CDP (`scripts/fe-cdp-shots.mjs`) + `scripts/fe-diff.py`: build lama (main `155eaf7`, port 4175) vs build baru (port 4173, untuk konsol bergantian di 5173), 1440 × 900 dan 390 × 844, reduced motion: 0,00 % per halaman/bab kecuali data live, kota 3D beranimasi, sidik jari passkey virtual, port host |
 | I-HNK-31.2 | Nol pelanggaran CSP dan nol error console di semua route (`vite preview` dengan header produksi) | PASS | 2026-10-22 | 18 route build baru: nol pelanggaran CSP (`securitypolicyviolation`) dan nol error/rejection tak tertangkap |
-| I-HNK-31.3 | E2E lokal testnet di FE baru: siklus penuh sampai settled | TODO | — | — |
+| I-HNK-31.3 | E2E lokal testnet di FE baru: siklus penuh sampai settled | PASS | 2026-10-22 | Orkestrator CDP (supplier, buyer, konsol; relay :8787 memori, node :8788, web :5173 build baru): daftar, kirim invoice, buyer tanda tangan, tawar, konsol terima, entri, surat disegel kedua pihak, advance dengan passkey, buyer bayar QR (`zcash-devtool pay`), settled. deal `TES-INV-FE-36210`: entry `c64bd680…6575`, advance `14ea447c…51cb`, pelunasan QR `bab221b3…4771`, settled `85d12ce6…d030`; bundle dicek di `/verify`: "Bundle is genuine" |
 
-**Bukti pembersihan:** sisa artefak off-chain `TES-` = _TODO_ (target **0**). Artefak on-chain tidak bisa dihapus; catat txid-nya di tabel di atas. Data produksi tidak boleh tersentuh.
+**Bukti pembersihan:** sisa artefak off-chain `TES-` = **0** (relay store memori, hilang saat proses berhenti; profil Chrome sementara dihapus; data node lokal di `~/.hanko-tes/node-e2e`, bukan production). Artefak on-chain tidak bisa dihapus; catat txid-nya di tabel di atas. Data produksi tidak boleh tersentuh.
 
 ## 3. E2E
 Panduan langkah demi langkah untuk user.

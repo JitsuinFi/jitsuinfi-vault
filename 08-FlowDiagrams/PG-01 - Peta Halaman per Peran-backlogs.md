@@ -1,7 +1,7 @@
 ---
 tags: [flow, backlog]
 status: DITETAPKAN
-progress: 0/3 SELESAI
+progress: 1/3 SELESAI
 updated: 2026-10-20
 ---
 
@@ -57,4 +57,4 @@ Kolom Status mengikuti langkah 6 "Audit flow diagram" di [[Workflow Development]
 |---|---|---|---|---|---|---|
 | BL-PG-01 | Router `app.html` per peran: halaman publik tanpa akun, halaman peran hanya setelah masuk; konsol financier tidak ada lagi di jitsuinfi.vercel.app | Tab simulasi Financier hilang dari web app; peran tanpa sesi diarahkan ke Masuk | P-11, HNK-21.T1 | HNK-22.T3, HNK-23.T6 | Hans | GAGAL AUDIT (2026-10-20: tab Financier sudah keluar dari navigasi dan peran tanpa sesi diarahkan ke Masuk, rewrite relay ada (PR #14); tetapi rute `/financier` masih bisa dibuka lewat alamat, jadi konsol financier belum hilang dari jitsuinfi.vercel.app sampai konsol node HNK-26 ada) |
 | BL-PG-02 | i18n EN/中文, responsif 390 px, a11y, reduced motion untuk semua halaman baru | Semua halaman lolos cek HNK-21.T7 | HNK-21.T7 | HNK-21.T7 | Dex | TODO |
-| BL-PG-03 | Regresi siklus `TES-` setelah halaman diganti, deploy ulang Vercel (setelah persetujuan) | Siklus lulus sebelum dan sesudah | HNK-21.T8 | HNK-21.T8 | Dex | TODO |
+| BL-PG-03 | Regresi siklus `TES-` setelah halaman diganti, deploy ulang Vercel (setelah persetujuan) | Siklus lulus sebelum dan sesudah | HNK-21.T8 | HNK-21.T8 | Dex | SELESAI (2026-10-22: siklus `TES-` lulus sebelum penggantian halaman (E2E testnet HNK-17) dan sesudahnya di FE React baru (I-HNK-31.3, `TES-INV-FE-36210` sampai settled, bundle genuine di `/verify`); deploy ulang Vercel PR #44/#45) |
