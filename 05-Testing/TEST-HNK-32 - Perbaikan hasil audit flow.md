@@ -28,7 +28,7 @@ Skrip vs DB/chain sungguhan. Semua artefak memakai prefix `TES-` (invoice, akun,
 
 | ID | Skenario | Hasil | Tanggal | Bukti (txid/log) |
 |---|---|---|---|---|
-| I-HNK-32.1 | E2E lokal testnet diperluas (HNK-32.T6): kirim key, simpan kontak, tolak penawaran, permintaan riwayat, lalu siklus sampai settled | TODO | — | — |
+| I-HNK-32.1 | E2E lokal testnet diperluas (HNK-32.T6): kirim key, simpan kontak, tolak penawaran, permintaan riwayat, lalu siklus sampai settled | PARSIAL | 2026-10-22 | Deal `TES-INV-FE-1185` (skrip `e2e-fe2.mjs`): kontak supplier dan buyer saling disimpan dan sidik jari ditandai compared; key buyer lewat relay mengisi baris buyer invoice tanpa salin-tempel; mandat privat `min_buyer_history: 0` (POST 200), node meminta riwayat, buyer mengirim, konsol "Buyer history passed"; konsol "Entry posted: 0 of 1 confirmations"; surat dicek sebelum segel; surat tempelan ditolak; advance `1169dac7…ffde39b5`, pelunasan `262b1ac7…c46e`, settled `06eabeda…3746`, `/verify` "Bundle is genuine". Sisa: kartu riwayat buyer dan penawaran kedua ditolak (run berikutnya) |
 | I-HNK-32.2 | File bukti yang diunduh dari konsol lolos `/verify` | TODO | — | — |
 
 **Bukti pembersihan:** sisa artefak off-chain `TES-` = _TODO_ (target **0**). Artefak on-chain tidak bisa dihapus; catat txid-nya di tabel di atas. Data produksi tidak boleh tersentuh.
