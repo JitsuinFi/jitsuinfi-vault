@@ -61,6 +61,22 @@ Tester: agent (bukan penulis kode item; DEV-35). Papan testnet live, tip 4529049
 | HNK-10 Web app per peran | E2E lokal testnet lewat aplikasi React (supplier, buyer, konsol financier, relay, node): `TES-INV-FE-36210`, `-53023`, `-1185` | PASS | Siklus sampai settled dan `/verify` "Bundle is genuine" (rincian di I-HNK-31.3, I-HNK-32.1); bug yang ditemukan dicatat sebagai HNK-32 (8 baris GAGAL AUDIT, T8 devtool menggantung) |
 | HNK-11 Halaman orang luar | `https://jitsuinfi.vercel.app/outsider` di production | PASS | Halaman tampil tanpa error console; klaim cocok dengan papan: entri tanpa kelas diungkap tercatat 0/0 (9 dari 23), N tidak bisa dihubungkan ke invoice tanpa invoicenya |
 
+### Bug yang ditemukan dan retest (HNK-17.T3, 2026-10-22)
+Sumber: audit flow diagram (langkah 6) dan E2E lokal testnet lewat aplikasi React. Semua dicatat sebagai task [[AC-HNK-32 - Perbaikan hasil audit flow|HNK-32]].
+
+| Bug | Langkah reproduksi | Perbaikan | Retest | Hasil |
+|---|---|---|---|---|
+| Buyer bisa menyegel surat tanpa cek PDF (BL-D24-06) | Langkah 3 buyer: tempel kode surat dan segel supplier apa saja, tekan "Seal as buyer": segel dibuat tanpa cek | frontend PR #48 (HNK-32.T1) | E2E `TES-INV-FE-11588`: segel hanya aktif setelah "Check letter" lolos; unit `tests/buyer-letter.test.ts` | PASS |
+| Surat tempelan menghasilkan QR ke alamat lain (BL-D25-01) | Langkah 5: ganti kode surat dengan surat lain, tekan "Show payment QR": QR muncul | frontend PR #49 (HNK-32.T2) | E2E (5 run): "this is not the letter you sealed for this invoice", tanpa QR | PASS |
+| Tombol QR aktif sebelum s2 (BL-S02-02) | Buka langkah 5 sebelum advance dibayar: tombol aktif | frontend PR #55 | E2E 2026-10-22 15:35 UTC: mati sebelum s2, aktif setelah s2 | PASS |
+| Alasan berhenti tampil sebagai dump Debug (BL-D23-08, BL-D27-01) | Tawarkan invoice yang sudah dibiayai financier lain: konsol "Stopped: AlreadyFinanced { winner: BoardRecord … }" | node PR #35, frontend PR #50 (HNK-32.T3) | unit node `a_stopped_deal_shows_a_code_and_the_entry_that_came_first`, frontend `stopReason` | PASS (unit; deal berhenti nyata belum) |
+| Konsol tanpa hitungan konfirmasi (BL-D23-14) | Setelah entri diposting: hanya "waiting for its confirmations" | node PR #36, frontend PR #51 (HNK-32.T4) | E2E `TES-INV-FE-1185`: "Entry posted: 0 of 1 confirmations" | PASS |
+| Bukti hanya bisa disalin (BL-D25-04, BL-D27-04) | Deal Overdue atau 重: tidak ada unduhan | frontend PR #52 (HNK-32.T5) | E2E Overdue `TES-INV-OD-27953`: kartu "Repayment overdue", file diunduh, `jitsuin verify --evidence` HOLDS (Overdue); kartu 重 belum dengan deal nyata | PASS (Overdue) |
+| `zcash-devtool enhance` menggantung, semua deal berhenti (HNK-32.T8) | lightwalletd tidak menjawab saat pindai papan: proses 5+ menit, kunci rantai node tertahan | zcash PR #29, node PR #39 | unit `a_read_that_never_answers_is_stopped` | PASS (unit) |
+| Riwayat dicek ulang setelah crash (BL-D26-06) | Crash setelah tag disimpan di flow, sebelum meta: putaran berikut cek lagi | node PR #37 | unit: tag bertahan setelah muat ulang | PASS (unit) |
+| Galat jaringan node tampil mentah di konsol | Pembayaran saat lightwalletd gagal: "board: lightwalletd: error sending request …" | frontend PR #52 (`explain`) | unit `tests/explain.test.ts` | PASS (unit) |
+| Menit GitHub Actions habis | Railway menjeda deploy: job deploy menunggu sampai 5 jam di runner, diulang tiap jam | node PR #40 (gagal cepat, ulang tiap 6 jam) | CI #40 lulus | PASS |
+
 ### Runbook E2E testnet (HNK-17.T4, disiapkan 2026-10-22)
 Dijalankan begitu Railway pulih. Semua invoice memakai prefix `TES-`. Isi kolom "Hasil aktual" dengan txid atau tangkapan layar.
 

@@ -26,8 +26,8 @@ Status per kriteria: `TODO` / `PASS` / `FAIL` / `BLOCKED`, wajib dengan tanggal 
 | ID | Kriteria | Status | Tanggal | Bukti |
 |---|---|---|---|---|
 | AC-HNK-17.1 | Setiap item HNK-01 – HNK-11 punya hasil E2E tercatat (PASS/FAIL + tanggal) oleh tester yang bukan pembuat item. | PASS | 2026-10-22 | Putaran 1 HNK-01 – HNK-07 (HNK-17.T1, `TES-INV-E2E1-77210`) dan putaran 2 HNK-08 – HNK-11 (HNK-17.T2) di [[TEST-HNK-17 - QA E2E lintas item]]; tester agent (DEV-35) |
-| AC-HNK-17.2 | Setiap bug dicatat (item baru atau DEV) dengan langkah reproduksi. | TODO | — | — |
-| AC-HNK-17.3 | Bug yang diperbaiki di-retest dan hasilnya dicatat. | TODO | — | — |
+| AC-HNK-17.2 | Setiap bug dicatat (item baru atau DEV) dengan langkah reproduksi. | PASS | 2026-10-22 | 10 bug, masing-masing dengan langkah reproduksi, di [[TEST-HNK-17 - QA E2E lintas item]] bagian HNK-17.T3; dicatat sebagai item HNK-32 |
+| AC-HNK-17.3 | Bug yang diperbaiki di-retest dan hasilnya dicatat. | PASS | 2026-10-22 | 10 bug di-retest (E2E testnet untuk yang terlihat di layar, unit test untuk sisanya), hasil per bug di [[TEST-HNK-17 - QA E2E lintas item]] bagian HNK-17.T3 |
 
 ## Deviasi
 _Kosong._ Kalau implementasi menyimpang dari keputusan, tulis di sini **dan** di [[Backlog]] bagian Log Deviasi. Tidak ada perubahan diam-diam.
