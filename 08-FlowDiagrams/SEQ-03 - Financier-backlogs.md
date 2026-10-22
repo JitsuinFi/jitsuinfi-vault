@@ -40,7 +40,7 @@ Kolom Status mengikuti langkah 6 "Audit flow diagram" di [[Workflow Development]
 | ID | Bagian | Task | Selesai bila | Ref | Task backlog | Owner | Status |
 |---|---|---|---|---|---|---|---|
 | BL-S03-01 | Semua | Pipeline deal di konsol (daftar deal per state `Flow`) dan detail deal (papan, entri, surat, advance, pelunasan) dengan tombol aksi per state | Operator menjalankan satu deal dari penawaran sampai settled hanya dari konsol | C-33, HNK-05.T4 | HNK-26.T16 | Hans | AUDIT (2026-10-22: task selesai di kode dan merged; diaudit di E2E testnet HNK-17.T4) |
-| BL-S03-02 | Semua | Daftar endpoint API node (`/node/mail`, `/node/deals`, `/node/deals/N/commitment`, `/node/history/check`, `/node/deals/N/seals`, `/node/pairing`, `/node/session`) dengan format request dan response | Daftar ada di repo dan cocok dengan implementasi HNK-05.T3 | HNK-05.T3 | HNK-05.T3 | Hans | TODO |
+| BL-S03-02 | Semua | Daftar endpoint API node (`/node/mail`, `/node/deals`, `/node/deals/N/commitment`, `/node/history/check`, `/node/deals/N/seals`, `/node/pairing`, `/node/session`) dengan format request dan response | Daftar ada di repo dan cocok dengan implementasi HNK-05.T3 | HNK-05.T3 | HNK-05.T3 | Hans | AUDIT (2026-10-22: README jitsuinfi-node bagian "API" mendaftar 25 rute dengan akses, body dan jawaban, diambil dari router `src/main.rs`; nama rute berbeda dari rencana: semuanya di bawah `/node/console/`; `c96e0d1`, belum di-push) |
 | BL-S03-03 | Semua | E2E peran financier di testnet lewat konsol: penawaran sampai settled, satu kasus `AlreadyFinanced`, satu `DoubleFinanced` | Tiga kasus lulus di HNK-17 | HNK-17 | HNK-17.T4 | Hans | TODO |
 
 ## Roadmap

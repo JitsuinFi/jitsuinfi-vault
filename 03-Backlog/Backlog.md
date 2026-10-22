@@ -200,7 +200,7 @@ Urutan kerja mengikuti gelombang FD-01: fondasi (HNK-27, HNK-22, HNK-24.T1, HNK-
 |---|---|---|---|---|
 | HNK-05.T1 | State machine financier: cek → daftar → tunggu konfirmasi → bayar (Zcash) | Hans #hans | 4 | DONE (`6b5c343`) |
 | HNK-05.T2 | Format dan verifikasi memo kuitansi | Hans #hans | 2 | DONE (`6b5c343`) |
-| HNK-05.T3 | Endpoint API alur financier | Hans #hans (dari Dex, D-38) | 3 | DONE (audit 2026-10-22; kode merged, E2E testnet di HNK-17.T4 setelah Railway pulih): API alur financier di node: `offers/{id}/accept|decline`, `deals`, `deals/{n}/step`, `deals/{n}/pay` (jitsuinfi-node PR #21, #22, #23) |
+| HNK-05.T3 | Endpoint API alur financier | Hans #hans (dari Dex, D-38) | 3 | DONE (audit 2026-10-22; kode merged, E2E testnet di HNK-17.T4 setelah Railway pulih): API alur financier di node: `offers/{id}/accept` dan `offers/{id}/decline`, `deals`, `deals/{n}/step`, `deals/{n}/pay` (jitsuinfi-node PR #21, #22, #23) |
 | HNK-05.T4 | Integrasi layar financier ↔ backend/wallet (status txid, konfirmasi) — FE krusial | Hans #hans (dari Dex, D-38) | 2 | DONE (audit 2026-10-22; kode merged, E2E testnet di HNK-17.T4 setelah Railway pulih): konsol 案件 menampilkan state, txid entri dan advance, konfirmasi, pelunasan per deal (frontend PR #35, #36) |
 | HNK-05.T5 | Layout dan komponen layar financier | Hans #hans (dari Dave, D-35) | 1 | DONE (`cdcba0d`, `98466b2` (`jitsuinfi-frontend`, lokal)) |
 | HNK-05.T6 | Panduan E2E financier | Hans #hans (dari Dave, D-35) | 1 | DONE: panduan E2E di TEST-HNK-05 |
@@ -392,7 +392,7 @@ Urutan kerja mengikuti gelombang FD-01: fondasi (HNK-27, HNK-22, HNK-24.T1, HNK-
 | HNK-25.T5 | Pengingat jatuh tempo lokal. Rincian: `BL-D25-02` | Hans #hans (dari Dave, D-35) | 1 | DONE (2026-10-22, frontend `hans/hnk-25-buyer-status`, belum di-push): banner 期 di daftar invoice buyer untuk invoice yang dibiayai (tiga segel) dan belum settled, jatuh tempo ≤ 7 hari atau lewat; hanya dari data di perangkat (`dueSoon`, diuji) |
 | HNK-25.T6 | Kartu riwayat saya (`verifyHistory` + snapshot). Rincian: `BL-D26-09` | Hans #hans (dari Dave, D-35) | 1 | DONE (2026-10-22, frontend `hans/hnk-25-buyer-status`, belum di-push): kartu "My payment history": sertifikat sendiri dibaca (`certFields`, diuji), `verifyHistory` terhadap papan live dengan allowlist dari sertifikat sendiri, hasil per invoice |
 | HNK-25.T7 | Status pelunasan di layar buyer dan supplier (`bundleOnBoard` + snapshot). Rincian: `BL-D25-09` | Hans #hans (dari Dave, D-35) | 1 | DONE (2026-10-22, frontend `hans/hnk-25-buyer-status`, belum di-push): status papan per invoice buyer dan per deal supplier lewat `bundleOnBoard` (bundel dari financier atau dibangun dari invoice, surat, segel) dan papan live: terdaftar, ganda, settled tepat waktu/terlambat |
-| HNK-25.T8 | Bayar QR di testnet (Zodl atau `zcash-devtool`) dan dana testnet untuk peserta uji. Rincian: `BL-D25-10` | Hans #hans (dari Dave, D-35) | 1 | TODO |
+| HNK-25.T8 | Bayar QR di testnet (Zodl atau `zcash-devtool`) dan dana testnet untuk peserta uji. Rincian: `BL-D25-10` | Hans #hans (dari Dave, D-35) | 1 | PARSIAL (2026-10-22): URI ZIP-321 dari `buyer::repayment_request` (isi QR yang sama) dibayar dengan `zcash-devtool` di E2E testnet, txid `f14249878530eff63ae72a02748ca8ed12b0026a7ed40432743b706f47946517`, lalu entri settled `0c377146…` tepat waktu (jitsuinfi-zcash PR #26). Sisa: dana testnet untuk peserta uji HNK-13, dikirim setelah peserta dan alamatnya ada (izin user) |
 
 **HNK-26 — Konsol dan API node financier** · Lead Hans #hans · [[AC-HNK-26 - Konsol dan API node financier|AC]] · Dibuat 2026-10-20 (D-30)
 
@@ -449,7 +449,7 @@ Urutan kerja mengikuti gelombang FD-01: fondasi (HNK-27, HNK-22, HNK-24.T1, HNK-
 
 | Task | Deskripsi | Owner | Jam | Status |
 |---|---|---|---|---|
-| HNK-17.T1 | E2E putaran 1 (HNK-01 – HNK-07) | Hans #hans (dari Dave, D-35) | 3 | DONE (2026-10-22): E2E testnet lokal lewat `jitsuin-flow`: invoice dengan PDF syarat nyata, registrasi, konfirmasi, segel, advance Sign-to-Pay, pelunasan QR, entri settled, bundel, deteksi pembiayaan ganda oleh financier kedua; `jitsuin verify` pada papan live PASS 5/5. Txid di [[TEST-HNK-17 - QA E2E lintas item]] |
+| HNK-17.T1 | E2E putaran 1 (HNK-01 – HNK-07) | Hans #hans (dari Dave, D-35) | 3 | DONE (2026-10-22): E2E testnet lokal lewat `jitsuin-flow`: invoice dengan PDF syarat nyata, registrasi, konfirmasi, segel, advance Sign-to-Pay, pelunasan QR, entri settled, bundel, deteksi pembiayaan ganda oleh financier kedua; `jitsuin verify` pada papan live PASS 5/5. Txid di [[TEST-HNK-17 - QA E2E lintas item]] Program dan bukti di repo: `crates/jitsuin-flow/examples/testnet_cycle.rs`, `examples/testnet/e2e-tes-inv-e2e1/`, README langkah 5 (jitsuinfi-zcash PR #26) |
 | HNK-17.T2 | E2E putaran 2 (HNK-08 – HNK-11) | Hans #hans (dari Dave, D-35) | 2 | TODO |
 | HNK-17.T3 | Retest bug yang sudah diperbaiki | Hans #hans (dari Dave, D-35) | 1 | TODO |
 | HNK-17.T4 | E2E arsitektur target per business flow (BF-01 – BF-12, [[FD-02 - Penelusuran Business Flow ke Backlog]]) lewat relay dan node testnet. Rincian: `BL-D0-07`, `BL-D22-11`, `BL-D23-15`, `BL-D24-14`, `BL-D26-10`, `BL-D29-08`, `BL-S00-04`, `BL-S01-03`, `BL-S02-03`, `BL-S03-03`, `BL-S04-01`, `BL-S05-02` | Hans #hans (dari Dave, D-35) | 3 | TODO |

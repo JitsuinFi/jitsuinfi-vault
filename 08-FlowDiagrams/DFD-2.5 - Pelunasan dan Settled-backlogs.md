@@ -26,7 +26,7 @@ Kolom Status mengikuti langkah 6 "Audit flow diagram" di [[Workflow Development]
 | BL-D25-07 | 5.5 | Keputusan D-xx: siapa memegang spending key untuk posting `settled` (P-12) | Keputusan tercatat di [[Decision Log]] | P-12 | D-31 | Hans | SELESAI (2026-10-20, keputusan D-31) |
 | BL-D25-08 | 5.6, F5.25 | **Baru.** Financier mengirim bundel JTSB (surat + dokumen pelunasan) ke buyer dan supplier lewat relay setelah settled | Buyer dan supplier punya bundel yang bisa diperiksa terhadap papan | C-29 | HNK-26.T18 | Hans | AUDIT (2026-10-21: kode selesai di node dan web app; diaudit di E2E testnet HNK-17.T4 setelah Railway pulih) |
 | BL-D25-09 | 5.6, F5.24 – F5.27 | Status pelunasan di layar buyer dan supplier (`bundleOnBoard` + snapshot) | Buyer dan supplier melihat "settled tepat waktu / terlambat" tanpa unggah file | C-21, P-06 | HNK-25.T7 | Hans | AUDIT (2026-10-22: kode di layar buyer/supplier; diaudit dengan deal nyata di E2E testnet) |
-| BL-D25-10 | Uji | Bayar QR dari Zodl (SPK-04) atau `zcash-devtool`; dana testnet untuk peserta uji | Satu pembayaran QR tertambang dan menjadi `Settled` | SPK-04, C-19 | HNK-25.T8 | Hans | TODO |
+| BL-D25-10 | Uji | Bayar QR dari Zodl (SPK-04) atau `zcash-devtool`; dana testnet untuk peserta uji | Satu pembayaran QR tertambang dan menjadi `Settled` | SPK-04, C-19 | HNK-25.T8 | Hans | DIKERJAKAN |
 
 ## Sudah ada (tanpa task baru)
 
