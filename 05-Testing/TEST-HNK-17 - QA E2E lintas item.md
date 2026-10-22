@@ -51,6 +51,16 @@ Dijalankan dari mesin Hans dengan `jitsuin-flow` langsung ke `testnet.zec.rocks`
 
 Biaya testnet: sekitar 0,0002 ZEC fee + advance 0,0009 (kembali ke wallet uji) + pelunasan 0,001. Artefak off-chain hanya di scratchpad; tidak ada DB.
 
+### Hasil E2E putaran 2 (HNK-17.T2, 2026-10-22): HNK-08 – HNK-11
+Tester: agent (bukan penulis kode item; DEV-35). Papan testnet live, tip 4529049 (snapshot dari node lokal `/node/board`, isi sama dengan node production).
+
+| Item | Langkah | Hasil | Bukti |
+|---|---|---|---|
+| HNK-08 Indeks suku bunga | `jitsuin index --board <snapshot>` dibandingkan dengan `https://jitsuinfi.vercel.app/rates` (papan live dari node production) | PASS | Keduanya: 23 entri register, 20 invoice, 9 tidak diungkap, 0 invalid; tenor 31-60 hari 5 invoice, median diskon 3-5 %; kelas lain "fewer than 5" (k = 5); halaman membaca papan "live scan up to block 4529049" |
+| HNK-09 Verifier CLI | `jitsuin verify --board <snapshot> --bundle` atas bundel deal `TES-INV-FE-53023` dari aplikasi web | PASS | "DEAL VERIFIED", 3/3 cek (tanda tangan buyer dan tiga segel; registrasi sekali, entri `877c2502…5c3f`; settled `327391f2…7716` tepat waktu) |
+| HNK-10 Web app per peran | E2E lokal testnet lewat aplikasi React (supplier, buyer, konsol financier, relay, node): `TES-INV-FE-36210`, `-53023`, `-1185` | PASS | Siklus sampai settled dan `/verify` "Bundle is genuine" (rincian di I-HNK-31.3, I-HNK-32.1); bug yang ditemukan dicatat sebagai HNK-32 (8 baris GAGAL AUDIT, T8 devtool menggantung) |
+| HNK-11 Halaman orang luar | `https://jitsuinfi.vercel.app/outsider` di production | PASS | Halaman tampil tanpa error console; klaim cocok dengan papan: entri tanpa kelas diungkap tercatat 0/0 (9 dari 23), N tidak bisa dihubungkan ke invoice tanpa invoicenya |
+
 ### Runbook E2E testnet (HNK-17.T4, disiapkan 2026-10-22)
 Dijalankan begitu Railway pulih. Semua invoice memakai prefix `TES-`. Isi kolom "Hasil aktual" dengan txid atau tangkapan layar.
 
