@@ -1,7 +1,7 @@
 ---
 tags: [flow, backlog]
 status: DITETAPKAN
-progress: 12/14 SELESAI
+progress: 13/14 SELESAI
 updated: 2026-10-20
 ---
 
@@ -22,7 +22,7 @@ Kolom Status mengikuti langkah 6 "Audit flow diagram" di [[Workflow Development]
 | BL-D24-03 | 4.1, F4.06 | Surat + PDF surat dikirim ke supplier dan buyer lewat relay, pesan ditandatangani node dengan `financier_pk` | Supplier dan buyer menerima surat; pesan dengan tanda tangan salah ditolak | P-04 | HNK-23.T8 | Hans | SELESAI (2026-10-22, audit: E2E lokal testnet `TES-INV-FE-36210`: supplier dan buyer menyimpan surat dari relay; tanda tangan salah ditolak (`relay.ts:121` `verifyHeader`, `MailboxCard.tsx:84`), signer lain dan body diubah ditolak di `tests/relay-message.test.ts`) |
 | BL-D24-04 | 4.2 – 4.3 | `assignmentDecode` di `jitsuin-wasm`: N, nominal, jatuh tempo, `financier_pk`, alamat bayar, `terms_hash` | Fungsi mengembalikan semua field; test roundtrip dengan `assignmentEncode` | P-13 | HNK-27.T3 | Hans | SELESAI (2026-10-20, `948133a`, U-HNK-27.3) |
 | BL-D24-05 | 4.2, F4.07 – F4.13 | Layar supplier "Segel surat": tampilkan isi surat, cek PDF surat dengan `terms_hash`, segel s0, kirim ke buyer dan financier | PDF salah memunculkan peringatan sebelum tombol segel aktif | P-13 | HNK-24.T7 | Hans | SELESAI (2026-10-20, `17a01ea`: PDF salah dan financier lain ditolak sebelum tombol segel muncul, I-HNK-24.3) |
-| BL-D24-06 | 4.3, F4.14 – F4.19 | Layar buyer "Segel surat": isi surat dan cek PDF yang sama, segel s1, kirim ke financier dan supplier | Sama dengan BL-D24-05 untuk buyer | P-13 | HNK-25.T3, HNK-32.T1 | Hans | GAGAL AUDIT (2026-10-22: tombol "Seal as buyer" selalu aktif (`BuyerPage.tsx:785`) dan `sealIt` menyegel surat yang ditempel tanpa cek PDF atau financier (`:402-404`); cek PDF hanya saat "Keep the letter" dari inbox; tidak ada uji setara I-HNK-24.3 untuk buyer) |
+| BL-D24-06 | 4.3, F4.14 – F4.19 | Layar buyer "Segel surat": isi surat dan cek PDF yang sama, segel s1, kirim ke financier dan supplier | Sama dengan BL-D24-05 untuk buyer | P-13 | HNK-25.T3, HNK-32.T1 | Hans | SELESAI (2026-10-22, audit ulang setelah HNK-32.T1, frontend PR #48: buyer "Check letter" mencocokkan invoice, PDF dengan `terms_hash`, dan segel supplier untuk surat ini; tombol segel terkunci sampai lolos; `tests/buyer-letter.test.ts`; E2E lokal testnet `TES-INV-FE-11588` segel lolos setelah cek) |
 | BL-D24-07 | 4.4, F4.20 – F4.23 | API `POST /node/deals/N/seals`; seal salah (`InvalidDeal`, `UnexpectedSigner`) tampil terbaca | Seal salah tidak mengubah state dan alasannya tampil | HNK-05.T3, C-13 | HNK-21.T9 | Hans | SELESAI (2026-10-22, audit: penolakan yang disebut baris ini punya kalimat di `explain.ts`, diuji `tests/explain.test.ts`) |
 | BL-D24-08 | 4.5, F4.24 – F4.28 | Hitung ulang konfirmasi bila entri ditambang ulang di tinggi lain | Advance tidak dibayar dengan konfirmasi di bawah minimum setelah reorg | K-7 | HNK-27.T6 | Hans | SELESAI (2026-10-20, `b6f33d5`, U-HNK-27.6) |
 | BL-D24-09 | 4.5 – 4.7 | Persetujuan operator per deal (assertion passkey) sebelum `Pay` | Tanpa assertion operator untuk deal itu, advance tidak terkirim | P-07, P-05 | HNK-26.T15 | Hans | SELESAI (2026-10-22, audit: `pay_advance` hanya lewat `pay::advance` setelah `take_approval`; `deal_pay` menolak tanpa `approval` (`main.rs:1537`); uji `an_approval_pays_once_and_only_its_own_intent`, `cargo test` node 49/49; E2E lokal testnet `TES-INV-FE-36210`: advance `14ea447c…51cb` setelah passkey konsol) |
