@@ -36,7 +36,7 @@ Skrip vs DB/chain sungguhan. Semua artefak memakai prefix `TES-` (invoice, akun,
 Panduan langkah demi langkah untuk user.
 
 - [ ] Buka tiap URL bersih di production setelah deploy, bandingkan dengan patokan
-- [ ] Jalankan E2E lokal (relay, node, web app) dengan passkey di Chrome
+- [ ] Jalankan E2E lokal (relay, node, web app). Passkey: authenticator virtual Chrome lewat CDP (`WebAuthn.addVirtualAuthenticator`, `hasPrf: true`, `scripts/fe-cdp-shots.mjs` job `webauthn`), terbukti di T7 untuk daftar dan masuk; sentuhan passkey user tidak lagi wajib
 
 | Langkah | Hasil diharapkan | Hasil aktual | Status |
 |---|---|---|---|

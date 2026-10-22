@@ -24,6 +24,11 @@ let id = 0; const pending = new Map(); const events = [];
 ws.onmessage = (m) => { const d = JSON.parse(m.data); if (d.id && pending.has(d.id)) { pending.get(d.id)(d); pending.delete(d.id); } else events.push(d); };
 const send = (method, params = {}) => new Promise((r) => { const i = ++id; pending.set(i, r); ws.send(JSON.stringify({ id: i, method, params })); });
 await send("Page.enable"); await send("Runtime.enable");
+// a virtual passkey with PRF for every job that asks for one (no prompts, user verified)
+if (jobs.some((j) => j.webauthn)) {
+  await send("WebAuthn.enable", { enableUI: false });
+  await send("WebAuthn.addVirtualAuthenticator", { options: { protocol: "ctap2", ctap2Version: "ctap2_1", transport: "internal", hasResidentKey: true, hasUserVerification: true, isUserVerified: true, automaticPresenceSimulation: true, hasPrf: true } });
+}
 for (const j of jobs) {
   await send("Emulation.setDeviceMetricsOverride", { width: j.w, height: j.h, deviceScaleFactor: 1, mobile: j.w < 600 });
   await send("Emulation.setEmulatedMedia", { features: [{ name: "prefers-reduced-motion", value: j.reduced ? "reduce" : "no-preference" }] });
