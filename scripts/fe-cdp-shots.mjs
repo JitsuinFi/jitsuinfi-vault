@@ -43,7 +43,8 @@ for (const j of jobs) {
   }
   if (j.js) {
     const r = await send("Runtime.evaluate", { expression: `(async () => { ${j.js} })()`, awaitPromise: true, returnByValue: true });
-    writeFileSync(join(out, `${j.name}.js.txt`), JSON.stringify(r.result.result?.value ?? r.result, null, 1));
+    const ex = r.result.exceptionDetails;
+    writeFileSync(join(out, `${j.name}.js.txt`), ex ? `EXCEPTION ${ex.exception?.description ?? ex.text}` : JSON.stringify(r.result.result?.value ?? r.result, null, 1));
   }
   if (j.noShot) continue;
   const shot = await send("Page.captureScreenshot", { format: "jpeg", quality: 70 });
