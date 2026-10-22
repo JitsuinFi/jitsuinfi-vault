@@ -116,6 +116,7 @@ Urutan kerja mengikuti gelombang FD-01: fondasi (HNK-27, HNK-22, HNK-24.T1, HNK-
 | HNK-28 | Verifikasi publik lengkap | F4 | Hans #hans | #hans | HNK-08, HNK-09, HNK-23 | [[AC-HNK-28 - Verifikasi publik lengkap\|AC]] | [[TEST-HNK-28 - Verifikasi publik lengkap\|Test]] | [[ES-HNK-28 - Verifikasi publik lengkap\|ES]] |
 | HNK-29 | Alur dana anggota | F7 | Hans #hans | #hans | HNK-15, HNK-23 | [[AC-HNK-29 - Alur dana anggota\|AC]] | [[TEST-HNK-29 - Alur dana anggota\|Test]] | [[ES-HNK-29 - Alur dana anggota\|ES]] |
 | HNK-30 | Demo juri dan narasi dari judging | F6 | Hans #hans | #hans | HNK-07, HNK-09, HNK-28 | [[AC-HNK-30 - Demo juri dan narasi dari judging\|AC]] | [[TEST-HNK-30 - Demo juri dan narasi dari judging\|Test]] | [[ES-HNK-30 - Demo juri dan narasi dari judging\|ES]] |
+| HNK-31 | Migrasi FE ke React dan TanStack Router | F6 | Hans #hans | #hans | HNK-21, HNK-30 | [[AC-HNK-31 - Migrasi FE ke React dan TanStack Router\|AC]] | [[TEST-HNK-31 - Migrasi FE ke React dan TanStack Router\|Test]] | [[ES-HNK-31 - Migrasi FE ke React dan TanStack Router\|ES]] |
 
 ## Spike (F0)
 
@@ -481,6 +482,24 @@ Urutan kerja mengikuti gelombang FD-01: fondasi (HNK-27, HNK-22, HNK-24.T1, HNK-
 | HNK-30.T21 | D-47: reputasi terbukti: desain bukti "N deal lunas tepat waktu" milik satu financier tanpa membuka deal mana (pembuka commitment, bukti agregat), plus ancaman korelasi; tulis spesifikasi dan putuskan apakah dibangun | Hans #hans | 2 | DONE (2026-10-21): Opsi A dipilih (D-48) dan dibangun: `reputation.rs` + endpoint `POST /node/console/reputation` + CLI `provider reputation` (jitsuinfi-node PR #17), badge 績 di pencari direktori dan tombol atestasi di konsol (jitsuinfi-frontend PR #31), keduanya merged. Opsi B tetap v2 |
 | HNK-30.T22 | D-47 (5): halaman anggota dana lengkap: alamat setoran + QR, kuitansi dari kotak surat, ringkasan portofolio agregat (jumlah invoice, total nilai, sebaran jatuh tempo, tanpa identitas), uji solvabilitas. Bergantung HNK-29.T1 – T3 | Hans #hans | 2 | DONE (2026-10-22, belum di-merge: zcash `acd5403`, node `5e3b6dc`, frontend PR #45, di-merge `e07ec67`): kartu dana `jitsuin-fund-v1:` dengan alamat setoran baru per anggota dari konsol; halaman anggota menyimpan kartu, QR ZIP-321 setoran (wasm `paymentRequest`), kuitansi dari kotak surat, slip unit, ringkasan portofolio agregat per periode (jumlah piutang berjalan/lewat tempo/lunas, nilai, sebaran jatuh tempo ≤30/31–90/>90 hari, kas; tanpa N atau pihak) yang dikirim node bersama jalur; uji solvabilitas tetap lewat `jitsuin fund` dengan UFVK lokal |
 | HNK-30.T23 | D-47 (5): desain alur penarikan dan bagi hasil anggota dana (pro-rata dari root kewajiban, pembayaran shielded ke alamat anggota, periode, kuitansi) | Hans #hans | 1 | DONE (2026-10-21): desain [[Spesifikasi Penarikan Anggota Dana]]; implementasi D-49: ledger dana di node (`fund.rs`: unit pada NAV periode, token tarik, antrean, rencana tutup periode dengan persetujuan passkey, bayar dari kas pro-rata, tahan di bawah par, root JTLR, jalur ke semua anggota) jitsuinfi-node PR #19; konsol 帳簿 + halaman anggota jitsuinfi-frontend PR #32; semua merged. Deploy node menunggu Railway pulih |
+
+**HNK-31 — Migrasi FE ke React dan TanStack Router** · Lead Hans #hans · [[AC-HNK-31 - Migrasi FE ke React dan TanStack Router|AC]] · Dibuat 2026-10-22 (D-52). Berurutan: satu task selesai dan lolos paritas visual sebelum task berikutnya.
+
+| Task | Deskripsi | Owner | Jam | Status |
+|---|---|---|---|---|
+| HNK-31.T1 | Patokan visual: tangkapan layar semua route di 1440 × 900 dan 390 × 844 plus teks terlihat, dari main `155eaf7`, ke `05-Testing/assets/hnk31-baseline/` | Hans #hans | 0,5 | DONE (2026-10-22): 13 route × 3 ukuran (1440 × 900, 390 × 844, 1440 × 4000) + DOM, build production main `155eaf7`, Chrome headless dengan WebGL; skrip `scripts/fe-shots.sh`; daftar di `05-Testing/assets/hnk31-baseline/README.md`. Layar setelah login diambil saat E2E di Chrome |
+| HNK-31.T2 | Fondasi: React, TanStack Router (route berbasis file lewat `@tanstack/router-plugin`), layout akar, satu entri `index.html`, adaptor sementara untuk halaman lama, rewrite SPA Vercel, pengalihan `#/x` dan `app.html#/x` ke `/x`, host konsol ke `/console`, CSP tidak berubah | Hans #hans | 2 | TODO |
+| HNK-31.T3 | Shell app dan lobi 登記所 (`/app`): bar atas, nav, footer, pintu noren sebagai komponen | Hans #hans | 1 | TODO |
+| HNK-31.T4 | Landing (`/`): bab 1 – 6, toggle EN/中文, scene three.js/anime dibungkus komponen (`useEffect`), visual tidak berubah | Hans #hans | 2 | TODO |
+| HNK-31.T5 | Coba (`/try`): Case File #0417, 偽/重, Exhibit A, lensa, batas | Hans #hans | 2 | TODO |
+| HNK-31.T6 | Verify (`/verify`), yang dilihat orang luar (`/outsider`), indeks (`/index`) | Hans #hans | 1,5 | TODO |
+| HNK-31.T7 | Akun dan lembar masuk (`/account`, onboarding, passkey, seal card) | Hans #hans | 1,5 | TODO |
+| HNK-31.T8 | Supplier (`/supplier`): lembar 請求書, timeline deal, kotak masuk | Hans #hans | 2,5 | TODO |
+| HNK-31.T9 | Buyer (`/buyer`): kunci invoice, tanda tangan, segel surat, riwayat, QR pelunasan | Hans #hans | 2,5 | TODO |
+| HNK-31.T10 | Anggota dana (`/member`), daftar financier (`/apply`), komponen kotak surat bersama | Hans #hans | 1,5 | TODO |
+| HNK-31.T11 | Konsol financier (`/console`, `/console/pair`): pairing, masuk, meja 案件, dana, mandat | Hans #hans | 3 | TODO |
+| HNK-31.T12 | Bersih-bersih: hapus helper `h()`, `app.html`, `console.html`, routing hash; README frontend | Hans #hans | 0,5 | TODO |
+| HNK-31.T13 | Regresi: E2E lokal testnet di FE baru sampai settled, paritas visual semua halaman, deploy production setelah persetujuan user | Hans #hans | 1,5 | TODO |
 
 ### Fase F7
 
