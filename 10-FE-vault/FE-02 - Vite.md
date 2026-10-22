@@ -11,7 +11,7 @@ updated: 2026-10-20
 
 > **Peta link:** [[FE-00 - Peta Tools FE|Peta tools]] · [[10 - FE Vault|Hub modul]] · [[FE-01 - Batasan Platform FE|Batasan platform]]
 
-Build tool dan dev server untuk dua halaman: landing (`index.html`) dan app (`app.html`).
+Build tool dan dev server. Sejak HNK-31 (D-52): satu entri `index.html` untuk SPA React + TanStack Router (`@tanstack/router-plugin` membuat `routeTree.gen.ts` dari `src/routes/`, `@vitejs/plugin-react`); landing, app dan konsol jadi tiga chunk lazy. Sebelumnya: dua halaman, landing (`index.html`) dan app (`app.html`).
 
 ## Akar
 | | |
@@ -24,7 +24,7 @@ Build tool dan dev server untuk dua halaman: landing (`index.html`) dan app (`ap
 ## Konfigurasi yang dipakai
 - `build.target: "es2022"`.
 - `assetsInlineLimit: 0`: semua aset jadi file terpisah di `dist/assets/` (tidak ada `data:` URI besar), cocok dengan CSP.
-- Dua input: `landing` (index.html) dan `app` (app.html).
+- Dulu dua input: `landing` (index.html) dan `app` (app.html); sejak HNK-31 satu input, meta CSP disisipkan plugin kecil saat build saja.
 - Ukuran file build terakhir (ukuran di disk, belum gzip): `landing-*.js` ±796 KB (three.js, anime.js, Motion, Lenis), `app-*.js` 44 KB, `jitsuin_wasm-*.js` 20 KB + `.wasm` 586 KB.
 
 ## Perintah (`package.json`)

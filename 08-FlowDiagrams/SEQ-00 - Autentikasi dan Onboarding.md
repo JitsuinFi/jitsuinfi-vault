@@ -33,7 +33,7 @@ box "Server" #FFFDF5
 end box
 
 == Daftar: supplier, buyer, anggota dana (P-01, P-02) ==
-U -> W : buka /app.html, klik **Daftar**
+U -> W : buka /account, klik **Daftar**
 W -> W : cek PublicKeyCredential + isSecureContext
 alt browser tanpa WebAuthn atau bukan HTTPS
   W --> U : "Perangkat tidak mendukung passkey"\n(mode demo: test secret 64 hex;\nawalan TES- hanya kebijakan, kode tidak memeriksa)

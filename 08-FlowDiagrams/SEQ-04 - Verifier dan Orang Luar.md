@@ -89,7 +89,7 @@ W -> X : rateIndex(snapshot, k) (USULAN: wrapper wasm\ndari jitsuin_board::rate_
 W --> OL : halaman indeks (HNK-08.T3, belum ada)
 
 == D. Web: layar Verify ==
-J -> W : buka /app.html#/verify, tempel bundel (JTSB)\natau bukti (JTSP)
+J -> W : buka /verify, tempel bundel (JTSB)\natau bukti (JTSP)
 alt bundel
   W -> X : verifyBundle(bundel)
   X --> W : N, invoice_id, nominal, jatuh tempo, status surat
@@ -124,7 +124,7 @@ end note
 == E. Orang luar ==
 OL -> C : pengamat explorer: buka block explorer
 C --> OL : transaksi shielded: waktu blok, jumlah action,\nfee, txid; isi memo, nominal, alamat tersembunyi
-OL -> W : halaman "What outsiders see" (/app.html#/outsider)
+OL -> W : halaman "What outsiders see" (/outsider)
 W --> OL : tabel publik vs tersembunyi + kartu explorer
 OL -> W : pemegang UFVK papan: tempel satu memo papan
 W -> X : boardMemoDescribe(memo)

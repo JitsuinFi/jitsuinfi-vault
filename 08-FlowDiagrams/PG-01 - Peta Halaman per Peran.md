@@ -8,7 +8,7 @@ updated: 2026-10-20
 
 **Bagian dari:** [[08 - FlowDiagrams]] · Legenda: [[FD-00 - Arsitektur Target dan Legenda]] · Item: [[AC-HNK-21 - Polish halaman internal web app|HNK-21]] · [[AC-HNK-10 - Web app per peran|HNK-10]]
 
-Halaman target web app, diturunkan dari sequence per peran. Sekarang (HNK-22.T3, PR #4) `app.html` punya halaman publik (Verify, What outsiders see), halaman Account, dan layar peran (Supplier, Buyer, Fund member) yang hanya terbuka setelah masuk; simulasi Financier keluar dari navigasi tetapi masih bisa dibuka lewat alamat sampai konsol node ada. Setiap tab adalah kumpulan kartu salin-tempel. Kotak hijau = sudah ada sebagai simulasi, kuning putus-putus = USULAN. Konsol financier tidak berada di jitsuinfi.vercel.app: disajikan oleh node financier di origin node (P-11).
+Halaman target web app, diturunkan dari sequence per peran. Sekarang (HNK-22.T3, PR #4) `app.html` punya halaman publik (Verify, What outsiders see), halaman Account, dan layar peran (Supplier, Buyer, Fund member) yang hanya terbuka setelah masuk; simulasi Financier keluar dari navigasi tetapi masih bisa dibuka lewat alamat sampai konsol node ada. Setiap tab adalah kumpulan kartu salin-tempel. Kotak hijau = sudah ada sebagai simulasi, kuning putus-putus = USULAN. Konsol financier tidak berada di jitsuinfi.vercel.app: disajikan oleh node financier di origin node (P-11). Sejak HNK-31 (D-52) semua halaman berupa route React dengan URL bersih (`/try`, `/verify`, `/outsider`, `/rates`, `/account`, `/supplier`, `/buyer`, `/member`, `/apply`, `/console`); alamat `app.html#/x` lama dialihkan.
 
 ![PG-01](assets/pg-01-pages.svg)
 
@@ -47,9 +47,9 @@ ROOT -down- BUY
 NODE -down- FIN
 ROOT -down- MEM
 rectangle "Landing /" <<have>> as p1
-rectangle "Verify\napp.html~#/verify" <<have>> as p2
-rectangle "Orang luar\napp.html~#/outsider" <<have>> as p3
-rectangle "Indeks bunga\napp.html~#/index" <<new>> as p4
+rectangle "Verify\n/verify" <<have>> as p2
+rectangle "Orang luar\n/outsider" <<have>> as p3
+rectangle "Indeks bunga\n/rates" <<new>> as p4
 PUB -down- p1
 p1 -down- p2
 p2 -down- p3
@@ -120,10 +120,10 @@ m1 -down- m2
 | Peran | Halaman | Isi | Sequence | Status |
 |---|---|---|---|---|
 | Publik | Landing | 6 bab, EN/中文 | — | ADA (jitsuinfi.vercel.app) |
-| Publik | Coba double-finance (`/app.html#/try`) | Kit invoice tersegel Case File #0417 (M-02), meja financier A dan B, verdict 偽 / 重; tanpa wallet dan akun (D-40) | [[SEQ-04 - Verifier dan Orang Luar]] | PARSIAL (HNK-30.T3; edit invoice T4, Exhibit A T5) |
-| Publik | Verify (`/app.html#/verify`) | Tempel bundel/bukti, verdict, unduh bukti; snapshot papan otomatis (P-06) | [[SEQ-04 - Verifier dan Orang Luar]] | ADA (snapshot diunggah sebagai file) |
-| Publik | Orang luar (`/app.html#/outsider`) | Tabel publik vs tersembunyi, uraian memo | SEQ-04 | ADA |
-| Publik | Indeks bunga (`/app.html#/index`) | Kelas tenor × kelas diskon, k = 5; butuh export wasm `rateIndex` | SEQ-04 | USULAN (HNK-08.T3) |
+| Publik | Coba double-finance (`/try`) | Kit invoice tersegel Case File #0417 (M-02), meja financier A dan B, verdict 偽 / 重; tanpa wallet dan akun (D-40) | [[SEQ-04 - Verifier dan Orang Luar]] | PARSIAL (HNK-30.T3; edit invoice T4, Exhibit A T5) |
+| Publik | Verify (`/verify`) | Tempel bundel/bukti, verdict, unduh bukti; snapshot papan otomatis (P-06) | [[SEQ-04 - Verifier dan Orang Luar]] | ADA (snapshot diunggah sebagai file) |
+| Publik | Orang luar (`/outsider`) | Tabel publik vs tersembunyi, uraian memo | SEQ-04 | ADA |
+| Publik | Indeks bunga (`/rates`) | Kelas tenor × kelas diskon, k = 5; butuh export wasm `rateIndex` | SEQ-04 | USULAN (HNK-08.T3) |
 | Akun | Daftar, Masuk, Tambah/ganti peran, Kunci sesi, Kartu kontak | Satu passkey per orang, salt per peran, kotak surat; untuk supplier, buyer, anggota dana (financier lewat pairing node) | [[SEQ-00 - Autentikasi dan Onboarding]] | ADA (PR #4): Daftar, Masuk, Tambah/ganti peran, Kunci sesi (HNK-22.T1 – T4, `#/account`); Kartu kontak dan kotak surat USULAN (HNK-22.T5, P-04) |
 | Supplier | Daftar deal | Satu timeline per N: tanda tangan buyer, penawaran, entri, surat, advance (pelunasan menyusul) | [[SEQ-01 - Supplier]] | ADA (HNK-24.T9, tersimpan terenkripsi) |
 | Supplier | Invoice baru | Unlock passkey supplier, key per invoice dari master (P-03), file syarat, kirim ke buyer | SEQ-01 | ADA (HNK-24.T2; kirim lewat salin-tempel) |
