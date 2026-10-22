@@ -25,7 +25,7 @@ Skrip vs DB/chain sungguhan. Semua artefak memakai prefix `TES-` (invoice, akun,
 
 | ID | Skenario | Hasil | Tanggal | Bukti (txid/log) |
 |---|---|---|---|---|
-| I-HNK-29.1 | Dua setoran, satu root, inklusi kedua anggota di testnet | TODO | — | — |
+| I-HNK-29.1 | Dua setoran, satu root, inklusi kedua anggota di testnet | PARSIAL | 2026-10-22 | Dua setoran dari dua anggota, masing-masing di periode sendiri (periode 1 root `9a9f1baa…8bdd`, periode 2 root `25a524ef…409e`), inklusi anggota periode 2 dicek `jitsuin fund` dan kartu Solvency (HNK-32.T7). Sisa: dua anggota dalam satu root |
 
 **Bukti pembersihan:** sisa artefak off-chain `TES-` = _TODO_ (target **0**). Artefak on-chain tidak bisa dihapus; catat txid-nya di tabel di atas. Data produksi tidak boleh tersentuh.
 

@@ -28,4 +28,4 @@ Status per kriteria: `TODO` / `PASS` / `FAIL` / `BLOCKED`, wajib dengan tanggal 
 | AC-HNK-32.5 | **Bukti bisa diunduh:** JTSE dan Exhibit A + bukti lengkap bisa diunduh sebagai file dari konsol, dan file itu lolos `/verify` atau `jitsuin verify` (BL-D25-04, BL-D27-04) | TODO | — | — |
 | AC-HNK-32.6 | **E2E lokal diperluas:** kirim key lewat relay, simpan kontak, tolak penawaran, dan permintaan riwayat lulus di testnet (BL-D21-11, BL-D22-01, BL-D23-03, BL-D26-01 – 09) | PASS | 2026-10-22 | I-HNK-32.1: `TES-INV-FE-11588` dan `TES-INV-FE-18524-D` |
 | AC-HNK-32.7 | **Tanpa regresi:** `npm test` frontend dan `cargo test` node lulus; siklus E2E lokal tetap sampai settled; nol pelanggaran CSP | TODO | — | — |
-| AC-HNK-32.8 | **Lingkup halaman anggota diputuskan user** dan baris BL-D29-07 ditutup sesuai keputusan itu | TODO | — | — |
+| AC-HNK-32.8 | **Lingkup halaman anggota diputuskan user** dan baris BL-D29-07 ditutup sesuai keputusan itu | PASS | 2026-10-22 | Keputusan user: halaman membaca output CLI; BL-D29-07 SELESAI dengan E2E dana testnet (kartu Solvency "Solvent in period 2") |
