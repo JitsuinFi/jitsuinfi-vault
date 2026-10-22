@@ -35,6 +35,22 @@ Skrip vs DB/chain sungguhan. Semua artefak memakai prefix `TES-` (invoice, akun,
 
 ## 3. E2E
 
+### Hasil E2E testnet lokal, putaran 1 (HNK-17.T1, 2026-10-22)
+Dijalankan dari mesin Hans dengan `jitsuin-flow` langsung ke `testnet.zec.rocks` (tanpa node Railway): wallet uji `wallet-a` = financier A, `wallet-b` = supplier dan buyer, key baru per run. Invoice `TES-INV-E2E1-77210`, `terms_hash` = SHA-256 file PDF invoice nyata (`a9924b5f…20db`), surat pengalihan juga PDF (hash dicek di surat). N `9043345834514421fc558049b78441ab01d89a35f8eaae95682bbfc50c83dfc0`.
+
+| Langkah | Hasil | Bukti |
+|---|---|---|
+| Buyer menandatangani invoice (PDF syarat) | PASS | tanda tangan buyer di bundel |
+| Financier A cek papan → `AwaitSupplierSignature`; supplier menandatangani entri untuk komitmen A; A memposting | PASS | entri `62ff4a57068eb71ef50b78a692369d1c6ed1e968c0891e15cc4a8e39fb35a910` (blok 4527411) |
+| Konfirmasi → `AwaitAssignment`; segel supplier dan buyer → `Pay` | PASS | — |
+| Advance 90 000 zat + segel financier (Sign-to-Pay) → `Done` | PASS | advance `a8130e334146727bd13e548a9cd8972bb8f8efa39600e418cfd6cd7e0634e9a0` |
+| Buyer melunasi 100 000 zat lewat permintaan QR (kuitansi + klaim di memo) | PASS | pelunasan `f14249878530eff63ae72a02748ca8ed12b0026a7ed40432743b706f47946517` |
+| A melihat pelunasan ter-mine → entri `settled` dua tanda tangan | PASS | settled `0c377146708c758eae644e15e3e7f89c398ed043c6416503579b56c4c8efdbb9` (blok 4527419, tepat waktu) |
+| Supplier menawarkan invoice yang sama ke financier B; B cek papan dulu, tidak membayar; bukti tanda tangan ganda dari tawaran | PASS | — |
+| `jitsuin verify --ufvk <papan> --bundle --proof` pada papan live | PASS (5 cek, 0 gagal): "DEAL VERIFIED", "DOUBLE FINANCING PROVEN" | keluaran disimpan di scratchpad `e2e/out/verify-output.txt` |
+
+Biaya testnet: sekitar 0,0002 ZEC fee + advance 0,0009 (kembali ke wallet uji) + pelunasan 0,001. Artefak off-chain hanya di scratchpad; tidak ada DB.
+
 ### Runbook E2E testnet (HNK-17.T4, disiapkan 2026-10-22)
 Dijalankan begitu Railway pulih. Semua invoice memakai prefix `TES-`. Isi kolom "Hasil aktual" dengan txid atau tangkapan layar.
 

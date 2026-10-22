@@ -181,7 +181,7 @@ Urutan kerja mengikuti gelombang FD-01: fondasi (HNK-27, HNK-22, HNK-24.T1, HNK-
 | HNK-03.T2 | Kirim output shielded Ironwood dengan memo biner (Zcash) | Hans #hans | 4 | DONE (`7fd8202`) |
 | HNK-03.T3 | Terima dan dekode memo masuk (Zcash) | Hans #hans | 2 | DONE (`7fd8202`) |
 | HNK-03.T4 | Tolak input transparan, catat fee ZIP-317 (Zcash) | Hans #hans | 1 | DONE (`7fd8202`) |
-| HNK-03.T5 | Script uji integrasi `TES-` + bukti pembersihan DB uji | Dex #dex | 2 | TODO |
+| HNK-03.T5 | Script uji integrasi `TES-` + bukti pembersihan DB uji | Dex #dex | 2 | DONE (2026-10-22): program uji integrasi `TES-` (scratchpad `e2e`, siklus penuh di testnet) dengan wallet uji; tidak ada DB uji, artefak off-chain hanya di scratchpad, artefak on-chain dicatat txid-nya di TEST-HNK-17 |
 
 **HNK-04 — Pemindai papan registry** · Lead Hans #hans · [[AC-HNK-04 - Pemindai papan registry|AC]]
 
@@ -449,7 +449,7 @@ Urutan kerja mengikuti gelombang FD-01: fondasi (HNK-27, HNK-22, HNK-24.T1, HNK-
 
 | Task | Deskripsi | Owner | Jam | Status |
 |---|---|---|---|---|
-| HNK-17.T1 | E2E putaran 1 (HNK-01 – HNK-07) | Hans #hans (dari Dave, D-35) | 3 | TODO |
+| HNK-17.T1 | E2E putaran 1 (HNK-01 – HNK-07) | Hans #hans (dari Dave, D-35) | 3 | DONE (2026-10-22): E2E testnet lokal lewat `jitsuin-flow`: invoice dengan PDF syarat nyata, registrasi, konfirmasi, segel, advance Sign-to-Pay, pelunasan QR, entri settled, bundel, deteksi pembiayaan ganda oleh financier kedua; `jitsuin verify` pada papan live PASS 5/5. Txid di [[TEST-HNK-17 - QA E2E lintas item]] |
 | HNK-17.T2 | E2E putaran 2 (HNK-08 – HNK-11) | Hans #hans (dari Dave, D-35) | 2 | TODO |
 | HNK-17.T3 | Retest bug yang sudah diperbaiki | Hans #hans (dari Dave, D-35) | 1 | TODO |
 | HNK-17.T4 | E2E arsitektur target per business flow (BF-01 – BF-12, [[FD-02 - Penelusuran Business Flow ke Backlog]]) lewat relay dan node testnet. Rincian: `BL-D0-07`, `BL-D22-11`, `BL-D23-15`, `BL-D24-14`, `BL-D26-10`, `BL-D29-08`, `BL-S00-04`, `BL-S01-03`, `BL-S02-03`, `BL-S03-03`, `BL-S04-01`, `BL-S05-02` | Hans #hans (dari Dave, D-35) | 3 | TODO |
