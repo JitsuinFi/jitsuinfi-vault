@@ -18,10 +18,10 @@ Logika murni, cepat, tanpa DB dan tanpa chain.
 
 | ID | Kasus | Hasil | Tanggal | Bukti |
 |---|---|---|---|---|
-| U-HNK-32.1 | Segel buyer ditolak untuk PDF salah dan financier lain | TODO | — | — |
-| U-HNK-32.2 | QR pelunasan ditolak untuk surat tanpa rantai `Sealed` atau surat yang berbeda dari surat tersimpan | TODO | — | — |
-| U-HNK-32.3 | Setiap varian `Stop` dipetakan ke kode dan kalimat | TODO | — | — |
-| U-HNK-32.4 | Hitungan konfirmasi dari tinggi entri dan tip | TODO | — | — |
+| U-HNK-32.1 | Segel buyer ditolak untuk PDF salah dan financier lain | PASS | 2026-10-22 | `tests/buyer-letter.test.ts` (PDF salah, tanpa PDF, invoice lain, segel supplier tidak berlaku); E2E lokal testnet `TES-INV-FE-53023` (FE stack T1 – T5, node T3 + T4): `jitsuin verify --bundle` DEAL VERIFIED 3/3 (entri `877c2502…5c3f`, settled `327391f2…7716`, tepat waktu): segel lolos setelah "Check letter" |
+| U-HNK-32.2 | QR pelunasan ditolak untuk surat tanpa rantai `Sealed` atau surat yang berbeda dari surat tersimpan | PASS | 2026-10-22 | `payProblems` di `tests/buyer-letter.test.ts`; E2E lokal testnet `TES-INV-FE-53023` (FE stack T1 – T5, node T3 + T4): `jitsuin verify --bundle` DEAL VERIFIED 3/3 (entri `877c2502…5c3f`, settled `327391f2…7716`, tepat waktu): surat tempelan ditolak "this is not the letter you sealed for this invoice", QR asli dibayar `3329e0a9…ec40` |
+| U-HNK-32.3 | Setiap varian `Stop` dipetakan ke kode dan kalimat | PASS | 2026-10-22 | node `a_stopped_deal_shows_a_code_and_the_entry_that_came_first`; frontend `stopReason` di `tests/explain.test.ts` (kode baru dan dump lama) |
+| U-HNK-32.4 | Hitungan konfirmasi dari tinggi entri dan tip | PASS | 2026-10-22 | node `confirmations_count_from_the_entry_height_to_the_tip`; E2E lokal testnet `TES-INV-FE-53023` (FE stack T1 – T5, node T3 + T4): `jitsuin verify --bundle` DEAL VERIFIED 3/3 (entri `877c2502…5c3f`, settled `327391f2…7716`, tepat waktu): meta node `entry_confirmations: 3` |
 
 ## 2. Integrasi
 Skrip vs DB/chain sungguhan. Semua artefak memakai prefix `TES-` (invoice, akun, label, order).
