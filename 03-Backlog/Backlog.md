@@ -160,8 +160,8 @@ Urutan kerja mengikuti gelombang FD-01: fondasi (HNK-27, HNK-22, HNK-24.T1, HNK-
 |---|---|---|---|---|
 | HNK-02.T1 | Nullifier BLAKE2b-256 berpersonalisasi dari byte kanonik invoice (DEV-04) | Hans #hans | 1 | DONE (`40d7656`) |
 | HNK-02.T2 | Encode/decode entri papan + tanda tangan supplier (key sementara) | Hans #hans | 3 | DONE (`c0d6981`) |
-| HNK-02.T3 | Commitment financier + manajemen salt | Dex #dex | 1 | TODO — dikerjakan Dex secara independen, lalu dibandingkan dengan `6b5c343` (DEV-09) |
-| HNK-02.T4 | Unit test: roundtrip, ukuran ≤ 512, entri invalid | Dex #dex | 2 | TODO |
+| HNK-02.T3 | Commitment financier + manajemen salt | Dex #dex | 1 | DONE (2026-10-22, Hans atas izin user): implementasi independen oleh Dex tidak dilakukan; sebagai gantinya komitmen dan salt dicek silang dengan Python `hashlib` (vektor di spesifikasi) dan kini diuji langsung dari teks spesifikasi (HNK-12.T2) |
+| HNK-02.T4 | Unit test: roundtrip, ukuran ≤ 512, entri invalid | Dex #dex | 2 | DONE (jitsuinfi-zcash `hans/dex-tests`, belum di-push; dikerjakan Hans (2026-10-22, atas izin user)): `crates/jitsuin-core/tests/entry_format.rs`: tiga jenis entri register round-trip di satu memo 512 byte (padded dan tanpa padding), tanda tangan cocok; memo rusak ditolak dengan alasannya (bukan arbitrary data, magic, jenis tak dikenal, terpotong, padding tidak nol, kelebihan byte); field yang diubah atau supplier lain membuat tanda tangan gagal |
 
 **HNK-16 — CI dan quality gate** · Lead Dex #dex · [[AC-HNK-16 - CI dan quality gate|AC]]
 
@@ -189,8 +189,8 @@ Urutan kerja mengikuti gelombang FD-01: fondasi (HNK-27, HNK-22, HNK-24.T1, HNK-
 |---|---|---|---|---|
 | HNK-04.T1 | Impor viewing key watch-only dan scan papan (Zcash) | Hans #hans | 3 | DONE (`ef55987`) |
 | HNK-04.T2 | Urutan entri, deteksi N ganda, filter entri invalid | Hans #hans | 2 | DONE (`ef55987`) |
-| HNK-04.T3 | Perintah CLI `jitsuin board scan` + format tabel | Dex #dex | 2 | TODO |
-| HNK-04.T4 | Uji integrasi 3 entri (1 invalid) | Dex #dex | 1 | TODO |
+| HNK-04.T3 | Perintah CLI `jitsuin board scan` + format tabel | Dex #dex | 2 | DONE (jitsuinfi-zcash `hans/dex-tests`, belum di-push; dikerjakan Hans (2026-10-22, atas izin user)): `jitsuin board scan (--ufvk | --board)`: tabel entri papan (register, settled, memo ditolak) tanpa pemeriksaan; flag cek ditolak |
+| HNK-04.T4 | Uji integrasi 3 entri (1 invalid) | Dex #dex | 1 | DONE (jitsuinfi-zcash `hans/dex-tests`, belum di-push; dikerjakan Hans (2026-10-22, atas izin user)): uji integrasi `board scan` pada papan sampel: 4 register, 1 settled, 1 memo ditolak (jenis entri 0x09), tabel sama dengan `verify`; papan testnet nyata tetap diverifikasi oleh `published_testnet_board_and_proof_still_verify` |
 
 ### Fase F3
 
@@ -283,7 +283,7 @@ Urutan kerja mengikuti gelombang FD-01: fondasi (HNK-27, HNK-22, HNK-24.T1, HNK-
 | Task | Deskripsi | Owner | Jam | Status |
 |---|---|---|---|---|
 | HNK-12.T1 | Tulis spesifikasi gaya ZIP | Hans #hans (dari Dave, D-35) | 3 | DONE (`c42af3e`): `docs/zip-shielded-receivable-registry.md` |
-| HNK-12.T2 | Test vector dari spesifikasi dijalankan sebagai test | Dex #dex | 1 | TODO |
+| HNK-12.T2 | Test vector dari spesifikasi dijalankan sebagai test | Dex #dex | 1 | DONE (jitsuinfi-zcash `hans/dex-tests`, belum di-push; dikerjakan Hans (2026-10-22, atas izin user)): `crates/jitsuin-core/tests/spec_vectors.rs` membaca bagian "Test vectors" di `docs/zip-shielded-receivable-registry.md` dan menghitung ulang invoice kanonik, tanda tangan buyer, N, SHA-256 syarat, komitmen financier, settled tag, seed invoice key; label jaringan spesifikasi diseragamkan (W-17) |
 | HNK-12.T3 | Review teknis spesifikasi | Hans #hans | 1 | TODO — review oleh Hans sendiri: spesifikasi ditulis agent (DEV-11). Pra-review siap: [[Pra-review Spesifikasi dan Threat Model]]; checklist: [[Checklist Review HNK-11.T3 dan HNK-12.T3]] (24 temuan, 1 salah: griefing riwayat) |
 
 **HNK-28 — Verifikasi publik lengkap** · Lead Hans #hans · [[AC-HNK-28 - Verifikasi publik lengkap|AC]] · Dibuat 2026-10-20 (D-30)
