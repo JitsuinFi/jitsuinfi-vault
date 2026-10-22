@@ -1,7 +1,7 @@
 ---
 tags: [flow, backlog]
 status: DITETAPKAN
-progress: 7/8 SELESAI
+progress: 8/8 SELESAI
 updated: 2026-10-20
 ---
 
@@ -19,7 +19,7 @@ Kolom Status mengikuti langkah 6 "Audit flow diagram" di [[Workflow Development]
 |---|---|---|---|---|---|---|---|
 | BL-D28-01 | 8.1, F8.01 | Keputusan D-11: publikasi UFVK + birthday papan untuk juri | Keputusan tercatat; UFVK ada di README juri | C-26 | HNK-28.T6 | Hans | SELESAI (2026-10-20, D-11 tercatat; UFVK di `examples/testnet/board-ufvk.txt` dan README "For judges", PR #10 `c73009b`) |
 | BL-D28-02 | 8.1 – 8.6 | Review dan merge `jitsuin verify` / `jitsuin index` (PR #4, #5), README dengan perintah persis, image Docker (D-28) | HNK-09.T1 – T3 dan HNK-08.T1 – T2 selesai | HNK-09, HNK-08, D-28 | HNK-09.T3 | Hans | SELESAI (2026-10-20: HNK-09.T1 – T3 dan HNK-08.T1 – T2 DONE; README perintah persis + output untuk contoh dan papan testnet, image Docker, PR #14 `7f0653e`) |
-| BL-D28-03 | 8.4, F8.12 – F8.14 | Kartu bundel dipindah ke konsol node (origin node) | Bundel dibuat dari detail deal di konsol | HNK-21.T4, P-11 | HNK-21.T4 | Dex | AUDIT (2026-10-22: node menyimpan bundel setelah settled, konsol menyalinnya, node `5c1c2bd`; diaudit di E2E testnet) |
+| BL-D28-03 | 8.4, F8.12 – F8.14 | Kartu bundel dipindah ke konsol node (origin node) | Bundel dibuat dari detail deal di konsol | HNK-21.T4, P-11 | HNK-21.T4 | Dex | SELESAI (2026-10-22, audit: node menyimpan JTSB setelah settled (`deals.rs:65-67`, node `5c1c2bd`); `/node/console/deals` mengembalikan `bundle` untuk `TES-INV-FE-36210`, dinilai "Bundle is genuine" di `/verify`; konsol menampilkan `BundleCopy` bila `d.bundle` ada (`Home.tsx:976,1073`)) |
 | BL-D28-04 | 8.5, F8.17 – F8.18 | Teks verdict bundel di layar Verify sesuai status surat dan settled | "every seal checks out" tidak muncul bila surat belum lengkap | C-24 | HNK-28.T4 | Hans | SELESAI (2026-10-20: "every seal checks out" hanya untuk surat yang disegel lengkap; surat menunggu seal = peringatan; U-HNK-28.4; PR #9 `36da302`) |
 | BL-D28-05 | 8.6, F8.19 – F8.21 | `rateIndex(snapshot, k)` di `jitsuin-wasm` + halaman indeks bunga | Halaman `#/index` menampilkan indeks yang sama dengan `jitsuin index` | K-9, HNK-08.T3 | HNK-28.T3, HNK-08.T3 | Hans | SELESAI (2026-10-20: halaman `#/index` di-merge (PR #7 `8b83506`) menampilkan tabel yang sama dengan `jitsuin index` untuk papan contoh dan testnet; TEST-HNK-08 langkah E2E 1) |
 | BL-D28-06 | 8.7, F8.22 – F8.24 | Layanan snapshot papan di relay (pindai dengan UFVK papan, JSON same-origin) | Verify, status pelunasan, dan riwayat sendiri memakai snapshot tanpa unggah file | P-06 | HNK-28.T1 | Hans | SELESAI (2026-10-22, audit: snapshot dari node `/api/board`, bukan relay (DEV-25); Verify, status pelunasan, riwayat sendiri memakainya tanpa unggah file; production menjawab) |

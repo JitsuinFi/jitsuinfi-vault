@@ -117,6 +117,7 @@ Urutan kerja mengikuti gelombang FD-01: fondasi (HNK-27, HNK-22, HNK-24.T1, HNK-
 | HNK-29 | Alur dana anggota | F7 | Hans #hans | #hans | HNK-15, HNK-23 | [[AC-HNK-29 - Alur dana anggota\|AC]] | [[TEST-HNK-29 - Alur dana anggota\|Test]] | [[ES-HNK-29 - Alur dana anggota\|ES]] |
 | HNK-30 | Demo juri dan narasi dari judging | F6 | Hans #hans | #hans | HNK-07, HNK-09, HNK-28 | [[AC-HNK-30 - Demo juri dan narasi dari judging\|AC]] | [[TEST-HNK-30 - Demo juri dan narasi dari judging\|Test]] | [[ES-HNK-30 - Demo juri dan narasi dari judging\|ES]] |
 | HNK-31 | Migrasi FE ke React dan TanStack Router | F6 | Hans #hans | #hans | HNK-21, HNK-30 | [[AC-HNK-31 - Migrasi FE ke React dan TanStack Router\|AC]] | [[TEST-HNK-31 - Migrasi FE ke React dan TanStack Router\|Test]] | [[ES-HNK-31 - Migrasi FE ke React dan TanStack Router\|ES]] |
+| HNK-32 | Perbaikan hasil audit flow | F6 | Hans #hans | #hans | HNK-21, HNK-26, HNK-31 | [[AC-HNK-32 - Perbaikan hasil audit flow\|AC]] | [[TEST-HNK-32 - Perbaikan hasil audit flow\|Test]] | [[ES-HNK-32 - Perbaikan hasil audit flow\|ES]] |
 
 ## Spike (F0)
 
@@ -500,6 +501,18 @@ Urutan kerja mengikuti gelombang FD-01: fondasi (HNK-27, HNK-22, HNK-24.T1, HNK-
 | HNK-31.T11 | Konsol financier (`/console`, `/console/pair`): pairing, masuk, meja 案件, dana, mandat | Hans #hans | 3 | DONE (2026-10-22, frontend `8915c82`): konsol `ConsoleApp`, `Pair` (undangan, passkey, siap), `Home` (login, login demo, meja: kotak surat + penawaran dengan mandat privat, deal + bukti 重/JTSE/JTSB, buku dana, kartu nama, mandat publik/privat, KYC buyer, perangkat, profil). Bukti: layar login, undangan, passkey beda hanya port host di teks; konsol yang dipasangkan di build lama masuk di build baru dengan passkey yang sama (kredensial virtual dipindah lewat CDP), meja 0,00 % di 1440 dan 390 px dengan teks sama |
 | HNK-31.T12 | Bersih-bersih: hapus helper `h()`, `app.html`, `console.html`, routing hash; README frontend | Hans #hans | 0,5 | DONE (2026-10-22, frontend `19450a2`): helper `h()` (`src/lib/ui.ts`) dan `auth-sheet.ts` dihapus, `download` jadi `src/lib/download.ts`, binding i18n DOM yang tak terpakai dibuang; `app.html`, `console.html` dan routing hash sudah hilang sejak T2; README frontend memuat tabel halaman. Bukti: nol pelanggaran CSP dan nol error JS di 18 route build (termasuk alamat lama dan alamat tak dikenal) |
 | HNK-31.T13 | Regresi: E2E lokal testnet di FE baru sampai settled, paritas visual semua halaman, deploy production setelah persetujuan user | Hans #hans | 1,5 | DONE (2026-10-22): E2E lokal testnet LULUS 2026-10-22 (relay + node + web app build baru, satu Chrome per pihak, passkey virtual), deal `TES-INV-FE-36210`: entry `c64bd680…6575`, advance `14ea447c…51cb`, pelunasan QR `bab221b3…4771`, settled `85d12ce6…d030`; bundle dicek di `/verify`: "Bundle is genuine"; paritas visual PASS (I-HNK-31.1); dengan persetujuan user: frontend PR #47 di-merge (`5a944c8`), deploy Vercel production sukses; production dicek: `/`, `/try`, `/verify`, `/rates`, `/supplier`, `/buyer` 200, `app.html#/verify` ke `/verify`, `/console` di host utama ke `/`, host konsol `jitsuinfi-console` menampilkan konsol, nol pelanggaran CSP; `jitsuinfi-console-demo` menunggu Railway (node 404). README zcash PR #28 dan node PR #34 di-merge |
+
+**HNK-32 — Perbaikan hasil audit flow** · Lead Hans #hans · [[AC-HNK-32 - Perbaikan hasil audit flow|AC]] · Dibuat 2026-10-22 dari audit langkah 6 atas 42 baris BL (8 GAGAL AUDIT, 10 masih AUDIT). Berurutan, satu task per PR.
+
+| Task | Deskripsi | Owner | Jam | Status |
+|---|---|---|---|---|
+| HNK-32.T1 | Buyer hanya bisa menyegel surat tersimpan yang PDF-nya cocok dengan `terms_hash` dan financier-nya sesuai penawaran; tombol segel terkunci dengan alasan, seperti supplier (I-HNK-24.3). Rincian: `BL-D24-06` | Hans #hans | 1 | TODO |
+| HNK-32.T2 | QR pelunasan buyer hanya untuk surat tersimpan dengan rantai tiga segel `Sealed`; surat tempelan lain ditolak; unit test penolakan (U-HNK-25.2). Rincian: `BL-D25-01`, `BL-S02-02` | Hans #hans | 1 | TODO |
+| HNK-32.T3 | Alasan berhenti terbaca: node mengirim kode `Stop` (bukan `format!("{stop:?}")`), konsol menampilkan kalimat ("Already financed elsewhere: stopped, no money sent", dll.). Rincian: `BL-D23-08`, `BL-D27-01` | Hans #hans | 1 | TODO |
+| HNK-32.T4 | Hitungan konfirmasi entri di konsol: node mengirim `confirmations` dan `min_confirmations` dari lookup papan, konsol menampilkan "n of m". Rincian: `BL-D23-14` | Hans #hans | 1 | TODO |
+| HNK-32.T5 | Unduh file bukti di konsol: JTSE (klaim/sengketa/terlambat) dan Exhibit A + bukti lengkap 重 lewat `src/lib/download.ts`, di samping tombol salin. Rincian: `BL-D25-04`, `BL-D27-04` | Hans #hans | 0,5 | TODO |
+| HNK-32.T6 | Perluas E2E lokal testnet: buyer mengirim key lewat relay, kedua pihak menyimpan kontak, konsol menolak satu penawaran, mandat yang meminta riwayat (layar permintaan, `history.chain`, tag di node, kartu riwayat). Rincian: `BL-D21-11`, `BL-D22-01`, `BL-D23-03`, `BL-D26-01` – `BL-D26-09` | Hans #hans | 2 | TODO |
+| HNK-32.T7 | Halaman anggota vs laporan solvabilitas lokal (D17): perlu keputusan user, ubah lingkup baris ke CLI `jitsuin fund` atau halaman membaca output CLI. Rincian: `BL-D29-07` | Hans #hans | 0,5 | TODO |
 
 ### Fase F7
 
