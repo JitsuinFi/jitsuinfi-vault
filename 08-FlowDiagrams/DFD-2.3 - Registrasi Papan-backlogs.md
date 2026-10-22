@@ -1,7 +1,7 @@
 ---
 tags: [flow, backlog]
 status: DITETAPKAN
-progress: 11/15 SELESAI
+progress: 12/15 SELESAI
 updated: 2026-10-20
 ---
 
@@ -19,7 +19,7 @@ Kolom Status mengikuti langkah 6 "Audit flow diagram" di [[Workflow Development]
 |---|---|---|---|---|---|---|---|
 | BL-D23-01 | 3.1, F3.01 | Layar supplier "Tawarkan ke financier": pilih kontak, advance yang diminta, alamat shielded baru untuk deal ini | Pesan penawaran terkirim ke kotak surat financier | C-08 | HNK-24.T5 | Hans | SELESAI (2026-10-21, lokal, belum merge: `deal.offer` dikirim tersegel ke kotak surat financier dari kartu kontak + key yang dicek fingerprint-nya; vektor app dibaca node di `offer.rs`). Sebelumnya GAGAL AUDIT 2026-10-20 (kode salin-tempel) |
 | BL-D23-02 | 3.1, F3.01 – F3.04 | Node menerima penawaran: decode, cek tanda tangan buyer (`verify_invoice`) sebelum `Deal` disimpan, operator menetapkan advance dan `min_confirmations` ≥ 1 | Penawaran dengan tanda tangan buyer palsu ditolak tanpa transaksi (F3.03) | C-09 | HNK-26.T5 | Hans | SELESAI (2026-10-21, lokal, belum merge: `offer::tests::forged_offers_are_refused` (buyer palsu, pengirim bukan key supplier, body diubah, advance > nominal) dan `reads_an_offer_made_by_the_web_app`; tidak ada yang disimpan atau dikirim untuk penawaran yang ditolak; konsol dicek dengan node tiruan) |
-| BL-D23-03 | 3.1 | Tolak atau kedaluwarsa penawaran: pesan ke supplier | Supplier melihat penawaran ditolak atau kedaluwarsa | C-10 | HNK-26.T6, HNK-32.T6 | Hans | AUDIT (2026-10-22, audit ulang: kode ada (node `offer_decline`/`expire_offers` 7 hari, `src/main.rs:1032–1135`; konsol `Home.tsx:270`, `:342`; supplier banner "Declined"), tapi belum ada uji atau langkah E2E tolak dan kedaluwarsa) |
+| BL-D23-03 | 3.1 | Tolak atau kedaluwarsa penawaran: pesan ke supplier | Supplier melihat penawaran ditolak atau kedaluwarsa | C-10 | HNK-26.T6, HNK-32.T6 | Hans | SELESAI (2026-10-22, audit: E2E lokal `TES-INV-FE-18524-D`: konsol menolak penawaran dengan alasan, supplier "Note and free the invoice" dari inbox, kartu deal menampilkan "Declined — TES: outside this financier's rules. Offer it to another financier."; kedaluwarsa 7 hari memakai jalur pesan yang sama, `expire_offers`) |
 | BL-D23-04 | 3.2, F3.05, F3.08 | Salt komitmen dari library (CSPRNG 32 byte), disimpan per (invoice, financier), dipakai ulang saat retry | Retry untuk invoice yang sama memberi komitmen yang sama | P-08 | HNK-27.T1 | Hans | SELESAI (2026-10-20, `748d451`, U-HNK-27.1; DEV-14 disetujui) |
 | BL-D23-05 | 3.2, F3.06, F3.08 | Kelas dari `classes_for(nominal, advance, tanggal advance, jatuh tempo)`; `Deal` membawa kelas; `check_entry` memeriksa kelas | Entri dengan kelas lain ditolak `EntryMismatch`; indeks `jitsuin index` tidak lagi kosong | K-1 | HNK-27.T2 | Hans | SELESAI (audit 2026-10-22: penolakan kelas lain terbukti di U-HNK-27.2; indeks tidak kosong: 5 entri berkelas di papan testnet, `jitsuin index` menampilkan `31-60 days  5  3-5%` (I-HNK-27.1), jitsuinfi-zcash PR #27) |
 | BL-D23-06 | 3.2, F3.07, F3.09 | Kirim pembuka komitmen dan kelas ke supplier lewat relay | Supplier menerima pembuka komitmen dan kelas | P-04 | HNK-23.T8 | Hans | SELESAI (2026-10-22, audit: `opening_message` (node `src/offer.rs:217`) mengirim `financier_pk`, `salt`, `discount`, `tenor` bertanda tangan `financier_pk`; E2E lokal testnet `TES-INV-FE-36210`: supplier memakai permintaan entri itu lalu menandatangani entri `c64bd680…6575`) |

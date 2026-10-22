@@ -1,7 +1,7 @@
 ---
 tags: [flow, backlog]
 status: DITETAPKAN
-progress: 9/11 SELESAI
+progress: 10/11 SELESAI
 updated: 2026-10-20
 ---
 
@@ -17,7 +17,7 @@ Kolom Status mengikuti langkah 6 "Audit flow diagram" di [[Workflow Development]
 
 | ID | Elemen | Task | Selesai bila | Ref | Task backlog | Owner | Status |
 |---|---|---|---|---|---|---|---|
-| BL-D22-01 | 2.1, F2.01 – F2.04 | Layar buyer "Bagikan key invoice": kirim `invoice_pk(k)` ke kontak supplier lewat relay; salin manual tetap ada | Supplier menerima `invoice_pk(k)` tanpa salin-tempel | P-04, P-09 | HNK-25.T2, HNK-32.T6 | Hans | AUDIT (2026-10-22, audit ulang: `ShareKey` (`BuyerPage.tsx:181`) dan handler supplier (`SupplierPage.tsx:93`) ada, signer ≠ `invoice_pk` ditolak (`relay-message.ts:344`); tapi E2E lokal testnet `TES-INV-FE-36210` menyalin key, jadi "tanpa salin-tempel" belum terbukti; perlu langkah E2E "Send this key to the supplier") |
+| BL-D22-01 | 2.1, F2.01 – F2.04 | Layar buyer "Bagikan key invoice": kirim `invoice_pk(k)` ke kontak supplier lewat relay; salin manual tetap ada | Supplier menerima `invoice_pk(k)` tanpa salin-tempel | P-04, P-09 | HNK-25.T2, HNK-32.T6 | Hans | SELESAI (2026-10-22, audit: E2E lokal testnet (`e2e-fe2.mjs`, deal `TES-INV-FE-11588`): buyer "Send this key to the supplier" (relay, ditandatangani key invoice itu), supplier "Use for my next invoice", baris buyer invoice terisi tanpa salin-tempel; skrip gagal bila field kosong) |
 | BL-D22-02 | 2.2, F2.06 – F2.07 | Turunan key per invoice supplier di `jitsuin-core` + `jitsuin-wasm`: keyed BLAKE2b, personalisasi sendiri, input unik per invoice dengan prefiks panjang; test vector | Master + input yang sama memberi key yang sama; input berbeda memberi key berbeda; vector tercatat | P-03 | HNK-24.T1 | Hans | SELESAI (2026-10-20, `a252568`, U-HNK-24.1) |
 | BL-D22-03 | 2.2, F2.05, F2.08 | Layar supplier memakai key turunan; tombol unduh JSON plaintext dihapus; `invoice_id` yang sudah dipakai ditolak | Tidak ada unduhan secret; `invoice_id` kembar memunculkan pesan | P-03 | HNK-24.T2 | Hans | SELESAI (2026-10-20, `17a01ea`: tanpa unduhan secret; nomor invoice yang dipakai ulang ditolak, I-HNK-24.3) |
 | BL-D22-04 | 2.4 | Invoice sebagai lembar kertas (polish) | Sesuai HNK-21.T2 | HNK-21.T2 | HNK-21.T2 | Dex | SELESAI (2026-10-22, audit: invoice ditulis di lembar 請求書 di production (frontend PR #45, lalu PR #47 React dengan paritas visual 0,00 %); E2E lokal testnet `TES-INV-FE-36210` membuat invoice di lembar itu sampai settled) |
