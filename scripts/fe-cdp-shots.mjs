@@ -27,6 +27,9 @@ await send("Page.enable"); await send("Runtime.enable");
 for (const j of jobs) {
   await send("Emulation.setDeviceMetricsOverride", { width: j.w, height: j.h, deviceScaleFactor: 1, mobile: j.w < 600 });
   await send("Emulation.setEmulatedMedia", { features: [{ name: "prefers-reduced-motion", value: j.reduced ? "reduce" : "no-preference" }] });
+  // a fresh document each time: the same URL with a hash would only scroll the old one
+  await send("Page.navigate", { url: "about:blank" });
+  await sleep(100);
   await send("Page.navigate", { url: base + j.path });
   await sleep(j.wait ?? 3500);
   if (j.scroll) {
