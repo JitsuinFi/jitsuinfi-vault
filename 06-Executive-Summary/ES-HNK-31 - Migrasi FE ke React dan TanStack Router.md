@@ -3,7 +3,7 @@ tags: [es, "HNK-31"]
 type: es
 id: HNK-31
 phase: F6
-status: BELUM
+status: SELESAI
 updated: 2026-10-22
 ---
 
@@ -24,12 +24,12 @@ Web app JitsuinFi (landing, app, konsol financier) pindah dari TypeScript tanpa 
 | Siklus E2E di FE baru | sampai settled | settled, bundle genuine di `/verify` (`TES-INV-FE-36210`) |
 
 ## Status
-`BELUM` → isi `SELESAI` / `PARSIAL` / `BLOCKED` (juga di frontmatter).
+**SELESAI** (2026-10-22): T1–T13 DONE, AC-HNK-31.1–9 PASS dengan deviasi tercatat (JS +94 KB gzip terhadap target revisi 100 KB; indeks di `/rates`), live di production lewat frontend PR #47.
 
 ## Risiko tersisa
-JS awal lebih berat sekitar 94 KB gzip (React + router). Belum di-deploy: perlu persetujuan user (push, PR, merge, Vercel). Konsol di host terpisah (D-45) memakai build yang sama; dicek di production setelah deploy.
+JS awal lebih berat sekitar 94 KB gzip (React + router). Sudah live di production. Host konsol demo (D-45) menunggu node Railway pulih (404).
 
 ## Bukti
 - Commit: jitsuinfi-frontend branch `hans/fe-react` (`f9da69b` … `19450a2`)
 - ID tes: U-HNK-31.1, U-HNK-31.2, I-HNK-31.1, I-HNK-31.2, I-HNK-31.3 (PASS)
-- Persetujuan user untuk push/deploy: _belum_
+- Persetujuan user untuk push/deploy: 2026-10-22 ("gas push, buka PR, merge, deploy"); frontend PR #47 merge `5a944c8`, Vercel production sukses

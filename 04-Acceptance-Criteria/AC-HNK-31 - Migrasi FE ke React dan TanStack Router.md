@@ -3,7 +3,7 @@ tags: [ac, "HNK-31"]
 type: ac
 id: HNK-31
 phase: F6
-status: TODO
+status: PASS
 updated: 2026-10-22
 ---
 
