@@ -119,6 +119,7 @@ Urutan kerja mengikuti gelombang FD-01: fondasi (HNK-27, HNK-22, HNK-24.T1, HNK-
 | HNK-31 | Migrasi FE ke React dan TanStack Router | F6 | Hans #hans | #hans | HNK-21, HNK-30 | [[AC-HNK-31 - Migrasi FE ke React dan TanStack Router\|AC]] | [[TEST-HNK-31 - Migrasi FE ke React dan TanStack Router\|Test]] | [[ES-HNK-31 - Migrasi FE ke React dan TanStack Router\|ES]] |
 | HNK-32 | Perbaikan hasil audit flow | F6 | Hans #hans | #hans | HNK-21, HNK-26, HNK-31 | [[AC-HNK-32 - Perbaikan hasil audit flow\|AC]] | [[TEST-HNK-32 - Perbaikan hasil audit flow\|Test]] | [[ES-HNK-32 - Perbaikan hasil audit flow\|ES]] |
 | HNK-33 | Rombak landing dengan figur Anatomy | F6 | Hans #hans | #hans | HNK-18, HNK-31 | [[AC-HNK-33 - Rombak landing dengan figur Anatomy\|AC]] | [[TEST-HNK-33 - Rombak landing dengan figur Anatomy\|Test]] | [[ES-HNK-33 - Rombak landing dengan figur Anatomy\|ES]] |
+| HNK-34 | Revisi halaman internal app | F6 | Hans #hans | #hans | HNK-33 | [[AC-HNK-34 - Revisi halaman internal app\|AC]] | [[TEST-HNK-34 - Revisi halaman internal app\|Test]] | [[ES-HNK-34 - Revisi halaman internal app\|ES]] |
 
 ## Spike (F0)
 
@@ -527,6 +528,16 @@ Urutan kerja mengikuti gelombang FD-01: fondasi (HNK-27, HNK-22, HNK-24.T1, HNK-
 | HNK-33.T5 | Bab 5 履歴: figur lemari riwayat: laci sertifikat berantai dengan cap tepat waktu | Hans #hans | 2 | DONE (2026-10-25, frontend PR #63, live): figur lemari riwayat lima laci (`history-cabinet.build.mjs` → `history-cabinet.svg`, `history-cabinet.ts`); tiap putaran memanggil wasm asli (invoice, sertifikat, entri register, pelunasan, settled) lalu `verifyHistory` per sertifikat dan rantai; papan skor 4 tepat waktu / 1 telat / 0 gagal bayar; "Hide the late invoice" tetap (baris papan merah, cek menolak); riwayat jadi TES-INV-0000..0004 sehingga tombol Pay TES-INV-0007 dan slip ZIP-321 dihapus (disetujui user); rel dinaikkan agar tidak menutupi laci; dicek 1440 px dan 390 px; 108 test; chunk landing gzip 305,5 → 340,7 KB (lazy-load di T7) |
 | HNK-33.T6 | Bab 6 結び: figur kantor registri kecil di samping CTA | Hans #hans | 1 | DONE (2026-10-25, frontend PR #64, live): figur kantor registri (`registry-office.build.mjs` → `registry-office.svg`, `registry-office.ts`) di samping CTA: tiga segel 売 買 融, N naik ke papan publik (biru, atas permintaan user), advance tenggelam ke kolam terlindung, pintu konsol terbuka; memo register asli TES-INV-0003 (txid `33b8f3b0…`, blok 4 509 299) dibaca `boardMemoDescribe` → N `56ed…8450`; kaca pembesar N di HP; loop + ambil alih; dicek 1440 px dan 390 px dengan `vite preview` (CSP aktif); 114 test; chunk landing gzip 340,7 → 369,4 KB |
 | HNK-33.T7 | Cek akhir: nol pelanggaran CSP, 390 px dan 1440 px, reduced motion, EN/中文, ukuran bundle; deploy setelah persetujuan user | Hans #hans | 1 | DONE (2026-10-25, frontend PR #65, live): figur bab dimuat terpisah lewat `src/landing/use-figure.ts` (`useFigure`, chunk SVG + pengendali per bab saat bab mendekat dan halaman sudah di-scroll); chunk landing gzip 369,35 → 215,19 KB (figur 23 – 32 KB per chunk); cek 1440 × 900 dan 390 × 844 dengan `vite preview`: nol pelanggaran CSP, console bersih, tanpa scroll samping, hero tidak memuat figur, bab 2 – 6 menyelesaikan putaran pertama, EN → 中文 mengganti label, reduced motion menampilkan keadaan akhir; ambil alih dicek di Browser pane (bab 4); 114 test. Pintu bab 6 setelah putaran animasi hanya terbukti di 390 px |
+
+**HNK-34 — Revisi halaman internal app** · Lead Hans #hans · [[AC-HNK-34 - Revisi halaman internal app|AC]] · Dibuat 2026-10-25 atas permintaan user ("page internalnya jelek semua; tidak harus 3D, tergantung situasi"): semua halaman memakai satu cetakan panel biru tua bersudut bulat (`.ds`), terbaca sebagai UI kartu. Arah bersama: `design-samples/internal/SPEC.md` (kertas, 35/65, biru tua hanya untuk benda Zcash, perlakuan dipilih per halaman). Contoh disetujui user 2026-10-25 ("Gas semua"): lobi, /try, /outsider, /rates.
+
+| Task | Deskripsi | Owner | Jam | Status |
+|---|---|---|---|---|
+| HNK-34.T1 | Shell app (nav pill, tab bar kertas di HP) + lobi `/app`: kantor registri sebagai denah gedung (figur Anatomy bab 6, pin ruangan, tur) | Hans #hans | 2 | IN PROGRESS |
+| HNK-34.T2 | `/try` meja kasus 2D: 請求書 kertas, papan lempeng, benang merah, hanko 偽/重, Exhibit A | Hans #hans | 3 | IN PROGRESS |
+| HNK-34.T3 | `/outsider` palang sensor di 請求書 asli + pita papan; `/rates` grafik data dataviz | Hans #hans | 2 | IN PROGRESS |
+| HNK-34.T4 | `/verify` meja inspeksi (lensa hairline, vonis hanko) | Hans #hans | 2 | TODO (contoh dibuat) |
+| HNK-34.T5 | Gelombang 2: `/apply`, `/account`, halaman peran (supplier, buyer, member), konsol financier | Hans #hans | 4 | TODO |
 
 ### Fase F7
 
