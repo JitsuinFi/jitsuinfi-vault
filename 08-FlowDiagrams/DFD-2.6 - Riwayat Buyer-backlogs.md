@@ -1,7 +1,7 @@
 ---
 tags: [flow, backlog]
 status: DITETAPKAN
-progress: 9/10 SELESAI
+progress: 10/10 SELESAI
 updated: 2026-10-20
 ---
 
@@ -26,7 +26,7 @@ Kolom Status mengikuti langkah 6 "Audit flow diagram" di [[Workflow Development]
 | BL-D26-07 | 6.5, F6.22 | Alasan penolakan riwayat terbaca (`NotAnchored`, `Equivocation`, `FinancierNotAllowed`, `UndisclosedSuccessor`, di bawah standar) | Tiap alasan punya teks yang menjelaskan artinya | C-13 | HNK-21.T9 | Hans | SELESAI (2026-10-22, audit: penolakan yang disebut baris ini punya kalimat di `explain.ts`, diuji `tests/explain.test.ts`) |
 | BL-D26-08 | 6.7, F6.27 – F6.28 | Pengaturan policy di konsol: allowlist financier, standar minimal, tenggang | Operator mengubah policy tanpa mengedit kode; nilai bertahan setelah restart | C-12 | HNK-26.T9 | Hans | SELESAI (2026-10-22, audit: allowlist tambahan, standar tepat waktu dan tenggang diubah di konsol 内規 tanpa kode, disimpan di `private-mandate.json`) |
 | BL-D26-09 | 6.8, F6.29 – F6.32 | Kartu "Riwayat saya" di layar buyer (`verifyHistory` dengan allowlist dari sertifikat sendiri + snapshot) | Buyer melihat status tiap invoice tanpa unggah file | C-14, P-06 | HNK-25.T6, HNK-32.T6 | Hans | SELESAI (2026-10-22, audit: E2E lokal testnet (`e2e-fe2.mjs`, deal `TES-INV-FE-11588`): kartu "My payment history" menampilkan "1 on time · 0 late · 0 open · 0 defaulted" dan per invoice "#0 · due 2026-11-21 · 0.001 ZEC paid on time", dicek terhadap papan live blok 4529082, tanpa unggah file) |
-| BL-D26-10 | Uji | Integrasi testnet: dua invoice berurutan dengan riwayat, invoice kedua lolos standar | Kasus tercatat di TEST-HNK-20 atau HNK-17 | HNK-17 | HNK-17.T4 | Hans | AUDIT (2026-10-25, audit: satu invoice dengan riwayat lulus (`TES-INV-FE-11588`, "Buyer history passed: 0 earlier invoices"); sisa: dua invoice berurutan untuk buyer yang sama, invoice kedua lolos standar dengan riwayat invoice pertama) |
+| BL-D26-10 | Uji | Integrasi testnet: dua invoice berurutan dengan riwayat, invoice kedua lolos standar | Kasus tercatat di TEST-HNK-20 atau HNK-17 | HNK-17 | HNK-17.T4 | Hans | SELESAI (2026-10-25, E2E production testnet): buyer `tesbuyer4809`, `TES-INV-HIST1-4809` settled (`8d3ee520…8c58`) lalu `TES-INV-HIST2-4809` dengan `min_buyer_history: 1` lolos standar ("1 earlier invoice: 1 on time"), settled `3d371de0…0825` |
 
 ## Sudah ada (tanpa task baru)
 

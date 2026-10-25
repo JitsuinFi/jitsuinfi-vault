@@ -1,7 +1,7 @@
 ---
 tags: [flow, backlog]
 status: DITETAPKAN
-progress: 7/8 SELESAI
+progress: 8/8 SELESAI
 updated: 2026-10-20
 ---
 
@@ -24,7 +24,7 @@ Kolom Status mengikuti langkah 6 "Audit flow diagram" di [[Workflow Development]
 | BL-D29-05 | 9.7, F9.21 – F9.24 | Verifikasi inklusi: jalur berakhir di root JTLR terbaru dan jumlah root = total JTLR | Jalur dari tree lain ditolak | HNK-15.T1, C-27 | HNK-29.T2 | Hans | SELESAI (2026-10-21: `jitsuin fund --path` menolak jalur dari periode lain, root lain, atau jumlah yang tidak cocok dengan JTLR) |
 | BL-D29-06 | 9.4 – 9.5 | Perintah CLI solvabilitas untuk anggota (`member_view` + `solvency`); `SolvencyPolicy.grace_days` dihapus atau dipakai | Anggota mendapat verdict solvent / tidak / belum ada root dari CLI lokal | C-28 | HNK-27.T10 | Hans | SELESAI (2026-10-20, `9826b09`, U-HNK-27.11; uji akun nyata I-HNK-27.3 menyusul) |
 | BL-D29-07 | 9.8, F9.25 – F9.26 | Halaman anggota membaca hasil pindaian lokal | Laporan tampil tanpa UFVK dikirim ke server | HNK-15.T3, P-10 | HNK-15.T3, HNK-32.T7 | Hans | SELESAI (2026-10-22, audit setelah HNK-32.T7, lingkup sesuai keputusan user: laporan solvabilitas dipindai lokal oleh `jitsuin fund` dengan UFVK yang tidak pernah dikirim ke situs, halaman anggota membacanya dan mencocokkan periode dan total root jalur anggota; E2E lokal testnet `e2e-fund.mjs`: kartu dana dari konsol, setoran wallet-b 0,0002 TAZ dicatat ("bought 3 units"; NAV tinggi karena wallet node E2E = akun operasional dana memegang 1 TAZ faucet), kuitansi ke kotak masuk anggota, periode 2 ditutup dengan passkey, root `25a524ef…409e` ditandatangani on-chain, jalur sampai ke anggota; `jitsuin fund --path --json` (UFVK hanya di mesin ini): periode 2 solvent, liabilities 20 003 unit, assets 1,0024 ZEC, unit anggota termasuk; kartu Solvency "Solvent in period 2". Laporan periode 1 (root lama) tidak dihitung untuk jalur periode 2) |
-| BL-D29-08 | Uji | Integrasi testnet: dua setoran, satu advance, satu root, verdict solvent, inklusi kedua anggota | Kasus tercatat di TEST-HNK-15 | HNK-17 | HNK-17.T4 | Hans | AUDIT (2026-10-25, audit: setoran, root, verdict solvent dan inklusi lulus untuk satu anggota per periode (HNK-32.T7, root periode 2 `25a524ef…`); sisa: dua setoran dalam satu root dengan inklusi kedua anggota dan satu advance di periode itu) |
+| BL-D29-08 | Uji | Integrasi testnet: dua setoran, satu advance, satu root, verdict solvent, inklusi kedua anggota | Kasus tercatat di TEST-HNK-15 | HNK-17 | HNK-17.T4 | Hans | SELESAI (2026-10-25, E2E production testnet): periode 1, dua setoran (0.0003 ZEC → 30 000 unit, 0.0002 ZEC → 20 000 unit), advance HIST2, satu root `2ec40297…4bfd` (tx `adcc804b…f577`); kedua slip 認, `jitsuin fund --json` solvent untuk kedua anggota |
 
 ## Sudah ada (tanpa task baru)
 

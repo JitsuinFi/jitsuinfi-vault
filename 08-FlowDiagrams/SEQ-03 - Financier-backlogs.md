@@ -1,7 +1,7 @@
 ---
 tags: [flow, backlog]
 status: DITETAPKAN
-progress: 2/3 SELESAI
+progress: 3/3 SELESAI
 updated: 2026-10-20
 ---
 
@@ -41,7 +41,7 @@ Kolom Status mengikuti langkah 6 "Audit flow diagram" di [[Workflow Development]
 |---|---|---|---|---|---|---|---|
 | BL-S03-01 | Semua | Pipeline deal di konsol (daftar deal per state `Flow`) dan detail deal (papan, entri, surat, advance, pelunasan) dengan tombol aksi per state | Operator menjalankan satu deal dari penawaran sampai settled hanya dari konsol | C-33, HNK-05.T4 | HNK-26.T16 | Hans | SELESAI (2026-10-22, audit: `Pipeline` konsol (`src/console/Home.tsx:1016-1100`); E2E lokal testnet `TES-INV-FE-36210`: operator hanya memakai konsol: terima penawaran, jalankan langkah, setujui advance dengan passkey (`14ea447c…51cb`), sampai settled (`85d12ce6…d030`); tidak ada CLI financier) |
 | BL-S03-02 | Semua | Daftar endpoint API node (`/node/mail`, `/node/deals`, `/node/deals/N/commitment`, `/node/history/check`, `/node/deals/N/seals`, `/node/pairing`, `/node/session`) dengan format request dan response | Daftar ada di repo dan cocok dengan implementasi HNK-05.T3 | HNK-05.T3 | HNK-05.T3 | Hans | SELESAI (audit 2026-10-22: README jitsuinfi-node bagian "API", 25 rute dicocokkan satu per satu dengan router `src/main.rs`; nama rute berbeda dari rencana, semuanya di bawah `/node/console/` kecuali `info`, `board`, `mail`. PR #33 `2236a2a`) |
-| BL-S03-03 | Semua | E2E peran financier di testnet lewat konsol: penawaran sampai settled, satu kasus `AlreadyFinanced`, satu `DoubleFinanced` | Tiga kasus lulus di HNK-17 | HNK-17 | HNK-17.T4 | Hans | AUDIT (2026-10-25, audit: penawaran sampai settled lewat konsol lulus di production dan lokal; sisa: kasus `AlreadyFinanced` dan `DoubleFinanced` nyata di konsol (lihat BL-D27-04)) |
+| BL-S03-03 | Semua | E2E peran financier di testnet lewat konsol: penawaran sampai settled, satu kasus `AlreadyFinanced`, satu `DoubleFinanced` | Tiga kasus lulus di HNK-17 | HNK-17 | HNK-17.T4 | Hans | SELESAI (2026-10-25, E2E production testnet): selain siklus settled, `TES-INV-DBL-24689` berhenti `DoubleFinanced` (entri production `a2f46ffd…3659`, entri financier kedua `a42152b0…9188`) dan `TES-INV-ALR-71337` berhenti `AlreadyFinanced` (entri lebih dulu `25a78d45…75b5`) di konsol; financier kedua = jitsuin-node lokal di papan publik |
 
 ## Roadmap
 
