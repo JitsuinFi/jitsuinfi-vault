@@ -326,7 +326,7 @@ Urutan kerja mengikuti gelombang FD-01: fondasi (HNK-27, HNK-22, HNK-24.T1, HNK-
 
 | Task | Deskripsi | Owner | Jam | Status |
 |---|---|---|---|---|
-| HNK-18.T1 | Logo dan identitas visual JitsuinFi | Hans #hans (dari Dave, D-35) | 1 | TODO |
+| HNK-18.T1 | Logo dan identitas visual JitsuinFi | Hans #hans (dari Dave, D-35) | 1 | DONE (2026-10-25, frontend PR #57, live): Konsep B pilihan user, versi refined: segel ditekan separuh di kertas, separuh di kolam terlindung; tepi aus dengan butir tinta di kertas, beriak dan Classic Rose di air; `src/app/Mark.tsx` di nav landing, header app, lembar masuk dan konsol; favicon bentuk kecil tanpa glyph; titik i pada wordmark berupa segel kecil (posisi diukur dari metrik font). Hanya warna DS-PAL |
 | HNK-18.T2 | Tiga slide video (masalah, threat model, penutup). Isi mengikuti D-40: masalah = N-06 dengan tiga kegagalan examiner, threat model = lensa M-04, penutup = tagline | Hans #hans (dari Dave, D-35) | 1 | DONE (2026-10-22, menunggu review Hans): `Video-Workspace/assets/slides-hnk18.html`, tiga slide 1920×1080 (hook N-06 dengan tiga centang 認 yang muncul bergantian, batas N-13 + yang dilihat chain M-04, penutup tagline + URL), panah atau klik untuk pindah. Catatan: org GitHub JitsuinFi masih privat; URL di slide penutup baru berguna setelah repo dipublikasikan (HNK-14.T3) |
 | HNK-18.T3 | Diagram arsitektur untuk README | Hans #hans (dari Dave, D-35) | 1 | DONE (`d99680b`): diagram mermaid di README |
 | HNK-18.T4 | Landing page immersive (visual 65% / caption 35%, tanpa UI kartu kotak), setara PortoWeb. Copy dicek terhadap D-40 (merek N-10, hook N-06, tanpa overclaim W-15) | Hans #hans (dari Dave, D-35) | 4 | IN PROGRESS: 6 bab + toggle EN/中文 selesai dan di-push (frontend `389b9d3`, 2026-10-19); bab 1–4 divalidasi user, bab 5–6 disetujui ("Mantap lanjut"); bab 5 butuh zcash PR#3 (wasm riwayat). Live di https://jitsuinfi.vercel.app (Vercel, deploy prebuilt 2026-10-19, header CSP + `frame-ancestors 'none'`). Lihat [[Landing Page - Brief]] |
@@ -520,7 +520,7 @@ Urutan kerja mengikuti gelombang FD-01: fondasi (HNK-27, HNK-22, HNK-24.T1, HNK-
 
 | Task | Deskripsi | Owner | Jam | Status |
 |---|---|---|---|---|
-| HNK-33.T1 | Hero dirapikan: jarak, perataan kolom copy, posisi subjudul episode dan baris bukti; kota 3D dan copy tetap | Hans #hans | 1 | TODO |
+| HNK-33.T1 | Hero dirapikan: jarak, perataan kolom copy, posisi subjudul episode dan baris bukti; kota 3D dan copy tetap | Hans #hans | 1 | DONE (2026-10-25, frontend PR #58, live): kolom copy naik (`clamp(96px, 13vh, 144px)`), subjudul episode berjarak minimal 32 px dari baris bukti, kota bergeser ke kanan (view offset 0,29); dicek di Browser pane 1440 × 900 dan 375 × 812, disetujui user |
 | HNK-33.T2 | Bab 3 三印: figur meja segel (rak hanko, surat tiga lingkaran, gerbang tiga kait, kolam terlindung); urutan segel dan advance setelah segel ketiga; logika dan teks EN/中文 bab tetap | Hans #hans | 2 | TODO |
 | HNK-33.T3 | Bab 2 指紋: figur mesin pres registri: invoice masuk, tuas ditekan, sidik jari N (dihitung wasm seperti sekarang) tercetak ke buku papan | Hans #hans | 2 | TODO |
 | HNK-33.T4 | Bab 4 二重: figur loket financier kedua: cek papan, lampu 重 menyala, Exhibit A tercetak | Hans #hans | 2 | TODO |
