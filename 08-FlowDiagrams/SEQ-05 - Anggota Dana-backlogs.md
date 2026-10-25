@@ -1,7 +1,7 @@
 ---
 tags: [flow, backlog]
 status: DITETAPKAN
-progress: 1/2 SELESAI
+progress: 2/2 SELESAI
 updated: 2026-10-20
 ---
 
@@ -29,4 +29,4 @@ Kolom Status mengikuti langkah 6 "Audit flow diagram" di [[Workflow Development]
 | ID | Bagian | Task | Selesai bila | Ref | Task backlog | Owner | Status |
 |---|---|---|---|---|---|---|---|
 | BL-S05-01 | Pendahuluan | Catat batas uji solvabilitas (sisi aset dinyatakan manajer) dan kebocoran nominal setoran + alamat supplier di halaman anggota dan submission | Halaman anggota menampilkan batas ini | SEQ-05 | HNK-29.T3 | Hans | SELESAI (2026-10-21, audit: kartu batas dan privasi di halaman anggota, frontend `f188b1c`) |
-| BL-S05-02 | Semua | E2E anggota: setor, terima kuitansi, root, jalur Merkle, verdict solvent dan inklusi | Kasus lulus di TEST-HNK-15 | BL-D29-08 | HNK-17.T4 | Hans | TODO |
+| BL-S05-02 | Semua | E2E anggota: setor, terima kuitansi, root, jalur Merkle, verdict solvent dan inklusi | Kasus lulus di TEST-HNK-15 | BL-D29-08 | HNK-17.T4 | Hans | SELESAI (2026-10-25, audit: E2E dana testnet (HNK-32.T7): setor, kuitansi, root periode 2 `25a524ef…`, jalur Merkle, `jitsuin fund` solvent dengan inklusi, kartu Solvency "Solvent in period 2") |

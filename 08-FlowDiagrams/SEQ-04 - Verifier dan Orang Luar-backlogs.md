@@ -1,7 +1,7 @@
 ---
 tags: [flow, backlog]
 status: DITETAPKAN
-progress: 0/1 SELESAI
+progress: 1/1 SELESAI
 updated: 2026-10-20
 ---
 
@@ -31,4 +31,4 @@ Kolom Status mengikuti langkah 6 "Audit flow diagram" di [[Workflow Development]
 
 | ID | Bagian | Task | Selesai bila | Ref | Task backlog | Owner | Status |
 |---|---|---|---|---|---|---|---|
-| BL-S04-01 | A – D | Juri menjalankan alur A sampai D dari mesin bersih dengan README saja, hasil web dan CLI sama untuk bundel dan bukti contoh | Kasus lulus di TEST-HNK-09 | BL-D28-08 | HNK-17.T4 | Hans | TODO |
+| BL-S04-01 | A – D | Juri menjalankan alur A sampai D dari mesin bersih dengan README saja, hasil web dan CLI sama untuk bundel dan bukti contoh | Kasus lulus di TEST-HNK-09 | BL-D28-08 | HNK-17.T4 | Hans | SELESAI (2026-10-25, audit: I-HNK-28.3 (wallet baru hanya dengan data README, 4/4) dan contoh README diuji byte demi byte di CI; bundel web dan CLI memberi vonis sama (`/verify` "Bundle is genuine" dan `jitsuin verify` DEAL VERIFIED untuk `TES-INV-FE-53023`, `TES-INV-PROD-1996`)) |

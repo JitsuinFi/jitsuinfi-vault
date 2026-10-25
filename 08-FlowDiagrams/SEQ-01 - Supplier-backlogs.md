@@ -1,7 +1,7 @@
 ---
 tags: [flow, backlog]
 status: DITETAPKAN
-progress: 2/3 SELESAI
+progress: 3/3 SELESAI
 updated: 2026-10-20
 ---
 
@@ -41,4 +41,4 @@ Kolom Status mengikuti langkah 6 "Audit flow diagram" di [[Workflow Development]
 |---|---|---|---|---|---|---|---|
 | BL-S01-01 | Semua | Halaman "Daftar deal" supplier: satu timeline per N (tanda tangan buyer, penawaran, entri, surat, advance, pelunasan) dari dokumen deal lokal | Supplier melihat langkah berikutnya untuk tiap deal | C-32 | HNK-24.T9 | Hans | SELESAI (2026-10-22, audit: `DealsCard` (`SupplierPage.tsx:142-195`) satu baris per N dengan `timeline()` dan "Next: …" (`supplier-deal.ts:62-98`), diuji; E2E lokal testnet `TES-INV-FE-36210`: supplier mengikuti "Next" sampai settled) |
 | BL-S01-02 | 3 – 5 | Urutan pesan supplier mengikuti SEQ-03: pembuka komitmen dan surat dulu, permintaan entri setelah cek papan | Layar tidak meminta entri sebelum permintaan dari financier tiba | SEQ-03 | HNK-24.T9 | Hans | SELESAI (2026-10-22, audit: `EntryCard` tanpa `entry_request` hanya menulis "Wait for the entry request"; `entryRequestProblems` mencocokkan N dan financier, diuji; E2E lokal testnet `TES-INV-FE-36210`: entri ditandatangani setelah permintaan financier tiba) |
-| BL-S01-03 | Semua | E2E peran supplier: invoice sampai advance dan status pelunasan lewat relay | Satu siklus `TES-` lulus di HNK-17 | HNK-17 | HNK-17.T4 | Hans | TODO |
+| BL-S01-03 | Semua | E2E peran supplier: invoice sampai advance dan status pelunasan lewat relay | Satu siklus `TES-` lulus di HNK-17 | HNK-17 | HNK-17.T4 | Hans | SELESAI (2026-10-25, audit: E2E production `TES-INV-PROD-1996` (HNK-17.T4, DEAL VERIFIED 3/3) dan E2E lokal testnet `TES-INV-FE-11588` (HNK-32.T6): supplier dari invoice sampai advance diterima dan status settled lewat relay) |

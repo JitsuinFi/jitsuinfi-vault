@@ -3,7 +3,7 @@ tags: [fe-tool, hub, "FE-00"]
 type: fe-hub
 id: FE-00
 status: AKTIF
-updated: 2026-10-20
+updated: 2026-10-23
 ---
 
 # FE-00 - Peta Tools FE
@@ -56,6 +56,40 @@ Semua tool frontend yang tersedia untuk JitsuinFi per 2026-10-20, dari awal proy
 | [[FE-26 - motionmaxxing\|FE-26]] | motionmaxxing | Skill referensi | GitHub, Apache-2.0 | — | Ease di `src/landing/motion.ts` | REFERENSI-DIPAKAI |
 | [[FE-27 - Referensi Visual Vault\|FE-27]] | `MotionSites-References/`, `ColorPalette-JitsuinFi/` | Referensi | Vault | Vault, untracked | `MASTER.md` §1, §2 | REFERENSI |
 | [[FE-29 - PortoWeb Benchmark\|FE-29]] | PortoWeb (tolok ukur level + basis pengetahuan FE di `_resources/notes`) | Benchmark | `Hans_Porto_Web` `3f47e4a` | `/Users/Shenhan/HansProject/PortoWeb` | Acuan M1 | REFERENSI |
+| [[FE-30 - Mera\|FE-30]] | Mera | library | https://mera.category.xyz | — | Belum | REFERENSI |
+| [[FE-31 - iso-glow\|FE-31]] | iso-glow | skill | https://iso-glow.vercel.app | — | Belum | REFERENSI |
+| [[FE-32 - colorfigures\|FE-32]] | colorfigures | skill | https://april-zhu.com/colorfigures | `~/.claude/skills` | Belum | TERSEDIA-BELUM-DIPAKAI |
+| [[FE-33 - playable\|FE-33]] | playable | skill | https://april-zhu.com/playable | — | Belum | REFERENSI |
+| [[FE-34 - ZzFX\|FE-34]] | ZzFX | library | https://github.com/KilledByAPixel/ZzFX | — | Belum | REFERENSI |
+| [[FE-35 - canvas-confetti\|FE-35]] | canvas-confetti | library | https://github.com/catdad/canvas-confetti | — | Belum | REFERENSI |
+| [[FE-36 - Howler.js\|FE-36]] | Howler.js | library | https://howlerjs.com | — | Belum | REFERENSI |
+| [[FE-37 - React Three Fiber dan drei\|FE-37]] | React Three Fiber dan drei | library | https://github.com/pmndrs/drei | — | Belum | REFERENSI |
+| [[FE-38 - gltfjsx dan glTF-Transform\|FE-38]] | gltfjsx dan glTF-Transform | tool | https://gltf-transform.dev | — | Belum | REFERENSI |
+| [[FE-39 - PixiJS\|FE-39]] | PixiJS | library | https://pixijs.com | — | Belum | REFERENSI |
+| [[FE-40 - KAPLAY\|FE-40]] | KAPLAY | library | https://kaplayjs.com | — | Belum | REFERENSI |
+| [[FE-41 - Phaser\|FE-41]] | Phaser | library-game | https://phaser.io | — | Belum | REFERENSI |
+| [[FE-42 - Lottie (dotLottie)\|FE-42]] | Lottie (dotLottie) | library | https://lottiefiles.com | — | Belum | REFERENSI |
+| [[FE-43 - Kenney\|FE-43]] | Kenney | aset | https://kenney.nl/assets | — | Belum | REFERENSI |
+| [[FE-44 - Quaternius\|FE-44]] | Quaternius | aset | https://quaternius.com | — | Belum | REFERENSI |
+| [[FE-45 - Poly Pizza\|FE-45]] | Poly Pizza | aset | https://poly.pizza | — | Belum | REFERENSI |
+| [[FE-46 - Blender MCP\|FE-46]] | Blender MCP | mcp | https://github.com/ahujasid/mcp-for-blender | — | Belum | REFERENSI |
+| [[FE-47 - game-creator (opusgamelabs)\|FE-47]] | game-creator (opusgamelabs) | skill | https://claudemarketplaces.com/skills/opusgamelabs/game-creator | — | Belum | REFERENSI |
+| [[FE-48 - iso-figure\|FE-48]] | iso-figure | skill | https://github.com/MrBongoC/ai-iso-skill | `~/.claude/skills` | Belum | TERSEDIA-BELUM-DIPAKAI |
+| [[FE-49 - Anatomy\|FE-49]] | Anatomy | skill | https://github.com/wheresryan22/anatomy | `~/.claude/skills` | Belum | TERSEDIA-BELUM-DIPAKAI |
+| [[FE-50 - Neon Diagrams\|FE-50]] | Neon Diagrams | skill | https://april-zhu.com/neondiagrams | — | Belum | REFERENSI |
+| [[FE-51 - isometric-motion\|FE-51]] | isometric-motion | skill | https://github.com/dzhng/skills | — | Belum | REFERENSI |
+| [[FE-52 - isometric-objects (gist)\|FE-52]] | isometric-objects (gist) | skill | https://gist.github.com/mehh/b2aa7b990f1d4fa0d6e06fcefc38f2ee | — | Belum | REFERENSI |
+| [[FE-53 - isometric-ops\|FE-53]] | isometric-ops | skill | https://github.com/0xDarkMatter/claude-mods | — | Belum | REFERENSI |
+| [[FE-54 - heerich\|FE-54]] | heerich | library | https://github.com/meodai/heerich | — | Belum | REFERENSI |
+| [[FE-55 - Zdog\|FE-55]] | Zdog | library | https://github.com/metafizzy/zdog | — | Belum | REFERENSI |
+| [[FE-56 - isometric (elchininet)\|FE-56]] | isometric (elchininet) | library | https://github.com/elchininet/isometric | — | Belum | REFERENSI |
+| [[FE-57 - Recraft MCP\|FE-57]] | Recraft MCP | mcp | https://github.com/recraft-ai/mcp-recraft-server | — | Belum | REFERENSI |
+| [[FE-58 - Threejs Awesome Graphics Agent Skills\|FE-58]] | Threejs Awesome Graphics Agent Skills | skill | https://github.com/scottstts/Threejs-Awesome-Graphics-Agent-Skills | — | Belum | REFERENSI |
+| [[FE-59 - SVGO\|FE-59]] | SVGO | tool | https://github.com/svg/svgo | — | Belum | REFERENSI |
+| [[FE-60 - model-viewer\|FE-60]] | model-viewer | library-3d | https://github.com/google/model-viewer | — | Belum | REFERENSI |
+| [[FE-61 - Spline MCP\|FE-61]] | Spline MCP | mcp | https://docs.spline.design/generate/spline-mcp-server.md | — | Belum | REFERENSI |
+| [[FE-62 - Meshy dan Tripo\|FE-62]] | Meshy dan Tripo | layanan | Meshy: https://docs.meshy.ai/en/api/text-to-3d | — | Belum | REFERENSI |
+| [[FE-63 - Riset Aset 3D Ringan\|FE-63]] | Riset Aset 3D Ringan | referensi | vault Monad Blitz | — | Belum | REFERENSI |
 
 ## Alur end to end
 ```mermaid
@@ -104,6 +138,26 @@ Setiap klaim dicek ulang ke sumbernya. Koreksi:
 | `code-review`, `simplify`, `security-review`, `run` | Umum untuk semua kode, bukan khusus FE |
 | Connector Claude Docs | Dokumen, bukan antarmuka |
 | Plugin caveman | Gaya respons agent |
+
+## Tambahan dari vault Monad Blitz (2026-10-23)
+FE-30 – FE-63 disalin dari vault Monad Blitz (`/Users/Shenhan/HansProject/MOnadBlitz/vault`, modul `06-FE-vault` dan `07-Research`): skill figur isometrik, library audio/efek/3D/game, sumber aset, MCP dan layanan generasi 3D, serta riset aset 3D ringan ([[FE-63 - Riset Aset 3D Ringan]], author Gpt 6.1 sol - agentrouter). Setiap file menyimpan vonis aslinya di Monad Blitz dan catatan kecocokan dengan [[FE-01 - Batasan Platform FE|FE-01]] (CSP same-origin, tanpa CDN, izin dependensi). Status di tabel adalah status untuk JitsuinFi: belum ada yang dipakai di kode.
+
+**Sudah ada di vault ini, tidak disalin ulang:** anime.js ([[FE-08 - anime.js|FE-08]]), Motion ([[FE-09 - Motion|FE-09]]), hairline ([[FE-11 - hairline|FE-11]]), genjutsu ([[FE-13 - genjutsu|FE-13]]), React Bits ([[FE-25 - React Bits shadcn MCP|FE-25]]), motionmaxxing ([[FE-26 - motionmaxxing|FE-26]]), frontend-design ([[FE-28 - frontend-design|FE-28]]). **Khusus proyek Monad, tidak disalin:** viem, React + Vite (JitsuinFi memakai TypeScript vanilla + Vite, FE-02).
+
+### Skill figur isometrik (terpasang di `~/.claude/skills`, scope user)
+| Skill | ID | Review | Output | Catatan FE-01 |
+|---|---|---|---|---|
+| iso-figure | [[FE-48 - iso-figure\|FE-48]] | Aman (commit `44b4da7`) | SVG murni satu HTML | Jangan bawa Google Fonts dari contoh |
+| Anatomy | [[FE-49 - Anatomy\|FE-49]] | Aman dengan catatan (commit `1482e84`); jangan publish ke galeri | SVG, opsional WebGL/3D | Mode SVG aman |
+| colorfigures | [[FE-32 - colorfigures\|FE-32]] | Aman (tarball sha256 `b74809ac…26257ff`) | HTML interaktif, engine ter-inline | Matikan footer kredit (`credit: false`) |
+
+Silsilah: iso-figure → iso-glow ([[FE-31 - iso-glow|FE-31]]) → colorfigures (juga memakai Anatomy). Contoh hasil colorfigures (mesin fotokopi, printer, laminator, ±90 KB per figur) ada di `/Users/Shenhan/HansProject/MOnadBlitz/Project/assets/figures/`.
+
+### Prosedur pasang skill pihak ketiga (dipakai di Monad Blitz)
+1. Jangan jalankan `curl … | tar -xz -C ~/.claude/skills`: unduh dulu ke folder sementara, `tar -tzf`, cek tidak ada path keluar folder.
+2. Baca SKILL.md utuh dan pindai semua script (proses, jaringan, git, hapus file, `eval`).
+3. Pasang dari commit/arsip yang sama dengan yang direview; catat asalnya di file `.reviewed-commit` di folder skill.
+4. Verifikasi figur lewat Claude Browser pane ([[FE-16 - Claude Browser Pane|FE-16]]), bukan Chrome headless berulang (laptop cepat panas).
 
 ## Daftar otomatis
 ```dataview

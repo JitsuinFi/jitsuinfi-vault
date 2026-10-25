@@ -1,7 +1,7 @@
 ---
 tags: [flow, backlog]
 status: DITETAPKAN
-progress: 2/3 SELESAI
+progress: 3/3 SELESAI
 updated: 2026-10-20
 ---
 
@@ -38,4 +38,4 @@ Kolom Status mengikuti langkah 6 "Audit flow diagram" di [[Workflow Development]
 |---|---|---|---|---|---|---|---|
 | BL-S02-01 | Semua | Kotak masuk buyer: invoice untuk ditandatangani, permintaan riwayat, surat untuk disegel, tagihan jatuh tempo | Setiap tindakan buyer dimulai dari kotak masuk | C-31, PG-01 | HNK-22.T6 | Hans | SELESAI (2026-10-22, audit: handler inbox buyer (`BuyerPage.tsx:555-636`) untuk `invoice.sign_request`, `history.request`, surat, segel, s2, `deal.bundle`; E2E lokal testnet `TES-INV-FE-36210`: tanda tangan, segel dan bayar QR dimulai dari inbox) |
 | BL-S02-02 | 4 – 5 | Setelah s1, layar buyer menunggu s2 dan baru menawarkan QR saat surat `Sealed` | Tombol QR tidak aktif sebelum s2 tiba | BL-D25-01 | HNK-25.T4, HNK-32.T2 | Hans | SELESAI (2026-10-22, audit ulang: frontend PR #49 + PR #55, live di Vercel: tombol "Show payment QR" mati sampai surat tersimpan memegang tiga segel (`payProblems` kosong) dengan petunjuk alasannya; E2E lokal testnet `TES-INV-FE-*` (2026-10-22 15:35 UTC): mati sebelum s2, aktif setelah s2, surat tempelan ditolak, deal settled dan bundel genuine di `/verify`) |
-| BL-S02-03 | Semua | E2E peran buyer: tanda tangan, riwayat, segel, bayar, status | Satu siklus `TES-` lulus di HNK-17 | HNK-17 | HNK-17.T4 | Hans | TODO |
+| BL-S02-03 | Semua | E2E peran buyer: tanda tangan, riwayat, segel, bayar, status | Satu siklus `TES-` lulus di HNK-17 | HNK-17 | HNK-17.T4 | Hans | SELESAI (2026-10-25, audit: E2E lokal `TES-INV-FE-11588`: tanda tangan, riwayat dikirim, segel, bayar QR, kartu riwayat "1 on time"; production `TES-INV-PROD-1996` tanpa riwayat) |

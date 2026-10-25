@@ -118,6 +118,7 @@ Urutan kerja mengikuti gelombang FD-01: fondasi (HNK-27, HNK-22, HNK-24.T1, HNK-
 | HNK-30 | Demo juri dan narasi dari judging | F6 | Hans #hans | #hans | HNK-07, HNK-09, HNK-28 | [[AC-HNK-30 - Demo juri dan narasi dari judging\|AC]] | [[TEST-HNK-30 - Demo juri dan narasi dari judging\|Test]] | [[ES-HNK-30 - Demo juri dan narasi dari judging\|ES]] |
 | HNK-31 | Migrasi FE ke React dan TanStack Router | F6 | Hans #hans | #hans | HNK-21, HNK-30 | [[AC-HNK-31 - Migrasi FE ke React dan TanStack Router\|AC]] | [[TEST-HNK-31 - Migrasi FE ke React dan TanStack Router\|Test]] | [[ES-HNK-31 - Migrasi FE ke React dan TanStack Router\|ES]] |
 | HNK-32 | Perbaikan hasil audit flow | F6 | Hans #hans | #hans | HNK-21, HNK-26, HNK-31 | [[AC-HNK-32 - Perbaikan hasil audit flow\|AC]] | [[TEST-HNK-32 - Perbaikan hasil audit flow\|Test]] | [[ES-HNK-32 - Perbaikan hasil audit flow\|ES]] |
+| HNK-33 | Rombak landing dengan figur Anatomy | F6 | Hans #hans | #hans | HNK-18, HNK-31 | [[AC-HNK-33 - Rombak landing dengan figur Anatomy\|AC]] | [[TEST-HNK-33 - Rombak landing dengan figur Anatomy\|Test]] | [[ES-HNK-33 - Rombak landing dengan figur Anatomy\|ES]] |
 
 ## Spike (F0)
 
@@ -514,6 +515,18 @@ Urutan kerja mengikuti gelombang FD-01: fondasi (HNK-27, HNK-22, HNK-24.T1, HNK-
 | HNK-32.T6 | Perluas E2E lokal testnet: buyer mengirim key lewat relay, kedua pihak menyimpan kontak, konsol menolak satu penawaran, mandat yang meminta riwayat (layar permintaan, `history.chain`, tag di node, kartu riwayat). Rincian: `BL-D21-11`, `BL-D22-01`, `BL-D23-03`, `BL-D26-01` – `BL-D26-09` | Hans #hans | 2 | DONE (2026-10-22): E2E lokal testnet diperluas lulus: `e2e-fe2.mjs` deal `TES-INV-FE-11588` (kontak, key lewat relay, mandat riwayat, permintaan dan cek riwayat, segel dan QR terjaga, advance `867b1c42…`, pelunasan `8cae4cf2…`, `/verify` genuine, kartu riwayat "1 on time") dan `e2e-decline.mjs` `TES-INV-FE-18524-D` (penawaran ditolak, supplier melihat alasannya); perbaikan BL-D26-06 node `ed15c4d` (retry memakai tag tersimpan). Skrip E2E memakai keepalive pointerdown dan approval ulang |
 | HNK-32.T7 | Halaman anggota vs laporan solvabilitas lokal (D17): perlu keputusan user, ubah lingkup baris ke CLI `jitsuin fund` atau halaman membaca output CLI. Rincian: `BL-D29-07` | Hans #hans | 0,5 | DONE (2026-10-22, keputusan user: halaman membaca output CLI): frontend PR #53 di-merge (kartu Solvency, `src/lib/fund-report.ts`, 3 unit test); E2E lokal testnet `e2e-fund.mjs`: kartu dana dari konsol, setoran wallet-b 0,0002 TAZ dicatat ("bought 3 units"; NAV tinggi karena wallet node E2E = akun operasional dana memegang 1 TAZ faucet), kuitansi ke kotak masuk anggota, periode 2 ditutup dengan passkey, root `25a524ef…409e` ditandatangani on-chain, jalur sampai ke anggota; `jitsuin fund --path --json` (UFVK hanya di mesin ini): periode 2 solvent, liabilities 20 003 unit, assets 1,0024 ZEC, unit anggota termasuk; kartu Solvency "Solvent in period 2". Laporan periode 1 (root lama) tidak dihitung untuk jalur periode 2. Run pertama menunjukkan penolakan yang benar saat root belum tertambang ("no liability root on chain yet") |
 | HNK-32.T8 | Batas waktu perintah baca `zcash-devtool` (`sync`, `enhance`, …): proses yang tidak menjawab dihentikan, bukan menahan kunci rantai node selamanya; `pay` tanpa batas. Ditemukan di E2E lokal 2026-10-22: `enhance` board-watch menggantung 5+ menit, semua deal berhenti | Hans #hans | 0,5 | DONE (2026-10-22): zcash PR #29 di-merge, node PR #39 menaikkan pin ke `46ecae1` (CI lulus); node production menyusul saat Railway pulih |
+
+**HNK-33 — Rombak landing dengan figur Anatomy** · Lead Hans #hans · [[AC-HNK-33 - Rombak landing dengan figur Anatomy|AC]] · Dibuat 2026-10-25 atas permintaan user: hero tetap dan dirapikan, bab 2 – 6 memakai figur isometrik interaktif gaya Anatomy ([[FE-49 - Anatomy|FE-49]]; dipilih user dari tiga contoh: iso-figure, Anatomy, colorfigures). Berurutan, satu bab per PR, tiap bab disetujui user sebelum lanjut.
+
+| Task | Deskripsi | Owner | Jam | Status |
+|---|---|---|---|---|
+| HNK-33.T1 | Hero dirapikan: jarak, perataan kolom copy, posisi subjudul episode dan baris bukti; kota 3D dan copy tetap | Hans #hans | 1 | TODO |
+| HNK-33.T2 | Bab 3 三印: figur meja segel (rak hanko, surat tiga lingkaran, gerbang tiga kait, kolam terlindung); urutan segel dan advance setelah segel ketiga; logika dan teks EN/中文 bab tetap | Hans #hans | 2 | TODO |
+| HNK-33.T3 | Bab 2 指紋: figur mesin pres registri: invoice masuk, tuas ditekan, sidik jari N (dihitung wasm seperti sekarang) tercetak ke buku papan | Hans #hans | 2 | TODO |
+| HNK-33.T4 | Bab 4 二重: figur loket financier kedua: cek papan, lampu 重 menyala, Exhibit A tercetak | Hans #hans | 2 | TODO |
+| HNK-33.T5 | Bab 5 履歴: figur lemari riwayat: laci sertifikat berantai dengan cap tepat waktu | Hans #hans | 2 | TODO |
+| HNK-33.T6 | Bab 6 結び: figur kantor registri kecil di samping CTA | Hans #hans | 1 | TODO |
+| HNK-33.T7 | Cek akhir: nol pelanggaran CSP, 390 px dan 1440 px, reduced motion, EN/中文, ukuran bundle; deploy setelah persetujuan user | Hans #hans | 1 | TODO |
 
 ### Fase F7
 

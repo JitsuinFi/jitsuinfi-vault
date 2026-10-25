@@ -1,7 +1,7 @@
 ---
 tags: [flow, backlog]
 status: DITETAPKAN
-progress: 14/15 SELESAI
+progress: 15/15 SELESAI
 updated: 2026-10-20
 ---
 
@@ -31,7 +31,7 @@ Kolom Status mengikuti langkah 6 "Audit flow diagram" di [[Workflow Development]
 | BL-D23-12 | 3.8, F3.33 – F3.36 | `Register`: terima `BoardChecked` sebelum posting, cari entri yang sudah terkirim sebelum posting ulang | Restart setelah posting tidak membuat posting kedua; konflik yang muncul sebelum posting menjadi `Stopped` | K-4 | HNK-27.T5 | Hans | SELESAI (2026-10-20, `fef1d15`, U-HNK-27.4 – .5; uji crash testnet I-HNK-27.2 menyusul) |
 | BL-D23-13 | 3.3 – 3.9, D11 | Persistensi state deal di node (serialisasi `Flow` dan dokumen deal) | Node yang di-restart melanjutkan deal dari state terakhir | C-16 | HNK-26.T10 | Hans | SELESAI (2026-10-22, audit: `Flow` diserialisasi JTSF ke `deals/<N>.flow` dan dimuat ulang tiap putaran `drive` (node `src/main.rs:1230`); uji `a_restored_snapshot_resumes_the_deal_in_every_state` dan `resumes_from_an_entry_posted_earlier` lulus) |
 | BL-D23-14 | 3.9, F3.37 – F3.42 | Progres konfirmasi di konsol (n dari `min_confirmations`) | Konsol menampilkan hitungan konfirmasi sampai `AwaitAssignment` | HNK-05.T4 | HNK-26.T16, HNK-32.T4 | Hans | SELESAI (2026-10-22, audit ulang setelah HNK-32.T4, node PR #36 + frontend PR #51: E2E lokal testnet `TES-INV-FE-1185` konsol "Entry posted: 0 of 1 confirmations", `TES-INV-FE-53023` meta `entry_confirmations: 3`) |
-| BL-D23-15 | Uji | Integrasi testnet: entri dengan kelas tertambang, `jitsuin index` menampilkan kelas (k = 5 butuh minimal 5 deal), crash dan restart sesudah posting | Kasus tercatat di TEST item terkait | HNK-04.T4, HNK-17 | HNK-17.T4 | Hans | TODO |
+| BL-D23-15 | Uji | Integrasi testnet: entri dengan kelas tertambang, `jitsuin index` menampilkan kelas (k = 5 butuh minimal 5 deal), crash dan restart sesudah posting | Kasus tercatat di TEST item terkait | HNK-04.T4, HNK-17 | HNK-17.T4 | Hans | SELESAI (2026-10-25, audit: entri dengan kelas tertambang dan `jitsuin index` = `/rates` (tenor 31-60 hari, 5 invoice, median 3-5 %, k = 5) di HNK-17.T2; node E2E lokal di-restart saat deal berjalan dan deal lanjut sampai settled (`TES-INV-FE-53023`); tercatat di TEST-HNK-17) |
 
 ## Sudah ada (tanpa task baru)
 

@@ -1,7 +1,7 @@
 ---
 tags: [flow, backlog]
 status: DITETAPKAN
-progress: 10/11 SELESAI
+progress: 11/11 SELESAI
 updated: 2026-10-20
 ---
 
@@ -27,7 +27,7 @@ Kolom Status mengikuti langkah 6 "Audit flow diagram" di [[Workflow Development]
 | BL-D22-08 | 2.7, F2.26 – F2.27 | Kirim `buyer_signature` ke supplier lewat relay | Supplier menerima tanda tangan tanpa salin-tempel | P-04 | HNK-23.T7 | Hans | SELESAI (2026-10-22, audit: E2E lokal testnet `TES-INV-FE-36210`: buyer mengirim tanda tangan lewat relay, supplier mengambilnya dari inbox lalu menawarkan ke financier; entri `c64bd680…6575`) |
 | BL-D22-09 | 2.8, F2.28 – F2.31 | Kartu supplier: cek tanda tangan buyer (`bundleBuild`), simpan invoice + tanda tangan sah | Tanda tangan palsu ditolak dengan pesan; yang sah tersimpan di deal | C-06 | HNK-24.T4 | Hans | SELESAI (2026-10-20, `17a01ea`: tanda tangan palsu ditolak, yang sah tersimpan, I-HNK-24.3) |
 | BL-D22-10 | 2.8, D4 | Simpan dokumen deal supplier lintas sesi | Deal masih ada setelah tab ditutup | C-07 | HNK-24.T3 | Hans | SELESAI (2026-10-20, `17a01ea`: deal supplier bertahan setelah reload dan unlock ulang, I-HNK-24.3) |
-| BL-D22-11 | Uji | E2E BF-02: supplier menerbitkan, buyer menandatangani lewat relay, supplier memeriksa | Satu siklus `TES-` lulus di HNK-17 | HNK-17 | HNK-17.T4 | Hans | TODO |
+| BL-D22-11 | Uji | E2E BF-02: supplier menerbitkan, buyer menandatangani lewat relay, supplier memeriksa | Satu siklus `TES-` lulus di HNK-17 | HNK-17 | HNK-17.T4 | Hans | SELESAI (2026-10-25, audit: E2E production `TES-INV-PROD-1996` (HNK-17.T4, DEAL VERIFIED 3/3) dan E2E lokal testnet `TES-INV-FE-11588` (HNK-32.T6): supplier menerbitkan, buyer menandatangani lewat relay, supplier memeriksa dan menyimpan) |
 
 ## Sudah ada (tanpa task baru)
 

@@ -1,7 +1,7 @@
 ---
 tags: [flow, backlog]
 status: DITETAPKAN
-progress: 13/14 SELESAI
+progress: 14/14 SELESAI
 updated: 2026-10-20
 ---
 
@@ -30,7 +30,7 @@ Kolom Status mengikuti langkah 6 "Audit flow diagram" di [[Workflow Development]
 | BL-D24-11 | 4.7, F4.40 | Teruskan txid advance ke supplier dan s2 ke buyer lewat relay | Supplier menerima txid; buyer menerima s2 | P-04 | HNK-23.T8 | Hans | SELESAI (2026-10-22, audit: node mengirim `deal.advance` (txid) ke supplier dan s2 ke supplier dan buyer (`main.rs:1572-1594`); E2E lokal testnet `TES-INV-FE-36210`: `advance_sent: true`, buyer menyimpan s2 dan `assignmentStatus` = `Sealed`) |
 | BL-D24-12 | 4.8, F4.43 | Bandingkan advance yang diterima dengan advance yang disepakati | Advance kurang dari yang disepakati menjadi gagal di verifikasi | K-6 | HNK-27.T7 | Hans | SELESAI (2026-10-20, `a10185f`, U-HNK-27.7) |
 | BL-D24-13 | 4.8, F4.42 – F4.45 | Status advance di layar supplier (txid, nominal, kecocokan) | Supplier melihat "Advance diterima" atau alasannya gagal | C-17 | HNK-24.T8 | Hans | SELESAI (2026-10-20, `17a01ea`: advance kurang ditandai, yang cocok menutup deal, I-HNK-24.3) |
-| BL-D24-14 | Uji | E2E BF-06 dan BF-07 di testnet lewat relay dan API (siklus `TES-`) | Satu siklus lulus di HNK-17 | HNK-17 | HNK-17.T4 | Hans | TODO |
+| BL-D24-14 | Uji | E2E BF-06 dan BF-07 di testnet lewat relay dan API (siklus `TES-`) | Satu siklus lulus di HNK-17 | HNK-17 | HNK-17.T4 | Hans | SELESAI (2026-10-25, audit: E2E production `TES-INV-PROD-1996` (HNK-17.T4, DEAL VERIFIED 3/3) dan E2E lokal testnet `TES-INV-FE-11588` (HNK-32.T6): surat, segel kedua pihak, advance disetujui passkey dan tertambang, lewat relay dan API node) |
 
 ## Sudah ada (tanpa task baru)
 
