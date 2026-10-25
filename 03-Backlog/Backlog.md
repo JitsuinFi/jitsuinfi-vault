@@ -533,10 +533,10 @@ Urutan kerja mengikuti gelombang FD-01: fondasi (HNK-27, HNK-22, HNK-24.T1, HNK-
 
 | Task | Deskripsi | Owner | Jam | Status |
 |---|---|---|---|---|
-| HNK-34.T1 | Shell app (nav pill, tab bar kertas di HP) + lobi `/app`: kantor registri sebagai denah gedung (figur Anatomy bab 6, pin ruangan, tur) | Hans #hans | 2 | IN PROGRESS |
-| HNK-34.T2 | `/try` meja kasus 2D: 請求書 kertas, papan lempeng, benang merah, hanko 偽/重, Exhibit A | Hans #hans | 3 | IN PROGRESS |
-| HNK-34.T3 | `/outsider` palang sensor di 請求書 asli + pita papan; `/rates` grafik data dataviz | Hans #hans | 2 | IN PROGRESS |
-| HNK-34.T4 | `/verify` meja inspeksi (lensa hairline, vonis hanko) | Hans #hans | 2 | TODO (contoh dibuat) |
+| HNK-34.T1 | Shell app (nav pill, tab bar kertas di HP) + lobi `/app`: kantor registri sebagai denah gedung (figur Anatomy bab 6, pin ruangan, tur) | Hans #hans | 2 | DONE (2026-10-25, frontend PR #66, live): shell (pill aktif merah segel, tab bar kertas menempel di bawah di HP) + lobi kantor registri (`lobby-office.build.mjs`, pin, tur, data N/blok didekode wasm dari salinan papan); 125 test; cek 1440/390 tanpa pelanggaran CSP |
+| HNK-34.T2 | `/try` meja kasus 2D: 請求書 kertas, papan lempeng, benang merah, hanko 偽/重, Exhibit A | Hans #hans | 3 | DONE (2026-10-25, frontend PR #66, live): meja kasus; N dan segel dihitung wasm tiap ketikan; 偽 berhenti di segel, 重 benang merah + pindai + hanko + Exhibit A; gaya panel lama tetap di `try.css` untuk halaman gelombang 2 |
+| HNK-34.T3 | `/outsider` palang sensor di 請求書 asli + pita papan; `/rates` grafik data dataviz | Hans #hans | 2 | DONE (2026-10-25, frontend PR #66, live): /outsider palang sensor bernomor + pita papan live; /rates grafik tenor × kelas diskon, k ≥ 5 dihitung ulang wasm; semua angka dari papan live |
+| HNK-34.T4 | `/verify` meja inspeksi (lensa hairline, vonis hanko) | Hans #hans | 2 | DONE (2026-10-25, frontend PR #66, live): baki, lembar per pemeriksaan, kaca pembesar menjalankan hasil wasm asli, hanko 真/偽/未/重/拒, pita papan; tap HP 375 px dicek di Browser pane (重) |
 | HNK-34.T5 | Gelombang 2: `/apply`, `/account`, halaman peran (supplier, buyer, member), konsol financier | Hans #hans | 4 | TODO |
 
 ### Fase F7
