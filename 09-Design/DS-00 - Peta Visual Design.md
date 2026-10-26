@@ -2,7 +2,7 @@
 tags: [design-ref, hub, "DS-00"]
 type: design-hub
 id: DS-00
-updated: 2026-10-20
+updated: 2026-10-26
 ---
 
 # DS-00 - Peta Visual Design
@@ -43,6 +43,8 @@ mindmap
       Skor dan keputusan financier
       Cara kerja berlapis
 ```
+
+**Aturan layout mobile:** [[DS-MOB - Aturan Layout Mobile JitsuinFi|DS-MOB]] mengatur struktur layar di HP (pane, navigasi, satu tugas per layar, progressive disclosure, target sentuh, safe area, form, daftar); gaya visual tetap dari catatan di peta ini.
 
 ## Daftar referensi
 | ID | Judul | File | Jenis | Mode | Aksen | Relevansi utama |

@@ -3,7 +3,7 @@ tags: [fe-tool, hub, "FE-00"]
 type: fe-hub
 id: FE-00
 status: AKTIF
-updated: 2026-10-23
+updated: 2026-10-26
 ---
 
 # FE-00 - Peta Tools FE
@@ -90,6 +90,15 @@ Semua tool frontend yang tersedia untuk JitsuinFi per 2026-10-20, dari awal proy
 | [[FE-61 - Spline MCP\|FE-61]] | Spline MCP | mcp | https://docs.spline.design/generate/spline-mcp-server.md | — | Belum | REFERENSI |
 | [[FE-62 - Meshy dan Tripo\|FE-62]] | Meshy dan Tripo | layanan | Meshy: https://docs.meshy.ai/en/api/text-to-3d | — | Belum | REFERENSI |
 | [[FE-63 - Riset Aset 3D Ringan\|FE-63]] | Riset Aset 3D Ringan | referensi | vault Monad Blitz | — | Belum | REFERENSI |
+| [[FE-64 - mobile-native (Emil Kowalski)\|FE-64]] | mobile-native (Emil Kowalski) | skill | https://github.com/emilkowalski/skills `2d22863` | `~/.claude/skills` | Belum; disarikan ke [[DS-MOB - Aturan Layout Mobile JitsuinFi\|DS-MOB]] | TERSEDIA-BELUM-DIPAKAI |
+| [[FE-65 - responsive-design (Mindrally)\|FE-65]] | responsive-design (Mindrally) | skill | https://github.com/Mindrally/skills `7682ca7` | `~/.claude/skills` | Belum; disarikan ke [[DS-MOB - Aturan Layout Mobile JitsuinFi\|DS-MOB]] | TERSEDIA-BELUM-DIPAKAI |
+| [[FE-66 - responsive-design (supercent-io)\|FE-66]] | responsive-design (supercent-io), tidak dipasang: repo 404 | skill | https://github.com/supercent-io/skills-template | — | Belum; disarikan ke [[DS-MOB - Aturan Layout Mobile JitsuinFi\|DS-MOB]] | REFERENSI |
+| [[FE-67 - responsive-design (flitzrrr)\|FE-67]] | responsive-design (flitzrrr) | skill | https://github.com/flitzrrr/frontend-design-skills `d607ba3` | `~/.claude/skills` | Belum; disarikan ke [[DS-MOB - Aturan Layout Mobile JitsuinFi\|DS-MOB]] | TERSEDIA-BELUM-DIPAKAI |
+| [[FE-68 - mobile-responsive-ux (jacob-balslev)\|FE-68]] | mobile-responsive-ux (jacob-balslev) | skill | https://github.com/jacob-balslev/skill-graph `ee6f58e` | `~/.claude/skills` | Belum; disarikan ke [[DS-MOB - Aturan Layout Mobile JitsuinFi\|DS-MOB]] | TERSEDIA-BELUM-DIPAKAI |
+| [[FE-69 - mobile-app-ui-design (ceorkm)\|FE-69]] | mobile-app-ui-design (ceorkm) | skill | https://github.com/ceorkm/mobile-app-ui-design `4c67a0e` | `~/.claude/skills` | Belum; disarikan ke [[DS-MOB - Aturan Layout Mobile JitsuinFi\|DS-MOB]] | TERSEDIA-BELUM-DIPAKAI |
+| [[FE-70 - mobile-design-skill (evgeniyvorobey)\|FE-70]] | mobile-design-skill (evgeniyvorobey) | skill | https://github.com/evgeniyvorobey/mobile-design-skill `0c0ce13` | `~/.claude/skills` | Belum; disarikan ke [[DS-MOB - Aturan Layout Mobile JitsuinFi\|DS-MOB]] | TERSEDIA-BELUM-DIPAKAI |
+| [[FE-71 - mobile-ux-design (phazurlabs)\|FE-71]] | mobile-ux-design (phazurlabs) | skill | https://github.com/phazurlabs/ux-ui-mastery `3a3693b` | `~/.claude/skills` | Belum; disarikan ke [[DS-MOB - Aturan Layout Mobile JitsuinFi\|DS-MOB]] | TERSEDIA-BELUM-DIPAKAI |
+| [[FE-72 - mobile-design (HDShinobi)\|FE-72]] | mobile-design (HDShinobi) | skill | https://github.com/HDShinobi/ai-agentic-kit `d10a862` | `~/.claude/skills` | Belum; disarikan ke [[DS-MOB - Aturan Layout Mobile JitsuinFi\|DS-MOB]] | TERSEDIA-BELUM-DIPAKAI |
 
 ## Alur end to end
 ```mermaid
@@ -158,6 +167,19 @@ Silsilah: iso-figure → iso-glow ([[FE-31 - iso-glow|FE-31]]) → colorfigures 
 2. Baca SKILL.md utuh dan pindai semua script (proses, jaringan, git, hapus file, `eval`).
 3. Pasang dari commit/arsip yang sama dengan yang direview; catat asalnya di file `.reviewed-commit` di folder skill.
 4. Verifikasi figur lewat Claude Browser pane ([[FE-16 - Claude Browser Pane|FE-16]]), bukan Chrome headless berulang (laptop cepat panas).
+
+## Skill mobile (2026-10-26)
+FE-64 – FE-72 dari daftar user `Notes/mobileResources.md`. Dipasang dengan prosedur di atas: clone `--depth 1` ke folder sementara, SKILL.md dibaca utuh, script dipindai, dipasang tanpa `.git` dari commit yang sama, asal dicatat di `.reviewed-commit`. `npx skills add` tidak dijalankan. Delapan dipasang; supercent-io ([[FE-66 - responsive-design (supercent-io)|FE-66]]) tidak dipasang karena repo sumbernya 404. Isinya disarikan menjadi aturan layout dan struktur (bukan gaya visual) di [[DS-MOB - Aturan Layout Mobile JitsuinFi|DS-MOB]].
+
+| ID | Fokus | Catatan |
+|---|---|---|
+| FE-64 | Lapisan platform web di HP (`dvh`, safe area, hover, input 16 px, `theme-color`) | Paling langsung terpakai |
+| FE-65, FE-67 | Responsive web dasar | Hampir duplikat; `name:` diubah agar tidak bentrok |
+| FE-68 | Dashboard operasional di HP (tabel → baris ringkas, bottom sheet, zona jempol) | Paling dekat dengan layar peran |
+| FE-69 | Proses desain layar | Pakai bagian struktur saja; tanpa LICENSE |
+| FE-70 | Desain dan review layar/alur | Dipasang tanpa `scripts/` maintainer |
+| FE-71 | Navigasi, form, konvensi platform | Referensi Liquid Glass bukan gaya JitsuinFi |
+| FE-72 | Mobile native RN/Flutter | Relevansi rendah ("NOT for web apps") |
 
 ## Daftar otomatis
 ```dataview

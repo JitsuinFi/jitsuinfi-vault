@@ -3,7 +3,7 @@ tags: [fe-tool, mandate, "FE-M0"]
 type: fe-mandate
 id: FE-M0
 status: AKTIF
-updated: 2026-10-20
+updated: 2026-10-26
 ---
 
 # FE-M0 - Mandat FE
@@ -51,6 +51,8 @@ Mandat user untuk frontend JitsuinFi, terutama landing page (HNK-18.T4). Diulang
 | Motion.so | Dicoba, hasil ditolak | [[FE-23 - Motion.so]] |
 | Mobbin, ScreensDesign, Refero | **Belum dipakai untuk landing** | [[FE-18 - Mobbin]], [[FE-19 - ScreensDesign]], [[FE-21 - Refero]] |
 | impeccable, frontend-design | **Baru dipasang**, belum dipakai | [[FE-14 - impeccable]], [[FE-28 - frontend-design]] |
+
+**Layout mobile:** setiap layar app juga harus lulus [[DS-MOB - Aturan Layout Mobile JitsuinFi|DS-MOB]] (satu tugas per layar, kedalaman bukan pemerasan, bagian "Audit mobile per layar").
 
 ## Cara memakai mandat ini
 1. Sebelum desain baru: baca mandat + [[DS-PAL - Palet Utama JitsuinFi]] + `MASTER.md`.
