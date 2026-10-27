@@ -208,7 +208,7 @@ Satu pesan = satu dokumen yang berpindah antar pihak lewat relay. Kode: `jitsuin
 
 | Jenis | Dari → ke | Aliran DFD | `body` | Lampiran | Ditandatangani |
 |---|---|---|---|---|---|
-| `key.invoice_pk` | buyer → supplier | 2.1 → 2.2, 2.4 | `invoice_pk` | — | key invoice itu sendiri (bukti kepemilikan) |
+| `key.invoice_pk` | buyer → supplier | 2.1 → 2.2, 2.4 | `invoice_pk`, `mailbox` (mailbox buyer), opsional `fingerprint` dan `name` (@nama buyer; HNK-34, 2026-10-27, agar supplier bisa menambahkan buyer ke kontak satu ketukan) | — | key invoice itu sendiri (bukti kepemilikan); semua field di bagian yang ditandatangani key, surat lama tanpa `fingerprint`/`name` tetap sah |
 | `invoice.sign_request` | supplier → buyer | 2.5 → 2.6 | `invoice` (JTSI) | PDF syarat (1) | key per invoice supplier |
 | `invoice.signature` | buyer → supplier | 2.7 → 2.8 | `buyer_signature` | — | tidak (tanda tangan buyer itu sendiri) |
 | `deal.offer` | supplier → financier | SEQ-03 bagian 1 → 3.1 | `invoice`, `buyer_signature`, `advance_zat`, `supplier_address` | PDF syarat (0 – 1) | key per invoice supplier |
