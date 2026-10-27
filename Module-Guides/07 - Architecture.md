@@ -18,3 +18,4 @@ Kembali: [[START-HERE]]
 - Tanpa smart contract, ZSA, TEE, cross-chain.
 - Format data masih draf sampai HNK-01/HNK-02.
 - [[07-Architecture/Rencana Akun Server]]: status backend dan DB, tempat credential Supabase, usulan API akun dengan verifikasi passkey, wallet dari passkey (menunggu keputusan).
+- [[07-Architecture/Sinkronisasi Antarperangkat]]: record tiap peran disinkron tersegel lewat state mailbox di relay (format JSY2, aturan merge, batas 64 KiB, form tahan reload, kebocoran ukuran/waktu).
