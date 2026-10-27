@@ -7,27 +7,29 @@ updated: 2026-10-27
 
 **Bagian dari:** [[00 - Project]] · Item: HNK-14.T3 di [[Backlog]] · Terkait: [[Submission - Runbook]] · [[Submission - Deskripsi]] · [[ZECATHON - Aturan dan Deadline]] · [[Decision Log]] (D-17, D-53)
 
+> **Status 2026-10-27 (sore): README keempat repo diperbarui dan di-merge** (user menyetujui push): `jitsuinfi-zcash` PR #33 (merge `ad29bec`), `jitsuinfi-node` PR #44 (`4355a6a`), `jitsuinfi-backend` PR #6 (`23e96fd`), `jitsuinfi-frontend` PR #83 (`dcba76e`). Visibilitas frontend dan backend dicatat sebagai D-54. Sisa: hanya bagian 4 (pembukaan `jitsuinfi-zcash`, waktu diputuskan user).
+>
 > Disegarkan 2026-10-27 oleh agent (hanya baca di repo kode; tidak ada repo yang diubah, dibuka publik, atau di-push). Kode yang dicek: `jitsuinfi-zcash` `614f59a`, `jitsuinfi-node` `4d5044a`, `jitsuinfi-backend` `960cea4`, `jitsuinfi-frontend` `9d30581` (semua `origin/main` setelah `git fetch`, 2026-10-27).
 
 ## Ringkasan
 | Repo | Visibilitas hari ini | Lisensi | README | Txid di README | Rahasia di riwayat |
 |---|---|---|---|---|---|
-| `jitsuinfi-zcash` | **PRIVATE** (404 saat logout) | `LICENSE-APACHE` + `LICENSE-MIT`; GitHub membaca Apache-2.0 | Ada, sebagian usang (di bawah) | Ada (TES-INV-0003, TES-INV-E2E1-77210); **belum ada deal production web app** | Bersih |
-| `jitsuinfi-node` | PUBLIC (sejak 2026-10-23, D-53) | Sama | Ada, sebagian usang | Tidak ada | Bersih |
-| `jitsuinfi-backend` | PUBLIC | Sama | Ada, satu baris usang | Tidak perlu (relay, tanpa chain) | Bersih |
-| `jitsuinfi-frontend` | PUBLIC | Sama | Ada, beberapa baris usang | Tidak ada | Bersih |
+| `jitsuinfi-zcash` | **PRIVATE** (404 saat logout) | `LICENSE-APACHE` + `LICENSE-MIT`; GitHub membaca Apache-2.0 | Diperbarui (PR #33) | Ada (TES-INV-0003, TES-INV-E2E1-77210, dan sejak PR #33 tabel deal production langkah 6); ~~**belum ada deal production web app**~~ | Bersih |
+| `jitsuinfi-node` | PUBLIC (sejak 2026-10-23, D-53) | Sama | Diperbarui (PR #44) | Tidak ada | Bersih |
+| `jitsuinfi-backend` | PUBLIC (D-54) | Sama | Diperbarui (PR #6) | Tidak perlu (relay, tanpa chain) | Bersih |
+| `jitsuinfi-frontend` | PUBLIC (D-54) | Sama | Diperbarui (PR #83) | Tidak ada | Bersih |
 | `jitsuinfi-vault` | PRIVATE (biarkan private) | — | — | — | Tidak dipindai (tidak dipublikasikan) |
 
 Perintah: `gh repo view JitsuinFi/<repo> --json visibility,licenseInfo` dan `curl` signed-out ke `https://github.com/JitsuinFi/<repo>` (2026-10-27).
 
-**Catatan:** `jitsuinfi-backend` dan `jitsuinfi-frontend` sudah PUBLIC, tetapi [[Decision Log]] hanya mencatat D-53 (node). Butir HNK-14.T3 sebelumnya juga masih menulis "LICENSE belum ada di repo mana pun"; itu sudah tidak benar (keempat repo punya lisensi ganda MIT / Apache-2.0). User perlu mengonfirmasi bahwa pembukaan frontend dan backend memang disengaja, lalu mencatatnya sebagai keputusan.
+**Catatan:** ~~`jitsuinfi-backend` dan `jitsuinfi-frontend` sudah PUBLIC, tetapi [[Decision Log]] hanya mencatat D-53 (node).~~ Dicatat sebagai D-54 (2026-10-27). Butir HNK-14.T3 sebelumnya juga masih menulis "LICENSE belum ada di repo mana pun"; itu sudah tidak benar (keempat repo punya lisensi ganda MIT / Apache-2.0). User perlu mengonfirmasi bahwa pembukaan frontend dan backend memang disengaja, lalu mencatatnya sebagai keputusan.
 
 ## 1. Lisensi
 - [x] `LICENSE-APACHE` dan `LICENSE-MIT` ada di root keempat repo; README masing-masing punya bagian "License" yang sama (dual MIT OR Apache-2.0).
 - [x] Dependensi pihak ketiga yang baru (jsQR 1.4.0, Apache-2.0, HNK-34.T14) cocok dengan lisensi ganda.
 
 ## 2. README: baris usang dan usulan pengganti
-Repo kode tidak diedit di sesi ini. Baris di bawah dirujuk dengan `file:baris` pada commit di atas.
+**Selesai 2026-10-27:** semua usulan wajib di bawah diterapkan lewat PR yang disebut di atas (README saja). Yang opsional (membuang ID internal `HNK-…`, `D-…`) tidak dikerjakan, kecuali rujukan "vault" di README backend dan node. Baris di bawah dirujuk dengan `file:baris` pada commit di atas.
 
 ### `jitsuinfi-zcash/README.md`
 | Baris | Isi sekarang | Masalah | Usulan |
@@ -56,7 +58,7 @@ Teks siap tempel untuk `jitsuinfi-zcash/README.md` setelah baris 108:
 The board entries read with the board UFVK above (`jitsuin verify --ufvk …` lists them); the advance and the repayment are shielded payments, so an explorer shows only that they exist.
 ```
 
-Sumber txid: entri papan dibaca dari `https://jitsuinfi-console.vercel.app/node/board` (publik) pada 2026-10-27; advance dan pelunasan JUDGE3 dari log E2E HNK-34.T13. Txid deal video (`TES-INV-VID-03`) ditambahkan setelah rekaman.
+Sumber txid: entri papan dibaca dari `https://jitsuinfi-console.vercel.app/node/board` (publik) pada 2026-10-27, dan dicek ulang ke `https://financier-node-production.up.railway.app/node/board` sebelum PR #33 (kelima entri ada, tinggi blok cocok; papan 55 entri, tip 4547279); advance dan pelunasan JUDGE3 dari log E2E HNK-34.T13. Txid deal video (`TES-INV-VID-03`) ditambahkan setelah rekaman.
 
 ### `jitsuinfi-node/README.md`
 | Baris | Isi sekarang | Masalah | Usulan |
@@ -113,7 +115,7 @@ Pindaian ini menangkap pola yang dikenal, bukan semua kemungkinan. Bila mau lapi
 ## 4. Sisa sebelum `jitsuinfi-zcash` dibuka publik (keputusan waktu: user)
 Aturan: "Open source at submission. A private repo made public on Oct 28 counts." Batas praktis: sebelum menekan Submit, paling lambat 28 Okt 23:59 UTC.
 
-- [ ] (Disarankan sebelum dibuka) README zcash diperbarui: tabel txid production, baris 91, baris 145, blok tautan live (bagian 2). Deskripsi v3 bergantung pada tabel txid.
+- [x] (Disarankan sebelum dibuka) README zcash diperbarui (PR #33, 2026-10-27; CI zcash tidak jalan karena billing Actions, di-merge karena README saja): tabel txid production, baris 91, baris 145, blok tautan live (bagian 2). Deskripsi v3 bergantung pada tabel txid.
 - [ ] User menerima bahwa email penulis commit ikut terlihat (bagian 3).
 - [ ] Buka: GitHub → `JitsuinFi/jitsuinfi-zcash` → Settings → General → Danger Zone → Change visibility → Public (atau `gh repo edit JitsuinFi/jitsuinfi-zcash --visibility public --accept-visibility-change-consequences`). Dilakukan user.
 - [ ] Sesudahnya: `https://github.com/JitsuinFi/jitsuinfi-zcash` terbuka di jendela private (HTTP 200); 33 cabang remote ikut publik (sudah ikut dipindai).

@@ -10,7 +10,7 @@ tags: [project, submission]
 >
 > **Yang berubah dari v2:** mencerminkan yang live per 27 Okt (app per peran yang bisa dipasang di HP, inbox, konsol passkey, direktori bertanda tangan, mandat privat, dana anggota); bukti dari production testnet (deal `TES-INV-JUDGE3-9161` diklik lewat app live sampai settled, dan `TES-INV-DBL-24689` berhenti `DoubleFinanced`); tautan landing, app, verify, konsol demo, kode. Kalimat ZSA ("shielded stablecoins would remove the swap") dibuang demi ruang; jalur produksi W-04 tetap (USD + swap Zodl).
 >
-> **Syarat sebelum dipakai:** kalimat "Full txids in the README" baru benar setelah README `jitsuinfi-zcash` diberi tabel txid production (teks siap tempel di [[Submission - Checklist Publikasi Repo]] bagian README). Kalau README tidak diperbarui, ganti kalimat itu dengan txid penuh settled saja, lalu hitung ulang.
+> **Syarat sebelum dipakai (terpenuhi 2026-10-27: README zcash PR #33 memuat tabel txid production, langkah 6):** kalimat "Full txids in the README" baru benar setelah README `jitsuinfi-zcash` diberi tabel txid production (teks siap tempel di [[Submission - Checklist Publikasi Repo]] bagian README). Kalau README tidak diperbarui, ganti kalimat itu dengan txid penuh settled saja, lalu hitung ulang.
 
 ## Draf v3 (2026-10-27, dipakai)
 
@@ -84,8 +84,8 @@ Real vs mock: everything runs on Zcash testnet, Ironwood pool, with txids in the
 
 ## Cek sebelum submit
 - [x] Panjang ≤ 2.000 karakter (v3: 1.978, dihitung 2026-10-27; hitung ulang setelah edit).
-- [ ] Semua klaim punya bukti di README (txid testnet; mainnet kalau ada). v3: tabel txid production belum ada di README zcash, lihat [[Submission - Checklist Publikasi Repo]].
-- [ ] Tautan spesifikasi dan threat model ada di README (spesifikasi ada; threat model publik = bagian Security dan Privacy considerations di spesifikasi, README node masih menunjuk vault private).
+- [x] Semua klaim punya bukti di README (txid testnet; mainnet kalau ada). v3: tabel txid production ada di README zcash sejak PR #33 (2026-10-27); README terbaca juri setelah zcash dibuka publik ([[Submission - Checklist Publikasi Repo]] bagian 4).
+- [x] Tautan spesifikasi dan threat model ada di README (spesifikasi ada; threat model publik = bagian Security dan Privacy considerations di spesifikasi; README node menunjuk ke sana sejak PR #44, 2026-10-27).
 
 ## Draf v1 (2026-10-18, diganti v2)
 Usang: menyebut backend financier hanya library dan CLI; belum ada hook N-06, node, direktori, mandat privat, dan dana.
