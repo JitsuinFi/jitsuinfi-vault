@@ -52,7 +52,6 @@
 | [Backlog](03-Backlog/Backlog.md) | Item HNK-xx, task, log deviasi |
 | [Decision Log](07-Architecture/Decision%20Log.md) | Keputusan D-xx |
 | [FD-00 - Arsitektur Target dan Legenda](08-FlowDiagrams/FD-00%20-%20Arsitektur%20Target%20dan%20Legenda.md) | Arsitektur target, legenda diagram |
-| [JDG-00 - Peta Judging](11-Judging/JDG-00%20-%20Peta%20Judging.md) | Sudut pandang juri, titik lemah W-xx, narasi N-xx |
 | [Video-Workspace](Video-Workspace/Video-Workspace.md) | Naskah, storyboard, video final (Remotion: `Video-Workspace/README.md`) |
 
 ## Isi vault
@@ -66,8 +65,7 @@
 | `04-Acceptance-Criteria/`, `05-Testing/`, `06-Executive-Summary/` | AC, tes, dan exec summary per item |
 | `07-Architecture/` | Arsitektur, format data, threat model, decision log |
 | `08-FlowDiagrams/` | DFD level 0–2, sequence per peran, peta halaman (PlantUML → SVG) |
-| `09-Design/`, `10-FE-vault/`, `ColorPalette-JitsuinFi/` | Referensi visual, palet DS-PAL, peta tool frontend |
-| `11-Judging/` | Vonis per putaran, kartu skor, register titik lemah, benchmark |
+| `09-Design/`, `10-FE-vault/` | Catatan referensi visual, palet DS-PAL, peta tool frontend (gambar referensi pihak ketiga hanya disimpan lokal) |
 | `Video-Workspace/` | Produksi video demo (Remotion, VO ElevenLabs, footage) |
 | `Concepts/`, `Module-Guides/`, `Notes/`, `Templates/`, `scripts/` | Konsep atomik, panduan modul, catatan, template, otomasi (`scripts/sync-vault.py`) |
 

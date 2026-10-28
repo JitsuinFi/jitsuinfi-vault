@@ -2,3 +2,13 @@
 .obsidian/workspace.json
 .obsidian/workspace-mobile.json
 .trash/
+
+# Kept local only (not published): judging strategy, third-party reference images and prompts
+11-Judging/
+Module-Guides/11 - Judging.md
+MotionSites-References/
+ColorPalette-JitsuinFi/
+09-Design/*.jpg
+09-Design/*.jpeg
+09-Design/*.png
+09-Design/*.webp
